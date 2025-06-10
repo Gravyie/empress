@@ -1,5 +1,5 @@
 import './App.css'
-import ProductCategories from './components/Categories'
+import Categories from './components/Categories'
 import Footer from './components/Footer'
 import Hero3d from './components/Hero3d'
 import { PCComponents } from './components/PCComponents'
@@ -14,7 +14,7 @@ function App() {
         <Hero3d />
         <ProductsGrid />
         <PCComponents />
-        <ProductCategories />
+        <Categories />
         <Footer />
       </div>
     </div>

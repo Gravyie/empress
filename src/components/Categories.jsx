@@ -1,28 +1,90 @@
-import React from "react";
+import React from 'react';
 
-const products = [
-  { id: 1, name: "Headphones", price: "$99" },
-  { id: 2, name: "Keyboard", price: "$49" },
-  { id: 3, name: "Speaker", price: "$79" },
-  { id: 4, name: "Productive PC", price: "$999" },
-  { id: 5, name: "Gaming PC", price: "$999" },
-];
+const Categories = () => {
+  const categories = [
+    {
+      id: 1,
+      name: 'Content Creation',
+      image: '/images/img1.JPG',
+      description: ''
+    },
+    {
+      id: 2,
+      name: 'Research',
+      image: '/images/img2.JPG',
+      description: ''
+    },
+    {
+      id: 3,
+      name: 'Gaming',
+      image: '/images/img3.JPG',
+      description: ''
+    },
+    {
+      id: 4,
+      name: 'Engineering',
+      image: '/images/img4.JPG',
+      description: ''
+    },
+    {
+      id: 5,
+      name: 'Custom Servers',
+      image: '/images/img5.JPG',
+      description: ''
+    },
+    {
+      id: 6,
+      name: 'Liquid Cooled PCs',
+      image: '/images/img6.JPG',
+      description: ''
+    },
+    {
+      id: 7,
+      name: 'Other Workstations',
+      image: '/images/img7.JPG',
+      description: ''
+    },
+    
+  ];
 
-export default function ProductCategories() {
   return (
-    <div className="w-full px-4">
-      <h2 className="text-lg font-medium mb-3">Products</h2>
-      <div className="flex overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch] [&::-webkit-scrollbar]:hidden">
-        {products.map((product) => (
-          <div 
-            key={product.id}
-            className="min-w-[120px] p-3 bg-white rounded-lg border flex-shrink-0 mr-3 last:mr-0"
-          >
-            <h3 className="font-medium">{product.name}</h3>
-            <p className="text-sm text-gray-600">{product.price}</p>
+    <div className="bg-white py-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-semibold text-gray-900 mb-2">
+            Store. The best way to buy the products you love.
+          </h2>
+        </div>
+        
+        <div className="overflow-x-auto pb-4">
+          <div className="flex gap-8 min-w-max px-4">
+            {categories.map((category) => (
+              <div 
+                key={category.id} 
+                className="group cursor-pointer flex-shrink-0 w-48"
+              >
+                <div className="aspect-square bg-gray-50 rounded-2xl overflow-hidden mb-4 transition-transform duration-200 group-hover:scale-105">
+                  <img
+                    src={category.image}
+                    alt={category.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="text-center">
+                  <h3 className="text-lg font-medium text-gray-900 mb-1">
+                    {category.name}
+                  </h3>
+                  <p className="text-sm text-gray-500">
+                    {category.description}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     </div>
   );
-}
+};
+
+export default Categories;
