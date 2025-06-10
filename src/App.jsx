@@ -13,8 +13,8 @@ function App() {
       <div className='pt-20'>
         <Hero3d />
         <ProductsGrid />
-        <PCComponents />
         <Categories />
+        <PCComponents />
         <Footer />
       </div>
     </div>

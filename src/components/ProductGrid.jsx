@@ -11,7 +11,7 @@ export default function ProductsGrid() {
 
     return (
         <div className="m-4 bg-white p-6 min-h-screen rounded-2xl overflow-hidden shadow-md">
-            <h2 className="text-purple-400 text-2xl font-semibold mb-4">Featured Products:</h2>
+            <h2 className="text-[#F47C5A] text-2xl font-semibold mb-4">Featured Products:</h2>
             <div className="
             grid 
             grid-cols-2
@@ -23,28 +23,27 @@ export default function ProductsGrid() {
             lg:gap-4
             ">
 
-            {/* Each box has equal fixed height on small screens */}
-            <div className="h-60 lg:h-auto rounded-2xl overflow-hidden shadow-md  lg:col-span-3 lg:row-span-2 transition-transform duration-300 hover:scale-102 hover:shadow-lg hover:shadow-gray-200">
+            <div className="h-50 lg:h-auto rounded-2xl overflow-hidden shadow-md  lg:col-span-3 lg:row-span-2 transition-transform duration-300 hover:scale-102 hover:shadow-lg hover:shadow-gray-200">
                 <img src={images[0]} className="w-full h-full object-cover" />
             </div>
 
-            <div className="h-60 lg:h-auto rounded-2xl overflow-hidden shadow-md lg:col-span-3 lg:row-span-1 transition-transform duration-300 hover:scale-102 hover:shadow-lg hover:shadow-gray-200">
+            <div className="h-50 lg:h-auto rounded-2xl overflow-hidden shadow-md lg:col-span-3 lg:row-span-1 transition-transform duration-300 hover:scale-102 hover:shadow-lg hover:shadow-gray-200">
                 <img src={images[1]} className="w-full h-full object-cover" />
             </div>
 
-            <div className="h-60 lg:h-auto rounded-2xl overflow-hidden shadow-md lg:col-span-1 lg:row-span-1 transition-transform duration-300 hover:scale-102 hover:shadow-lg hover:shadow-gray-200">
+            <div className="h-50 lg:h-auto rounded-2xl overflow-hidden shadow-md lg:col-span-1 lg:row-span-1 transition-transform duration-300 hover:scale-102 hover:shadow-lg hover:shadow-gray-200">
                 <img src={images[2]} className="w-full h-full object-cover" />
             </div>
 
-            <div className="h-60 lg:h-auto rounded-2xl overflow-hidden shadow-md lg:col-span-2 lg:row-span-2 transition-transform duration-300 hover:scale-102 hover:shadow-lg hover:shadow-gray-200">
+            <div className="h-50 lg:h-auto rounded-2xl overflow-hidden shadow-md lg:col-span-2 lg:row-span-2 transition-transform duration-300 hover:scale-102 hover:shadow-lg hover:shadow-gray-200">
                 <img src={images[3]} className="w-full h-full object-cover" />
             </div>
 
-            <div className="h-60 lg:h-auto rounded-2xl overflow-hidden shadow-md lg:col-span-1 lg:row-span-1 transition-transform duration-300 hover:scale-102 hover:shadow-lg hover:shadow-gray-200">
+            <div className="h-50 lg:h-auto rounded-2xl overflow-hidden shadow-md lg:col-span-1 lg:row-span-1 transition-transform duration-300 hover:scale-102 hover:shadow-lg hover:shadow-gray-200">
                 <img src={images[4]} className="w-full h-full object-cover" />
             </div>
 
-            <div className="h-60 lg:h-auto rounded-2xl overflow-hidden shadow-md lg:col-span-3 lg:row-span-1 transition-transform duration-300 hover:scale-102 hover:shadow-lg hover:shadow-gray-200">
+            <div className="h-50 lg:h-auto rounded-2xl overflow-hidden shadow-md lg:col-span-3 lg:row-span-1 transition-transform duration-300 hover:scale-102 hover:shadow-lg hover:shadow-gray-200">
                 <img src={images[5]} className="w-full h-full object-cover" />
             </div>
             </div>
