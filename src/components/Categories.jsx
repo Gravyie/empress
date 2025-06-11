@@ -48,38 +48,70 @@ const Categories = () => {
   ];
 
   return (
-    <div className="bg-white py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-md md:text-2xl font-semibold text-gray-900 mb-2">
-            Categories. Everything you want and more.
-          </h2>
+    <div>
+      <div className="bg-white px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="bg-white py-12 flex flex-col lg:flex-row justify-between items-center lg:items-start gap-6">
+      
+      <div className="max-w-xl text-center lg:text-left">
+        <h1 className="text-4xl lg:text-5xl font-light text-gray-600 leading-tight">
+          <span className="font-semibold text-black">Categories.</span>{" "}
+          Everything you want and more.
+        </h1>
+      </div>
+
+      <div className="flex flex-col gap-6 text-sm text-gray-700">
+        <div className="flex items-start gap-3">
+          <img
+            src="/images/Specialist.JPG"
+            alt="Specialist"
+            className="w-8 h-8 rounded-full object-cover"
+          />
+          <div>
+            <p className="font-medium text-black">Need shopping help?</p>
+            <a href="#" className="text-blue-600 hover:underline">
+              Ask a Specialist ↗
+            </a>
+          </div>
         </div>
-        
-        <div className="overflow-x-auto pb-4">
-          <div className="flex gap-8 min-w-max px-4">
-            {categories.map((category) => (
-              <div 
-                key={category.id} 
-                className="group cursor-pointer flex-shrink-0 w-25 sm:w-40 md:w-55 lg:w-70"
-              >
-                <div className="aspect-square bg-gray-50 rounded-2xl overflow-hidden mb-4 transition-transform duration-200 group-hover:scale-105">
-                  <img
-                    src={category.image}
-                    alt={category.name}
-                    className="w-full h-full object-cover"
-                  />
+
+        <div className="flex items-start gap-3">
+          <img src='/images/EMP.png' className="w-6 h-6 mt-1" />
+          <div>
+            <p className="font-medium text-black">Visit the Empress Store</p>
+            <a href="#" className="text-blue-600 hover:underline">
+              Find one near you ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+          
+          <div className="overflow-x-auto pb-4">
+            <div className="flex gap-8 min-w-max px-4">
+              {categories.map((category) => (
+                <div 
+                  key={category.id} 
+                  className="group cursor-pointer flex-shrink-0 w-25 sm:w-40 md:w-55 lg:w-70"
+                >
+                  <div className="aspect-square bg-gray-50 rounded-2xl overflow-hidden mb-4 transition-transform duration-200 group-hover:scale-105">
+                    <img
+                      src={category.image}
+                      alt={category.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="text-center">
+                    <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-medium text-gray-900 mb-1">
+                      {category.name}
+                    </h3>
+                    <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-500">
+                      {category.description}
+                    </p>
+                  </div>
                 </div>
-                <div className="text-center">
-                  <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-medium text-gray-900 mb-1">
-                    {category.name}
-                  </h3>
-                  <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-500">
-                    {category.description}
-                  </p>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
