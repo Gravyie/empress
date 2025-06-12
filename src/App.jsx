@@ -1,29 +1,26 @@
-import './App.css'
-import Blogs from './components/Blogs'
-import Categories from './components/Categories'
-import FAQs from './components/FAQs'
-import Footer from './components/Footer'
-import Hero3d from './components/Hero3d'
-import NeedHelp from './components/NeedHelp'
-import { PCComponents } from './components/PCComponents'
-import ProductsGrid from './components/ProductGrid'
-import TopBar from './components/TopBar'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import TopBar from "./components/TopBar";
+import Footer from "./components/Footer";
+import LandingPage from "./pages/LandingPage";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import BlogsPage from "./pages/BlogsPage";
 
 function App() {
   return (
-    <div className='min-h-screen bg-white overflow-x-hidden'>
+    <BrowserRouter>
       <TopBar />
-      <div className='pt-16'>
-        <Hero3d />
-        <Categories />
-        <ProductsGrid />
-        <NeedHelp />
-        <FAQs />
-        <Blogs />
-        <Footer />
+      <div className="pt-16">
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/blogs" element={<BlogsPage />} />
+      </Routes>
       </div>
-    </div>
-  )
+      <Footer />
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;

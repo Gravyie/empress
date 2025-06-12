@@ -1,12 +1,11 @@
 import { Facebook, Instagram, Twitter, Youtube, Phone, Mail, MapPin } from "lucide-react";
-import logo from "/images/Logo.png";
+import logo from "/images/Logo2.png";
 
 export default function Footer() {
   return (
     <footer className="bg-white text-[#333] px-6 py-10">
 
       <div className="bg-white py-8 mb-5">
-        <h2 className="text-2xl font-semibold text-center mb-1">Why Choose Us</h2>
         <p className="text-center text-gray-500 mb-6 text-sm">
           Services that make your PC experience smooth and reliable.
         </p>
@@ -89,7 +88,8 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 mt-1" />
-                123 Business Street, Lucknow, India
+                MS-101, Sector D, Aliganj
+                Lucknow, Uttar Pradesh 226024
               </li>
             </ul>
           </div>
