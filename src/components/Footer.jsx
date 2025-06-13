@@ -3,12 +3,9 @@ import logo from "/images/Logo2.png";
 
 export default function Footer() {
   return (
-    <footer className="bg-white text-[#333] px-6 py-10">
+    <footer className="bg-white text-[#333] px-6 py-6">
 
-      <div className="bg-white py-8 mb-5">
-        <p className="text-center text-gray-500 mb-6 text-sm">
-          Services that make your PC experience smooth and reliable.
-        </p>
+      <div className="bg-white py-8">
 
         <div className="flex flex-col md:flex-row justify-center gap-4 max-w-5xl mx-auto px-4">
           
@@ -31,8 +28,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-
-
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
         <div>
