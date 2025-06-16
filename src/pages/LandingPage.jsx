@@ -6,17 +6,21 @@ import FAQs from "../components/FAQs"
 import Blogs from "../components/Blogs"
 import DealShowcase from "../components/DealShowcase"
 import PCComponents from "../components/PCComponents"
+import TrustedBrands from "../components/TrustedBrands"
+import WhyChooseUs from "../components/WhyChooseUs"
  
 export default function LandingPage() {
     return (
         <>
             <Hero3d />
+            <WhyChooseUs />
             <Categories />
             <ProductGrid />
             <DealShowcase />
             <NeedHelp />
             <FAQs />
             <Blogs />
+            <TrustedBrands />
             <PCComponents />
         </>
     );

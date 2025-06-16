@@ -3,31 +3,7 @@ import logo from "/images/Logo2.png";
 
 export default function Footer() {
   return (
-    <footer className="bg-white text-[#333] px-6 py-6">
-
-      <div className="bg-white py-8">
-
-        <div className="flex flex-col md:flex-row justify-center gap-4 max-w-5xl mx-auto px-4">
-          
-          <div className="flex-1 border rounded-lg p-4 text-center shadow-sm hover:shadow-md transition-shadow">
-            <div className="text-2xl mb-2">🔧</div>
-            <h3 className="font-medium text-base">Custom Build</h3>
-            <p className="text-gray-500 text-xs mt-1">Expert assembly and testing of your configuration.</p>
-          </div>
-
-          <div className="flex-1 border rounded-lg p-4 text-center shadow-sm hover:shadow-md transition-shadow">
-            <div className="text-2xl mb-2">🛡️</div>
-            <h3 className="font-medium text-base">Extended Warranty</h3>
-            <p className="text-gray-500 text-xs mt-1">Protection plans for long-term peace of mind.</p>
-          </div>
-
-          <div className="flex-1 border rounded-lg p-4 text-center shadow-sm hover:shadow-md transition-shadow">
-            <div className="text-2xl mb-2">🎧</div>
-            <h3 className="font-medium text-base">24/7 Support</h3>
-            <p className="text-gray-500 text-xs mt-1">Help is always a message or call away.</p>
-          </div>
-        </div>
-      </div>
+    <footer className="bg-[#fff6ef] text-[#333] px-6 py-6">
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
         <div>

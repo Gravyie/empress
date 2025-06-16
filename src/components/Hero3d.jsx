@@ -11,7 +11,6 @@ function PCModel() {
 export default function Hero3d() {
   return (
     <div className="flex flex-rows bg-black">
-      {/* Left Text Section */}
       <motion.div
         initial={{ x: -50, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
@@ -40,14 +39,13 @@ export default function Hero3d() {
         </div>
       </motion.div>
 
-      {/* 3D Model */}
       <motion.div
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 1.2 }}
         className="w-1/3"
       >
-        <div className="relative w-full h-[860px]">
+        <div className="relative w-full h-[600px]">
           <Canvas
             camera={{ position: [90, -30, -90], fov: 40 }}
             resize={{ scroll: true, offsetSize: true }}
@@ -60,7 +58,6 @@ export default function Hero3d() {
         </div>
       </motion.div>
 
-      {/* Right Info Section */}
       <motion.div
         initial={{ x: 50, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
