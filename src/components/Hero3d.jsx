@@ -65,7 +65,7 @@ export default function Hero3d() {
         className="p-4 w-1/3 flex flex-col items-start justify-center"
       >
         <div className="mb-10 text-left">
-          <h2 className="text-2xl font-semibold mb-6 bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">
+          <h2 className="text-2xl font-semibold mb-6 bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">
             Pre-Built.
           </h2>
           <p className="text-gray-300 text-md">
@@ -74,7 +74,7 @@ export default function Hero3d() {
           </p>
         </div>
         <div className="mb-10 text-left">
-          <h2 className="text-2xl font-semibold mb-6 bg-gradient-to-r from-green-400 to-cyan-500 bg-clip-text text-transparent">
+          <h2 className="text-2xl font-semibold mb-6 bg-gradient-to-r from-green-500 to-cyan-700 bg-clip-text text-transparent">
             Build it yourself.
           </h2>
           <p className="text-gray-300 text-md">
