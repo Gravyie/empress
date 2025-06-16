@@ -258,7 +258,7 @@ const Workstations = () => {
                 <p className="text-gray-600 mb-4">
                 But you can still get the perfect PC for your needs.
                 </p>
-                <a href="/CustomPC" className="inline-block">
+                <a href="/custom-pc" className="inline-block">
                 <button className="bg-[#F47C5A] text-white px-6 py-2 rounded hover:bg-[#e96843] transition">
                     Build Your Own Custom PC
                 </button>
