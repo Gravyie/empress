@@ -213,15 +213,16 @@ const DealShowcase = () => {
             <div className="lg:col-span-5 space-y-6">
               <div className="group relative">
                 <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-8 border border-white/20 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105 hover:bg-white/15">
-                  <div className="aspect-video bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-2xl flex items-center justify-center relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-red-600/20 animate-pulse"></div>
-                    <div className="relative z-10 text-center text-white">
-                      <MonitorSpeaker className="w-20 h-20 mx-auto mb-4 text-orange-300 drop-shadow-lg animate-pulse" />
-                      <p className="text-lg font-medium">Gaming Beast PC</p>
-                    </div>
+                  <div className="aspect-[3/3] rounded-2xl overflow-hidden relative">
+                    <img
+                      src="/images/Emperor.png"
+                      alt="Gaming Beast PC"
+                      className="object-contain w-full h-full transition-transform duration-500 group-hover:scale-105"
+                    />
                   </div>
                 </div>
               </div>
+
               
               <div className="grid grid-cols-3 gap-4">
                 {[Cpu, MonitorSpeaker, Shield].map((Icon, i) => (
