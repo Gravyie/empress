@@ -4,13 +4,15 @@ import ProductGrid from "../components/ProductGrid"
 import NeedHelp from "../components/NeedHelp"
 import FAQs from "../components/FAQs"
 import Blogs from "../components/Blogs"
-
+import DealShowcase from "../components/DealShowcase"
+ 
 export default function LandingPage() {
     return (
         <>
             <Hero3d />
             <Categories />
             <ProductGrid />
+            <DealShowcase />
             <NeedHelp />
             <FAQs />
             <Blogs />

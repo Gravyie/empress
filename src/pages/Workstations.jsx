@@ -87,7 +87,7 @@ const allProducts = [
   },
 ];
 
-const Products = () => {
+const Workstations = () => {
   const [filters, setFilters] = useState({
     brand: "All",
     gpu: "All",
@@ -271,4 +271,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default Workstations;

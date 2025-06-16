@@ -69,7 +69,7 @@ const Categories = () => {
           />
           <div>
             <p className="font-medium text-black">Need shopping help?</p>
-            <a href="#" className="text-blue-600 hover:underline">
+            <a href="contact" className="text-blue-600 hover:underline">
               Ask a Specialist ↗
             </a>
           </div>
@@ -79,7 +79,7 @@ const Categories = () => {
           <img src='/images/EMP.png' className="w-6 h-6 mt-1" />
           <div>
             <p className="font-medium text-black">Visit the Empress Store</p>
-            <a href="#" className="text-blue-600 hover:underline">
+            <a href="contact" className="text-blue-600 hover:underline">
               Find one near you ↗
             </a>
           </div>

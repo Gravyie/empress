@@ -27,12 +27,16 @@ export default function Hero3d() {
           </p>
         </div>
         <div>
+          <a href="workstations">
           <button className="bg-gradient-to-r from-purple-500 to-indigo-500 text-white px-6 py-2 rounded-md mr-5 hover:from-indigo-500 hover:to-purple-500 transition duration-300">
             Pre-Built
           </button>
+          </a>
+          <a href="custom-pc">
           <button className="bg-gradient-to-r from-cyan-500 to-green-400 text-white px-6 py-2 rounded-md hover:from-green-400 hover:to-cyan-500 transition duration-300">
             Build it yourself!
           </button>
+          </a>
         </div>
       </motion.div>
 
