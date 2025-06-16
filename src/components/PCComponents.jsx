@@ -1,6 +1,6 @@
 import ComponentModel from "./ComponentModel";
 
-export function PCComponents() {
+export default function PCComponents() {
     return (
         <div className="bg-white m-12 p-4 lg:p-6 min-h-screen rounded-2xl overflow-hidden shadow-md">
             <h2 className="text-black text-2xl text-center font-semibold mb-8">
