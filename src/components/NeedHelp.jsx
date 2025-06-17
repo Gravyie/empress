@@ -3,7 +3,6 @@ import { Mail, Phone, MapPin } from 'lucide-react';
 export default function SupportSection() {
   return (
     <div className="bg-white py-16 px-6 sm:px-12 lg:px-24">
-      {/* Gradient animation styles */}
       <style>{`
         .aston-bg {
           background: linear-gradient(-45deg, #001A0F, #003A1B, #001A0F, #000);
@@ -18,7 +17,6 @@ export default function SupportSection() {
         }
       `}</style>
 
-      {/* Animated card-style section */}
       <div className="aston-bg backdrop-blur-md bg-black/60 text-white rounded-xl p-10 shadow-xl max-w-7xl mx-auto space-y-10">
 
         <h2 className="text-3xl font-bold">Need help?</h2>

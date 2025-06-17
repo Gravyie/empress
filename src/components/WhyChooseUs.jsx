@@ -3,7 +3,6 @@ import React from "react";
 export default function WhyChooseUs() {
   return (
     <section className="pt-5 pb-10 px-4 bg-black">
-      {/* Animation styles */}
       <style>{`
         .animated-gradient {
           background: linear-gradient(-45deg, #2E003E, #7F7FFF, #2E003E, #000);
@@ -18,7 +17,6 @@ export default function WhyChooseUs() {
         }
       `}</style>
 
-      {/* Inner section with animated background */}
       <div className="animated-gradient text-white py-8 px-4 rounded-xl shadow-xl backdrop-blur-md bg-black/60 max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left space-y-8 md:space-y-0 md:divide-x divide-gray-600">
           
