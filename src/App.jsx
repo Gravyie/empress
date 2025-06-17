@@ -8,6 +8,9 @@ import CustomPC from "./pages/CustomPC";
 import Events from "./pages/Events";
 import EmpressNavbar from "./components/EmpressNavbar";
 import Workstations from "./pages/Workstations";
+import CategoriesPage from "./pages/CategoriesPage"; // Assuming your CategoriesPage is in src/pages
+import ProductsListingPage from "./pages/ProductsListingPage";
+import ProductDetailPage from "./pages/ProductDetailPage";
 
 function App() {
   return (
@@ -21,6 +24,9 @@ function App() {
         <Route path="/blogs" element={<BlogsPage />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/categories" element={<CategoriesPage />} />
+        <Route path="/products/:categoryId" element={<ProductsListingPage />} />
+        <Route path="/product/:productId" element={<ProductDetailPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>

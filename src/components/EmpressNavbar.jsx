@@ -32,6 +32,10 @@ const EmpressNavbar = ({ theme = 'dark' }) => {
   // Apple-style navigation structure
   const navItems = [
     {
+      label: 'Products',
+      href: '/categories',
+    },
+    {
       label: 'Gaming',
       href: '/gaming',
       submenu: {
@@ -225,7 +229,7 @@ const EmpressNavbar = ({ theme = 'dark' }) => {
     {
       label: 'About',
       href: '/about'
-    }
+    },
   ];
 
   const isDark = theme === 'dark';
