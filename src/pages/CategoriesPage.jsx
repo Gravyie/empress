@@ -1,6 +1,7 @@
 // src/CategoriesPage.js or .jsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useInView } from 'react-intersection-observer';
 
 const CategoriesPage = () => {
   const navigate = useNavigate();
@@ -85,11 +86,24 @@ const CategoriesPage = () => {
 
         {/* Categories Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {categories.map((category) => (
+          {categories.map((category, index) => {
+            const { ref, inView } = useInView({
+              triggerOnce: true,
+              threshold: 0.15,
+            });
+            
+            return (
             <div
+              ref={ref}
               key={category.id}
               onClick={() => handleCategoryClick(category.id)}
-              className="group bg-white/95 backdrop-blur-sm rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transform transition-all duration-500 hover:scale-102 cursor-pointer border border-white/20"
+              className={`group bg-white/95 backdrop-blur-sm rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transform transition-all duration-500 hover:scale-102 cursor-pointer border border-white/20 transition-all duration-300
+                ${inView ? 'animate-fadeUp' : 'opacity-0 translate-y-10'}
+              `}
+              style={{
+                animationDelay: inView ? `${index * 0.1}s` : '0s',
+                animationFillMode: 'both'
+              }}
             >
               {/* Category Image */}
               <div className="h-48 w-full overflow-hidden">
@@ -118,7 +132,7 @@ const CategoriesPage = () => {
                 </div>
               </div>
             </div>
-          ))}
+          )})}
         </div>
 
         {/* Footer */}

@@ -6,7 +6,8 @@
   const scrollRight = (categoryKey) => {
     const container = document.getElementById(`scroll-${categoryKey}`);
     container.scrollBy({ left: 300, behavior: 'smooth' });
-  };import React, { useState } from 'react';
+  };
+import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight, Cpu, HardDrive, Monitor, Zap, MemoryStick, CircuitBoard, ShoppingCart, Check } from 'lucide-react';
 
 const CustomPC = () => {

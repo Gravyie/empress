@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { useInView } from "react-intersection-observer";
 
 const ProductDetailPage = () => {
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
+  
   const { productId } = useParams(); // Get the productId from the URL
   const navigate = useNavigate();
 
@@ -374,7 +377,11 @@ const ProductDetailPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div 
+      ref={ref}
+      className={`min-h-screen bg-white transition-opacity duration-1000 ${
+        inView ? "animate-fadeInFromBack" : "opacity-0"
+      }`}>
       <div className="max-w-7xl mx-auto bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl p-6 lg:grid lg:grid-cols-2 lg:gap-10 flex flex-col">
 
         {/* Back to Products Link */}

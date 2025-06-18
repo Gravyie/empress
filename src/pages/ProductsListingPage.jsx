@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom'; // Import useParams and useNavigate
+import { useInView } from "react-intersection-observer";
 
 const ProductsListingPage = () => {
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
+
   const { categoryId } = useParams(); // Get the categoryId from the URL (e.g., 'processors', 'gpus')
   const navigate = useNavigate(); // Initialize useNavigate for programmatic navigation
 
@@ -683,7 +686,12 @@ const ProductsListingPage = () => {
       </div>
 
       {/* Products Grid */}
-      <div className="max-w-7xl mx-auto px-5 py-8">
+      <div 
+        ref={ref}
+        className={`max-w-7xl mx-auto px-5 py-8 transition-opacity duration-1000 ${
+        inView ? "animate-fadeInFromBack" : "opacity-0"
+        }`}
+      >
         {filteredProducts.length === 0 ? (
           <div className="text-center text-white py-20">
             <div className="text-6xl mb-4">🔍</div>
