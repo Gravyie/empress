@@ -1,4 +1,5 @@
 import React from 'react';
+import { useInView } from 'react-intersection-observer';
 
 const Blogs = () => {
   const categories = [
@@ -35,6 +36,7 @@ const Blogs = () => {
   ];
 
   return (
+    
     <section className="bg-white py-20 px-6 sm:px-12 lg:px-20">
       <div className="max-w-7xl mx-auto">
         <div className="mb-12 text-center">
@@ -48,10 +50,23 @@ const Blogs = () => {
 
         <div className="overflow-x-auto pb-4">
           <div className="flex gap-6 min-w-max px-2">
-            {categories.map((category) => (
+            {categories.map((category, index) => {
+              const { ref, inView } = useInView({
+                triggerOnce: true,
+                threshold: 0.15,
+              });
+
+              return (
               <div
+                ref={ref}
                 key={category.id}
-                className="group flex-shrink-0 w-64 sm:w-72 md:w-80 bg-gray-50 rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300"
+                className={`group flex-shrink-0 w-64 sm:w-72 md:w-80 bg-gray-50 rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-500
+                    ${inView ? 'animate-fadeUp' : 'opacity-0 translate-y-10'}
+                  `}
+                  style={{
+                    animationDelay: inView ? `${index * 0.1}s` : '0s',
+                    animationFillMode: 'both'
+                  }}
               >
                 <div className="w-full h-40 overflow-hidden">
                   <img
@@ -67,7 +82,7 @@ const Blogs = () => {
                   <p className="text-gray-500 text-sm">{category.description}</p>
                 </div>
               </div>
-            ))}
+            )})}
           </div>
         </div>
       </div>

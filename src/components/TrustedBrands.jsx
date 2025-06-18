@@ -1,4 +1,5 @@
 import React from 'react';
+import { useInView } from 'react-intersection-observer';
 
 const brandsRow1 = [
   "/images/img1.JPG",
@@ -21,8 +22,14 @@ const brandsRow2 = [
 const SCROLL_DURATION_SECONDS = 30;
 
 export default function TrustedPartners() {
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
+  
   return (
-    <section className="w-full px-4 bg-white">
+    <section
+      ref={ref}
+      className={`w-full px-4 bg-white transition-opacity duration-1000 ${
+        inView ? "animate-fadeInFromBack" : "opacity-0"
+      }`}>
       <div className="relative max-w-6xl mx-auto rounded-3xl overflow-hidden border border-gray-200 shadow-2xl">
         <div className="absolute inset-0 bg-gradient-to-br from-[#1f1c2c] to-[#928dab] z-0" />
         <div className="absolute -top-10 -left-10 w-72 h-72 bg-purple-500 rounded-full opacity-30 blur-3xl z-0" />

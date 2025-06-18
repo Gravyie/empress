@@ -20,7 +20,7 @@ export default function WhyChooseUs() {
       <div className="animated-gradient text-white py-8 px-4 rounded-xl shadow-xl backdrop-blur-md bg-black/60 max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left space-y-8 md:space-y-0 md:divide-x divide-gray-600">
           
-          <div className="px-6 md:w-1/4">
+          <div className="px-6 md:w-1/4 animate-fadeUp">
             <div className="text-3xl mb-2">🚚</div>
             <h3 className="font-bold text-lg mb-1">Fastest Shipping</h3>
             <p className="text-sm text-gray-300">
@@ -28,7 +28,7 @@ export default function WhyChooseUs() {
             </p>
           </div>
 
-          <div className="px-6 md:w-1/4">
+          <div className="px-6 md:w-1/4 animate-fadeUp">
             <div className="text-3xl mb-2">🛍️</div>
             <h3 className="font-bold text-lg mb-1">After Sales Service</h3>
             <p className="text-sm text-gray-300">
@@ -36,7 +36,7 @@ export default function WhyChooseUs() {
             </p>
           </div>
 
-          <div className="px-6 md:w-1/4">
+          <div className="px-6 md:w-1/4 animate-fadeUp">
             <div className="text-3xl mb-2">💬</div>
             <h3 className="font-bold text-lg mb-1">Support 24/7</h3>
             <p className="text-sm text-gray-300">
@@ -44,7 +44,7 @@ export default function WhyChooseUs() {
             </p>
           </div>
 
-          <div className="px-6 md:w-1/4">
+          <div className="px-6 md:w-1/4 animate-fadeUp">
             <div className="text-3xl mb-2">✅</div>
             <h3 className="font-bold text-lg mb-1">100% Secure Payment</h3>
             <p className="text-sm text-gray-300">

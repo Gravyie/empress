@@ -1,1 +1,53 @@
 @import "tailwindcss";
+
+/* === Fade In From Back === */
+@keyframes fadeInFromBack {
+  0% {
+    opacity: 0;
+    transform: scale(0.92) translateZ(-100px);
+    filter: blur(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateZ(0);
+    filter: blur(0);
+  }
+}
+
+.animate-fadeInFromBack {
+  animation: fadeInFromBack 1s ease-out forwards;
+}
+
+
+/* === Fade Up Animation === */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeUp {
+  animation: fadeUp 0.8s ease-out forwards;
+}
+
+/* Optional utility for animation delays (if you prefer class-based instead of inline style) */
+.delay-100 {
+  animation-delay: 100ms;
+}
+.delay-200 {
+  animation-delay: 200ms;
+}
+.delay-300 {
+  animation-delay: 300ms;
+}
+.delay-400 {
+  animation-delay: 400ms;
+}
+.delay-500 {
+  animation-delay: 500ms;
+}

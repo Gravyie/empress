@@ -1,3 +1,5 @@
+
+import { useInView } from 'react-intersection-observer';
 export default function FAQSection() {
   const faqs = [
     {
@@ -41,10 +43,23 @@ export default function FAQSection() {
         </p>
 
         <div className="space-y-4">
-          {faqs.map((faq, index) => (
+          {faqs.map((faq, index) => {
+            const { ref, inView } = useInView({
+              triggerOnce: true,
+              threshold: 0.15,
+            });
+            
+            return (
             <details
+              ref={ref}
               key={index}
-              className="group border-b pb-4 transition-all duration-300 ease-in-out"
+              className={`group border-b pb-4 transition-all duration-300 ease-in-out transition-all duration-500
+                    ${inView ? 'animate-fadeUp' : 'opacity-0 translate-y-10'}
+                  `}
+                  style={{
+                    animationDelay: inView ? `${index * 0.1}s` : '0s',
+                    animationFillMode: 'both'
+                  }}
             >
               <summary className="cursor-pointer flex justify-between items-center py-3 text-lg font-medium text-gray-800 list-none">
                 {faq.question}
@@ -60,7 +75,7 @@ export default function FAQSection() {
               </summary>
               <p className="text-gray-600 mt-2 px-1">{faq.answer}</p>
             </details>
-          ))}
+          )})}
         </div>
       </div>
     </section>

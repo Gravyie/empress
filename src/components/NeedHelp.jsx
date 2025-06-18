@@ -1,8 +1,14 @@
 import { Mail, Phone, MapPin } from 'lucide-react';
+import { useInView } from "react-intersection-observer";
 
 export default function SupportSection() {
+
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
+
   return (
-    <div className="bg-white py-16 px-6 sm:px-12 lg:px-24">
+    <div ref={ref} className={`bg-white py-16 px-6 sm:px-12 lg:px-24 transition-opacity duration-1000 ${
+        inView ? "animate-fadeInFromBack" : "opacity-0"
+      }`}>
       <style>{`
         .aston-bg {
           background: linear-gradient(-45deg, #001A0F, #003A1B, #001A0F, #000);

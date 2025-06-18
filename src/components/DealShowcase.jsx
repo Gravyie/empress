@@ -1,7 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Clock, Star, Zap, Shield, Cpu, MonitorSpeaker, ShoppingCart, Heart } from 'lucide-react';
+import { useInView } from "react-intersection-observer";
 
 const DealShowcase = () => {
+
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
+
   const [timeLeft, setTimeLeft] = useState({
     hours: 23,
     minutes: 45,
@@ -47,8 +51,10 @@ const DealShowcase = () => {
 
   return (
     <div 
-      ref={containerRef}
-      className="relative p-4 w-full overflow-hidden"
+      ref={ref}
+      className={`relative p-4 w-full overflow-hidden transition-opacity duration-1000 ${
+        inView ? "animate-fadeInFromBack" : "opacity-0"
+      }`}
       style={{
         background: `
           radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, 
