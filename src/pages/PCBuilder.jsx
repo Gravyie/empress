@@ -15,60 +15,60 @@ const COMPONENT_FLOW = [
 
 const ALL_COMPONENTS = {
   cpu: [
-    { id: 'cpu1', name: 'Intel i5-14600K', image: '/images/cpu1.png', type: 'cpu', price: 299.99 },
-    { id: 'cpu2', name: 'AMD Ryzen 7 7800X3D', image: '/images/cpu2.png', type: 'cpu', price: 369.99 },
-    { id: 'cpu3', name: 'Intel i7-14700K', image: '/images/cpu3.png', type: 'cpu', price: 399.99 },
-    { id: 'cpu4', name: 'AMD Ryzen 9 7900X', image: '/images/cpu4.png', type: 'cpu', price: 450.00 },
-    { id: 'cpu5', name: 'Intel i9-14900K', image: '/images/cpu5.png', type: 'cpu', price: 589.99 },
-    { id: 'cpu6', name: 'AMD Ryzen 9 7950X3D', image: '/images/cpu6.png', type: 'cpu', price: 629.99 },
+    { id: 'cpu1', name: 'Intel i5-14600K', image: '/images/img1.JPG', type: 'cpu', price: 299.99 },
+    { id: 'cpu2', name: 'AMD Ryzen 7 7800X3D', image: '/images/img1.JPG', type: 'cpu', price: 369.99 },
+    { id: 'cpu3', name: 'Intel i7-14700K', image: '/images/img1.JPG', type: 'cpu', price: 399.99 },
+    { id: 'cpu4', name: 'AMD Ryzen 9 7900X', image: '/images/img1.JPG', type: 'cpu', price: 450.00 },
+    { id: 'cpu5', name: 'Intel i9-14900K', image: '/images/img1.JPG', type: 'cpu', price: 589.99 },
+    { id: 'cpu6', name: 'AMD Ryzen 9 7950X3D', image: '/images/img1.JPG', type: 'cpu', price: 629.99 },
   ],
   motherboard: [
-    { id: 'mb1', name: 'MSI B650 Tomahawk WiFi', image: '/images/mb1.png', type: 'motherboard', price: 199.99 },
-    { id: 'mb2', name: 'ASUS ROG Strix Z790-E', image: '/images/mb2.png', type: 'motherboard', price: 429.99 },
-    { id: 'mb3', name: 'Gigabyte X670E Aorus Master', image: '/images/mb3.png', type: 'motherboard', price: 349.99 },
-    { id: 'mb4', name: 'ASRock B650M Pro RS WiFi', image: '/images/mb4.png', type: 'motherboard', price: 179.99 },
-    { id: 'mb5', name: 'MSI PRO B760M-A WiFi', image: '/images/mb5.png', type: 'motherboard', price: 159.99 },
-    { id: 'mb6', name: 'ASUS TUF Gaming X670E-PLUS', image: '/images/mb6.png', type: 'motherboard', price: 289.99 },
+    { id: 'mb1', name: 'MSI B650 Tomahawk WiFi', image: '/images/img2.JPG', type: 'motherboard', price: 199.99 },
+    { id: 'mb2', name: 'ASUS ROG Strix Z790-E', image: '/images/img2.JPG', type: 'motherboard', price: 429.99 },
+    { id: 'mb3', name: 'Gigabyte X670E Aorus Master', image: '/images/img2.JPG', type: 'motherboard', price: 349.99 },
+    { id: 'mb4', name: 'ASRock B650M Pro RS WiFi', image: '/images/img2.JPG', type: 'motherboard', price: 179.99 },
+    { id: 'mb5', name: 'MSI PRO B760M-A WiFi', image: '/images/img2.JPG', type: 'motherboard', price: 159.99 },
+    { id: 'mb6', name: 'ASUS TUF Gaming X670E-PLUS', image: '/images/img2.JPG', type: 'motherboard', price: 289.99 },
   ],
   ram: [
-    { id: 'ram1', name: 'Corsair Vengeance RGB 16GB DDR5', image: '/images/ram1.png', type: 'ram', price: 89.99 },
-    { id: 'ram2', name: 'G.SKILL Trident Z5 Neo 32GB DDR5', image: '/images/ram2.png', type: 'ram', price: 149.99 },
-    { id: 'ram3', name: 'Kingston Fury Beast 64GB DDR5', image: '/images/ram3.png', type: 'ram', price: 289.99 },
-    { id: 'ram4', name: 'TeamGroup T-Force Delta RGB 16GB DDR4', image: '/images/ram4.png', type: 'ram', price: 69.99 },
-    { id: 'ram5', name: 'Corsair Dominator Platinum 32GB DDR5', image: '/images/ram5.png', type: 'ram', price: 199.99 },
-    { id: 'ram6', name: 'Crucial Pro 48GB DDR5', image: '/images/ram6.png', type: 'ram', price: 179.99 },
+    { id: 'ram1', name: 'Corsair Vengeance RGB 16GB DDR5', image: '/images/img3.JPG', type: 'ram', price: 89.99 },
+    { id: 'ram2', name: 'G.SKILL Trident Z5 Neo 32GB DDR5', image: '/images/img3.JPG', type: 'ram', price: 149.99 },
+    { id: 'ram3', name: 'Kingston Fury Beast 64GB DDR5', image: '/images/img3.JPG', type: 'ram', price: 289.99 },
+    { id: 'ram4', name: 'TeamGroup T-Force Delta RGB 16GB DDR4', image: '/images/img3.JPG', type: 'ram', price: 69.99 },
+    { id: 'ram5', name: 'Corsair Dominator Platinum 32GB DDR5', image: '/images/img3.JPG', type: 'ram', price: 199.99 },
+    { id: 'ram6', name: 'Crucial Pro 48GB DDR5', image: '/images/img3.JPG', type: 'ram', price: 179.99 },
   ],
   gpu: [
-    { id: 'gpu1', name: 'NVIDIA RTX 4070 SUPER', image: '/images/gpu1.png', type: 'gpu', price: 599.99 },
-    { id: 'gpu2', name: 'AMD RX 7800 XT', image: '/images/gpu2.png', type: 'gpu', price: 499.99 },
-    { id: 'gpu3', name: 'NVIDIA RTX 4080 SUPER', image: '/images/gpu3.png', type: 'gpu', price: 999.99 },
-    { id: 'gpu4', name: 'AMD RX 7900 XTX', image: '/images/gpu4.png', type: 'gpu', price: 899.99 },
-    { id: 'gpu5', name: 'NVIDIA RTX 4060', image: '/images/gpu5.png', type: 'gpu', price: 299.99 },
-    { id: 'gpu6', name: 'AMD RX 7600', image: '/images/gpu6.png', type: 'gpu', price: 259.99 },
+    { id: 'gpu1', name: 'NVIDIA RTX 4070 SUPER', image: '/images/img4.JPG', type: 'gpu', price: 599.99 },
+    { id: 'gpu2', name: 'AMD RX 7800 XT', image: '/images/img4.JPG', type: 'gpu', price: 499.99 },
+    { id: 'gpu3', name: 'NVIDIA RTX 4080 SUPER', image: '/images/img4.JPG', type: 'gpu', price: 999.99 },
+    { id: 'gpu4', name: 'AMD RX 7900 XTX', image: '/images/img4.JPG', type: 'gpu', price: 899.99 },
+    { id: 'gpu5', name: 'NVIDIA RTX 4060', image: '/images/img4.JPG', type: 'gpu', price: 299.99 },
+    { id: 'gpu6', name: 'AMD RX 7600', image: '/images/img4.JPG', type: 'gpu', price: 259.99 },
   ],
   storage: [
-    { id: 'sto1', name: 'Samsung 990 Pro 1TB NVMe SSD', image: '/images/sto1.png', type: 'storage', price: 129.99 },
-    { id: 'sto2', name: 'WD Black SN850X 2TB NVMe SSD', image: '/images/sto2.png', type: 'storage', price: 189.99 },
-    { id: 'sto3', name: 'Crucial P5 Plus 500GB NVMe SSD', image: '/images/sto3.png', type: 'storage', price: 59.99 },
-    { id: 'sto4', name: 'Seagate Barracuda 4TB HDD', image: '/images/sto4.png', type: 'storage', price: 89.99 },
-    { id: 'sto5', name: 'Kingston NV2 250GB NVMe SSD', image: '/images/sto5.png', type: 'storage', price: 35.99 },
-    { id: 'sto6', name: 'Crucial MX500 1TB SATA SSD', image: '/images/sto6.png', type: 'storage', price: 79.99 },
+    { id: 'sto1', name: 'Samsung 990 Pro 1TB NVMe SSD', image: '/images/img5.JPG', type: 'storage', price: 129.99 },
+    { id: 'sto2', name: 'WD Black SN850X 2TB NVMe SSD', image: '/images/img5.JPG', type: 'storage', price: 189.99 },
+    { id: 'sto3', name: 'Crucial P5 Plus 500GB NVMe SSD', image: '/images/img5.JPG', type: 'storage', price: 59.99 },
+    { id: 'sto4', name: 'Seagate Barracuda 4TB HDD', image: '/images/img5.JPG', type: 'storage', price: 89.99 },
+    { id: 'sto5', name: 'Kingston NV2 250GB NVMe SSD', image: '/images/img5.JPG', type: 'storage', price: 35.99 },
+    { id: 'sto6', name: 'Crucial MX500 1TB SATA SSD', image: '/images/img5.JPG', type: 'storage', price: 79.99 },
   ],
   psu: [
-    { id: 'psu1', name: 'Corsair RM750e 750W 80+ Gold', image: '/images/psu1.png', type: 'psu', price: 99.99 },
-    { id: 'psu2', name: 'EVGA SuperNOVA 850 GT 850W 80+ Gold', image: '/images/psu2.png', type: 'psu', price: 119.99 },
-    { id: 'psu3', name: 'Seasonic Focus Plus Gold 1000W', image: '/images/psu3.png', type: 'psu', price: 169.99 },
-    { id: 'psu4', name: 'Thermaltake Smart 600W 80+ White', image: '/images/psu4.png', type: 'psu', price: 49.99 },
-    { id: 'psu5', name: 'Corsair SF750 750W 80+ Platinum (SFX)', image: '/images/psu5.png', type: 'psu', price: 149.99 },
-    { id: 'psu6', name: 'Pure Power 12 M 750W', image: '/images/psu6.png', type: 'psu', price: 89.99 },
+    { id: 'psu1', name: 'Corsair RM750e 750W 80+ Gold', image: '/images/img6.JPG', type: 'psu', price: 99.99 },
+    { id: 'psu2', name: 'EVGA SuperNOVA 850 GT 850W 80+ Gold', image: '/images/img6.JPG', type: 'psu', price: 119.99 },
+    { id: 'psu3', name: 'Seasonic Focus Plus Gold 1000W', image: '/images/img6.JPG', type: 'psu', price: 169.99 },
+    { id: 'psu4', name: 'Thermaltake Smart 600W 80+ White', image: '/images/img6.JPG', type: 'psu', price: 49.99 },
+    { id: 'psu5', name: 'Corsair SF750 750W 80+ Platinum (SFX)', image: '/images/img6.JPG', type: 'psu', price: 149.99 },
+    { id: 'psu6', name: 'Pure Power 12 M 750W', image: '/images/img6.JPG', type: 'psu', price: 89.99 },
   ],
   case: [
-    { id: 'case1', name: 'NZXT H7 Flow', image: '/images/case1.png', type: 'case', price: 129.99 },
-    { id: 'case2', name: 'Lian Li O11 Dynamic EVO', image: '/images/case2.png', type: 'case', price: 169.99 },
-    { id: 'case3', name: 'Fractal Design North', image: '/images/case3.png', type: 'case', price: 139.99 },
-    { id: 'case4', name: 'Cooler Master MasterBox Q300L', image: '/images/case4.png', type: 'case', price: 59.99 },
-    { id: 'case5', name: 'Hyte Y70 Touch', image: '/images/case5.png', type: 'case', price: 359.99 },
-    { id: 'case6', name: 'Montech AIR 903 MAX', image: '/images/case6.png', type: 'case', price: 75.99 },
+    { id: 'case1', name: 'NZXT H7 Flow', image: '/images/img1.JPG', type: 'case', price: 129.99 },
+    { id: 'case2', name: 'Lian Li O11 Dynamic EVO', image: '/images/img2.JPG', type: 'case', price: 169.99 },
+    { id: 'case3', name: 'Fractal Design North', image: '/images/img3.JPG', type: 'case', price: 139.99 },
+    { id: 'case4', name: 'Cooler Master MasterBox Q300L', image: '/images/img4.JPG', type: 'case', price: 59.99 },
+    { id: 'case5', name: 'Hyte Y70 Touch', image: '/images/img5.JPG', type: 'case', price: 359.99 },
+    { id: 'case6', name: 'Montech AIR 903 MAX', image: '/images/img6.JPG', type: 'case', price: 75.99 },
   ]
 };
 
@@ -234,15 +234,15 @@ const PCBuilder = () => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-gray-100 py-16 px-4 sm:px-6 lg:px-8 font-sans">
+      <div className="min-h-screen bg-[#fff6ef] py-16 px-4 sm:px-6 lg:px-8 font-sans">
         <div className="max-w-7xl mx-auto space-y-16">
 
           {/* Header */}
           <div className="text-center">
-            <h1 className="text-6xl font-extrabold text-gray-900 tracking-tight leading-tight">
+            <h1 className="bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 bg-clip-text text-transparent text-6xl font-extrabold tracking-tight leading-tight">
               Assemble Your Dream PC
             </h1>
-            <p className="mt-4 text-xl text-gray-600">
+            <p className="mt-4 text-xl text-gray-400">
               Drag, Drop, or Click to Build Your Perfect Rig!
             </p>
           </div>
@@ -250,7 +250,7 @@ const PCBuilder = () => {
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
             {/* Build Visualization Area */}
             <div className="lg:col-span-3">
-              <h2 className="text-3xl font-bold text-gray-800 mb-4 text-center lg:text-left">
+              <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-500 to-green-500 bg-clip-text text-transparent mb-4 text-center lg:text-left">
                 Your PC Build Progress
               </h2>
 
@@ -268,7 +268,7 @@ const PCBuilder = () => {
 
             {/* Component Selection Area */}
             <div className="lg:col-span-2">
-              <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center lg:text-left">
+              <h2 className="bg-gradient-to-r from-cyan-500 to-green-400 bg-clip-text text-transparent text-3xl font-bold mb-6 text-center lg:text-left">
                 {isBuildComplete
                   ? `Your Masterpiece is Complete!`
                   : `Choose your ${currentLabel}`
@@ -345,7 +345,7 @@ const PCBuilder = () => {
 
           {/* Final Build Summary & Details */}
           <div id="pc-summary" className="bg-white border border-gray-200 rounded-xl shadow-2xl py-4 px-4 lg:py-6 lg:px-6 mt-8">
-            <h2 className="text-3xl font-extrabold text-center text-gray-900 mb-8">
+            <h2 className="text-3xl font-extrabold text-center text-[#F47C5A] mb-8">
               Your Custom PC Summary
             </h2>
             <div className="flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-10">
@@ -397,7 +397,7 @@ const PCBuilder = () => {
             </div>
 
             <div className="mt-6 text-center">
-              <button className="bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white font-bold text-xl px-10 py-4 rounded-xl shadow-2xl transition duration-300 ease-in-out transform hover:scale-105 active:scale-95">
+              <button className="bg-[#F47C5A] text-white hover:bg-white hover:text-[#F47C5A] font-bold text-xl px-10 py-4 rounded-xl shadow-2xl transition duration-300 ease-in-out transform hover:scale-105 active:scale-95">
                 Add To Cart
               </button>
             </div>

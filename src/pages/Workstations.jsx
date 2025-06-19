@@ -219,7 +219,7 @@ const Workstations = () => {
                   ₹9,49,000
                 </p>
               </div>
-              <button className="w-full bg-[#C9A200] text-white py-2 rounded">
+              <button className="w-full bg-[#C9A200] text-white py-2 rounded-lg">
                 Add to Cart
               </button>
             </div>
