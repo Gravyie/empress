@@ -32,6 +32,10 @@ const EmpressNavbar = ({ theme = 'dark' }) => {
   // Apple-style navigation structure
   const navItems = [
     {
+      label: 'Build PC',
+      href: '/pc-builder',
+    },
+    {
       label: 'Products',
       href: '/categories',
     },
