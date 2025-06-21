@@ -14,7 +14,7 @@ const Categories = () => {
 
   return (
     <div className="bg-white px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-full">
         <div className="bg-white py-12 flex flex-col lg:flex-row justify-between items-center lg:items-start gap-6">
           <div className="max-w-xl text-center lg:text-left">
             <h1 className="text-4xl lg:text-5xl font-light text-gray-600 leading-tight">
