@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 function PCModel() {
   const { scene } = useGLTF("/models/MainModel.glb");
-  return <primitive object={scene} position={[0, -2, 0]} />;
+  return <primitive object={scene} position={[0, -0.25, 0]} />;
 }
 
 export default function Hero3d() {
@@ -47,11 +47,11 @@ export default function Hero3d() {
       >
         <div className="relative w-full h-[600px]">
           <Canvas
-            camera={{ position: [1, 0, 5], fov: 35 }}
+            camera={{ position: [2, 1, 3], fov: 12 }}
             resize={{ scroll: true, offsetSize: true }}
           >
-            <ambientLight intensity={10} />
-            <directionalLight position={[10, 10, 10]} intensity={10}/>
+            <ambientLight intensity={100} />
+            <directionalLight position={[15, 15, 15]} intensity={50}/>
             <PCModel />
             <OrbitControls />
           </Canvas>
