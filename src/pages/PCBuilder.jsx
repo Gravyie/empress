@@ -234,7 +234,7 @@ const PCBuilder = () => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className="min-h-screen bg-[#fff6ef] py-10 px-4 sm:px-6 lg:px-8 font-sans">
+      <div className="min-h-screen bg-[#FAFAFA] py-10 px-4 sm:px-6 lg:px-8 font-sans">
         <div className="max-w-7xl mx-auto space-y-16">
 
           {/* Header */}

@@ -32,12 +32,12 @@ const EmpressNavbar = ({ theme = 'dark' }) => {
   // Apple-style navigation structure
   const navItems = [
     {
-      label: 'Build PC',
-      href: '/pc-builder',
-    },
-    {
       label: 'Products',
       href: '/categories',
+    },
+    {
+      label: 'Build PC',
+      href: '/pc-builder',
     },
     {
       label: 'Gaming',
@@ -186,6 +186,19 @@ const EmpressNavbar = ({ theme = 'dark' }) => {
         ]
       }
     },
+    // Adding the new navigation items without submenus
+    {
+      label: 'Events',
+      href: '/events'
+    },
+    {
+      label: 'Blogs',
+      href: '/blogs'
+    },
+    {
+      label: 'About',
+      href: '/about'
+    },
     {
       label: 'Contact',
       href: '/contact',
@@ -220,19 +233,6 @@ const EmpressNavbar = ({ theme = 'dark' }) => {
           }
         ]
       }
-    },
-    // Adding the new navigation items without submenus
-    {
-      label: 'Events',
-      href: '/events'
-    },
-    {
-      label: 'Blogs',
-      href: '/blogs'
-    },
-    {
-      label: 'About',
-      href: '/about'
     },
   ];
 

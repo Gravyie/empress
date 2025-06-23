@@ -26,23 +26,32 @@ export default function OurStory() {
   }, []);
 
   return (
-    <section className="bg-black text-white py-12 px-4 text-center">
-      <img
-        src="/images/Logo.png"
-        alt="Empress PC Logo"
-        className="mx-auto h-10 md:h-12 mb-2"
-      />
-      <p className="text-lg md:text-xl">
-        Quality Custom{" "}
-        <span
-          className={`inline-block transition-opacity duration-500 ${
-            fade ? "opacity-100" : "opacity-0"
-          } bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent font-semibold`}
-        >
-          {keywords[index]}
-        </span>{" "}
-        PCs
-      </p>
+    <section
+      className="relative w-full bg-center bg-cover bg-no-repeat text-white"
+      style={{ backgroundImage: "url('/images/OurStory.png')" }}
+    >
+      {/* Bluish overlay */}
+      <div className="absolute inset-0 bg-blue-900 opacity-50 pointer-events-none" />
+
+      {/* Content */}
+      <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 py-24">
+        <img
+          src="/images/Logo.png"
+          alt="Empress PC Logo"
+          className="h-10 md:h-12 mb-2"
+        />
+        <p className="text-lg md:text-xl">
+          Quality Custom{" "}
+          <span
+            className={`inline-block transition-opacity duration-500 ${
+              fade ? "opacity-100" : "opacity-0"
+            } bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent font-semibold`}
+          >
+            {keywords[index]}
+          </span>{" "}
+          PCs
+        </p>
+      </div>
     </section>
   );
 }

@@ -10,6 +10,8 @@ import TrustedBrands from "../components/TrustedBrands"
 import WhyChooseUs from "../components/WhyChooseUs"
 import FeaturedProducts from "../components/FeaturedProducts"
 import { featuredProducts } from "../data/sampleData"
+import LandingCarousel from "../components/LandingCarousel"
+import Testimonials from "../components/Testimonials"
  
 export default function LandingPage() {
     return (
@@ -19,12 +21,14 @@ export default function LandingPage() {
             <FeaturedProducts products={featuredProducts} />
             <Categories />
             <ProductGrid />
+            <LandingCarousel />
             <DealShowcase />
             <NeedHelp />
             <FAQs />
             <Blogs />
             <TrustedBrands />
             <PCComponents />
+            <Testimonials />
         </>
     );
 }
