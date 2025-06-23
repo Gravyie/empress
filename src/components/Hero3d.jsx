@@ -2,6 +2,8 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { motion } from "framer-motion";
+import { Suspense } from "react";
+import Loader from "./Loader";
 
 function PCModel() {
   const { scene } = useGLTF("/models/MainModel.glb");
@@ -50,10 +52,12 @@ export default function Hero3d() {
             camera={{ position: [2, 1, 3], fov: 12 }}
             resize={{ scroll: true, offsetSize: true }}
           >
-            <ambientLight intensity={100} />
-            <directionalLight position={[15, 15, 15]} intensity={50}/>
-            <PCModel />
-            <OrbitControls />
+          <Suspense fallback={<Loader />}>
+              <ambientLight intensity={100} />
+              <directionalLight position={[15, 15, 15]} intensity={50}/>
+              <PCModel />
+              <OrbitControls />
+            </Suspense>
           </Canvas>
         </div>
       </motion.div>
