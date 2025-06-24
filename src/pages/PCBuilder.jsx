@@ -234,9 +234,9 @@ const PCBuilder = () => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className="min-h-screen bg-[#FAFAFA] py-10 px-4 sm:px-6 lg:px-8 font-sans">
-        <div className="max-w-7xl mx-auto space-y-16">
-
+      <div className="min-h-screen bg-[#FAFAFA] py-6 px-4 sm:px-6 lg:px-8 font-sans">
+        <div className="max-w-7xl mx-auto">
+        <div>
           {/* Header */}
           <div className="text-center">
             <h1 className="bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 bg-clip-text text-transparent text-6xl font-extrabold tracking-tight leading-tight">
@@ -342,99 +342,96 @@ const PCBuilder = () => {
               )}
             </div>
           </div>
-
+        </div>
           {/* Final Build Summary & Details */}
-          <div
-            id='pc-summary'
-            className='pt-6 border-t border-dashed border-gray-400'
-          >
-            <div
-              className="bg-white border border-gray-200 rounded-xl shadow-2xl py-6 px-4 lg:px-8 mt-8 max-w-screen-xl mx-auto"
-            >
-              <h2 className="text-3xl font-extrabold text-center text-[#F47C5A] mb-4">
-                Your Custom PC Summary
-              </h2>
+        <div className="h-screen flex items-center justify-center bg-gray-50">
+          <div id='pc-summary' className="h-[90%] w-full bg-white border border-gray-200 rounded-xl shadow-2xl py-6 px-4 lg:px-8 max-w-screen-xl mx-auto flex flex-col">
+            {/* Heading */}
+            <h2 className="text-3xl font-extrabold text-center text-[#F47C5A] mb-4">
+              Your Custom PC Summary
+            </h2>
 
-              {/* Wrapper for image and summary */}
-              <div className="flex flex-col lg:flex-row gap-10">
-                {/* Left: PC Image */}
-                <div className="w-full lg:w-2/3 flex justify-center">
-                  <img
-                    src={getCurrentImageForBuild(COMPONENT_FLOW.length, selectedComponents)}
-                    alt="Final PC build"
-                    className="w-full max-w-3xl rounded-lg shadow-xl border border-gray-100 object-contain"
-                  />
-                </div>
+            {/* Image + Summary */}
+            <div className="flex flex-col lg:flex-row gap-10 flex-1 overflow-hidden">
+              
+              {/* Left: PC Image */}
+              <div className="w-full lg:w-2/3 flex justify-center items-center">
+                <img
+                  src={getCurrentImageForBuild(COMPONENT_FLOW.length, selectedComponents)}
+                  alt="Final PC build"
+                  className="w-full max-w-3xl rounded-lg shadow-xl border border-gray-100 object-contain"
+                />
+              </div>
 
-                {/* Right: Summary + Price */}
-                <div className="w-full lg:w-1/3 flex flex-col justify-between">
-                  <div className="space-y-4 overflow-auto max-h-[600px] pr-2">
-                    <h3 className="text-md font-bold text-gray-800">Selected Components:</h3>
-                    <ul className="space-y-3">
-                      {COMPONENT_FLOW.map(({ type, label }) => (
-                        <li
-                          key={type}
-                          className="flex items-start gap-3 bg-gray-50 p-3 rounded-lg shadow-sm border border-gray-100"
-                        >
-                          {selectedComponents[type]?.image ? (
-                            <img
-                              src={selectedComponents[type].image}
-                              alt={label}
-                              className="w-10 h-10 object-contain rounded-md border border-gray-200"
-                            />
-                          ) : (
-                            <div className="w-10 h-10 flex items-center justify-center bg-gray-200 rounded-md">
-                              <span className="text-gray-500 text-xs">No Img</span>
-                            </div>
-                          )}
-                          <div className="flex-1">
-                            <p className="text-sm font-medium text-gray-800">
-                              {label}:{" "}
-                              <span className="font-semibold text-gray-900">
-                                {selectedComponents[type]?.name || "Not Selected"}
-                              </span>
-                            </p>
-                            {selectedComponents[type]?.price && (
-                              <p className="text-sm text-gray-500">
-                                ₹{selectedComponents[type].price.toLocaleString()}
-                              </p>
-                            )}
+              {/* Right: Summary + Price */}
+              <div className="w-full lg:w-1/3 flex flex-col justify-between overflow-hidden">
+                <div className="space-y-4 flex-1 overflow-y-auto pr-2">
+                  <h3 className="text-md font-bold text-gray-800">Selected Components:</h3>
+                  <ul className="space-y-3">
+                    {COMPONENT_FLOW.map(({ type, label }) => (
+                      <li
+                        key={type}
+                        className="flex items-start gap-3 bg-gray-50 p-3 rounded-lg shadow-sm border border-gray-100"
+                      >
+                        {selectedComponents[type]?.image ? (
+                          <img
+                            src={selectedComponents[type].image}
+                            alt={label}
+                            className="w-10 h-10 object-contain rounded-md border border-gray-200"
+                          />
+                        ) : (
+                          <div className="w-10 h-10 flex items-center justify-center bg-gray-200 rounded-md">
+                            <span className="text-gray-500 text-xs">No Img</span>
                           </div>
-                          <button
-                            onClick={() => handleModifyStep(type)}
-                            className="text-xs text-blue-600 hover:text-blue-800 font-medium hover:underline"
-                          >
-                            Change
-                          </button>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                        )}
+                        <div className="flex-1">
+                          <p className="text-sm font-medium text-gray-800">
+                            {label}:{" "}
+                            <span className="font-semibold text-gray-900">
+                              {selectedComponents[type]?.name || "Not Selected"}
+                            </span>
+                          </p>
+                          {selectedComponents[type]?.price && (
+                            <p className="text-sm text-gray-500">
+                              ₹{selectedComponents[type].price.toLocaleString()}
+                            </p>
+                          )}
+                        </div>
+                        <button
+                          onClick={() => handleModifyStep(type)}
+                          className="text-xs text-blue-600 hover:text-blue-800 font-medium hover:underline"
+                        >
+                          Change
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-                  {/* Total Price */}
-                  <div className="mt-6 pt-4 border-t border-gray-200">
-                    <div className="flex justify-between text-lg font-bold text-gray-900">
-                      <span>Total Price:</span>
-                      <span className="text-blue-700">
-                        ₹{totalBuildPrice.toLocaleString()}
-                      </span>
-                    </div>
+                {/* Total Price */}
+                <div className="mt-4 pt-4 border-t border-gray-200">
+                  <div className="flex justify-between text-lg font-bold text-gray-900">
+                    <span>Total Price:</span>
+                    <span className="text-blue-700">
+                      ₹{totalBuildPrice.toLocaleString()}
+                    </span>
                   </div>
                 </div>
               </div>
+            </div>
 
-              {/* CTA Button */}
-              <div className="mt-10 text-center">
-                <button className="bg-[#F47C5A] text-white hover:bg-white hover:text-[#F47C5A] font-bold text-xl px-10 py-4 rounded-xl shadow-2xl transition duration-300 transform hover:scale-105">
-                  Add To Cart
-                </button>
-              </div>
+            {/* CTA Button */}
+            <div className="mt-6 text-center">
+              <button className="bg-[#F47C5A] text-white hover:bg-white hover:text-[#F47C5A] font-bold text-xl px-10 py-4 rounded-xl shadow-2xl transition duration-300 transform hover:scale-105">
+                Add To Cart
+              </button>
             </div>
           </div>
         </div>
       </div>
-    </DndProvider>
-  );
+    </div>
+  </DndProvider>
+);
 };
 
 export default PCBuilder;

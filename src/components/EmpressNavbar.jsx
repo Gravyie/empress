@@ -187,10 +187,10 @@ const EmpressNavbar = ({ theme = 'dark' }) => {
       }
     },
     // Adding the new navigation items without submenus
-    {
-      label: 'Events',
-      href: '/events'
-    },
+    // {
+    //   label: 'Events',
+    //   href: '/events'
+    // },
     {
       label: 'Blogs',
       href: '/blogs'
@@ -233,6 +233,10 @@ const EmpressNavbar = ({ theme = 'dark' }) => {
           }
         ]
       }
+    },
+    {
+      label: 'FAQs',
+      href: '/faqs',
     },
   ];
 

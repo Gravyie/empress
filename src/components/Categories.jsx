@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useInView } from 'react-intersection-observer';
 
 const Categories = () => {
@@ -12,9 +12,16 @@ const Categories = () => {
     { id: 7, name: 'Other Workstations', image: '/images/img7.JPG', description: 'Pro-Grade Machines' },
   ];
 
+  // Single inView observer for the entire scroll section
+  const { ref: sectionRef, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
   return (
     <div className="bg-white px-4 sm:px-6 lg:px-8">
       <div className="max-w-full">
+        {/* Header and Specialist Info */}
         <div className="bg-white py-12 flex flex-col lg:flex-row justify-between items-center lg:items-start gap-6">
           <div className="max-w-xl text-center lg:text-left">
             <h1 className="text-4xl lg:text-5xl font-light text-gray-600 leading-tight">
@@ -41,44 +48,36 @@ const Categories = () => {
           </div>
         </div>
 
-        <div className="overflow-x-auto pb-4">
+        {/* Category Cards */}
+        <div className="overflow-x-auto pb-4" ref={sectionRef}>
           <div className="flex gap-8 min-w-max px-4">
-            {categories.map((category, index) => {
-              const { ref, inView } = useInView({
-                triggerOnce: true,
-                threshold: 0.15,
-              });
-
-              return (
-                <div
-                  key={category.id}
-                  ref={ref}
-                  className={`group cursor-pointer flex-shrink-0 w-25 sm:w-40 md:w-55 lg:w-70 transition-all duration-500
-                    ${inView ? 'animate-fadeUp' : 'opacity-0 translate-y-10'}
-                  `}
-                  style={{
-                    animationDelay: inView ? `${index * 0.1}s` : '0s',
-                    animationFillMode: 'both'
-                  }}
-                >
-                  <div className="aspect-square bg-gray-50 rounded-2xl overflow-hidden mb-4 group-hover:scale-105 transition-transform duration-200">
-                    <img
-                      src={category.image}
-                      alt={category.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="text-center">
-                    <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-medium text-gray-900 mb-1">
-                      {category.name}
-                    </h3>
-                    <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-500">
-                      {category.description}
-                    </p>
-                  </div>
+            {categories.map((category, index) => (
+              <div
+                key={category.id}
+                className={`group cursor-pointer flex-shrink-0 w-25 sm:w-40 md:w-55 lg:w-70 transition-all duration-500
+                  ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
+                `}
+                style={{
+                  transitionDelay: inView ? `${index * 100}ms` : '0ms',
+                }}
+              >
+                <div className="aspect-square bg-gray-50 rounded-2xl overflow-hidden mb-4 group-hover:scale-105 transition-transform duration-200">
+                  <img
+                    src={category.image}
+                    alt={category.name}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-              );
-            })}
+                <div className="text-center">
+                  <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-medium text-gray-900 mb-1">
+                    {category.name}
+                  </h3>
+                  <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-500">
+                    {category.description}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

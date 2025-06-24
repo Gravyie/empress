@@ -2,21 +2,33 @@ import React from 'react';
 import { useInView } from 'react-intersection-observer';
 
 const brandsRow1 = [
-  "/images/img1.JPG",
-  "/images/img2.JPG",
-  "/images/img3.JPG",
-  "/images/img4.JPG",
-  "/images/img5.JPG",
-  "/images/img6.JPG",
+  "/images/brands/1.png",
+  "/images/brands/2.png",
+  "/images/brands/3.png",
+  "/images/brands/4.png",
+  "/images/brands/5.png",
+  "/images/brands/6.png",
+  "/images/brands/7.png",
+  "/images/brands/8.png",
+  "/images/brands/9.png",
+  "/images/brands/10.png",
+  "/images/brands/11.png",
+  "/images/brands/12.png",
 ];
 
 const brandsRow2 = [
-  "/images/img1.JPG",
-  "/images/img2.JPG",
-  "/images/img3.JPG",
-  "/images/img4.JPG",
-  "/images/img5.JPG",
-  "/images/img6.JPG",
+  "/images/brands/13.png",
+  "/images/brands/14.png",
+  "/images/brands/15.png",
+  "/images/brands/16.png",
+  "/images/brands/17.png",
+  "/images/brands/18.png",
+  "/images/brands/19.png",
+  "/images/brands/20.png",
+  "/images/brands/21.png",
+  "/images/brands/22.png",
+  "/images/brands/23.png",
+  "/images/brands/24.png",
 ];
 
 const SCROLL_DURATION_SECONDS = 30;
@@ -74,7 +86,7 @@ export default function TrustedPartners() {
                         key={`${animation}-${idx}`}
                         src={src}
                         alt={`Logo ${idx}`}
-                        className="h-16 mx-8 object-contain filter grayscale opacity-70 transition-all duration-300 hover:grayscale-0 hover:opacity-100 hover:scale-105"
+                        className="h-16 mx-8 object-contain transition-transform duration-300 hover:scale-105"
                         onError={(e) => {
                           e.currentTarget.onerror = null;
                           e.currentTarget.src = `https://placehold.co/150x80/6B7280/FFFFFF?text=Logo+${idx}`;

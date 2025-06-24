@@ -124,7 +124,7 @@ const ProductsListingPage = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <div className="bg-white/10 backdrop-blur-md border-b border-white/20 sticky top-0 z-50">
+      <div className="bg-white/10">
         <div className="max-w-7xl mx-auto px-5 py-5">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
             <div>
@@ -188,7 +188,7 @@ const ProductsListingPage = () => {
       {/* Products Grid */}
       <div 
         ref={ref}
-        className={`max-w-7xl mx-auto px-5 py-8 transition-opacity duration-1000 ${
+        className={`max-w-7xl mx-auto px-5 py-8 transition-opacity duration-300 ${
         inView ? "animate-fadeInFromBack" : "opacity-0"
         }`}
       >

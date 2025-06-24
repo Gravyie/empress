@@ -12,6 +12,7 @@ import CategoriesPage from "./pages/CategoriesPage"; // Assuming your Categories
 import ProductsListingPage from "./pages/ProductsListingPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import PCBuilder from "./pages/PCBuilder";
+import FAQSection from "./components/FAQs";
 
 function App() {
   return (
@@ -29,7 +30,7 @@ function App() {
         <Route path="/products/:categoryId" element={<ProductsListingPage />} />
         <Route path="/product/:productId" element={<ProductDetailPage />} />
         <Route path="/pc-builder" element={<PCBuilder />} />
-
+        <Route path="/faqs" element={<FAQSection />} />
       </Routes>
       <Footer />
     </BrowserRouter>

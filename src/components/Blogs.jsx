@@ -35,10 +35,15 @@ const Blogs = () => {
     },
   ];
 
+  const { ref: sectionRef, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
   return (
-    
     <section className="bg-white py-20 px-6 sm:px-12 lg:px-20">
       <div className="max-w-7xl mx-auto">
+        {/* Header */}
         <div className="mb-12 text-center">
           <h2 className="text-3xl sm:text-4xl font-semibold text-gray-800 mb-2">
             Blogs & Articles
@@ -48,25 +53,18 @@ const Blogs = () => {
           </p>
         </div>
 
-        <div className="overflow-x-auto pb-4">
+        {/* Blog Cards */}
+        <div className="overflow-x-auto pb-4" ref={sectionRef}>
           <div className="flex gap-6 min-w-max px-2">
-            {categories.map((category, index) => {
-              const { ref, inView } = useInView({
-                triggerOnce: true,
-                threshold: 0.15,
-              });
-
-              return (
+            {categories.map((category, index) => (
               <div
-                ref={ref}
                 key={category.id}
                 className={`group flex-shrink-0 w-64 sm:w-72 md:w-80 bg-gray-50 rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-500
-                    ${inView ? 'animate-fadeUp' : 'opacity-0 translate-y-10'}
-                  `}
-                  style={{
-                    animationDelay: inView ? `${index * 0.1}s` : '0s',
-                    animationFillMode: 'both'
-                  }}
+                  ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
+                `}
+                style={{
+                  transitionDelay: inView ? `${index * 100}ms` : '0ms',
+                }}
               >
                 <div className="w-full h-40 overflow-hidden">
                   <img
@@ -82,8 +80,18 @@ const Blogs = () => {
                   <p className="text-gray-500 text-sm">{category.description}</p>
                 </div>
               </div>
-            )})}
+            ))}
           </div>
+        </div>
+
+        {/* View All Button */}
+        <div className="mt-2 text-center">
+          <a
+            href="/blogs"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-[#F47C5A] text-white font-semibold text-sm rounded-full shadow hover:bg-white hover:text-[#F47C5A] border border-[#F47C5A] transition duration-300"
+          >
+            View All →
+          </a>
         </div>
       </div>
     </section>

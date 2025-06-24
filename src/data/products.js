@@ -9,9 +9,10 @@ export const allSampleProducts = {
       price: 1499.99,
       originalPrice: 1599.99,
       images: [
-        "/images/img1.JPG",
-        "/images/img2.JPG",
         "/images/img3.JPG",
+        "/images/img3.1.jpg",
+        "/images/img3.2.JPG",
+        "/images/img3.3.JPG",
       ],
       specs: {
         'CPU': 'AMD Ryzen 7 7700X',
@@ -33,7 +34,7 @@ export const allSampleProducts = {
       description2: 'High-performance prebuilt PC featuring an Intel Core i9 and NVIDIA RTX 4080.',
       price: 2199.99,
       images: [
-        '/images/img3.JPG',
+        'https://via.placeholder.com/300x200/cccccc/ffffff?text=Skytech+Shiva+1',
         'https://via.placeholder.com/300x200/cccccc/ffffff?text=Skytech+Shiva+2',
         'https://via.placeholder.com/300x200/cccccc/ffffff?text=Skytech+Shiva+3'
       ],
@@ -78,9 +79,9 @@ export const allSampleProducts = {
       price: 589.99,
       originalPrice: 649.99,
       images: [
-        "/images/img1.JPG",
-        "/images/img2.JPG",
-        "/images/img3.JPG",
+        "/images/components/cpu1.jpeg",
+        "/images/components/cpu2.jpeg",
+        "/images/components/cpu3.jpeg",
       ],
       specs: {
         'Cores': '24 (8 Performance-cores + 16 Efficient-cores)',
@@ -222,9 +223,9 @@ export const allSampleProducts = {
       description2: 'The NVIDIA GeForce RTX 4090 is the ultimate GeForce GPU. It brings an enormous leap in performance, efficiency, and AI-powered graphics. Experience ultra-high performance gaming, incredibly detailed virtual worlds with ray tracing, unprecedented productivity, and new ways to create. It\'s powered by the NVIDIA Ada Lovelace architecture and comes with 24 GB of G6X memory.',
       price: 1599.99,
       images: [
-        'https://via.placeholder.com/600x400/76b900/ffffff?text=RTX+4090+Main',
-        'https://via.placeholder.com/300x200/76b900/ffffff?text=RTX+4090+Angle',
-        'https://via.placeholder.com/300x200/76b900/ffffff?text=RTX+4090+Ports'
+        "/images/components/gpu1.jpeg",
+        "/images/components/gpu3.jpeg",
+        "/images/components/gpu5.jpeg",
       ],
       specs: {
         'GPU Architecture': 'NVIDIA Ada Lovelace',
@@ -312,9 +313,9 @@ export const allSampleProducts = {
       description2: 'The ASUS ROG Strix Z790-E Gaming WiFi is a premium Intel Z790 motherboard designed for top-tier gaming and high-performance computing. It supports 12th, 13th, and 14th Gen Intel Core processors, features DDR5 memory support, multiple PCIe 5.0 M.2 slots for ultra-fast storage, and robust power delivery. Integrated Wi-Fi 6E and 2.5 Gb Ethernet ensure lightning-fast networking for an unparalleled gaming and productivity experience.',
       price: 489.99,
       images: [
-        'https://via.placeholder.com/600x400/000000/ffffff?text=ASUS+Z790+Main',
-        'https://via.placeholder.com/300x200/000000/ffffff?text=ASUS+Z790+IO',
-        'https://via.placeholder.com/300x200/000000/ffffff?text=ASUS+Z790+Angle'
+        "/images/components/mb1.jpeg",
+        "/images/components/mb3.jpeg",
+        "/images/components/mb5.jpeg",
       ],
       specs: {
         'Chipset': 'Intel Z790',
@@ -378,9 +379,9 @@ export const allSampleProducts = {
       description2: 'Elevate your PC\'s performance and aesthetics with Corsair Vengeance RGB DDR5 memory. This 32GB (2x16GB) kit clocks in at 6000MHz, providing exceptional speed for gaming, multitasking, and demanding applications. Featuring dynamic, individually addressable RGB lighting, it seamlessly integrates with your system\'s look while delivering cutting-edge DDR5 performance. Optimized for Intel XMP 3.0 and AMD EXPO for easy overclocking.',
       price: 129.99,
       images: [
-        'https://via.placeholder.com/600x400/800080/ffffff?text=Corsair+RAM+Main',
-        'https://via.placeholder.com/300x200/800080/ffffff?text=Corsair+RAM+Angle',
-        'https://via.placeholder.com/300x200/800080/ffffff?text=Corsair+RAM+RGB'
+        "/images/components/ram1.jpeg",
+        "/images/components/ram2.jpeg",
+        "/images/components/ram3.jpeg",
       ],
       specs: {
         'Capacity': '32GB (2 x 16GB)',
@@ -444,9 +445,9 @@ export const allSampleProducts = {
       description2: 'Unleash the full potential of your gaming and creative applications with the Samsung 990 Pro 2TB NVMe SSD. This PCIe 4.0 SSD delivers incredible sequential read/write speeds of up to 7,450/6,900 MB/s, making it one of the fastest drives on the market. Optimized for heavy workloads, it features an advanced controller and thermal control solutions to maintain peak performance under pressure. Ideal for gamers, content creators, and professionals requiring elite storage.',
       price: 189.99,
       images: [
-        'https://via.placeholder.com/600x400/123456/ffffff?text=Samsung+SSD+Main',
-        'https://via.placeholder.com/300x200/123456/ffffff?text=Samsung+SSD+Front',
-        'https://via.placeholder.com/300x200/123456/ffffff?text=Samsung+SSD+Back'
+        "/images/components/sto1.jpeg",
+        "/images/components/sto2.jpeg",
+        "/images/components/sto3.jpeg",
       ],
       specs: {
         'Capacity': '2TB',
@@ -510,9 +511,9 @@ export const allSampleProducts = {
       description2: 'The Lian Li O11 Dynamic EVO is a highly versatile ATX mid-tower case designed for enthusiasts seeking maximum flexibility and aesthetic appeal. It features a reversible design, allowing for standard or inverted layouts, and supports massive cooling configurations with multiple radiator and fan mounting options. With its dual-chamber design, tempered glass panels, and excellent cable management features, it\'s perfect for showcasing high-end builds.',
       price: 169.99,
       images: [
-        'https://via.placeholder.com/600x400/333333/ffffff?text=Lian+Li+O11+Main',
-        'https://via.placeholder.com/300x200/333333/ffffff?text=Lian+Li+O11+Front',
-        'https://via.placeholder.com/300x200/333333/ffffff?text=Lian+Li+O11+Inside'
+        "/images/img1.JPG",
+        "/images/img2.JPG",
+        "/images/img3.JPG",
       ],
       specs: {
         'Form Factor': 'Mid-Tower',
@@ -576,9 +577,9 @@ export const allSampleProducts = {
       description2: 'The Corsair RM1000e is a reliable and highly efficient 1000W power supply, perfect for powering high-performance gaming rigs and workstations. Rated 80 PLUS Gold for up to 90% efficiency, it reduces power consumption and heat. Its fully modular cabling system allows for clean builds and easy cable management, while its silent fan operation ensures a quiet computing experience. Backed by a 7-year warranty for peace of mind.',
       price: 159.99,
       images: [
-        'https://via.placeholder.com/600x400/FFD700/000000?text=Corsair+PSU+Main',
-        'https://via.placeholder.com/300x200/FFD700/000000?text=Corsair+PSU+Modular',
-        'https://via.placeholder.com/300x200/FFD700/000000?text=Corsair+PSU+Fan'
+        "/images/components/psu1.jpeg",
+        "/images/components/psu2.jpeg",
+        "/images/components/psu3.jpeg",
       ],
       specs: {
         'Wattage': '1000W',
