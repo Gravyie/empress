@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, Search, Menu, X, ShoppingBag } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const EmpressNavbar = ({ theme = 'dark' }) => {
+  const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -33,7 +35,7 @@ const EmpressNavbar = ({ theme = 'dark' }) => {
   const navItems = [
     {
       label: 'Products',
-      href: '/categories',
+      href: '/products',
     },
     {
       label: 'Build PC',
@@ -315,8 +317,8 @@ const EmpressNavbar = ({ theme = 'dark' }) => {
               <button className={`${isDark ? 'text-white hover:text-gray-300' : 'text-gray-900 hover:text-gray-600'} transition-colors duration-200`}>
                 <Search className="w-4 h-4" />
               </button>
-              <button className={`${isDark ? 'text-white hover:text-gray-300' : 'text-gray-900 hover:text-gray-600'} transition-colors duration-200`}>
-                <ShoppingBag className="w-4 h-4" />
+              <button onClick={() => navigate('/cart')} className={`${isDark ? 'text-white hover:text-gray-300' : 'text-gray-900 hover:text-gray-600'} transition-colors duration-200`}>
+                <ShoppingBag className="w-4 h-4"/>
               </button>
 
               {/* Mobile Menu Button */}

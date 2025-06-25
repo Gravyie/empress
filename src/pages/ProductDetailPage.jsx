@@ -3,8 +3,11 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useInView } from "react-intersection-observer";
 import { allSampleProducts } from '../data/products';
 import RelatedProducts from '../components/RelatedProducts';
+import { useCart } from '../components/CartContext';
 
 const ProductDetailPage = () => {
+  const { addToCart } = useCart();
+
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
   
   const { productId } = useParams(); // Get the productId from the URL
@@ -62,15 +65,6 @@ const ProductDetailPage = () => {
     alert(`Proceeding to checkout for ${product.name}`);
   };
 
-  const handleAddToCart = () => {
-    if (product.inStock) {
-      console.log(`Added ${product.name} to cart!`);
-      // Implement add to cart logic here (e.g., update global cart state)
-      alert(`${product.name} added to cart!`);
-    } else {
-      alert(`${product.name} is currently out of stock.`);
-    }
-  };
   const isPrebuiltPC = allSampleProducts['prebuilt-pcs'].includes(product);
   return (
     <div 
@@ -226,7 +220,7 @@ const ProductDetailPage = () => {
               Buy Now
             </button>
             <button
-              onClick={handleAddToCart}
+              onClick={() => addToCart(product)}
               disabled={!product.inStock}
               className="flex-1 bg-white border-2 border-purple-600 text-purple-700 text-lg font-semibold py-3 px-6 rounded-xl shadow-lg hover:bg-purple-50 hover:border-purple-700 transform hover:-translate-y-1 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
             >

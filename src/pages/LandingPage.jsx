@@ -11,7 +11,6 @@ import FeaturedProducts from "../components/FeaturedProducts"
 import { featuredProducts } from "../data/sampleData"
 import LandingCarousel from "../components/LandingCarousel"
 import Testimonials from "../components/Testimonials"
- 
 export default function LandingPage() {
     return (
         <>
