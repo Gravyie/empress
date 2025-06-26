@@ -1,272 +1,324 @@
 import React, { useState } from "react";
+import { Heart, ShoppingCart, Star } from "lucide-react";
 
 const allProducts = [
   {
     id: 1,
     image: "/images/img1.JPG",
-    name: "Creator Beast X1",
-    brand: "Asus",
-    gpu: "RTX 4090",
-    ram: "64GB",
-    memory: "2TB SSD",
-    config: "Intel i9, RTX 4090, 64GB RAM, 2TB SSD",
-    price: "₹3,49,999",
-    processor: "Intel i9",
-    cooling: "Air",
-    useCase: "Content Creation",
+    name: "Creator Pro Max",
+    specs: ["Intel i9-13900K", "RTX 4090 24GB", "64GB DDR5"],
+    originalPrice: 200000,
+    discountedPrice: 143000,
+    rating: 3,
+    discount: "-40%",
+    useCase: "Video Editing",
+    performance: "Beast",
   },
   {
     id: 2,
     image: "/images/img2.JPG",
     name: "Gaming Edge Z5",
-    brand: "MSI",
-    gpu: "RTX 4070 Ti",
-    ram: "32GB",
-    memory: "1TB SSD",
-    config: "Ryzen 7, RTX 4070 Ti, 32GB RAM, 1TB SSD",
-    price: "₹2,15,000",
-    processor: "Ryzen 7",
-    cooling: "Air",
+    specs: ["Ryzen 7 7700X", "RTX 4070 Ti", "32GB DDR5"],
+    originalPrice: 250000,
+    discountedPrice: 199999,
+    rating: 4,
+    discount: "-20%",
     useCase: "Gaming",
+    performance: "High",
   },
   {
     id: 3,
     image: "/images/img3.JPG",
     name: "AI Workstation Pro",
-    brand: "HP",
-    gpu: "RTX A6000",
-    ram: "128GB",
-    memory: "4TB NVMe",
-    config: "Xeon, RTX A6000, 128GB ECC RAM, 4TB NVMe",
-    price: "₹6,75,000",
-    processor: "Xeon",
-    cooling: "Liquid",
-    useCase: "AI Research",
+    specs: ["Xeon W9", "RTX A6000", "128GB ECC RAM"],
+    originalPrice: 675000,
+    discountedPrice: 549000,
+    rating: 5,
+    discount: "-19%",
+    useCase: "Development",
+    performance: "Beast",
   },
   {
     id: 4,
     image: "/images/img4.JPG",
     name: "LiquidCool Reactor",
-    brand: "MSI",
-    gpu: "RTX 4080",
-    ram: "64GB",
-    memory: "2TB SSD",
-    config: "Ryzen 9, RTX 4080, 64GB RAM, 2TB SSD",
-    price: "₹2,89,000",
-    processor: "Ryzen 9",
-    cooling: "Liquid",
-    useCase: "Gaming",
+    specs: ["Ryzen 9 7950X", "RTX 4080", "64GB DDR5"],
+    originalPrice: 350000,
+    discountedPrice: 289000,
+    rating: 4,
+    discount: "-17%",
+    useCase: "3D Rendering",
+    performance: "High",
   },
   {
     id: 5,
     image: "/images/img5.JPG",
     name: "Compact Creator",
-    brand: "Asus",
-    gpu: "RTX 4060",
-    ram: "32GB",
-    memory: "1TB SSD",
-    config: "Intel i7, RTX 4060, 32GB RAM, 1TB SSD",
-    price: "₹1,65,000",
-    processor: "Intel i7",
-    cooling: "Air",
-    useCase: "Content Creation",
+    specs: ["Intel i7-13700K", "RTX 4060", "32GB RAM"],
+    originalPrice: 185000,
+    discountedPrice: 165000,
+    rating: 3,
+    discount: "-11%",
+    useCase: "Development",
+    performance: "Regular",
   },
   {
     id: 6,
     image: "/images/img6.JPG",
     name: "Entry Gaming Core",
-    brand: "HP",
-    gpu: "GTX 1660",
-    ram: "16GB",
-    memory: "512GB SSD",
-    config: "Ryzen 5, GTX 1660, 16GB RAM, 512GB SSD",
-    price: "₹82,999",
-    processor: "Ryzen 5",
-    cooling: "Air",
-    useCase: "Entry-Level",
+    specs: ["Ryzen 5 5600X", "GTX 1660", "16GB RAM"],
+    originalPrice: 100000,
+    discountedPrice: 82999,
+    rating: 3,
+    discount: "-17%",
+    useCase: "Gaming",
+    performance: "Regular",
+  },
+  {
+    id: 7,
+    image: "/images/img7.JPG",
+    name: "DevStation Mini",
+    specs: ["Intel i5-12400F", "RTX 3060", "16GB RAM"],
+    originalPrice: 140000,
+    discountedPrice: 119999,
+    rating: 4,
+    discount: "-14%",
+    useCase: "Development",
+    performance: "Regular",
+  },
+  {
+    id: 8,
+    image: "/images/img8.JPG",
+    name: "RenderRaptor",
+    specs: ["Threadripper PRO", "RTX 3090", "128GB DDR4"],
+    originalPrice: 820000,
+    discountedPrice: 680000,
+    rating: 5,
+    discount: "-17%",
+    useCase: "3D Rendering",
+    performance: "Beast",
+  },
+  {
+    id: 9,
+    image: "/images/img9.JPG",
+    name: "GameForge Lite",
+    specs: ["Intel i5-11400F", "GTX 1650", "8GB RAM"],
+    originalPrice: 70000,
+    discountedPrice: 61000,
+    rating: 2,
+    discount: "-13%",
+    useCase: "Gaming",
+    performance: "Regular",
   },
 ];
 
 const Workstations = () => {
-  const [filters, setFilters] = useState({
-    brand: "All",
-    gpu: "All",
-    ram: "All",
-    memory: "All",
-    processor: "All",
-    cooling: "All",
-    useCase: "All",
-  });
-
+  const [selectedUseCase, setSelectedUseCase] = useState("");
+  const [selectedPerformance, setSelectedPerformance] = useState("");
+  const [selectedPriceRange, setSelectedPriceRange] = useState("");
+  const [sort, setSort] = useState("none");
   const [filteredProducts, setFilteredProducts] = useState(allProducts);
-  const [isFiltering, setIsFiltering] = useState(false);
 
-  const handleFilterChange = (e) => {
-    const { name, value } = e.target;
-    setFilters((prev) => ({ ...prev, [name]: value }));
+  const applySort = (products, sortType) => {
+    if (sortType === "asc") {
+      return [...products].sort((a, b) => a.discountedPrice - b.discountedPrice);
+    } else if (sortType === "desc") {
+      return [...products].sort((a, b) => b.discountedPrice - a.discountedPrice);
+    }
+    return products;
   };
 
-  const applyFilters = () => {
-    const isActive = Object.values(filters).some((val) => val !== "All");
-    setIsFiltering(isActive);
-
-    const filtered = allProducts.filter((product) => {
-      return (
-        (filters.brand === "All" || product.brand === filters.brand) &&
-        (filters.gpu === "All" || product.gpu === filters.gpu) &&
-        (filters.ram === "All" || product.ram === filters.ram) &&
-        (filters.memory === "All" || product.memory === filters.memory) &&
-        (filters.processor === "All" || product.processor === filters.processor) &&
-        (filters.cooling === "All" || product.cooling === filters.cooling) &&
-        (filters.useCase === "All" || product.useCase === filters.useCase)
-      );
+  const handleApplyFilters = () => {
+    let filtered = allProducts.filter((p) => {
+      const matchUseCase = !selectedUseCase || p.useCase === selectedUseCase;
+      const matchPerf = !selectedPerformance || p.performance === selectedPerformance;
+      const matchPrice =
+        !selectedPriceRange ||
+        (selectedPriceRange === "<3k" && p.discountedPrice < 300000) ||
+        (selectedPriceRange === "3k-5k" && p.discountedPrice >= 300000 && p.discountedPrice <= 500000) ||
+        (selectedPriceRange === ">5k" && p.discountedPrice > 500000);
+      return matchUseCase && matchPerf && matchPrice;
     });
 
-    setFilteredProducts(filtered);
+    const sorted = applySort(filtered, sort);
+    setFilteredProducts(sorted);
+  };
+
+  const handleClearFilters = () => {
+    setSelectedUseCase("");
+    setSelectedPerformance("");
+    setSelectedPriceRange("");
+    setSort("none");
+    setFilteredProducts(allProducts);
+  };
+
+  const handleSortChange = (value) => {
+    setSort(value);
+    const sorted = applySort(filteredProducts, value);
+    setFilteredProducts(sorted);
+  };
+
+  const handleRadioClick = (currentValue, setter) => {
+    setter((prev) => (prev === currentValue ? "" : currentValue));
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-100 p-6">
-      <aside className="w-1/4 pr-4">
-        <div className="bg-white p-4 rounded shadow space-y-4">
-          <h2 className="text-lg font-semibold mb-2">Filter</h2>
-
-          {[
-            { name: "brand", label: "Brand", options: ["Asus", "MSI", "HP"] },
-            {
-              name: "gpu",
-              label: "GPU",
-              options: [
-                "RTX 4090",
-                "RTX 4080",
-                "RTX 4070 Ti",
-                "RTX 4060",
-                "GTX 1660",
-                "RTX A6000",
-              ],
-            },
-            { name: "ram", label: "RAM", options: ["16GB", "32GB", "64GB", "128GB"] },
-            {
-              name: "memory",
-              label: "Memory",
-              options: ["512GB SSD", "1TB SSD", "2TB SSD", "4TB NVMe"],
-            },
-            {
-              name: "processor",
-              label: "Processor",
-              options: ["Intel i7", "Intel i9", "Ryzen 5", "Ryzen 7", "Ryzen 9", "Xeon"],
-            },
-            {
-              name: "cooling",
-              label: "Cooling",
-              options: ["Air", "Liquid"],
-            },
-            {
-              name: "useCase",
-              label: "Use Case",
-              options: ["Content Creation", "Gaming", "AI Research", "Entry-Level"],
-            },
-          ].map((filter) => (
-            <div key={filter.name}>
-              <label className="block text-sm font-medium mb-1">{filter.label}</label>
-              <select
-                name={filter.name}
-                onChange={handleFilterChange}
-                className="w-full border px-2 py-1 rounded"
-              >
-                <option>All</option>
-                {filter.options.map((opt) => (
-                  <option key={opt}>{opt}</option>
-                ))}
-              </select>
+    <div className="flex gap-6 p-8 bg-white min-h-screen">
+      <aside className="w-[260px] space-y-8">
+        <div>
+          <h3 className="font-bold mb-3 flex items-center gap-2">⚡ Performance</h3>
+          {["Beast", "High", "Regular"].map((type) => (
+            <div key={type} className="text-sm text-gray-800">
+              <label className="flex items-center gap-2">
+                <input
+                  type="radio"
+                  name="performance"
+                  checked={selectedPerformance === type}
+                  onClick={() => handleRadioClick(type, setSelectedPerformance)}
+                  readOnly
+                />
+                {type} Performance
+              </label>
             </div>
           ))}
+        </div>
 
-          <button
-            className="w-full bg-white text-[#F47C5A] border py-2 rounded mt-4"
-            onClick={applyFilters}
-          >
-            Apply Filters
-          </button>
+        <div>
+          <h3 className="font-bold mb-3 flex items-center gap-2">⚡ Use Case</h3>
+          {["Gaming", "Video Editing", "3D Rendering", "Development"].map((type) => (
+            <div key={type} className="text-sm text-gray-800">
+              <label className="flex items-center gap-2">
+                <input
+                  type="radio"
+                  name="usecase"
+                  checked={selectedUseCase === type}
+                  onClick={() => handleRadioClick(type, setSelectedUseCase)}
+                  readOnly
+                />
+                {type}
+              </label>
+            </div>
+          ))}
+        </div>
+
+        <div>
+          <h3 className="font-bold mb-3 flex items-center gap-2">⚡ Price Range</h3>
+          <div className="text-sm text-gray-800 space-y-2">
+            <label className="flex items-center gap-2">
+              <input
+                type="radio"
+                name="price"
+                checked={selectedPriceRange === "<3k"}
+                onClick={() => handleRadioClick("<3k", setSelectedPriceRange)}
+                readOnly
+              />
+              Under ₹3,00,000
+            </label>
+            <label className="flex items-center gap-2">
+              <input
+                type="radio"
+                name="price"
+                checked={selectedPriceRange === "3k-5k"}
+                onClick={() => handleRadioClick("3k-5k", setSelectedPriceRange)}
+                readOnly
+              />
+              ₹3,00,000 - ₹5,00,000
+            </label>
+            <label className="flex items-center gap-2">
+              <input
+                type="radio"
+                name="price"
+                checked={selectedPriceRange === ">5k"}
+                onClick={() => handleRadioClick(">5k", setSelectedPriceRange)}
+                readOnly
+              />
+              Above ₹5,00,000
+            </label>
+          </div>
+
+          <div className="mt-4 space-x-2">
+            <button onClick={handleApplyFilters} className="bg-orange-500 text-white px-4 py-2 text-sm rounded">
+              Apply Filters
+            </button>
+            <button onClick={handleClearFilters} className="text-sm text-gray-600 underline">
+              Clear All
+            </button>
+          </div>
         </div>
       </aside>
 
-      <div className="w-3/4">
-        {!isFiltering && (
-          <section className="mb-6 bg-white p-6 rounded shadow flex gap-6">
-            <div className="w-1/2 h-64 bg-gray-200 rounded overflow-hidden">
-              <img
-                src="/images/img6.JPG"
-                alt="Featured Product"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="w-1/2 flex flex-col justify-between">
-              <div>
-                <h2 className="text-2xl font-bold mb-2">
-                  🔥 Featured: Titan Ultra
-                </h2>
-                <p className="text-sm text-gray-700 mb-3">
-                  The ultimate custom workstation for AI research, game
-                  development, and content creation. With unmatched GPU power
-                  and liquid cooling.
-                </p>
-                <p className="mb-1 text-gray-600 text-sm">
-                  <strong>Config:</strong> Intel Xeon W9, RTX 6000 Ada, 256GB
-                  ECC RAM, 8TB Gen4 NVMe SSD
-                </p>
-                <p className="text-lg font-semibold text-black mb-3">
-                  ₹9,49,000
-                </p>
+      <section className="flex-1">
+        <div className="flex justify-between items-center mb-6">
+          <div>
+            <h1 className="text-3xl font-bold">Workstation</h1>
+            <p className="text-gray-500 text-sm">Professional Computing Systems</p>
+          </div>
+          <select
+            className="border px-3 py-1 rounded text-sm"
+            onChange={(e) => handleSortChange(e.target.value)}
+            value={sort}
+          >
+            <option value="none">Sort By</option>
+            <option value="asc">Price: Low to High</option>
+            <option value="desc">Price: High to Low</option>
+          </select>
+        </div>
+
+        <div className="grid grid-cols-3 gap-6">
+          {filteredProducts.map((product) => (
+            <div
+              key={product.id}
+              className="relative bg-white shadow rounded overflow-hidden group"
+            >
+              <div className="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded">
+                {product.discount}
               </div>
-              <button className="w-full bg-[#C9A200] text-white py-2 rounded-lg">
-                Add to Cart
+              <button className="absolute top-2 right-2">
+                <Heart className="w-4 h-4 text-gray-500 hover:text-red-500" />
+              </button>
+
+              <img
+                src={product.image}
+                alt={product.name}
+                className="w-full h-48 object-cover"
+              />
+
+              <div className="p-4">
+                <h3 className="font-semibold text-sm mb-1">{product.name}</h3>
+                <ul className="text-xs text-gray-600 mb-2 space-y-0.5">
+                  {product.specs.map((s, i) => (
+                    <li key={i}>• {s}</li>
+                  ))}
+                </ul>
+                <div className="flex items-center gap-1 text-yellow-500 mb-2">
+                  {Array(5)
+                    .fill()
+                    .map((_, i) => (
+                      <Star
+                        key={i}
+                        className={`w-4 h-4 ${
+                          i < product.rating ? "fill-yellow-500" : "stroke-gray-300"
+                        }`}
+                      />
+                    ))}
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-[#F47C5A] font-semibold text-sm">
+                    ₹{product.discountedPrice.toLocaleString()}
+                  </span>
+                  <span className="text-gray-400 line-through text-xs">
+                    ₹{product.originalPrice.toLocaleString()}
+                  </span>
+                </div>
+              </div>
+
+              <button className="absolute bottom-2 right-2 p-1 bg-gray-100 hover:bg-gray-200 rounded-full">
+                <ShoppingCart className="w-4 h-4 text-black" />
               </button>
             </div>
-          </section>
-        )}
-
-        <main className="grid grid-cols-2 gap-6">
-          {filteredProducts.length > 0 ? (
-  filteredProducts.map((product) => (
-    <div
-      key={product.id}
-      className="bg-white p-4 rounded shadow flex flex-col justify-between min-h-[300px]"
-    >
-      <div>
-        <div className="w-full h-40 bg-gray-200 rounded mb-4 overflow-hidden">
-          <img
-            src={product.image}
-            alt={product.name}
-            className="object-cover w-full h-full rounded"
-          />
+          ))}
         </div>
-        <h3 className="font-semibold">{product.name}</h3>
-        <p className="text-sm text-gray-600 mb-2">{product.config}</p>
-        <p className="font-bold mb-3">{product.price}</p>
-      </div>
-      <button className="w-full bg-[#F47C5A] text-white py-2 rounded mt-auto">
-        Add to Cart
-      </button>
-    </div>
-  ))
-          ) : (
-            <div className="col-span-2 text-center bg-white p-6 rounded shadow">
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">
-                This configuration is currently unavailable
-                </h3>
-                <p className="text-gray-600 mb-4">
-                But you can still get the perfect PC for your needs.
-                </p>
-                <a href="/custom-pc" className="inline-block">
-                <button className="bg-[#F47C5A] text-white px-6 py-2 rounded hover:bg-[#e96843] transition">
-                    Build Your Own Custom PC
-                </button>
-                </a>
-            </div>
-            )}
-        </main>
-      </div>
+      </section>
     </div>
   );
 };

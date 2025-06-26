@@ -1,150 +1,215 @@
-// src/CategoriesPage.js or .jsx
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useInView } from 'react-intersection-observer';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { Monitor, Cpu, Gamepad, Headphones, Keyboard, Mouse, Mic } from "lucide-react";
 
 const CategoriesPage = () => {
   const navigate = useNavigate();
 
   const categories = [
     {
-      id: 'prebuilt-pcs',
-      name: 'Prebuilt PCs',
-      description: 'Complete gaming and workstation systems ready to use out of the box',
-      image: '/images/categories/prebuilt.jpg',
-      count: 24,
+      id: "gaming",
+      name: "Gaming Rig",
+      description: "High-performance gaming desktops and custom builds",
+      icon: <Gamepad className="w-5 h-5" />,
+      systems: [
+        {
+          name: "Ultra Gaming Beast",
+          specs: "RTX 4090 | i9-13900K | 64GB DDR5",
+          price: "₹3,99,000",
+          rating: 5,
+        },
+        {
+          name: "Midrange Monster",
+          specs: "RTX 4070 Ti | Ryzen 7 7700X | 32GB DDR5",
+          price: "₹2,49,000",
+          rating: 4.8,
+        },
+        {
+          name: "Starter Gaming Setup",
+          specs: "RTX 3060 | i5-12400F | 16GB DDR4",
+          price: "₹1,49,000",
+          rating: 4.5,
+        },
+      ],
     },
     {
-      id: 'processors',
-      name: 'Processors (CPUs)',
-      description: 'Intel and AMD processors for gaming, content creation, and professional work',
-      image: '/images/categories/cpu.jpg',
-      count: 45,
+      id: "workstations",
+      name: "Workstation",
+      description: "Professional-grade systems for design and development",
+      icon: <Monitor className="w-5 h-5" />,
+      systems: [
+        {
+          name: "Render Pro Studio",
+          specs: "RTX A6000 | Xeon W9 | 128GB ECC RAM",
+          price: "₹6,80,000",
+          rating: 5,
+        },
+        {
+          name: "EditPro X7",
+          specs: "RTX 4080 | Ryzen 9 7950X | 64GB DDR5",
+          price: "₹3,20,000",
+          rating: 4.9,
+        },
+        {
+          name: "DevStation Mini",
+          specs: "RTX 3060 | i5-12400F | 16GB RAM",
+          price: "₹1,19,000",
+          rating: 4.6,
+        },
+      ],
     },
     {
-      id: 'gpus',
-      name: 'Graphics Cards',
-      description: 'NVIDIA and AMD graphics cards for gaming and professional rendering',
-      image: '/images/categories/gpu.jpg',
-      count: 38,
+      id: "accessories",
+      name: "Gaming Peripherals",
+      description: "Professional gaming accessories and peripherals",
+      icon: <Headphones className="w-5 h-5" />,
+      systems: [
+        {
+          name: "Mechanical Keyboards",
+          specs: "RGB Backlit | Hot Swappable | Wireless",
+          price: "₹6,499",
+          rating: 4.9,
+        },
+        {
+          name: "Gaming Mice",
+          specs: "16000 DPI | Lightweight | RGB",
+          price: "₹2,999",
+          rating: 4.8,
+        },
+        {
+          name: "Gaming Headsets",
+          specs: "7.1 Surround | Noise Cancelling | RGB",
+          price: "₹4,499",
+          rating: 4.7,
+        },
+      ],
     },
     {
-      id: 'motherboards',
-      name: 'Motherboards',
-      description: 'Feature-rich motherboards supporting the latest processors and technologies',
-      image: '/images/categories/motherboard.jpg',
-      count: 32,
+      id: "components",
+      name: "Component",
+      description: "High-performance individual PC components",
+      icon: <Cpu className="w-5 h-5" />,
+      systems: [
+        {
+          name: "Intel Core i9-14900K",
+          specs: "24-Core | 32-Thread | LGA1700",
+          price: "₹62,999",
+          rating: 4.9,
+        },
+        {
+          name: "NVIDIA RTX 4090 Founders Edition",
+          specs: "24GB GDDR6X | PCIe 4.0",
+          price: "₹1,59,999",
+          rating: 5,
+        },
+        {
+          name: "ASUS Z790 Hero Motherboard",
+          specs: "DDR5 | WiFi 6E | Thunderbolt 4",
+          price: "₹48,000",
+          rating: 4.8,
+        },
+      ],
     },
-    {
-      id: 'memory',
-      name: 'Memory (RAM)',
-      description: 'High-performance DDR4 and DDR5 memory kits for optimal system performance',
-      image: '/images/categories/ram.jpg',
-      count: 56,
-    },
-    {
-      id: 'storage',
-      name: 'Storage',
-      description: 'SSDs, HDDs, and NVMe drives for fast data access and storage',
-      image: '/images/categories/storage.jpg',
-      count: 67,
-    },
-    {
-      id: 'cases',
-      name: 'PC Cases',
-      description: 'Stylish and functional cases with excellent airflow and cable management',
-      image: '/images/categories/case.jpg',
-      count: 29,
-    },
-    {
-      id: 'power',
-      name: 'Power Supplies',
-      description: 'Reliable and efficient power supplies with modular and non-modular options',
-      image: '/images/categories/psu.jpg',
-      count: 41,
-    },
-    {
-      id: 'cooling',
-      name: 'Cooling',
-      description: 'Air and liquid cooling solutions to keep your system running cool and quiet',
-      image: '/images/categories/cooling.jpg',
-      count: 33,
-    }
   ];
 
-  const handleCategoryClick = (categoryId) => {
-    navigate('/products/' + categoryId);
-  };
-
   return (
-    <div className="min-h-screen bg-white p-5">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12 text-black">
-          <h1 className="text-5xl font-bold mb-4">PC Hardware Store</h1>
-          <p className="text-xl opacity-90">Explore our premium collection of PC components and systems</p>
+    <div className="pb-20">
+      <section className="bg-[#191c29] text-white text-center p-16 px-6">
+        <h1 className="text-4xl font-bold mb-3 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-500">
+          Premium Tech Solution
+        </h1>
+        <p className="opacity-90">
+          Unleash your potential with cutting-edge gaming systems, professional
+          workstations, and premium components
+        </p>
+        <div className="flex justify-center gap-4 mt-4 text-xs font-medium text-white/80">
+          <span className="px-3 py-1 rounded-full bg-white/10 border border-white/10">
+            💠 3-Year Warranty
+          </span>
+          <span className="px-3 py-1 rounded-full bg-white/10 border border-white/10">
+            ⚡ 3-Year Warranty
+          </span>
+          <span className="px-3 py-1 rounded-full bg-white/10 border border-white/10">
+            🧿 3-Year Warranty
+          </span>
         </div>
+      </section>
 
-        {/* Categories Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {categories.map((category, index) => {
-            const { ref, inView } = useInView({
-              triggerOnce: true,
-              threshold: 0.15,
-            });
-            
-            return (
-            <div
-              ref={ref}
-              key={category.id}
-              onClick={() => handleCategoryClick(category.id)}
-              className={`group bg-white/95 backdrop-blur-sm rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transform transition-all duration-500 hover:scale-102 cursor-pointer border border-white/20 transition-all duration-300
-                ${inView ? 'animate-fadeUp' : 'opacity-0 translate-y-10'}
-              `}
-              style={{
-                animationDelay: inView ? `${index * 0.1}s` : '0s',
-                animationFillMode: 'both'
-              }}
-            >
-              {/* Category Image */}
-              <div className="h-48 w-full overflow-hidden">
-                <img
-                  src={category.image}
-                  alt={category.name}
-                  className="w-full h-full object-cover"
-                />
-              </div>
+      <section className="bg-white text-black px-10 pt-20 max-w-7xl mx-auto">
+        <h2 className="text-3xl font-bold text-black text-center mb-3">
+          Explore Our Categories
+        </h2>
+        <p className="text-center text-black/70 mb-12">
+          From high-performance gaming rigs to professional workstations, find
+          the perfect tech solution for your needs
+        </p>
 
-              {/* Category Content */}
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-800 mb-3">
-                  {category.name}
-                </h3>
-                <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                  {category.description}
-                </p>
-                <div className="flex justify-between items-center">
-                  <span className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-medium">
-                    {category.count} Products
-                  </span>
-                  <div className="w-8 h-8 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white transform group-hover:rotate-45 transition-transform duration-300">
-                    →
-                  </div>
+        <div className="space-y-16">
+          {categories.map((cat, idx) => (
+            <div key={idx}>
+              <div className="flex items-center gap-3 mb-4">
+                <div
+                  className={`w-10 h-10 flex items-center justify-center rounded-full text-white text-xl font-bold ${
+                    cat.id === "gaming"
+                      ? "bg-purple-500"
+                      : cat.id === "accessories"
+                      ? "bg-pink-400"
+                      : cat.id === "components"
+                      ? "bg-blue-500"
+                      : "bg-cyan-500"
+                  }`}
+                >
+                  {cat.icon}
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-black leading-tight">
+                    {cat.name}
+                  </h3>
+                  <p className="text-black/70 text-sm -mt-1">
+                    {cat.description}
+                  </p>
                 </div>
               </div>
-            </div>
-          )})}
-        </div>
 
-        {/* Footer */}
-        <div className="text-center mt-16 text-white/80">
-          <p className="text-lg">
-            Need help choosing the right components?
-            <span className="text-white font-semibold ml-2 cursor-pointer hover:underline">
-              Contact our experts →
-            </span>
-          </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                {cat.systems.map((sys, i) => (
+                  <div
+                    key={i}
+                    className="bg-white rounded-xl px-5 py-4 text-black shadow-md flex flex-col justify-between hover:shadow-xl transition"
+                  >
+                    <div>
+                      <h4 className="font-semibold mb-1 text-sm">
+                        {sys.name}
+                      </h4>
+                      <p className="text-xs text-gray-600 mb-2">{sys.specs}</p>
+                      <div className="font-bold text-black text-sm mb-3">
+                        {sys.price}
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <button className="text-xs bg-black text-white px-3 py-1 rounded-full hover:bg-gray-800">
+                        View Detail
+                      </button>
+                      <div className="text-xs text-yellow-500 font-bold">
+                        ⭐ {sys.rating}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-6 text-center">
+                <button 
+                  onClick={() => navigate(`/${cat.id}`)}
+                  className="bg-orange-500 hover:bg-orange-600 transition text-white px-5 py-2 rounded-full text-sm font-medium"
+                >
+                  View All {cat.name} System →
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
-      </div>
+      </section>
     </div>
   );
 };

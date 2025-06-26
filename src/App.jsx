@@ -1,12 +1,14 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer";
+import EmpressNavbar from "./components/EmpressNavbar";
+
+// Pages
 import LandingPage from "./pages/LandingPage";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import BlogsPage from "./pages/BlogsPage";
 import CustomPC from "./pages/CustomPC";
 import Events from "./pages/Events";
-import EmpressNavbar from "./components/EmpressNavbar";
 import Workstations from "./pages/Workstations";
 import CategoriesPage from "./pages/CategoriesPage";
 import ProductsListingPage from "./pages/ProductsListingPage";
@@ -19,38 +21,60 @@ import Server from "./pages/Server";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 
+// Auth-related
+import SignupLoginPage from "./pages/SignUp-Login-Page";
+import AccountPage from "./pages/Account";
+import ProtectedRoute from "./components/ProtectedRoute";
+import { AuthProvider } from "./context/AuthContext";
+import ComponentsPage from "./pages/ComponentsPage";
+
 function App() {
   return (
-    <BrowserRouter>
-      <div className="min-h-screen flex flex-col">
-        <EmpressNavbar />
+    <AuthProvider>
+      <BrowserRouter>
+        <div className="min-h-screen flex flex-col">
+          <EmpressNavbar />
 
-        {/* Main content area grows to fill space */}
-        <main className="flex-grow">
-          <Routes>
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/workstations" element={<Workstations />} />
-            <Route path="/gaming" element={<Gaming />} />
-            <Route path="/productivity" element={<Productivity />} />
-            <Route path="/server" element={<Server />} />
-            <Route path="/custom-pc" element={<CustomPC />} />
-            <Route path="/events" element={<Events />} />
-            <Route path="/blogs" element={<BlogsPage />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/products" element={<CategoriesPage />} />
-            <Route path="/products/:categoryId" element={<ProductsListingPage />} />
-            <Route path="/product/:productId" element={<ProductDetailPage />} />
-            <Route path="/pc-builder" element={<PCBuilder />} />
-            <Route path="/faqs" element={<FAQSection />} />
-          </Routes>
-        </main>
+          {/* Main Content */}
+          <main className="flex-grow">
+            <Routes>
+              {/* Auth Routes */}
+              <Route path="/auth" element={<SignupLoginPage />} />
+              <Route
+                path="/account"
+                element={
+                  <ProtectedRoute>
+                    <AccountPage />
+                  </ProtectedRoute>
+                }
+              />
 
-        <Footer />
-      </div>
-    </BrowserRouter>
+              {/* Core Pages */}
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/workstations" element={<Workstations />} />
+              <Route path="/gaming" element={<Gaming />} />
+              <Route path="/components" element={<ComponentsPage />} />
+              <Route path="/productivity" element={<Productivity />} />
+              <Route path="/server" element={<Server />} />
+              <Route path="/custom-pc" element={<CustomPC />} />
+              <Route path="/events" element={<Events />} />
+              <Route path="/blogs" element={<BlogsPage />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/products" element={<CategoriesPage />} />
+              <Route path="/products/:categoryId" element={<ProductsListingPage />} />
+              <Route path="/product/:productId" element={<ProductDetailPage />} />
+              <Route path="/pc-builder" element={<PCBuilder />} />
+              <Route path="/faqs" element={<FAQSection />} />
+            </Routes>
+          </main>
+
+          <Footer />
+        </div>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 

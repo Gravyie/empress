@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, Search, Menu, X, ShoppingBag } from 'lucide-react';
+import { ChevronDown, Search, Menu, X, ShoppingBag, User } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const EmpressNavbar = ({ theme = 'dark' }) => {
@@ -320,7 +320,10 @@ const EmpressNavbar = ({ theme = 'dark' }) => {
               <button onClick={() => navigate('/cart')} className={`${isDark ? 'text-white hover:text-gray-300' : 'text-gray-900 hover:text-gray-600'} transition-colors duration-200`}>
                 <ShoppingBag className="w-4 h-4"/>
               </button>
-
+              <button onClick={() => navigate('/account')} className={`${isDark ? 'text-white hover:text-gray-300' : 'text-gray-900 hover:text-gray-600'} transition-colors duration-200`}>
+                <User className="w-4 h-4"/>
+              </button>
+              
               {/* Mobile Menu Button */}
               <button
                 className={`lg:hidden ${isDark ? 'text-white' : 'text-gray-900'} transition-colors duration-200`}
