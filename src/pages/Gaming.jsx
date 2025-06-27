@@ -1,11 +1,34 @@
 "use client";
 import { ShoppingCart } from "lucide-react";
-import { pcs } from "../data/pcs";
+import { allSampleProducts } from "../data/products";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useCart } from "../components/CartContext";
+
 
 export default function Gaming() {
+  const { addToCart } = useCart();
+
+  const pcs = allSampleProducts.pcs;
+  const navigate = useNavigate();
   const [showAll, setShowAll] = useState(false);
   const visiblePCs = showAll ? pcs : pcs.slice(0, 8);
+
+  const handleProductClick = (productId) => {
+    // console.log(`Navigating to product detail page for: ${productId}`); // You can keep or remove this console.log
+    navigate('/product/' + productId); // <--- THIS IS THE REQUIRED CHANGE
+  };
+
+  const handleAddToCart = (e, productId) => {
+    e.stopPropagation(); // Prevent the product card's onClick (handleProductClick) from firing
+    const product = pcs.find(p => p.id === productId);
+    console.log(`Added ${product.name} to cart!`);
+    addToCart(product)
+  };
+      // In a real application, you would dispatch an action to add to a global cart state (e.g., using Context API or Redux)
+      // For now, it's just a console log.
+    
+
   return (
     <div>
     <section
@@ -114,7 +137,7 @@ export default function Gaming() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {visiblePCs.map((pc) => (
-            <div key={pc.id} className="bg-white rounded-lg shadow p-4 relative group">
+            <div key={pc.id} onClick={() => handleProductClick(pc.id)} className="bg-white rounded-lg shadow p-4 relative group">
               {/* Discount Badge */}
               {pc.discount && (
                 <span className="absolute top-2 left-2 bg-orange-100 text-orange-600 text-xs font-semibold px-2 py-0.5 rounded">
@@ -124,7 +147,7 @@ export default function Gaming() {
 
               {/* Image */}
               <img
-                src={pc.image}
+                src={pc.images[0]}
                 alt={pc.name}
                 className="w-full h-40 object-cover rounded-md mb-3"
               />
@@ -133,13 +156,13 @@ export default function Gaming() {
               <div className="flex justify-between items-center mb-2">
                 <h3 className="text-sm font-semibold text-gray-800">{pc.name}</h3>
                 <button className="text-[#F47C5A] hover:text-purple-800 transition">
-                  <ShoppingCart className="w-5 h-5" />
+                  <ShoppingCart onClick={(e) => handleAddToCart(e, pc.id)} className="w-5 h-5" />
                 </button>
               </div>
 
               {/* Specs */}
               <p className="text-xs text-gray-600 mb-2">
-                {pc.specs.join(", ")}
+                {Object.values(pc.specs).join(", ")}
               </p>
 
               {/* Pricing */}

@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom'; // Import useParams and useNavigate
 import { useInView } from "react-intersection-observer";
 import { allSampleProducts } from '../data/products';
+import { useCart } from '../components/CartContext';
 
 const ProductsListingPage = () => {
+  const { addToCart } = useCart();
+  
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
 
   const { categoryId } = useParams(); // Get the categoryId from the URL (e.g., 'processors', 'gpus')
@@ -96,13 +99,8 @@ const ProductsListingPage = () => {
   const handleAddToCart = (e, productId) => {
     e.stopPropagation(); // Prevent the product card's onClick (handleProductClick) from firing
     const product = products.find(p => p.id === productId);
-    if (product && product.inStock) {
-      console.log(`Added ${product.name} to cart!`);
-      // In a real application, you would dispatch an action to add to a global cart state (e.g., using Context API or Redux)
-      // For now, it's just a console log.
-    } else {
-      console.log(`${product.name} is out of stock.`);
-    }
+    console.log(`Added ${product.name} to cart!`);
+    addToCart(product);
   };
 
   const handleProductClick = (productId) => {

@@ -5,26 +5,34 @@ import { Monitor, Cpu, Gamepad, Headphones, Keyboard, Mouse, Mic } from "lucide-
 const CategoriesPage = () => {
   const navigate = useNavigate();
 
+  const handleProductClick = (productId) => {
+    // console.log(`Navigating to product detail page for: ${productId}`); // You can keep or remove this console.log
+    navigate('/product/' + productId); // <--- THIS IS THE REQUIRED CHANGE
+  };
+
   const categories = [
     {
-      id: "gaming",
+      category: "gaming",
       name: "Gaming Rig",
       description: "High-performance gaming desktops and custom builds",
       icon: <Gamepad className="w-5 h-5" />,
       systems: [
         {
+          id: 'cyberpowerpc-gamer-master',
           name: "Ultra Gaming Beast",
           specs: "RTX 4090 | i9-13900K | 64GB DDR5",
           price: "₹3,99,000",
           rating: 5,
         },
         {
+          id: 'cyberpowerpc-gamer-master',
           name: "Midrange Monster",
           specs: "RTX 4070 Ti | Ryzen 7 7700X | 32GB DDR5",
           price: "₹2,49,000",
           rating: 4.8,
         },
         {
+          id: 'cyberpowerpc-gamer-master',
           name: "Starter Gaming Setup",
           specs: "RTX 3060 | i5-12400F | 16GB DDR4",
           price: "₹1,49,000",
@@ -33,24 +41,27 @@ const CategoriesPage = () => {
       ],
     },
     {
-      id: "workstations",
+      category: "workstations",
       name: "Workstation",
       description: "Professional-grade systems for design and development",
       icon: <Monitor className="w-5 h-5" />,
       systems: [
         {
+          id: 'cyberpowerpc-gamer-master',
           name: "Render Pro Studio",
           specs: "RTX A6000 | Xeon W9 | 128GB ECC RAM",
           price: "₹6,80,000",
           rating: 5,
         },
         {
+          id: 'cyberpowerpc-gamer-master',
           name: "EditPro X7",
           specs: "RTX 4080 | Ryzen 9 7950X | 64GB DDR5",
           price: "₹3,20,000",
           rating: 4.9,
         },
         {
+          id: 'cyberpowerpc-gamer-master',
           name: "DevStation Mini",
           specs: "RTX 3060 | i5-12400F | 16GB RAM",
           price: "₹1,19,000",
@@ -59,24 +70,27 @@ const CategoriesPage = () => {
       ],
     },
     {
-      id: "accessories",
+      category: "accessories",
       name: "Gaming Peripherals",
       description: "Professional gaming accessories and peripherals",
       icon: <Headphones className="w-5 h-5" />,
       systems: [
         {
+          id: 'cyberpowerpc-gamer-master',
           name: "Mechanical Keyboards",
           specs: "RGB Backlit | Hot Swappable | Wireless",
           price: "₹6,499",
           rating: 4.9,
         },
         {
+          id: 'cyberpowerpc-gamer-master',
           name: "Gaming Mice",
           specs: "16000 DPI | Lightweight | RGB",
           price: "₹2,999",
           rating: 4.8,
         },
         {
+          id: 'cyberpowerpc-gamer-master',
           name: "Gaming Headsets",
           specs: "7.1 Surround | Noise Cancelling | RGB",
           price: "₹4,499",
@@ -85,24 +99,27 @@ const CategoriesPage = () => {
       ],
     },
     {
-      id: "components",
+      category: "components",
       name: "Component",
       description: "High-performance individual PC components",
       icon: <Cpu className="w-5 h-5" />,
       systems: [
         {
+          id: 'intel-i9-13900k',
           name: "Intel Core i9-14900K",
           specs: "24-Core | 32-Thread | LGA1700",
           price: "₹62,999",
           rating: 4.9,
         },
         {
+          id: 'intel-i9-13900k',
           name: "NVIDIA RTX 4090 Founders Edition",
           specs: "24GB GDDR6X | PCIe 4.0",
           price: "₹1,59,999",
           rating: 5,
         },
         {
+          id: 'intel-i9-13900k',
           name: "ASUS Z790 Hero Motherboard",
           specs: "DDR5 | WiFi 6E | Thunderbolt 4",
           price: "₹48,000",
@@ -150,11 +167,11 @@ const CategoriesPage = () => {
               <div className="flex items-center gap-3 mb-4">
                 <div
                   className={`w-10 h-10 flex items-center justify-center rounded-full text-white text-xl font-bold ${
-                    cat.id === "gaming"
+                    cat.category === "gaming"
                       ? "bg-purple-500"
-                      : cat.id === "accessories"
+                      : cat.category === "accessories"
                       ? "bg-pink-400"
-                      : cat.id === "components"
+                      : cat.category === "components"
                       ? "bg-blue-500"
                       : "bg-cyan-500"
                   }`}
@@ -174,8 +191,9 @@ const CategoriesPage = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {cat.systems.map((sys, i) => (
                   <div
+                    onClick = {() => handleProductClick(sys.id)}
                     key={i}
-                    className="bg-white rounded-xl px-5 py-4 text-black shadow-md flex flex-col justify-between hover:shadow-xl transition"
+                    className="bg-white rounded-xl px-5 py-4 text-black shadow-md flex flex-col justify-between hover:shadow-xl transition cursor-pointer"
                   >
                     <div>
                       <h4 className="font-semibold mb-1 text-sm">
@@ -200,7 +218,7 @@ const CategoriesPage = () => {
 
               <div className="mt-6 text-center">
                 <button 
-                  onClick={() => navigate(`/${cat.id}`)}
+                  onClick={() => navigate(`/${cat.category}`)}
                   className="bg-orange-500 hover:bg-orange-600 transition text-white px-5 py-2 rounded-full text-sm font-medium"
                 >
                   View All {cat.name} System →

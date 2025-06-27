@@ -11,7 +11,7 @@ import CustomPC from "./pages/CustomPC";
 import Events from "./pages/Events";
 import Workstations from "./pages/Workstations";
 import CategoriesPage from "./pages/CategoriesPage";
-import ProductsListingPage from "./pages/ProductsListingPage";
+import ComponentsListingPage from "./pages/ComponentsListingPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import PCBuilder from "./pages/PCBuilder";
 import FAQSection from "./components/FAQs";
@@ -64,7 +64,7 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/products" element={<CategoriesPage />} />
-              <Route path="/products/:categoryId" element={<ProductsListingPage />} />
+              <Route path="/products/:categoryId" element={<ComponentsListingPage />} />
               <Route path="/product/:productId" element={<ProductDetailPage />} />
               <Route path="/pc-builder" element={<PCBuilder />} />
               <Route path="/faqs" element={<FAQSection />} />

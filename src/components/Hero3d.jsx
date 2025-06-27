@@ -45,7 +45,7 @@ export default function Hero3d() {
               Pre-Built
             </button>
             </a>
-            <a href="custom-pc">
+            <a href="pc-builder">
             <button className="bg-gradient-to-r from-cyan-500 to-green-400 text-white px-6 py-2 rounded-md hover:from-green-400 hover:to-cyan-500 transition duration-300">
               Build it yourself!
             </button>

@@ -6,13 +6,6 @@ const ComponentsPage = () => {
   const navigate = useNavigate();
 
   const categories = [
-    // {
-    //   id: 'prebuilt-pcs',
-    //   name: 'Prebuilt PCs',
-    //   description: 'Complete gaming and workstation systems ready to use out of the box',
-    //   image: '/images/categories/prebuilt.jpg',
-    //   count: 24,
-    // },
     {
       id: 'processors',
       name: 'Processors (CPUs)',

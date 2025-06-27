@@ -36,7 +36,7 @@ export default function AccountPage() {
             <li className="text-gray-600">My Returns</li>
             <li className="text-gray-600">My Cancellations</li>
           </ul>
-          <p className="font-semibold text-black mb-2">My Wishlist</p>
+          {/* <p className="font-semibold text-black mb-2">My Wishlist</p> */}
         </aside>
 
         {/* Main Form */}

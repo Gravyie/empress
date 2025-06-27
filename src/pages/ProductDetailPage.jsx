@@ -16,8 +16,12 @@ const ProductDetailPage = () => {
   const [product, setProduct] = useState(null);
   const [mainImage, setMainImage] = useState('');
   const [category, setCategory] = useState(null); 
-// to track current category
- // State for the currently displayed main image
+  const [selectedSize, setSelectedSize] = useState(null);
+  const [selectedColor, setSelectedColor] = useState(null);
+  const [quantity, setQuantity] = useState(1);
+  
+  // to track current category
+  // State for the currently displayed main image
 
   // --- Sample Product Data (Expanded with more images and detailed specs) ---
   // In a real application, this would come from an API or a shared data file.
@@ -61,11 +65,11 @@ const ProductDetailPage = () => {
 
   const handleBuyNow = () => {
     console.log(`Buying ${product.name} now!`);
-    // Implement actual checkout logic here
-    alert(`Proceeding to checkout for ${product.name}`);
+    addToCart(product, quantity);
+    navigate("/cart");
   };
 
-  const isPrebuiltPC = allSampleProducts['prebuilt-pcs'].includes(product);
+  const isPC = allSampleProducts['pcs'].includes(product);
   return (
     <div 
       ref={ref}
@@ -88,7 +92,7 @@ const ProductDetailPage = () => {
         </div>
         
         {/* Left Section: Image Gallery */}
-        {isPrebuiltPC ? 
+        {isPC ? 
         <div className="flex flex-col items-center">
           {/* Main Image */}
           <div className="relative h-[75%] w-full max-w-lg lg:max-w-none bg-gray-100 rounded-xl overflow-hidden flex items-center justify-center p-4 mb-4 shadow-md">
@@ -167,7 +171,7 @@ const ProductDetailPage = () => {
 
 
         {/* Right Section: Details */}
-        {isPrebuiltPC ?
+        {isPC ?
         <div className="mt-8 lg:mt-0">
           <span className="text-sm text-gray-500 uppercase font-semibold tracking-wide block mb-2">
             {product.brand}
@@ -254,35 +258,66 @@ const ProductDetailPage = () => {
           </p>
 
           {/* Colour Options */}
-          <div>
-            <h4 className="font-semibold text-sm mb-1">Colours:</h4>
-            <div className="flex gap-2">
-              <span className="w-6 h-6 bg-gray-900 rounded-full border border-gray-300"></span>
-              <span className="w-6 h-6 bg-red-500 rounded-full border border-gray-300"></span>
-              {/* Add more colors if needed */}
+          {product.colors?.length > 0 && (
+            <div>
+              <h4 className="font-semibold text-sm mb-1">Colours:</h4>
+              <div className="flex gap-2">
+                {product.colors.map((color) => (
+                  <button
+                    key={color}
+                    onClick={() => setSelectedColor(color)}
+                    className={`w-6 h-6 rounded-full border-2 ${selectedColor === color ? 'border-black' : 'border-gray-300'}`}
+                    style={{ backgroundColor: color }}
+                    aria-label={`Select color ${color}`}
+                  ></button>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Size Options */}
-          <div>
-            <h4 className="font-semibold text-sm mb-1">Size:</h4>
-            <div className="flex gap-2 flex-wrap">
-              {['XS', 'S', 'M', 'L', 'XL'].map((size) => (
-                <button
-                  key={size}
-                  className="px-3 py-1 border text-sm rounded-md hover:bg-gray-100 transition"
-                >
-                  {size}
-                </button>
-              ))}
+          {product.sizes?.length > 0 && (
+            <div>
+              <h4 className="font-semibold text-sm mb-1">Size:</h4>
+              <div className="flex gap-2 flex-wrap">
+                {product.sizes.map((size) => (
+                  <button
+                    key={size}
+                    onClick={() => setSelectedSize(size)}
+                    className={`px-3 py-1 border text-sm rounded-md hover:bg-gray-100 transition ${
+                      selectedSize === size ? 'border-black font-semibold' : ''
+                    }`}
+                  >
+                    {size}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Quantity and Buy Now */}
-          <div className="flex items-center gap-4 mt-4">
-            <button className="w-8 h-8 border rounded text-lg font-bold">-</button>
-            <span className="font-medium">2</span>
-            <button className="w-8 h-8 border rounded text-lg font-bold">+</button>
+          <div className="flex items-center gap-2 mt-4">
+            <button
+              className="w-8 h-8 border rounded text-lg font-bold"
+              onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+            >
+              -
+            </button>
+            <span className="font-medium">{quantity}</span>
+            <button
+              className="w-8 h-8 border rounded text-lg font-bold"
+              onClick={() => setQuantity((q) => q + 1)}
+            >
+              +
+            </button>
+
+            <button
+              onClick={() => addToCart(product, quantity)}
+              disabled={!product.inStock}
+              className="ml-4 px-5 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              Add to Cart
+            </button>
 
             <button
               onClick={handleBuyNow}
