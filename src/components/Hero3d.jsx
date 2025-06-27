@@ -21,7 +21,7 @@ export default function Hero3d() {
         playsInline
         className="absolute top-0 left-0 w-full h-full object-cover z-0"
       >
-        <source src="/bg-video.mp4" type="video/mp4" />
+        <source src="/bg-video2.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       <div className="relative flex flex-rows z-10">
@@ -35,7 +35,7 @@ export default function Hero3d() {
             <h2 className="text-5xl font-semibold mb-10 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
               Get your Perfect PC today.
             </h2>
-            <p className="text-gray-300 text-lg">
+            <p className="text-gray-600 text-lg">
               Choose from our prebuild section OR Build your own
             </p>
           </div>
@@ -91,7 +91,7 @@ export default function Hero3d() {
             <h2 className="text-2xl font-semibold mb-6 bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">
               Pre-Built.
             </h2>
-            <p className="text-gray-300 text-md">
+            <p className="text-gray-600 text-md">
               Computers that are already assembled and prebuilt by manufacturers,
               rather than building one's own computer from scratch.
             </p>
@@ -100,7 +100,7 @@ export default function Hero3d() {
             <h2 className="text-2xl font-semibold mb-6 bg-gradient-to-r from-green-500 to-cyan-700 bg-clip-text text-transparent">
               Build it yourself.
             </h2>
-            <p className="text-gray-300 text-md">
+            <p className="text-gray-600 text-md">
               Main advantages of building your own computer is flexibility and
               customization. You have full control over the selection of each
               component, allowing you to choose the best part of your specific
