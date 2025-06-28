@@ -37,7 +37,7 @@ const insights = [
 
 const InsightBlocks = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 bg-gray-50 rounded-xl">
+    <div className="grid grid-cols-2 gap-6 p-6 bg-gray-50 rounded-xl">
       {insights.map((insight, idx) =>
         insight.type === "image" ? (
           <div key={idx} className="rounded-2xl overflow-hidden shadow">

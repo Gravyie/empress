@@ -25,7 +25,7 @@ export default function AboutStats() {
       </div>
 
       {/* Values Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+      <div className="grid grid-cols-2 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
         <ValueCard
           title="Gaming First"
           description="Every decision we make is driven by what’s best for the gaming community and experience."
