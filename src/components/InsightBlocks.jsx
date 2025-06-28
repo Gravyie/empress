@@ -7,7 +7,6 @@ const insights = [
   },
   {
     type: "text",
-    icon: "🧠",
     title: (
       <>
         Power Meets <span className="underline decoration-green-500">Precision</span>
@@ -18,7 +17,6 @@ const insights = [
   },
   {
     type: "text",
-    icon: "⚙️",
     title: (
       <>
         Built for <span className="underline decoration-purple-400">Your Workflow</span>
@@ -37,29 +35,38 @@ const insights = [
 
 const InsightBlocks = () => {
   return (
-    <div className="grid grid-cols-2 gap-6 p-6 bg-gray-50 rounded-xl">
-      {insights.map((insight, idx) =>
-        insight.type === "image" ? (
-          <div key={idx} className="rounded-2xl overflow-hidden shadow">
-            <img
-              src={insight.src}
-              alt={insight.alt}
-              className="w-full h-full object-cover"
-            />
+    <div className="md:px-30 grid grid-cols-1 md:grid-cols-2 gap-2 px-3 py-3 sm:px-4 bg-gray-50 rounded-lg">
+      {insights.map((insight, idx) => {
+        // Reorder 3rd and 4th items on mobile only
+        let orderClass = "";
+        if (idx === 2) orderClass = "order-4 md:order-3";
+        else if (idx === 3) orderClass = "order-3 md:order-4";
+
+        const baseClass =
+          insight.type === "image"
+            ? "rounded-lg overflow-hidden shadow-sm"
+            : "bg-white rounded-lg shadow-sm px-3 py-4 sm:px-4 sm:py-5 flex flex-col justify-center text-center";
+
+        return (
+          <div key={idx} className={`${baseClass} ${orderClass}`}>
+            {insight.type === "image" ? (
+              <img
+                src={insight.src}
+                alt={insight.alt}
+                className="w-full object-cover rounded-lg max-h-48 sm:max-h-72"
+              />
+            ) : (
+              <>
+                <h3 className="text-sm sm:text-base font-semibold mb-1">{insight.title}</h3>
+                <p className="text-gray-600 text-xs sm:text-sm leading-snug">{insight.description}</p>
+              </>
+            )}
           </div>
-        ) : (
-          <div
-            key={idx}
-            className="bg-white rounded-2xl shadow p-8 flex flex-col justify-center text-center"
-          >
-            <div className="text-3xl mb-4">{insight.icon}</div>
-            <h3 className="text-xl font-bold mb-3">{insight.title}</h3>
-            <p className="text-gray-600 text-sm">{insight.description}</p>
-          </div>
-        )
-      )}
+        );
+      })}
     </div>
   );
 };
+
 
 export default InsightBlocks;

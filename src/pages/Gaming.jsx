@@ -75,67 +75,13 @@ export default function Gaming() {
       </p>
     </section>
 
-    <section className="p-5 px-4">
-        <style>{`
-          .animated-gradient {
-            background: linear-gradient(-45deg, #2E003E, #7F7FFF, #2E003E, #000);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
-          }
-
-          @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-          }
-        `}</style>
-
-        <div className="animated-gradient text-white py-8 px-4 rounded-xl shadow-xl backdrop-blur-md bg-black/60 max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left space-y-8 md:space-y-0 md:divide-x divide-gray-600">
-            
-            <div className="px-6 md:w-1/4 animate-fadeUp">
-              <div className="text-3xl mb-2">🚚</div>
-              <h3 className="font-bold text-lg mb-1">Fastest Shipping</h3>
-              <p className="text-sm text-gray-300">
-                Get your PCs Delivered Swiftly with our Shipping Partner.
-              </p>
-            </div>
-
-            <div className="px-6 md:w-1/4 animate-fadeUp">
-              <div className="text-3xl mb-2">🛍️</div>
-              <h3 className="font-bold text-lg mb-1">After Sales Service</h3>
-              <p className="text-sm text-gray-300">
-                Support that Sticks with you, even After the Purchase.
-              </p>
-            </div>
-
-            <div className="px-6 md:w-1/4 animate-fadeUp">
-              <div className="text-3xl mb-2">💬</div>
-              <h3 className="font-bold text-lg mb-1">Support 24/7</h3>
-              <p className="text-sm text-gray-300">
-                Contact us 24/7 hours a day.
-              </p>
-            </div>
-
-            <div className="px-6 md:w-1/4 animate-fadeUp">
-              <div className="text-3xl mb-2">✅</div>
-              <h3 className="font-bold text-lg mb-1">100% Secure Payment</h3>
-              <p className="text-sm text-gray-300">
-                Experience safe, encrypted, and reliable payment options.
-              </p>
-            </div>
-
-          </div>
-        </div>
-    </section>
-
     <section className="py-12 px-4 md:px-8 bg-white">
         <div className="mb-6">
           <p className="text-red-500 text-sm font-semibold">Top Category</p>
           <h2 className="text-2xl md:text-3xl font-bold">Feature PC Builds for Gaming</h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
           {visiblePCs.map((pc) => (
             <div key={pc.id} onClick={() => handleProductClick(pc.id)} className="bg-white rounded-lg shadow p-4 relative group">
               {/* Discount Badge */}
@@ -190,6 +136,61 @@ export default function Gaming() {
           </div>
         )}
     </section>
+
+    <section className="p-5 px-4">
+        <style>{`
+          .animated-gradient {
+            background: linear-gradient(-45deg, #2E003E, #7F7FFF, #2E003E, #000);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+          }
+
+          @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+          }
+        `}</style>
+
+        <div className="animated-gradient text-white py-8 px-4 rounded-xl shadow-xl backdrop-blur-md bg-black/60 max-w-6xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left space-y-8 md:space-y-0 md:divide-x divide-gray-600">
+            
+            <div className="px-6 md:w-1/4 animate-fadeUp">
+              <div className="text-3xl mb-2">🚚</div>
+              <h3 className="font-bold text-lg mb-1">Fastest Shipping</h3>
+              <p className="text-sm text-gray-300">
+                Get your PCs Delivered Swiftly with our Shipping Partner.
+              </p>
+            </div>
+
+            <div className="px-6 md:w-1/4 animate-fadeUp">
+              <div className="text-3xl mb-2">🛍️</div>
+              <h3 className="font-bold text-lg mb-1">After Sales Service</h3>
+              <p className="text-sm text-gray-300">
+                Support that Sticks with you, even After the Purchase.
+              </p>
+            </div>
+
+            <div className="px-6 md:w-1/4 animate-fadeUp">
+              <div className="text-3xl mb-2">💬</div>
+              <h3 className="font-bold text-lg mb-1">Support 24/7</h3>
+              <p className="text-sm text-gray-300">
+                Contact us 24/7 hours a day.
+              </p>
+            </div>
+
+            <div className="px-6 md:w-1/4 animate-fadeUp">
+              <div className="text-3xl mb-2">✅</div>
+              <h3 className="font-bold text-lg mb-1">100% Secure Payment</h3>
+              <p className="text-sm text-gray-300">
+                Experience safe, encrypted, and reliable payment options.
+              </p>
+            </div>
+
+          </div>
+        </div>
+    </section>
+
     </div>
   );
 }

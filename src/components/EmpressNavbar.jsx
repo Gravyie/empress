@@ -256,7 +256,7 @@ const EmpressNavbar = ({ theme = 'dark' }) => {
       </div>
 
       {/* Main Navigation */}
-      <nav className={`fixed top-8 left-0 right-0 z-40 ${navBg} backdrop-blur-xl transition-all duration-500 transform ${
+      <nav className={`fixed top-14 sm:top-8 left-0 right-0 z-50 ${navBg} backdrop-blur-xl transition-all duration-500 transform ${
         isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
       }`}>
         <div className="max-w-7xl mx-auto px-4">

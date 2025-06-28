@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Heart, ShoppingCart, Star } from "lucide-react";
+import { Heart, ShoppingCart, Star, X } from "lucide-react";
 import { useCart } from "../components/CartContext";
 import { allSampleProducts } from "../data/products";
 import { useNavigate } from "react-router-dom";
@@ -15,6 +15,10 @@ const Workstations = () => {
   const [sort, setSort] = useState("none");
   const [filteredProducts, setFilteredProducts] = useState(products);
   const { addToCart } = useCart();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => setIsSidebarOpen((prev) => !prev);
+  const closeSidebar = () => setIsSidebarOpen(false);
 
   const applySort = (products, sortType) => {
     if (sortType === "asc") {
@@ -72,8 +76,34 @@ const Workstations = () => {
   };
 
   return (
-    <div className="flex gap-6 p-8 bg-white min-h-screen">
-      <aside className="w-[260px] space-y-8">
+    <div className="flex flex-col md:flex-row min-h-screen bg-white">
+      {/* Mobile Filter Button */}
+      <div className="md:hidden flex justify-end p-4">
+        <button
+          onClick={toggleSidebar}
+          className="px-4 py-2 text-sm bg-orange-500 text-white rounded"
+        >
+          Filter
+        </button>
+      </div>
+
+      {/* Sidebar */}
+      <aside
+        className={`
+          bg-white shadow-md w-[260px] p-6 space-y-6 z-10
+          ${isSidebarOpen ? "fixed top-20 bottom-0 left-0" : "hidden"}
+          md:static md:block md:shadow-none
+        `}
+      >
+        {/* Mobile Close Button */}
+        <div className="md:hidden flex justify-end mb-4">
+          <button onClick={closeSidebar}>
+            <X className="w-5 h-5 text-gray-500" />
+          </button>
+        </div>
+
+        {/* Filter sections here */}
+        {/* ⚡ Performance */}
         <div>
           <h3 className="font-bold mb-3 flex items-center gap-2">⚡ Performance</h3>
           {["Beast", "High", "Regular"].map((type) => (
@@ -92,6 +122,7 @@ const Workstations = () => {
           ))}
         </div>
 
+        {/* ⚡ Use Case */}
         <div>
           <h3 className="font-bold mb-3 flex items-center gap-2">⚡ Use Case</h3>
           {["Gaming", "Video Editing", "3D Rendering", "Development"].map((type) => (
@@ -110,6 +141,7 @@ const Workstations = () => {
           ))}
         </div>
 
+        {/* ⚡ Price Range */}
         <div>
           <h3 className="font-bold mb-3 flex items-center gap-2">⚡ Price Range</h3>
           <div className="text-sm text-gray-800 space-y-2">
@@ -145,7 +177,7 @@ const Workstations = () => {
             </label>
           </div>
 
-          <div className="border-t text-gray-300 p-6 flex flex-col justify-center items-center mt-4 gap-y-2">
+          <div className="border-t text-gray-300 pt-4 mt-4 flex flex-col justify-center items-center gap-y-2">
             <button onClick={handleApplyFilters} className="bg-orange-500 text-white px-4 py-2 text-sm rounded">
               Apply Filters
             </button>
@@ -156,7 +188,9 @@ const Workstations = () => {
         </div>
       </aside>
 
-      <section className="flex-1">
+      {/* Main Content */}
+      <section className="flex-1 px-4 py-6">
+        {/* Header */}
         <div className="flex justify-between items-center mb-6">
           <div>
             <h1 className="text-3xl font-bold">Workstation</h1>
@@ -173,11 +207,12 @@ const Workstations = () => {
           </select>
         </div>
 
-        <div className="grid grid-cols-3 gap-6">
+        {/* Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
           {filteredProducts.map((product) => (
             <div
               key={product.id}
-               onClick={() => handleProductClick(product.id)}
+              onClick={() => handleProductClick(product.id)}
               className="relative bg-white shadow rounded overflow-hidden group cursor-pointer"
             >
               <div className="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded">
@@ -186,26 +221,21 @@ const Workstations = () => {
               <button className="absolute top-2 right-2">
                 <Heart className="w-4 h-4 text-gray-500 hover:text-red-500" />
               </button>
-
               <img
                 src={product.images[0]}
                 alt={product.name}
                 className="w-full h-48 object-cover"
               />
-
               <div className="p-4">
-
                 <div className="flex justify-between items-center mb-2">
                   <h3 className="text-sm font-semibold text-gray-800">{product.name}</h3>
                   <button className="text-[#F47C5A] hover:text-purple-800 transition">
                     <ShoppingCart onClick={(e) => handleAddToCart(e, product.id)} className="w-5 h-5" />
                   </button>
                 </div>
-
                 <p className="text-xs text-gray-600 mb-2">
                   {Object.values(product.specs).join(", ")}
                 </p>
-
                 <div className="flex items-center gap-1 text-yellow-500 mb-2">
                   {Array(5)
                     .fill()
