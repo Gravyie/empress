@@ -59,8 +59,8 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="bg-gray-50 py-16 px-4 md:px-12">
-      <h2 className="text-3xl md:text-4xl font-bold  mb-10">
+    <section className="bg-gray-50 py-8 md:py-16 px-4 md:px-12">
+      <h2 className="text-3xl md:text-4xl font-bold  mb-4 md:mb-10">
         Don't take our word for it...
       </h2>
 

@@ -61,7 +61,7 @@ const Cart = () => {
                         <img
                             src={item.images?.[0] || "https://via.placeholder.com/80"}
                             alt={item.name}
-                            className="w-16 h-16 rounded object-cover"
+                            className="w-16 h-16 rounded object-contain"
                         />
                         <button
                             onClick={() => removeFromCart(item.id)}

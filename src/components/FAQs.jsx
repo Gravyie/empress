@@ -42,14 +42,14 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="bg-white py-16 px-4 md:px-8 lg:px-16">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 flex justify-center items-center">
+    <section className="bg-white py-10 md:py-16 px-4 md:px-8 lg:px-16">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-4 md:gap-12 flex justify-center items-center">
         {/* FAQ Section */}
         <div>
           <h2 className="text-3xl font-bold text-center md:text-left mb-2">
             Frequently asked questions
           </h2>
-          <p className="text-gray-500 text-center md:text-left mb-10">
+          <p className="text-gray-500 text-center md:text-left mb-4 md:mb-10">
             Most asked questions all at one place.
           </p>
 
@@ -109,7 +109,7 @@ export default function FAQSection() {
         </div>
 
         {/* Ask a Question Form */}
-        <div className="bg-gray-50 rounded-xl shadow-sm p-8">
+        <div className="bg-gray-50 rounded-xl shadow-sm p-4 md:p-8">
           <h3 className="text-2xl font-semibold mb-6">Make your questions</h3>
           <form className="space-y-4">
             <input

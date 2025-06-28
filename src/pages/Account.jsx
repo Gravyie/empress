@@ -22,17 +22,17 @@ export default function AccountPage() {
 
   return (
     <div className=" bg-gray-100 px-6 py-6">
-      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-10">
+      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-4 md:gap-10">
         {/* Sidebar */}
         <aside className="w-full lg:w-1/4 bg-white shadow rounded-lg p-6 text-sm text-gray-700">
-          <p className="font-semibold text-black mb-4">Manage My Account</p>
-          <ul className="space-y-2 mb-6">
+          <p className="font-semibold text-black mb-2 md:mb-4">Manage My Account</p>
+          <ul className="space-y-2 mb-2 md:mb-4">
             <li className="text-red-500 font-medium">My Profile</li>
             <li className="text-gray-400">Address Book</li>
             <li className="text-gray-400">My Payment Options</li>
           </ul>
           <p className="font-semibold text-black mb-2">My Orders</p>
-          <ul className="space-y-2 mb-6">
+          <ul className="space-y-2">
             <li className="text-gray-600">My Returns</li>
             <li className="text-gray-600">My Cancellations</li>
           </ul>
@@ -40,8 +40,8 @@ export default function AccountPage() {
         </aside>
 
         {/* Main Form */}
-        <div className="flex-1 bg-white rounded-lg shadow p-8">
-          <div className="flex justify-between items-center mb-6">
+        <div className="flex-1 bg-white rounded-lg shadow p-4 md:p-8">
+          <div className="flex justify-between items-center mb-4 md:mb-6">
             <h2 className="text-xl font-semibold text-red-500">Edit Your Profile</h2>
             <button
               onClick={handleLogout}
@@ -52,7 +52,7 @@ export default function AccountPage() {
           </div>
 
           <form onSubmit={handleSave} className="space-y-6">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-6">
               <div>
                 <label className="text-sm text-gray-600 block mb-1">First Name</label>
                 <input
