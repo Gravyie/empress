@@ -10,8 +10,8 @@ export default function CoreValues() {
   const [selected, setSelected] = useState("Performance");
 
   return (
-    <section className="bg-white py-16 px-4 md:px-12 text-center">
-      <h2 className="text-3xl md:text-4xl font-bold mb-8">Our Core Values</h2>
+    <section className="bg-white py-8 md:py-16 px-4 md:px-12 text-center">
+      <h2 className="text-3xl md:text-4xl font-bold mb-4 md:mb-8">Our Core Values</h2>
       <div className="flex flex-wrap justify-center gap-4 mb-6">
         {Object.keys(coreValues).map((key) => (
           <button

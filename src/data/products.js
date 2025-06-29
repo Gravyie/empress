@@ -1,5 +1,5 @@
 export const allSampleProducts = {
-  'prebuilt-pcs': [
+  'pcs': [
     {
       id: 'cyberpowerpc-gamer-master',
       brand: 'CyberPowerPC',
@@ -8,6 +8,8 @@ export const allSampleProducts = {
       description2: 'A powerhouse prebuilt gaming PC, designed for extreme performance and stunning visuals. Equipped with the latest generation CPU and GPU, ensuring a smooth experience in demanding games and applications. Features liquid cooling for optimal thermal management and a sleek, customizable RGB lighting system. Ideal for competitive gamers and content creators seeking top-tier performance without the hassle of building from scratch.',
       price: 1499.99,
       originalPrice: 1599.99,
+      rating: 4,
+      discount: 40,
       images: [
         "/images/img3.JPG",
         "/images/img3.1.jpg",
@@ -23,6 +25,8 @@ export const allSampleProducts = {
         'Cooling': '240mm AIO Liquid Cooler',
         'Power Supply': '750W 80+ Gold PSU'
       },
+      useCase: "Video Editing",
+      performance: "Beast",
       badge: { text: 'Gaming Rig', color: 'bg-red-500' },
       inStock: true
     },
@@ -33,6 +37,9 @@ export const allSampleProducts = {
       description1: 'High-performance prebuilt PC with Intel Core i9 and RTX 4080.',
       description2: 'High-performance prebuilt PC featuring an Intel Core i9 and NVIDIA RTX 4080.',
       price: 2199.99,
+      originalPrice: 1599.99,
+      rating: 5,
+      discount: 40,
       images: [
         'https://via.placeholder.com/300x200/cccccc/ffffff?text=Skytech+Shiva+1',
         'https://via.placeholder.com/300x200/cccccc/ffffff?text=Skytech+Shiva+2',
@@ -44,6 +51,8 @@ export const allSampleProducts = {
         'RAM': '32GB DDR5',
         'Storage': '2TB NVMe SSD'
       },
+      useCase: "Video Editing",
+      performance: "Beast",
       badge: { text: 'Pro Gaming', color: 'bg-purple-500' },
       inStock: true
     },
@@ -54,6 +63,9 @@ export const allSampleProducts = {
       description1: 'Compact and powerful gaming desktop with AMD Ryzen 5 and RTX 3050.',
       description2: 'Compact and powerful gaming desktop with AMD Ryzen 5 and RTX 3050. Great for entry-level gaming.',
       price: 899.99,
+      originalPrice: 1599.99,
+      rating: 4,
+      discount: 40,
       images: [
         'https://via.placeholder.com/300x200/007bff/ffffff?text=HP+OMEN',
         'https://via.placeholder.com/300x200/cccccc/ffffff?text=HP+OMEN+2',
@@ -65,9 +77,243 @@ export const allSampleProducts = {
         'RAM': '8GB DDR4',
         'Storage': '512GB NVMe SSD'
       },
+      useCase: "Video Editing",
+      performance: "Beast",
       badge: { text: 'Value Pick', color: 'bg-green-500' },
       inStock: true
-    }
+    },
+    {
+      id: 'lenovo-legion-t7',
+      brand: 'Lenovo',
+      name: 'Lenovo Legion T7 34IMZ5',
+      description1: 'A premium gaming and creator desktop with cutting-edge specs.',
+      description2: 'With a 13th Gen Intel Core i7 and RTX 4080, this desktop dominates modern games and professional workloads. Sleek chassis with ARGB lighting and whisper-quiet cooling.',
+      price: 2099.99,
+      originalPrice: 2399.99,
+      rating: 5,
+      discount: 13,
+      images: [
+        '/images/legion1.jpg',
+        '/images/legion2.jpg',
+        '/images/legion3.jpg'
+      ],
+      specs: {
+        'CPU': 'Intel Core i7-13700KF',
+        'GPU': 'NVIDIA RTX 4080',
+        'RAM': '32GB DDR5 5600MHz',
+        'Storage': '2TB NVMe SSD',
+        'Cooling': '240mm Liquid Cooler',
+        'Power Supply': '850W Gold PSU'
+      },
+      useCase: "Gaming",
+      performance: "Beast",
+      badge: { text: 'Creator Ready', color: 'bg-indigo-600' },
+      inStock: true
+    },
+    {
+      id: 'asus-rog-strix-gl10',
+      brand: 'ASUS',
+      name: 'ASUS ROG Strix GL10',
+      description1: 'Affordable desktop for entry-level gaming and creative work.',
+      description2: 'The ROG Strix GL10 combines affordability and performance, perfect for gamers and students diving into creative fields.',
+      price: 749.99,
+      originalPrice: 899.99,
+      rating: 3,
+      discount: 17,
+      images: [
+        '/images/rog1.jpg',
+        '/images/rog2.jpg'
+      ],
+      specs: {
+        'CPU': 'Intel Core i5-12400F',
+        'GPU': 'GTX 1660 Super',
+        'RAM': '16GB DDR4',
+        'Storage': '512GB SSD'
+      },
+      useCase: "Gaming",
+      performance: "Regular",
+      badge: { text: 'Budget Gamer', color: 'bg-yellow-400' },
+      inStock: true
+    },
+    {
+      id: 'alienware-aurora-r15',
+      brand: 'Alienware',
+      name: 'Alienware Aurora R15',
+      description1: 'Alienware’s signature desktop packed with insane performance.',
+      description2: 'Engineered for enthusiasts and professionals, the R15 is armed with Intel’s best and NVIDIA’s latest. High thermal efficiency with Alienware Cryo-Tech.',
+      price: 2999.99,
+      originalPrice: 3299.99,
+      rating: 5,
+      discount: 9,
+      images: [
+        '/images/alien1.jpg',
+        '/images/alien2.jpg',
+        '/images/alien3.jpg'
+      ],
+      specs: {
+        'CPU': 'Intel Core i9-14900KF',
+        'GPU': 'NVIDIA RTX 4090',
+        'RAM': '64GB DDR5 6000MHz',
+        'Storage': '2TB NVMe + 2TB HDD',
+        'Cooling': 'Liquid Cooled',
+        'Power Supply': '1000W Platinum PSU'
+      },
+      useCase: "3D Rendering",
+      performance: "Beast",
+      badge: { text: 'Flagship', color: 'bg-pink-600' },
+      inStock: true
+    },
+    {
+      id: 'ibuypower-slate-mesh',
+      brand: 'iBUYPOWER',
+      name: 'iBUYPOWER Slate Mesh Gaming PC',
+      description1: 'Stylish build with serious internals.',
+      description2: 'A visually striking chassis with RGB mesh front, combined with balanced hardware ideal for 1080p and 1440p gaming.',
+      price: 1199.99,
+      originalPrice: 1399.99,
+      rating: 4,
+      discount: 14,
+      images: [
+        '/images/ibuypower1.jpg',
+        '/images/ibuypower2.jpg'
+      ],
+      specs: {
+        'CPU': 'AMD Ryzen 5 7600X',
+        'GPU': 'RTX 4060 Ti',
+        'RAM': '16GB DDR5',
+        'Storage': '1TB NVMe SSD'
+      },
+      useCase: "Gaming",
+      performance: "Regular",
+      badge: { text: 'Mid-Tier Beast', color: 'bg-blue-500' },
+      inStock: true
+    },
+    {
+      id: 'corsair-one-elite',
+      brand: 'Corsair',
+      name: 'Corsair ONE i500 Elite',
+      description1: 'Ultra-compact powerhouse for creators.',
+      description2: 'Don’t let the size fool you. This mini-tower houses workstation-class components ideal for editing, rendering, and 4K gaming.',
+      price: 2699.99,
+      originalPrice: 2999.99,
+      rating: 5,
+      discount: 10,
+      images: [
+        '/images/corsair1.jpg',
+        '/images/corsair2.jpg'
+      ],
+      specs: {
+        'CPU': 'Intel Core i9-13900K',
+        'GPU': 'RTX 4080',
+        'RAM': '64GB DDR5',
+        'Storage': '2TB Gen4 NVMe SSD'
+      },
+      useCase: "Video Editing",
+      performance: "Beast",
+      badge: { text: 'Compact Beast', color: 'bg-cyan-600' },
+      inStock: true
+    },
+    {
+      id: 'acer-nitro-50',
+      brand: 'Acer',
+      name: 'Acer Nitro 50',
+      description1: 'Reliable mid-range desktop with clean aesthetics.',
+      description2: 'Great for casual gamers and media creators, this build balances affordability and capability.',
+      price: 999.99,
+      originalPrice: 1249.99,
+      rating: 4,
+      discount: 20,
+      images: [
+        '/images/nitro1.jpg',
+        '/images/nitro2.jpg'
+      ],
+      specs: {
+        'CPU': 'Intel Core i5-13400F',
+        'GPU': 'RTX 3060',
+        'RAM': '16GB DDR4',
+        'Storage': '1TB SSD'
+      },
+      useCase: "Everyday + Gaming",
+      performance: "Beast",
+      badge: { text: 'All-Rounder', color: 'bg-teal-500' },
+      inStock: true
+    },
+    {
+      id: 'msi-codex-r',
+      brand: 'MSI',
+      name: 'MSI Codex R',
+      description1: 'A performance tower with a clean build.',
+      description2: 'The Codex R offers robust thermal design and punchy performance, perfect for esports and productivity alike.',
+      price: 1149.99,
+      originalPrice: 1299.99,
+      rating: 4,
+      discount: 12,
+      images: [
+        '/images/msi1.jpg',
+        '/images/msi2.jpg'
+      ],
+      specs: {
+        'CPU': 'Intel Core i7-12700F',
+        'GPU': 'RTX 4060',
+        'RAM': '16GB DDR5',
+        'Storage': '1TB SSD'
+      },
+      useCase: "Development",
+      performance: "Regular",
+      badge: { text: 'eSports Ready', color: 'bg-orange-600' },
+      inStock: true
+    },
+    {
+      id: 'nzxt-player-two',
+      brand: 'NZXT',
+      name: 'NZXT Player: Two',
+      description1: 'Modern case design with plug-and-play power.',
+      description2: 'The Player: Two is a sleek, well-cooled gaming desktop that delivers clean performance and clean aesthetics.',
+      price: 1399.99,
+      originalPrice: 1599.99,
+      rating: 4,
+      discount: 13,
+      images: [
+        '/images/nzxt1.jpg',
+        '/images/nzxt2.jpg',
+        '/images/nzxt3.jpg'
+      ],
+      specs: {
+        'CPU': 'AMD Ryzen 7 5800X3D',
+        'GPU': 'RTX 4070',
+        'RAM': '32GB DDR4',
+        'Storage': '1TB SSD'
+      },
+      useCase: "Development",
+      performance: "Regular",
+      badge: { text: 'Stream Beast', color: 'bg-fuchsia-500' },
+      inStock: true
+    },
+    {
+      id: 'dell-xps-desktop-8960',
+      brand: 'Dell',
+      name: 'Dell XPS Desktop 8960',
+      description1: 'A professional desktop for demanding workflows.',
+      description2: 'XPS Desktop 8960 delivers consistent performance for professionals and engineers. Premium materials and whisper-quiet fans.',
+      price: 1899.99,
+      originalPrice: 2099.99,
+      rating: 4,
+      discount: 10,
+      images: [
+        '/images/xps1.jpg',
+        '/images/xps2.jpg'
+      ],
+      specs: {
+        'CPU': 'Intel Core i9-13900',
+        'GPU': 'RTX 4070',
+        'RAM': '32GB DDR5',
+        'Storage': '1TB SSD + 2TB HDD'
+      },
+      useCase: "3D Rendering",
+      performance: "High",
+      badge: { text: 'Workhorse', color: 'bg-slate-600' },
+      inStock: true
+    },
   ],
   'processors': [
     {

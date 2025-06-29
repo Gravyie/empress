@@ -91,7 +91,7 @@ export default function Gallery() {
   };
 
   return (
-    <div className="w-full flex flex-col items-center justify-center py-12 bg-white overflow-hidden relative">
+    <div className="w-full flex flex-col items-center justify-center py-6 md:py-12 bg-white overflow-hidden relative">
       <h2 className="text-3xl font-bold mb-6">Gallery</h2>
 
       <div className="relative w-full max-w-[100vw] h-[320px] flex items-center justify-center">

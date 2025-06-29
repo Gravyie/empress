@@ -24,7 +24,7 @@ export default function Contact() {
         NEED A HAND?
       </h1>
 
-      <div className="flex-1 grid md:grid-cols-2 gap-16 items-center">
+      <div className="flex-1 grid md:grid-cols-2 gap-6 md:gap-16 items-center">
         <div className="space-y-6">
           <div>
             <h2 className="text-xl font-semibold mb-2">Contact Us</h2>
