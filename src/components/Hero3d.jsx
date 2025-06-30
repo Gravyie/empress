@@ -21,7 +21,7 @@ export default function Hero3d() {
         playsInline
         className="absolute top-0 left-0 w-full h-full object-cover z-0"
       >
-        <source src="/bg-video3.mp4" type="video/mp4" />
+        <source src="/bg-video2.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
@@ -52,6 +52,9 @@ export default function Hero3d() {
               <button className="bg-gradient-to-r from-cyan-500 to-green-400 text-white px-6 py-2 rounded-md hover:from-green-400 hover:to-cyan-500 transition duration-300">
                 Build it yourself!
               </button>
+              <button className="bg-gradient-to-r from-cyan-500 to-green-400 text-white px-6 py-2 rounded-md hover:from-green-400 hover:to-cyan-500 transition duration-300">
+                Build it yourself!
+              </button>
             </a>
           </div>
           <a
@@ -76,6 +79,7 @@ export default function Hero3d() {
             <Canvas camera={{ position: [2, 0.7, 3], fov: 12 }}>
               <Suspense fallback={<Loader />}>
                 <ambientLight intensity={100} />
+                <directionalLight position={[15, 15, 15]} intensity={50} />
                 <directionalLight position={[15, 15, 15]} intensity={50} />
                 <PCModel />
                 <OrbitControls enableZoom={false} />
