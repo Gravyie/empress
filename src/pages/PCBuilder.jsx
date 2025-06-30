@@ -251,7 +251,7 @@ const PCBuilder = () => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className="min-h-screen bg-[#FAFAFA] pb-6 px-2 sm:px-4 lg:px-8 font-sans">
+      <div className="min-h-screen bg-[#FAFAFA] pb-6 p-3 sm:px-4 lg:px-8 font-sans">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="text-center pt-2 md:py-4 sm:py-8">
@@ -379,14 +379,14 @@ const PCBuilder = () => {
                     src={getCurrentImageForBuild(COMPONENT_FLOW.length, selectedComponents)}
                     alt="Final PC build"
                     className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-3xl
-                               h-52 sm:h-56 md:h-64 lg:h-auto
+                               h-56 md:h-64 lg:h-auto
                                rounded-lg shadow-xl border border-gray-100 object-contain"
                   />
                 </div>
 
                 <div className="w-full lg:w-1/3 flex flex-col justify-between overflow-hidden">
                   <div className="space-y-2 sm:space-y-3 lg:space-y-4 flex-1 overflow-y-auto pr-1
-                              max-h-[200px] sm:max-h-[250px] lg:max-h-none"> {/* <--- KEY CHANGE HERE */}
+                              max-h-[60vh] lg:max-h-none"> {/* <--- KEY CHANGE HERE */}
                     <h3 className="text-base sm:text-md font-bold text-gray-800 mb-2">Selected Components:</h3>
                     <ul className="space-y-1 sm:space-y-2 lg:space-y-3">
                       {COMPONENT_FLOW.map(({ type, label }) => (

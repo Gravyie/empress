@@ -282,13 +282,13 @@ const EmpressNavbar = ({ theme = 'dark' }) => {
   return (
     <>
       {/* Apple-style top banner */}
-      <div className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-orange-500 to-red-500 text-white text-center text-xs p-2 sm:text-sm">
+      <div className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-orange-500 to-red-500 text-white text-center text-[0.5rem] p-2 md:text-sm">
         Get up to 12 months of No Cost EMI + ₹80K cashback. 
         <span className="ml-2 text-orange-200 hover:text-white cursor-pointer">Shop &gt;</span>
       </div>
 
       {/* Main Navigation */}
-      <nav className={`fixed top-8 sm:top-8 left-0 right-0 z-50 ${navBg} backdrop-blur-xl transition-all duration-500 transform ${
+      <nav className={`fixed top-7 left-0 right-0 z-50 ${navBg} backdrop-blur-xl transition-all duration-500 transform ${
         isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
       }`}>
         <div className="max-w-7xl mx-auto px-4">
@@ -430,7 +430,7 @@ const EmpressNavbar = ({ theme = 'dark' }) => {
         <div className={`absolute right-0 top-0 h-full w-80 ${isDark ? 'bg-gray-900' : 'bg-white'} transform transition-transform duration-300 ${
           isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         } overflow-y-auto`}>
-          <div className="p-6 pt-16">
+          <div className="p-6 pt-20">
             <div className="space-y-6">
               <a href="/" className={`block text-lg font-medium ${isDark ? 'text-white hover:text-gray-300' : 'text-gray-900 hover:text-gray-600'} transition-colors`}>
                 Home
@@ -474,7 +474,7 @@ const EmpressNavbar = ({ theme = 'dark' }) => {
       </div>
 
       {/* Spacer for fixed navbar */}
-      <div className="h-16"></div>
+      <div className="h-14"></div>
     </>
   );
 };
