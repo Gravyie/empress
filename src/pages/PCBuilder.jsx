@@ -143,7 +143,7 @@ const ComponentCard = ({ component, onSelectComponent, isSelected }) => {
         w-full h-auto
       `}
     >
-      <img src={component.image} alt={component.name} className="w-full h-8 sm:h-16 object-contain mb-1" />
+      <img src={component.image} alt={component.name} className="w-full h-14 sm:h-16 object-contain mb-1" />
       <p className="md:font-semibold text-gray-800 text-xs sm:text-sm leading-tight">{component.name}</p>
       {component.price && <p className="text-xs text-gray-500 mt-0.5 hidden md:block">₹{component.price.toLocaleString()}</p>}
     </div>
@@ -178,7 +178,7 @@ const BuildArea = ({ image, currentComponentType }) => {
       ref={drop}
       className={`
         relative bg-white/70 backdrop-blur-md rounded-xl shadow-xl p-3 sm:p-6 
-        min-h-[120px] sm:min-h-[400px]
+        min-h-[40vh] sm:min-h-[400px]
         w-full
         flex items-center justify-center overflow-hidden
         transition-all duration-300 ease-in-out
@@ -188,7 +188,7 @@ const BuildArea = ({ image, currentComponentType }) => {
       <img
         src={image}
         alt="Current build stage"
-        className="max-w-full max-h-[120px] sm:max-h-[400px] object-contain"
+        className="max-w-full max-h-[40vh] sm:max-h-[400px] object-contain"
         style={{ transition: 'transform 0.3s ease-out' }}
       />
       {isActive && (
@@ -379,7 +379,7 @@ const PCBuilder = () => {
                     src={getCurrentImageForBuild(COMPONENT_FLOW.length, selectedComponents)}
                     alt="Final PC build"
                     className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-3xl
-                               h-44 sm:h-56 md:h-64 lg:h-auto
+                               h-52 sm:h-56 md:h-64 lg:h-auto
                                rounded-lg shadow-xl border border-gray-100 object-contain"
                   />
                 </div>
