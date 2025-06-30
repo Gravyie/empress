@@ -135,7 +135,7 @@ const ComponentCard = ({ component, onSelectComponent, isSelected }) => {
       ref={drag}
       onClick={() => onSelectComponent(component)}
       className={`
-        cursor-pointer bg-white rounded-lg shadow-md p-1 sm:p-3 border border-gray-200
+        cursor-pointer bg-white rounded-lg shadow-md p-1 border border-gray-200
         hover:shadow-lg hover:scale-[1.02] transform transition duration-200 ease-in-out
         ${isDragging ? 'opacity-50 border-blue-400' : ''}
         ${isSelected ? 'border-blue-500 ring-2 ring-blue-300' : ''}
