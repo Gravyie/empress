@@ -22,21 +22,21 @@ const CategoriesPage = () => {
       icon: <Gamepad className="w-5 h-5" />,
       systems: [
         {
-          id: "gamer-1",
+          id: "cyberpowerpc-gamer-master",
           name: "Ultra Gaming Beast",
           specs: "RTX 4090 | i9-13900K | 64GB DDR5",
           price: "₹3,99,000",
           rating: 5,
         },
         {
-          id: "gamer-2",
+          id: "cyberpowerpc-gamer-master",
           name: "Midrange Monster",
           specs: "RTX 4070 Ti | Ryzen 7 7700X | 32GB DDR5",
           price: "₹2,49,000",
           rating: 4.8,
         },
         {
-          id: "gamer-3",
+          id: "cyberpowerpc-gamer-master",
           name: "Starter Gaming Setup",
           specs: "RTX 3060 | i5-12400F | 16GB DDR4",
           price: "₹1,49,000",
@@ -51,21 +51,21 @@ const CategoriesPage = () => {
       icon: <Monitor className="w-5 h-5" />,
       systems: [
         {
-          id: "work-1",
+          id: "cyberpowerpc-gamer-master",
           name: "Render Pro Studio",
           specs: "RTX A6000 | Xeon W9 | 128GB ECC RAM",
           price: "₹6,80,000",
           rating: 5,
         },
         {
-          id: "work-2",
+          id: "cyberpowerpc-gamer-master",
           name: "EditPro X7",
           specs: "RTX 4080 | Ryzen 9 7950X | 64GB DDR5",
           price: "₹3,20,000",
           rating: 4.9,
         },
         {
-          id: "work-3",
+          id: "cyberpowerpc-gamer-master",
           name: "DevStation Mini",
           specs: "RTX 3060 | i5-12400F | 16GB RAM",
           price: "₹1,19,000",
@@ -80,21 +80,21 @@ const CategoriesPage = () => {
       icon: <Headphones className="w-5 h-5" />,
       systems: [
         {
-          id: "acc-1",
+          id: "cyberpowerpc-gamer-master",
           name: "Mechanical Keyboards",
           specs: "RGB Backlit | Hot Swappable | Wireless",
           price: "₹6,499",
           rating: 4.9,
         },
         {
-          id: "acc-2",
+          id: "cyberpowerpc-gamer-master",
           name: "Gaming Mice",
           specs: "16000 DPI | Lightweight | RGB",
           price: "₹2,999",
           rating: 4.8,
         },
         {
-          id: "acc-3",
+          id: "cyberpowerpc-gamer-master",
           name: "Gaming Headsets",
           specs: "7.1 Surround | Noise Cancelling | RGB",
           price: "₹4,499",
@@ -109,21 +109,21 @@ const CategoriesPage = () => {
       icon: <Cpu className="w-5 h-5" />,
       systems: [
         {
-          id: "comp-1",
+          id: "intel-i9-13900k",
           name: "Intel Core i9-14900K",
           specs: "24-Core | 32-Thread | LGA1700",
           price: "₹62,999",
           rating: 4.9,
         },
         {
-          id: "comp-2",
+          id: "intel-i9-13900k",
           name: "NVIDIA RTX 4090",
           specs: "24GB GDDR6X | PCIe 4.0",
           price: "₹1,59,999",
           rating: 5,
         },
         {
-          id: "comp-3",
+          id: "intel-i9-13900k",
           name: "ASUS Z790 Hero",
           specs: "DDR5 | WiFi 6E | Thunderbolt 4",
           price: "₹48,000",
