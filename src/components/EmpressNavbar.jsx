@@ -40,6 +40,38 @@ const EmpressNavbar = ({ theme = 'dark' }) => {
     {
       label: 'Build PC',
       href: '/pc-builder',
+      submenu: {
+        sections: [
+          {
+            title: 'Build Your PC',
+            items: [
+              { name: 'PC Configurator', desc: 'Build your dream PC online', featured: true },
+              { name: 'Budget Builds', desc: 'Starting at ₹45,999', price: '₹45,999' },
+              { name: 'Premium Builds', desc: 'Starting at ₹1,99,999', price: '₹1,99,999' },
+              { name: 'Extreme Builds', desc: 'Starting at ₹4,99,999', price: '₹4,99,999' }
+            ]
+          },
+          {
+            title: 'Components',
+            items: [
+              { name: 'Graphics Cards', desc: 'Latest GPU technology' },
+              { name: 'Processors', desc: 'Intel & AMD CPUs' },
+              { name: 'Memory & Storage', desc: 'RAM & SSD solutions' },
+              { name: 'Cooling Systems', desc: 'Keep your system cool' },
+              { name: 'Power Supplies', desc: 'Reliable PSU units' }
+            ]
+          },
+          {
+            title: 'More from Custom PC',
+            items: [
+              { name: 'Build Consultation', desc: 'Expert guidance' },
+              { name: 'Component Compatibility', desc: 'Perfect part matching' },
+              { name: 'Performance Estimates', desc: 'Expected benchmarks' },
+              { name: 'Assembly Service', desc: 'Professional building' }
+            ]
+          }
+        ]
+      }
     },
     {
       label: 'Gaming',
@@ -116,42 +148,42 @@ const EmpressNavbar = ({ theme = 'dark' }) => {
         ]
       }
     },
-    {
-      label: 'Custom PC',
-      href: "/custom-pc",
-      submenu: {
-        sections: [
-          {
-            title: 'Build Your PC',
-            items: [
-              { name: 'PC Configurator', desc: 'Build your dream PC online', featured: true },
-              { name: 'Budget Builds', desc: 'Starting at ₹45,999', price: '₹45,999' },
-              { name: 'Premium Builds', desc: 'Starting at ₹1,99,999', price: '₹1,99,999' },
-              { name: 'Extreme Builds', desc: 'Starting at ₹4,99,999', price: '₹4,99,999' }
-            ]
-          },
-          {
-            title: 'Components',
-            items: [
-              { name: 'Graphics Cards', desc: 'Latest GPU technology' },
-              { name: 'Processors', desc: 'Intel & AMD CPUs' },
-              { name: 'Memory & Storage', desc: 'RAM & SSD solutions' },
-              { name: 'Cooling Systems', desc: 'Keep your system cool' },
-              { name: 'Power Supplies', desc: 'Reliable PSU units' }
-            ]
-          },
-          {
-            title: 'More from Custom PC',
-            items: [
-              { name: 'Build Consultation', desc: 'Expert guidance' },
-              { name: 'Component Compatibility', desc: 'Perfect part matching' },
-              { name: 'Performance Estimates', desc: 'Expected benchmarks' },
-              { name: 'Assembly Service', desc: 'Professional building' }
-            ]
-          }
-        ]
-      }
-    },
+    // {
+    //   label: 'Custom PC',
+    //   href: "/custom-pc",
+    //   submenu: {
+    //     sections: [
+    //       {
+    //         title: 'Build Your PC',
+    //         items: [
+    //           { name: 'PC Configurator', desc: 'Build your dream PC online', featured: true },
+    //           { name: 'Budget Builds', desc: 'Starting at ₹45,999', price: '₹45,999' },
+    //           { name: 'Premium Builds', desc: 'Starting at ₹1,99,999', price: '₹1,99,999' },
+    //           { name: 'Extreme Builds', desc: 'Starting at ₹4,99,999', price: '₹4,99,999' }
+    //         ]
+    //       },
+    //       {
+    //         title: 'Components',
+    //         items: [
+    //           { name: 'Graphics Cards', desc: 'Latest GPU technology' },
+    //           { name: 'Processors', desc: 'Intel & AMD CPUs' },
+    //           { name: 'Memory & Storage', desc: 'RAM & SSD solutions' },
+    //           { name: 'Cooling Systems', desc: 'Keep your system cool' },
+    //           { name: 'Power Supplies', desc: 'Reliable PSU units' }
+    //         ]
+    //       },
+    //       {
+    //         title: 'More from Custom PC',
+    //         items: [
+    //           { name: 'Build Consultation', desc: 'Expert guidance' },
+    //           { name: 'Component Compatibility', desc: 'Perfect part matching' },
+    //           { name: 'Performance Estimates', desc: 'Expected benchmarks' },
+    //           { name: 'Assembly Service', desc: 'Professional building' }
+    //         ]
+    //       }
+    //     ]
+    //   }
+    // },
     {
       label: 'Accessories',
       href: '/accessories',
@@ -250,23 +282,23 @@ const EmpressNavbar = ({ theme = 'dark' }) => {
   return (
     <>
       {/* Apple-style top banner */}
-      <div className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-orange-500 to-red-500 text-white text-center py-2 text-sm">
-        Get up to 12 months of No Cost EMI plus up to ₹80,000 instant cashback on selected products. 
-        <span className="ml-2 text-orange-200 hover:text-white transition-colors cursor-pointer">Shop &gt;</span>
+      <div className="fixed -top-2 left-0 right-0 z-50 bg-gradient-to-r from-orange-500 to-red-500 text-white text-center text-xs p-4 sm:text-sm">
+        Get up to 12 months of No Cost EMI + ₹80K cashback. 
+        <span className="ml-2 text-orange-200 hover:text-white cursor-pointer">Shop &gt;</span>
       </div>
 
       {/* Main Navigation */}
-      <nav className={`fixed top-14 sm:top-8 left-0 right-0 z-50 ${navBg} backdrop-blur-xl transition-all duration-500 transform ${
+      <nav className={`fixed top-10 sm:top-8 left-0 right-0 z-50 ${navBg} backdrop-blur-xl transition-all duration-500 transform ${
         isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
       }`}>
         <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center justify-between h-12">
+          <div className="flex items-center justify-between h-10 md:h-12">
             
             {/* Logo */}
             <a href="/">
               <div className="flex-shrink-0">
                 <div className="flex items-center cursor-pointer group">
-                  <div className="relative">
+                  <div className="relative mr-10">
                     {/* Sprint-style colorful background for logo */}
                     <div className="absolute inset-0 bg-gradient-to-br from-yellow-400 via-orange-500 to-red-500 rounded-lg transform rotate-3 opacity-90"></div>
                     <div className="absolute inset-0 bg-gradient-to-br from-purple-500 via-blue-500 to-cyan-400 rounded-lg transform -rotate-3 opacity-80"></div>
@@ -279,7 +311,7 @@ const EmpressNavbar = ({ theme = 'dark' }) => {
                       <img 
                         src="/images/Logo2.png" 
                         alt="Empress PC" 
-                        className="h-12 w-auto transform transition-transform duration-200 group-hover:scale-105 drop-shadow-lg"
+                        className="h-8 sm:h-10 md:h-12 w-auto transform transition-transform duration-200 group-hover:scale-105 drop-shadow-lg"
                         style={{
                           filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3)) drop-shadow(-2px -2px 4px rgba(0,0,0,0.1))'
                         }}

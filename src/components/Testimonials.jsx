@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const testimonials = [
@@ -49,69 +49,70 @@ const testimonials = [
   },
 ];
 
-const Testimonials = () => {
-  const scrollRef = useRef(null);
+export default function Testimonials() {
+  const [current, setCurrent] = useState(0);
+  const timeoutRef = useRef(null);
 
-  const scroll = (direction) => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: direction === "left" ? -400 : 400, behavior: "smooth" });
-    }
+  const nextSlide = () => {
+    setCurrent((prev) => (prev + 1) % testimonials.length);
   };
 
+  const prevSlide = () => {
+    setCurrent((prev) =>
+      prev === 0 ? testimonials.length - 1 : prev - 1
+    );
+  };
+
+  useEffect(() => {
+    const interval = setInterval(nextSlide, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const t = testimonials[current];
+
   return (
-    <section className="bg-gray-50 py-8 md:py-16 px-4 md:px-12">
-      <h2 className="text-3xl md:text-4xl font-bold  mb-4 md:mb-10">
-        Don't take our word for it...
+    <section className="bg-gray-50 py-12 px-4 sm:px-8 md:px-12">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10">
+        Don’t take our word for it...
       </h2>
 
-      <div className="relative">
+      <div className="relative max-w-3xl mx-auto">
+        {/* Arrows */}
         <button
-          className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white shadow-md rounded-full p-2"
-          onClick={() => scroll("left")}
+          onClick={prevSlide}
+          className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white shadow rounded-full p-2"
         >
-          <ChevronLeft />
+          <ChevronLeft className="w-5 h-5" />
+        </button>
+        <button
+          onClick={nextSlide}
+          className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white shadow rounded-full p-2"
+        >
+          <ChevronRight className="w-5 h-5" />
         </button>
 
-        <div
-          ref={scrollRef}
-          className="flex gap-6 overflow-x-auto no-scrollbar scroll-smooth px-2"
-        >
-          {testimonials.map((t, i) => (
-            <div
-                key={i}
-                className="bg-white rounded-2xl shadow p-6 w-[300px] flex-shrink-0 flex flex-col justify-between h-[380px]"
-            >
+        {/* Card */}
+        <div className="transition-all duration-500 p-6 bg-white shadow-xl rounded-2xl text-center space-y-6 sm:space-y-4 mx-10 sm:mx-0">
+          <div className="text-yellow-500 text-lg">
+            {"★".repeat(Math.floor(t.rating))}
+            {t.rating % 1 ? "½" : ""}
+          </div>
+          <h3 className="text-xl font-semibold">{t.title}</h3>
+          <p className="text-gray-600 text-sm sm:text-base">{t.content}</p>
 
-              <div className="flex mb-2 text-yellow-400 text-lg">
-                {"★".repeat(Math.floor(t.rating)) +
-                  (t.rating % 1 ? "½" : "")}
-              </div>
-              <h3 className="text-lg font-semibold mb-2">{t.title}</h3>
-              <p className="text-gray-600 mb-4">{t.content}</p>
-              <div className="flex items-center gap-3">
-                <img
-                  src={t.img}
-                  alt={t.name}
-                  className="h-10 w-10 rounded-full object-cover"
-                />
-                <div>
-                  <p className="font-semibold">{t.name}</p>
-                  <p className="text-sm text-gray-500">{t.location}</p>
-                </div>
-              </div>
+          <div className="flex items-center justify-center gap-4 pt-4">
+            <img
+              src={t.img}
+              alt={t.name}
+              className="w-12 h-12 rounded-full object-cover"
+            />
+            <div className="text-left">
+              <p className="text-sm font-semibold">{t.name}</p>
+              <p className="text-xs text-gray-500">{t.location}</p>
             </div>
-          ))}
+          </div>
         </div>
-
-        <button
-          className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white shadow-md rounded-full p-2"
-          onClick={() => scroll("right")}
-        >
-          <ChevronRight />
-        </button>
       </div>
     </section>
   );
-};
-
-export default Testimonials;
+}

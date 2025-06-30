@@ -78,7 +78,7 @@ const Workstations = () => {
   return (
     <div className="flex flex-col md:flex-row min-h-screen bg-white">
       {/* Mobile Filter Button */}
-      <div className="md:hidden flex justify-end p-4">
+      <div className="mt-8 mr-2 md:hidden flex justify-end">
         <button
           onClick={toggleSidebar}
           className="px-4 py-2 text-sm bg-orange-500 text-white rounded"
@@ -193,11 +193,11 @@ const Workstations = () => {
         {/* Header */}
         <div className="flex justify-between items-center mb-6">
           <div>
-            <h1 className="text-3xl font-bold">Workstation</h1>
-            <p className="text-gray-500 text-sm">Professional Computing Systems</p>
+            <h1 className="text-xl md:text-3xl font-bold">Workstations</h1>
+            <p className="text-gray-500 text-xs md:text-sm">Professional Computing Systems</p>
           </div>
           <select
-            className="border px-3 py-1 rounded text-sm"
+            className="border md:px-3 py-1 rounded text-xs md:text-sm"
             onChange={(e) => handleSortChange(e.target.value)}
             value={sort}
           >
@@ -208,7 +208,7 @@ const Workstations = () => {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {filteredProducts.map((product) => (
             <div
               key={product.id}
@@ -258,6 +258,64 @@ const Workstations = () => {
                 </div>
               </div>
             </div>
+              // <div
+              //   key={product.id}
+              //   onClick={() => handleProductClick(product.id)}
+              //   className="relative bg-white shadow rounded overflow-hidden group cursor-pointer flex flex-row md:flex-col"
+              // >
+              //   {/* Discount badge & heart button */}
+              //   <div className="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded">
+              //     -{product.discount}%
+              //   </div>
+              //   <button className="absolute top-2 right-2 z-10">
+              //     <Heart className="w-4 h-4 text-gray-500 hover:text-red-500" />
+              //   </button>
+
+              //   {/* Image */}
+              //   <div className="w-1/3 md:w-full">
+              //     <img
+              //       src={product.images[0]}
+              //       alt={product.name}
+              //       className="h-full md:h-48 w-full object-cover"
+              //     />
+              //   </div>
+
+              //   {/* Text Content */}
+              //   <div className="p-4 w-2/3 md:w-full flex flex-col justify-between">
+              //     <div className="flex justify-between items-center mb-2">
+              //       <h3 className="text-sm font-semibold text-gray-800">{product.name}</h3>
+              //       <button className="text-[#F47C5A] hover:text-purple-800 transition">
+              //         <ShoppingCart
+              //           onClick={(e) => handleAddToCart(e, product.id)}
+              //           className="w-5 h-5"
+              //         />
+              //       </button>
+              //     </div>
+              //     <p className="text-xs text-gray-600 mb-2">
+              //       {Object.values(product.specs).join(", ")}
+              //     </p>
+              //     <div className="flex items-center gap-1 text-yellow-500 mb-2">
+              //       {Array(5)
+              //         .fill()
+              //         .map((_, i) => (
+              //           <Star
+              //             key={i}
+              //             className={`w-4 h-4 ${
+              //               i < product.rating ? "fill-yellow-500" : "stroke-gray-300"
+              //             }`}
+              //           />
+              //         ))}
+              //     </div>
+              //     <div className="flex items-center gap-2">
+              //       <span className="text-[#F47C5A] font-semibold text-sm">
+              //         ₹{product.price.toLocaleString()}
+              //       </span>
+              //       <span className="text-gray-400 line-through text-xs">
+              //         ₹{product.originalPrice.toLocaleString()}
+              //       </span>
+              //     </div>
+              //   </div>
+              // </div> 
           ))}
         </div>
       </section>
