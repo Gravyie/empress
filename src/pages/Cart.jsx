@@ -59,7 +59,7 @@ const Cart = () => {
                     <div className="relative flex items-center gap-4">
                         <div className="relative">
                         <img
-                            src={item.images?.[0] || "https://via.placeholder.com/80"}
+                            src={item.images?.[0] || item.image || "https://via.placeholder.com/80"}
                             alt={item.name}
                             className="w-16 h-16 rounded object-contain"
                         />

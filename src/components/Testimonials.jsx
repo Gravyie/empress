@@ -71,8 +71,8 @@ export default function Testimonials() {
   const t = testimonials[current];
 
   return (
-    <section className="bg-gray-50 py-12 px-4 sm:px-8 md:px-12">
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10">
+    <section className="bg-gray-50 py-4 md:py-12 px-2 sm:px-6 md:px-12">
+      <h2 className="text-lg sm:text-2xl md:text-4xl font-bold text-center mb-4 md:mb-10">
         Don’t take our word for it...
       </h2>
 

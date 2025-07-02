@@ -6,10 +6,26 @@ import {
 } from "lucide-react";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
+import { featuredProducts } from "../data/sampleData";
+import { useCart } from "../components/CartContext";
 
-const FeaturedProducts = ({ products }) => {
+function FeaturedProducts() {
+  const products = featuredProducts;
   const scrollRef = useRef();
+  const navigate = useNavigate();
+  const { addToCart } = useCart();
+
+  const handleProductClick = (productId) => {
+    navigate('/product/' + productId);
+  };
+
+  const handleAddToCart = (e, productId) => {
+    e.stopPropagation();
+    const product = products.find(p => p.id === productId);
+    addToCart(product);
+  };
 
   const { ref: sectionRef, inView: sectionInView } = useInView({
     triggerOnce: true,
@@ -67,6 +83,7 @@ const FeaturedProducts = ({ products }) => {
           {products.map((product, index) => (
             <div
               key={product.id}
+              onClick={() => handleProductClick(product.id)}
               className={`bg-white rounded-lg shadow p-3 sm:p-4 w-[200px] sm:w-[280px] flex-shrink-0 transition-all duration-700 ease-out
                 ${sectionInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}
               `}
@@ -85,7 +102,7 @@ const FeaturedProducts = ({ products }) => {
                   {product.name}
                 </h3>
                 <button className="text-[#F47C5A] hover:text-purple-800">
-                  <ShoppingCart className="w-5 h-5" />
+                  <ShoppingCart onClick={(e) => handleAddToCart(e, product.id)} className="w-5 h-5" />
                 </button>
               </div>
 

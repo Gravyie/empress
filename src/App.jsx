@@ -27,11 +27,13 @@ import AccountPage from "./pages/Account";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthProvider } from "./context/AuthContext";
 import ComponentsPage from "./pages/ComponentsPage";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
+      <ScrollToTop />
         <div className="min-h-screen flex flex-col">
           <EmpressNavbar />
 

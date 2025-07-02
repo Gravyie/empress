@@ -1,19 +1,23 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const slides = [
   {
+    id: "productivity",
     title: 'Enhance Your Productivity',
     description:
       'Multitask, manage, and move faster with PCs designed for workflows, responsiveness, and seamless business workflows.',
     image: '/images/img1.JPG',
   },
   {
+    id: "gaming",
     title: 'Enhance Your Gaming Experience',
     description:
       'Dominate every game with high-performance PCs built for immersive graphics, fast response times, and smooth gameplay.',
     image: '/images/img2.JPG',
   },
   {
+    id: "server",
     title: 'Enhance Your Servers',
     description:
       'Power your infrastructure with robust servers built for reliability, scalability, and high-performance data management and processing.',
@@ -22,6 +26,7 @@ const slides = [
 ];
 
 export default function LandingCarousel() {
+  const navigate = useNavigate();
   const [current, setCurrent] = useState(0);
   const length = slides.length;
 
@@ -46,7 +51,7 @@ export default function LandingCarousel() {
             <p className="text-green-500 text-xs md:text-sm font-semibold">Featured Category</p>
             <h2 className="text-2xl md:text-3xl font-bold leading-tight">{slide.title}</h2>
             <p className="text-sm text-gray-300 hidden md:block">{slide.description}</p>
-            <button className="mt-3 md:mt-4 bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md text-sm">
+            <button onClick={() => navigate("/" + slide.id)} className="mt-3 md:mt-4 bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md text-sm cursor-pointer">
               View More
             </button>
           </div>

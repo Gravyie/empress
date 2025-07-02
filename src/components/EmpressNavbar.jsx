@@ -220,11 +220,10 @@ const EmpressNavbar = ({ theme = 'dark' }) => {
         ]
       }
     },
-    // Adding the new navigation items without submenus
-    // {
-    //   label: 'Events',
-    //   href: '/events'
-    // },
+    {
+      label: 'Events',
+      href: '/events'
+    },
     {
       label: 'Blogs',
       href: '/blogs'
@@ -282,7 +281,7 @@ const EmpressNavbar = ({ theme = 'dark' }) => {
   return (
     <>
       {/* Apple-style top banner */}
-      <div className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-orange-500 to-red-500 text-white text-center text-[0.5rem] p-2 md:text-sm">
+      <div className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-orange-500 to-red-500 text-white text-center text-[0.5rem] pt-2 pb-2 md:pt-1 md:text-sm">
         Get up to 12 months of No Cost EMI + ₹80K cashback. 
         <span className="ml-2 text-orange-200 hover:text-white cursor-pointer">Shop &gt;</span>
       </div>

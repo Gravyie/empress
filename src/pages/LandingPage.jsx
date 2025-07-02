@@ -7,14 +7,13 @@ import DealShowcase from "../components/DealShowcase"
 import PCComponents from "../components/PCComponents"
 import TrustedBrands from "../components/TrustedBrands"
 import FeaturedProducts from "../components/FeaturedProducts"
-import { featuredProducts } from "../data/sampleData"
 import LandingCarousel from "../components/LandingCarousel"
 import Testimonials from "../components/Testimonials"
 export default function LandingPage() {
     return (
         <>
             <Hero3d />
-            <FeaturedProducts products={featuredProducts} />
+            <FeaturedProducts />
             <Categories />
             <ProductGrid />
             <LandingCarousel />

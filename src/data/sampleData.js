@@ -1,6 +1,6 @@
 export const featuredProducts = [
   {
-    id: 1,
+    id: 'cyberpowerpc-gamer-master',
     name: "ChronoX - Productivity",
     image: "/images/img1.JPG",
     price: 143000,
@@ -9,7 +9,7 @@ export const featuredProducts = [
     reviews: 88,
   },
   {
-    id: 2,
+    id: 'cyberpowerpc-gamer-master',
     name: "Frame Rush - Gaming",
     image: "/images/img2.JPG",
     price: 194999,
@@ -18,7 +18,7 @@ export const featuredProducts = [
     reviews: 75,
   },
   {
-    id: 3,
+    id: 'cyberpowerpc-gamer-master',
     name: "Ghost Fury - Productivity",
     image: "/images/img3.JPG",
     price: 99000,
@@ -27,7 +27,7 @@ export const featuredProducts = [
     reviews: 99,
   },
   {
-    id: 4,
+    id: 'cyberpowerpc-gamer-master',
     name: "Ignite One - Gaming",
     image: "/images/img4.JPG",
     price: 143000,
@@ -36,7 +36,7 @@ export const featuredProducts = [
     reviews: 99,
   },
   {
-    id: 5,
+    id: 'cyberpowerpc-gamer-master',
     name: "IronPulse Start - Gaming",
     image: "/images/img5.JPG",
     price: 59000,
@@ -45,7 +45,7 @@ export const featuredProducts = [
     reviews: 99,
   },
   {
-    id: 6,
+    id: 'cyberpowerpc-gamer-master',
     name: "Ghost Fury - Productivity",
     image: "/images/img6.JPG",
     price: 99000,
@@ -54,7 +54,7 @@ export const featuredProducts = [
     reviews: 99,
   },
   {
-    id: 7,
+    id: 'cyberpowerpc-gamer-master',
     name: "Ignite One - Gaming",
     image: "/images/img1.JPG",
     price: 143000,
@@ -63,7 +63,7 @@ export const featuredProducts = [
     reviews: 99,
   },
   {
-    id: 8,
+    id: 'cyberpowerpc-gamer-master',
     name: "IronPulse Start - Gaming",
     image: "/images/img2.JPG",
     price: 59000,

@@ -42,14 +42,14 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="bg-white py-10 md:py-16 px-4 md:px-8 lg:px-16">
+    <section className="bg-white py-6 md:py-16 px-4 md:px-8 lg:px-16">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-4 md:gap-12 flex justify-center items-center">
         {/* FAQ Section */}
         <div>
-          <h2 className="text-3xl font-bold text-center md:text-left mb-2">
+          <h2 className="text-md md:text-3xl font-bold text-center md:text-left md:mb-2">
             Frequently asked questions
           </h2>
-          <p className="text-gray-500 text-center md:text-left mb-4 md:mb-10">
+          <p className="text-sm md:text-xl text-gray-500 text-center md:text-left mb-4 md:mb-10">
             Most asked questions all at one place.
           </p>
 
@@ -80,13 +80,13 @@ export default function FAQSection() {
                 >
                   <button
                     onClick={() => toggleFAQ(index)}
-                    className={`w-full text-left flex justify-between items-center px-4 py-3 text-lg font-medium transition-colors ${
+                    className={`text-sm md:text-lg w-full text-left flex justify-between items-center px-4 py-3 text-lg font-medium transition-colors ${
                       isOpen ? 'text-[#F47C5A]' : 'text-gray-800'
                     }`}
                   >
                     {faq.question}
                     <svg
-                      className={`w-5 h-5 transition-transform duration-300 ${
+                      className={`text-sm md:text-lg w-5 h-5 transition-transform duration-300 ${
                         isOpen ? 'rotate-180 text-[#F47C5A]' : 'text-gray-500'
                       }`}
                       fill="none"
@@ -110,7 +110,7 @@ export default function FAQSection() {
 
         {/* Ask a Question Form */}
         <div className="bg-gray-50 rounded-xl shadow-sm p-4 md:p-8">
-          <h3 className="text-2xl font-semibold mb-6">Make your questions</h3>
+          <h3 className="md:text-2xl font-semibold mb-2 md:mb-6">Make your questions</h3>
           <form className="space-y-4">
             <input
               type="text"
@@ -129,7 +129,7 @@ export default function FAQSection() {
             />
             <button
               type="submit"
-              className="w-full bg-[#F47C5A] text-white py-3 rounded-md hover:bg-orange-500 transition-colors"
+              className="text-sm md:text-md w-full bg-[#F47C5A] text-white py-3 rounded-md hover:bg-orange-500 transition-colors"
             >
               SEND REQUEST
             </button>
