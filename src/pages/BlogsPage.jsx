@@ -1,4 +1,7 @@
 import { useState } from "react";
+import BlogsHero from "../components/BlogsHero";
+import EditorsChoice from "../components/EditorsChoice";
+import WeeklyBestNews from "../components/WeeklyBestNews";
 
 const blogs = [
   {
@@ -77,12 +80,15 @@ export default function BlogsPage() {
   const blogsToShow = showAll ? filteredBlogs : filteredBlogs.slice(0, 6);
 
   return (
+  <>
+    <BlogsHero />
+    <EditorsChoice />
     <div className="bg-white min-h-screen px-4 py-10 md:px-24">
       <h1 className="text-4xl font-bold text-center mb-8 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-        Blogs & Articles
+        More Deep Dives..
       </h1>
 
-      <div className="mx-auto max-w-5xl h-full flex flex-col md:flex-row bg-[#F9FAFB] rounded-2xl shadow-lg overflow-hidden mb-16">
+      <div className="mx-auto max-w-5xl h-full flex flex-col md:flex-row bg-[#F9FAFB] shadow-lg overflow-hidden mb-16">
         <img
           src="/images/img6.JPG"
           alt="Featured Blog"
@@ -100,7 +106,7 @@ export default function BlogsPage() {
         {['all', 'nvidia', 'tech', 'computing'].map((cat) => (
           <button
             key={cat}
-            className={`px-4 py-2 rounded-full border text-sm capitalize transition-all duration-200 ${
+            className={`px-4 py-2 border text-sm capitalize transition-all duration-200 ${
               selectedCategory === cat ? 'bg-black text-white border-black' : 'bg-white text-black border-gray-300'
             }`}
             onClick={() => {
@@ -117,7 +123,7 @@ export default function BlogsPage() {
         {blogsToShow.map((blog) => (
           <div
             key={blog.id}
-            className="bg-[#F9FAFB] rounded-xl overflow-hidden shadow hover:shadow-md transition"
+            className="bg-[#F9FAFB] overflow-hidden shadow hover:shadow-md transition"
           >
             <img src={blog.image} alt={blog.title} className="h-48 w-full object-cover" />
             <div className="p-4">
@@ -131,7 +137,7 @@ export default function BlogsPage() {
       {filteredBlogs.length > 6 && !showAll && (
         <div className="flex justify-center mt-10">
           <button
-            className="px-6 py-2 border border-black text-black hover:bg-black hover:text-white transition rounded-full"
+            className="px-6 py-2 border border-black text-black hover:bg-black hover:text-white transition"
             onClick={() => setShowAll(true)}
           >
             Show More
@@ -139,5 +145,7 @@ export default function BlogsPage() {
         </div>
       )}
     </div>
+    <WeeklyBestNews />
+  </>
   );
 }
