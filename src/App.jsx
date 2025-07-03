@@ -28,6 +28,8 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthProvider } from "./context/AuthContext";
 import ComponentsPage from "./pages/ComponentsPage";
 import ScrollToTop from "./components/ScrollToTop";
+import BuildPC from "./pages/BuildPC";
+
 
 function App() {
   return (
@@ -61,6 +63,7 @@ function App() {
               <Route path="/productivity" element={<Productivity />} />
               <Route path="/server" element={<Server />} />
               <Route path="/custom-pc" element={<CustomPC />} />
+              <Route path="/build-pc" element={<BuildPC />} />             
               <Route path="/events" element={<Events />} />
               <Route path="/blogs" element={<BlogsPage />} />
               <Route path="/about" element={<About />} />
