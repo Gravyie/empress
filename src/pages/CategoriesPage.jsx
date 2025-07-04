@@ -6,9 +6,15 @@ import {
   Gamepad,
   Headphones,
 } from "lucide-react";
+import { useInView } from 'react-intersection-observer';
+
 
 const CategoriesPage = () => {
   const navigate = useNavigate();
+  const { ref, inView } = useInView({
+      triggerOnce: true,
+      threshold: 0.1,
+    });
 
   const handleProductClick = (productId) => {
     navigate("/product/" + productId);
@@ -167,9 +173,16 @@ const CategoriesPage = () => {
           the perfect tech solution for your needs
         </p>
 
-        <div className="space-y-6 md:space-y-16">
-          {categories.map((cat, idx) => (
-            <div key={idx}>
+        <div ref={ref} className="space-y-6 md:space-y-16">
+          {categories.map((cat, idx, index) => (
+            <div 
+              key={idx} 
+              className={`transition-all duration-500
+                  ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
+                `}
+                style={{
+                  transitionDelay: inView ? `${index * 100}ms` : '0ms',
+                }}>
               <div className="flex items-center gap-3 mb-4">
                 <div
                   className={`w-[50px] h-[40px] flex items-center justify-center rounded-full text-white text-xl font-bold ${
@@ -196,12 +209,18 @@ const CategoriesPage = () => {
 
               {/* Scrollable Cards on Mobile, Grid on Desktop */}
               <div className="overflow-x-auto no-scrollbar md:overflow-visible">
-                <div className="flex md:grid md:grid-cols-3 gap-3 md:gap-6 px-1 md:px-0 min-w-max md:min-w-0">
+                <div ref={ref} className="flex md:grid md:grid-cols-3 gap-3 md:gap-6 px-1 md:px-0 min-w-max md:min-w-0">
                   {cat.systems.map((sys, i) => (
                     <div
+                      
                       onClick={() => handleProductClick(sys.id)}
                       key={i}
-                      className="min-w-[170px] max-w-[180px] md:min-w-0 md:max-w-none bg-white rounded-lg px-3 py-2 text-black shadow-sm flex flex-col justify-between hover:shadow-lg transition cursor-pointer text-xs md:text-sm"
+                      className={`min-w-[170px] max-w-[180px] md:min-w-0 md:max-w-none bg-white rounded-lg px-3 py-2 text-black shadow-sm flex flex-col justify-between hover:shadow-lg transition cursor-pointer text-xs md:text-sm transition-all duration-500
+                          ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
+                        `}
+                        style={{
+                          transitionDelay: inView ? `${i * 100}ms` : '0ms',
+                        }}
                     >
                       <div>
                         <h4 className="font-semibold mb-1 truncate">

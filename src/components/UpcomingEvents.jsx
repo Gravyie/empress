@@ -1,3 +1,5 @@
+import { useInView } from 'react-intersection-observer';
+
 export default function UpcomingEvents() {
   const events = [
     {
@@ -46,6 +48,11 @@ export default function UpcomingEvents() {
     },
   ];
 
+  const { ref, inView } = useInView({
+      triggerOnce: true,
+      threshold: 0.1,
+    });
+
   return (
     <section className="pb-10 px-4 bg-white text-black">
       <div className="max-w-4xl mx-auto text-center">
@@ -58,8 +65,14 @@ export default function UpcomingEvents() {
       <div className="space-y-2 max-w-4xl mx-auto">
         {events.map((event, index) => (
           <div
+            ref={ref}
             key={index}
-            className={`flex flex-col md:flex-row justify-between items-start md:items-center ${event.color} rounded-xl p-2 md:p-4 shadow`}
+            className={`flex flex-col md:flex-row justify-between items-start md:items-center ${event.color} rounded-xl p-2 md:p-4 shadow transition-all duration-500
+                  ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
+                `}
+                style={{
+                  transitionDelay: inView ? `${index * 100}ms` : '0ms',
+                }}
           >
             {event.image ? (
               <div className="flex items-center gap-4 w-full md:w-3/4">

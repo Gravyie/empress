@@ -41,7 +41,7 @@ export const allSampleProducts = {
       rating: 5,
       discount: 40,
       images: [
-        'https://via.placeholder.com/300x200/cccccc/ffffff?text=Skytech+Shiva+1',
+        '/images/img4.JPG',
         'https://via.placeholder.com/300x200/cccccc/ffffff?text=Skytech+Shiva+2',
         'https://via.placeholder.com/300x200/cccccc/ffffff?text=Skytech+Shiva+3'
       ],
@@ -67,7 +67,7 @@ export const allSampleProducts = {
       rating: 4,
       discount: 40,
       images: [
-        'https://via.placeholder.com/300x200/007bff/ffffff?text=HP+OMEN',
+        '/images/img5.JPG',
         'https://via.placeholder.com/300x200/cccccc/ffffff?text=HP+OMEN+2',
         'https://via.placeholder.com/300x200/cccccc/ffffff?text=HP+OMEN+3'
       ],

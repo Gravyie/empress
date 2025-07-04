@@ -1,6 +1,9 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
 import Footer from "./components/Footer";
 import EmpressNavbar from "./components/EmpressNavbar";
+import ScrollToTop from "./components/ScrollToTop";
+import { AuthProvider } from "./context/AuthContext";
 
 // Pages
 import LandingPage from "./pages/LandingPage";
@@ -20,62 +23,80 @@ import Productivity from "./pages/Productivity";
 import Server from "./pages/Server";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
-
-// Auth-related
 import SignupLoginPage from "./pages/SignUp-Login-Page";
 import AccountPage from "./pages/Account";
 import ProtectedRoute from "./components/ProtectedRoute";
-import { AuthProvider } from "./context/AuthContext";
 import ComponentsPage from "./pages/ComponentsPage";
-import ScrollToTop from "./components/ScrollToTop";
 import BuildPC from "./pages/BuildPC";
 
+// Animation Wrapper for route changes
+function AnimatedRoutes() {
+  const location = useLocation();
 
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        {/* Auth Routes */}
+        <Route path="/auth" element={wrap(<SignupLoginPage />)} />
+        <Route
+          path="/account"
+          element={
+            <ProtectedRoute>
+              {wrap(<AccountPage />)}
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Core Pages */}
+        <Route path="/" element={wrap(<LandingPage />)} />
+        <Route path="/cart" element={wrap(<Cart />)} />
+        <Route path="/checkout" element={wrap(<Checkout />)} />
+        <Route path="/workstations" element={wrap(<Workstations />)} />
+        <Route path="/gaming" element={wrap(<Gaming />)} />
+        <Route path="/components" element={wrap(<ComponentsPage />)} />
+        <Route path="/productivity" element={wrap(<Productivity />)} />
+        <Route path="/server" element={wrap(<Server />)} />
+        <Route path="/custom-pc" element={wrap(<CustomPC />)} />
+        <Route path="/build-pc" element={wrap(<BuildPC />)} />
+        <Route path="/events" element={wrap(<Events />)} />
+        <Route path="/blogs" element={wrap(<BlogsPage />)} />
+        <Route path="/about" element={wrap(<About />)} />
+        <Route path="/contact" element={wrap(<Contact />)} />
+        <Route path="/products" element={wrap(<CategoriesPage />)} />
+        <Route path="/products/:categoryId" element={wrap(<ComponentsListingPage />)} />
+        <Route path="/product/:productId" element={wrap(<ProductDetailPage />)} />
+        <Route path="/pc-builder" element={wrap(<PCBuilder />)} />
+        <Route path="/faqs" element={wrap(<FAQSection />)} />
+      </Routes>
+    </AnimatePresence>
+  );
+}
+
+// Wrapper to animate each page
+function wrap(children) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -30 }}
+      transition={{ duration: 0.4 }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+// Main App
 function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
-      <ScrollToTop />
+        <ScrollToTop />
         <div className="min-h-screen flex flex-col">
           <EmpressNavbar />
-
-          {/* Main Content */}
           <main className="flex-grow">
-            <Routes>
-              {/* Auth Routes */}
-              <Route path="/auth" element={<SignupLoginPage />} />
-              <Route
-                path="/account"
-                element={
-                  <ProtectedRoute>
-                    <AccountPage />
-                  </ProtectedRoute>
-                }
-              />
-
-              {/* Core Pages */}
-              <Route path="/" element={<LandingPage />} />
-              <Route path="/cart" element={<Cart />} />
-              <Route path="/checkout" element={<Checkout />} />
-              <Route path="/workstations" element={<Workstations />} />
-              <Route path="/gaming" element={<Gaming />} />
-              <Route path="/components" element={<ComponentsPage />} />
-              <Route path="/productivity" element={<Productivity />} />
-              <Route path="/server" element={<Server />} />
-              <Route path="/custom-pc" element={<CustomPC />} />
-              <Route path="/build-pc" element={<BuildPC />} />             
-              <Route path="/events" element={<Events />} />
-              <Route path="/blogs" element={<BlogsPage />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/products" element={<CategoriesPage />} />
-              <Route path="/products/:categoryId" element={<ComponentsListingPage />} />
-              <Route path="/product/:productId" element={<ProductDetailPage />} />
-              <Route path="/pc-builder" element={<PCBuilder />} />
-              <Route path="/faqs" element={<FAQSection />} />
-            </Routes>
+            <AnimatedRoutes />
           </main>
-
           <Footer />
         </div>
       </BrowserRouter>

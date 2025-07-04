@@ -4,6 +4,7 @@ import { allSampleProducts } from "../data/products";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../components/CartContext";
+import { useInView } from "react-intersection-observer";
 
 export default function Gaming() {
   const { addToCart } = useCart();
@@ -11,6 +12,8 @@ export default function Gaming() {
   const navigate = useNavigate();
   const [showAll, setShowAll] = useState(false);
   const visiblePCs = showAll ? pcs : pcs.slice(0, 8);
+  const { ref, inView } = useInView({ threshold: 0.1 });
+
 
   const handleProductClick = (productId) => {
     navigate('/product/' + productId);
@@ -76,12 +79,17 @@ export default function Gaming() {
           <h2 className="text-xl sm:text-2xl md:text-3xl font-bold">Feature PC Builds for Gaming</h2>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {visiblePCs.map((pc) => (
+        <div ref={ref} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {visiblePCs.map((pc, index) => (
             <div
               key={pc.id}
               onClick={() => handleProductClick(pc.id)}
-              className="bg-white rounded-lg shadow p-4 relative group flex flex-row md:flex-col gap-4 sm:items-start md:items-stretch"
+              className={`bg-white rounded-lg shadow p-4 relative group flex flex-row md:flex-col gap-4 sm:items-start md:items-stretch transition-all duration-500
+                  ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
+                `}
+                style={{
+                  transitionDelay: inView ? `${index * 100}ms` : '0ms',
+                }}
             >
               {/* Discount Badge */}
               {pc.discount && (

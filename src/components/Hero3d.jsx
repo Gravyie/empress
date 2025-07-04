@@ -7,12 +7,12 @@ import Loader from "./Loader";
 
 function PCModel() {
   const { scene } = useGLTF("/models/MainModel.glb");
-  return <primitive object={scene} position={[0, -0.30, 0]} />;
+  return <primitive object={scene} position={[0, -0.35, 0]} />;
 }
 
 export default function Hero3d() {
   return (
-    <div className="relative w-full h-auto lg:h-[92vh] overflow-hidden">
+    <div className="relative w-full h-auto lg:h-[94vh] overflow-hidden">
       {/* Background Video */}
       <video
         autoPlay
@@ -21,7 +21,7 @@ export default function Hero3d() {
         playsInline
         className="absolute top-0 left-0 w-full h-full object-cover z-0"
       >
-        <source src="/bg-video2.mp4" type="video/mp4" />
+        <source src="/bg-video3.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
@@ -37,7 +37,7 @@ export default function Hero3d() {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
             Get your Perfect PC today.
           </h2>
-          <p className="text-gray-600 text-sm sm:text-base mb-10">
+          <p className="text-gray-300 text-sm sm:text-base mb-10">
             Choose from our prebuild section OR Build your own
           </p>
           <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
@@ -69,16 +69,25 @@ export default function Hero3d() {
           transition={{ duration: 1.2 }}
           className="w-full lg:w-1/3 flex justify-center items-center md:p-4"
         >
+          {/* <div className="w-full max-w-xs sm:max-w-md lg:max-w-full h-[300px] sm:h-[400px] lg:h-[62vh] rounded-xl overflow-hidden shadow-xl z-10">
+            <iframe
+              title="3D PC Model"
+              src="https://app.vectary.com/p/6aZ4539lL0FKsYCFm4JeLQ"
+              frameBorder="0"
+              allowFullScreen
+              className="w-full h-full"
+            ></iframe>
+          </div> */}
           <div className="w-full max-w-xs sm:max-w-md lg:max-w-full h-[300px] sm:h-[400px] lg:h-[62vh]">
             <Canvas
-              camera={{ position: [2, 0.7, 3], fov: 12 }}
+              camera={{ position: [2, -0.20, 3], fov: 12 }}
               resize={{ scroll: true, offsetSize: true }}
             >
               <Suspense fallback={<Loader />}>
                 <ambientLight intensity={100} />
                 <directionalLight position={[15, 15, 15]} intensity={50} />
                 <PCModel />
-                <OrbitControls enableZoom={false} />
+                <OrbitControls />
               </Suspense>
             </Canvas>
           </div>
@@ -95,7 +104,7 @@ export default function Hero3d() {
             <h2 className="text-xl sm:text-2xl font-semibold bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent mb-2">
               Pre-Built.
             </h2>
-            <p className="text-gray-600 text-sm sm:text-base text-center lg:text-left">
+            <p className="text-gray-300 text-sm sm:text-base text-center lg:text-left">
               Computers that are already assembled and prebuilt by manufacturers, rather than building one's own computer from scratch.
             </p>
           </div>
@@ -103,7 +112,7 @@ export default function Hero3d() {
             <h2 className="text-xl sm:text-2xl font-semibold bg-gradient-to-r from-green-500 to-cyan-700 bg-clip-text text-transparent mb-2">
               Build it yourself.
             </h2>
-            <p className="text-gray-600 text-sm sm:text-base text-center lg:text-left">
+            <p className="text-gray-300 text-sm sm:text-base text-center lg:text-left">
               Main advantages of building your own computer is flexibility and customization. You have full control over the selection of each component.
             </p>
           </div>

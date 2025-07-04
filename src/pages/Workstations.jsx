@@ -3,11 +3,13 @@ import { Heart, ShoppingCart, Star, X } from "lucide-react";
 import { useCart } from "../components/CartContext";
 import { allSampleProducts } from "../data/products";
 import { useNavigate } from "react-router-dom";
-
+import { useInView } from "react-intersection-observer";
 
 const Workstations = () => {
   const products = allSampleProducts.pcs;
   const navigate = useNavigate();
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0 });
+
   
   const [selectedUseCase, setSelectedUseCase] = useState("");
   const [selectedPerformance, setSelectedPerformance] = useState("");
@@ -208,12 +210,17 @@ const Workstations = () => {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {filteredProducts.map((product) => (
+        <div ref={ref} className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {filteredProducts.map((product, index) => (
             <div
               key={product.id}
               onClick={() => handleProductClick(product.id)}
-              className="relative bg-white shadow rounded overflow-hidden group cursor-pointer"
+              className={`relative bg-white shadow rounded overflow-hidden group cursor-pointer transition-all duration-500
+                  ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
+                `}
+                style={{
+                  transitionDelay: inView ? `${index * 100}ms` : '0ms',
+                }}
             >
               <div className="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded">
                 -{product.discount}%

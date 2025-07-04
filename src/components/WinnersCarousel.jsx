@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import { useInView } from "react-intersection-observer";
 
 const winners = [
   {
@@ -21,8 +22,12 @@ const winners = [
 ];
 
 export default function WinnersCarousel() {
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
+
   return (
-    <section className="bg-black py-6 text-white">
+    <section ref={ref} className={`bg-black py-6 text-white transition-opacity duration-1000 ${
+        inView ? "animate-fadeInFromBack" : "opacity-0"
+      }`}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-3">
           <h2 className="text-3xl font-bold">WINNERS</h2>
