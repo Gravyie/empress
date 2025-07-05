@@ -28,6 +28,7 @@ import AccountPage from "./pages/Account";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ComponentsPage from "./pages/ComponentsPage";
 import BuildPC from "./pages/BuildPC";
+import AdminPanel from "./pages/AdminPanel";
 
 // Animation Wrapper for route changes
 function AnimatedRoutes() {
@@ -67,6 +68,12 @@ function AnimatedRoutes() {
         <Route path="/product/:productId" element={wrap(<ProductDetailPage />)} />
         <Route path="/pc-builder" element={wrap(<PCBuilder />)} />
         <Route path="/faqs" element={wrap(<FAQSection />)} />
+        <Route path="/admin" element={
+          <ProtectedRoute>
+            <AdminPanel />
+          </ProtectedRoute>
+        } />
+
       </Routes>
     </AnimatePresence>
   );

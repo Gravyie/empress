@@ -22,7 +22,21 @@ const Checkout = () => {
   ) / 100;
 
   const handleSubmit = () => {
-    alert("Order placed!");
+    const order = {
+      id: Date.now(),
+      items: cart,
+      total: subtotal,
+      user: form,
+      payment: paymentMethod,
+      createdAt: new Date().toISOString(),
+      status: "Pending"
+    };
+
+    const existingOrders = JSON.parse(localStorage.getItem("orders")) || [];
+    const updatedOrders = [...existingOrders, order];
+    localStorage.setItem("orders", JSON.stringify(updatedOrders));
+
+    alert("Order placed successfully!");
     clearCart();
   };
 
@@ -162,21 +176,9 @@ const Checkout = () => {
                     onChange={() => setPaymentMethod("bank")}
                 />
                 Bank
-                <img
-                    src="/images/RuPay.png"
-                    alt="RuPay"
-                    className="h-4 bg-black"
-                />
-                <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg"
-                    alt="Visa"
-                    className="h-4"
-                />
-                <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png"
-                    alt="Mastercard"
-                    className="h-4"
-                />
+                <img src="/images/RuPay.png" alt="RuPay" className="h-4 bg-black" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa" className="h-4" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="Mastercard" className="h-4" />
                 </label>
                 <label className="flex items-center gap-2">
                 <input
