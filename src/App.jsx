@@ -28,7 +28,16 @@ import AccountPage from "./pages/Account";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ComponentsPage from "./pages/ComponentsPage";
 import BuildPC from "./pages/BuildPC";
-import AdminPanel from "./pages/AdminPanel";
+
+// Admin
+import AdminLayout from "./layouts/AdminLayout";
+import AdminPanel from "./admin/AdminPanel";
+import OrdersPage from "./admin/OrdersPage";
+import ProductsPage from "./admin/ProductsPage";
+import AdminComponentsPage from "./admin/AdminComponentsPage";
+import UsersPage from "./admin/UsersPage";
+import AdminEventPage from "./admin/AdminEventsPage";
+import AdminBlogPage from "./admin/AdminBlogs";
 
 // Animation Wrapper for route changes
 function AnimatedRoutes() {
@@ -68,18 +77,76 @@ function AnimatedRoutes() {
         <Route path="/product/:productId" element={wrap(<ProductDetailPage />)} />
         <Route path="/pc-builder" element={wrap(<PCBuilder />)} />
         <Route path="/faqs" element={wrap(<FAQSection />)} />
-        <Route path="/admin" element={
-          <ProtectedRoute>
-            <AdminPanel />
-          </ProtectedRoute>
-        } />
+
+        {/* Admin Routes */}
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute>
+              <AdminLayout><AdminPanel /></AdminLayout>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/orders"
+          element={
+            <ProtectedRoute>
+              <AdminLayout><OrdersPage /></AdminLayout>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/products"
+          element={
+            <ProtectedRoute>
+              <AdminLayout><ProductsPage /></AdminLayout>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/components"
+          element={
+            <ProtectedRoute>
+              <AdminLayout><AdminComponentsPage /></AdminLayout>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/users"
+          element={
+            <ProtectedRoute>
+              <AdminLayout><UsersPage /></AdminLayout>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/events"
+          element={
+            <ProtectedRoute>
+              <AdminLayout><AdminEventPage /></AdminLayout>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/blogs"
+          element={
+            <ProtectedRoute>
+              <AdminLayout><AdminBlogPage /></AdminLayout>
+            </ProtectedRoute>
+          }
+        />
 
       </Routes>
     </AnimatePresence>
   );
 }
 
-// Wrapper to animate each page
 function wrap(children) {
   return (
     <motion.div

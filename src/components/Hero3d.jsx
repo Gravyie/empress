@@ -69,7 +69,7 @@ export default function Hero3d() {
           transition={{ duration: 1.2 }}
           className="w-full lg:w-1/3 flex justify-center items-center md:p-4"
         >
-          {/* <div className="w-full max-w-xs sm:max-w-md lg:max-w-full h-[300px] sm:h-[400px] lg:h-[62vh] rounded-xl overflow-hidden shadow-xl z-10">
+          <div className="w-full max-w-xs sm:max-w-md lg:max-w-full h-[300px] sm:h-[400px] lg:h-[62vh] rounded-xl overflow-hidden shadow-xl z-10">
             <iframe
               title="3D PC Model"
               src="https://app.vectary.com/p/6aZ4539lL0FKsYCFm4JeLQ"
@@ -77,8 +77,8 @@ export default function Hero3d() {
               allowFullScreen
               className="w-full h-full"
             ></iframe>
-          </div> */}
-          <div className="w-full max-w-xs sm:max-w-md lg:max-w-full h-[300px] sm:h-[400px] lg:h-[62vh]">
+          </div>
+          {/* <div className="w-full max-w-xs sm:max-w-md lg:max-w-full h-[300px] sm:h-[400px] lg:h-[62vh]">
             <Canvas
               camera={{ position: [2, -0.20, 3], fov: 12 }}
               resize={{ scroll: true, offsetSize: true }}
@@ -90,7 +90,7 @@ export default function Hero3d() {
                 <OrbitControls />
               </Suspense>
             </Canvas>
-          </div>
+          </div> */}
         </motion.div>
 
         {/* Right Text */}
