@@ -7,7 +7,7 @@ import Loader from "./Loader";
 
 function PCModel() {
   const { scene } = useGLTF("/models/MainModel.glb");
-  return <primitive object={scene} position={[0, -0.35, 0]} />;
+  return <primitive object={scene} position={[0, -0.30, 0]} />;
 }
 
 export default function Hero3d() {
@@ -69,7 +69,7 @@ export default function Hero3d() {
           transition={{ duration: 1.2 }}
           className="w-full lg:w-1/3 flex justify-center items-center md:p-4"
         >
-          <div className="w-full max-w-xs sm:max-w-md lg:max-w-full h-[300px] sm:h-[400px] lg:h-[62vh] rounded-xl overflow-hidden shadow-xl z-10">
+          {/* <div className="w-full max-w-xs sm:max-w-md lg:max-w-full h-[300px] sm:h-[400px] lg:h-[62vh] rounded-xl overflow-hidden shadow-xl z-10">
             <iframe
               title="3D PC Model"
               src="https://app.vectary.com/p/6aZ4539lL0FKsYCFm4JeLQ"
@@ -77,20 +77,20 @@ export default function Hero3d() {
               allowFullScreen
               className="w-full h-full"
             ></iframe>
-          </div>
-          {/* <div className="w-full max-w-xs sm:max-w-md lg:max-w-full h-[300px] sm:h-[400px] lg:h-[62vh]">
+          </div> */}
+          <div className="w-full max-w-xs sm:max-w-md lg:max-w-full h-[300px] sm:h-[400px] lg:h-[62vh]">
             <Canvas
-              camera={{ position: [2, -0.20, 3], fov: 12 }}
+              camera={{ position: [-2.5, 0.1, 3], fov: 10 }}
               resize={{ scroll: true, offsetSize: true }}
             >
               <Suspense fallback={<Loader />}>
-                <ambientLight intensity={100} />
-                <directionalLight position={[15, 15, 15]} intensity={50} />
+                <ambientLight intensity={3} />
+                <directionalLight position={[3, 20, 20]} intensity={10} />
                 <PCModel />
                 <OrbitControls />
               </Suspense>
             </Canvas>
-          </div> */}
+          </div>
         </motion.div>
 
         {/* Right Text */}
