@@ -6,11 +6,11 @@ export default function ProductsGrid() {
 
   const images = [
     "/images/img1.JPG",
-    "/images/img2.JPG",
+    "/images/keyb1.jpeg",
     "/images/img3.JPG",
     "/images/img4.JPG",
     "/images/img5.JPG",
-    "/images/img6.JPG",
+    "/images/keyb2.jpeg",
   ];
 
   return (

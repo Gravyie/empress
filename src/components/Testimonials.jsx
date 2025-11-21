@@ -71,7 +71,7 @@ export default function Testimonials() {
   const t = testimonials[current];
 
   return (
-    <section className="bg-gray-50 py-4 md:py-12 px-2 sm:px-6 md:px-12">
+    <section className="bg-gray-50 py-4 md:py-12 px-2 sm:px-6 md:px-24">
       <h2 className="text-lg sm:text-2xl md:text-4xl font-bold text-center mb-4 md:mb-10">
         Don’t take our word for it...
       </h2>
@@ -80,13 +80,13 @@ export default function Testimonials() {
         {/* Arrows */}
         <button
           onClick={prevSlide}
-          className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white shadow rounded-full p-2"
+          className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white shadow rounded-full p-2"
         >
           <ChevronLeft className="w-5 h-5" />
         </button>
         <button
           onClick={nextSlide}
-          className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white shadow rounded-full p-2"
+          className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white shadow rounded-full p-2"
         >
           <ChevronRight className="w-5 h-5" />
         </button>

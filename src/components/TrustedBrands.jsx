@@ -38,9 +38,9 @@ export default function TrustedPartners() {
           <div className="text-center mb-8 sm:mb-10 text-white">
             <h2 className="text-2xl sm:text-4xl font-extrabold leading-tight">
               Our{" "}
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400">
+              {/* <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400"> */}
                 Trusted Partners
-              </span>
+              {/* </span> */}
             </h2>
             <p className="mt-3 sm:mt-4 text-sm sm:text-lg text-gray-200 max-w-2xl mx-auto">
               We collaborate with leading brands and businesses to deliver exceptional results and innovative solutions.

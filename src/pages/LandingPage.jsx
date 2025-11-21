@@ -17,11 +17,11 @@ export default function LandingPage() {
             <Categories />
             <ProductGrid />
             <LandingCarousel />
-            <DealShowcase />
+            {/* <DealShowcase /> */}
             <NeedHelp />
             <Blogs />
             <TrustedBrands />
-            <PCComponents />
+            {/* <PCComponents /> */}
             <Testimonials />
         </>
     );
