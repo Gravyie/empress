@@ -40,13 +40,13 @@ export default function OrdersPage() {
                 <ul className="list-disc ml-6 text-sm">
                   {order.items.map((item, idx) => (
                     <li key={idx}>
-                      {item.name} × {item.quantity} — ₹{item.price * item.quantity}
+                      {item.name} × {item.quantity} — ${item.price * item.quantity}
                     </li>
                   ))}
                 </ul>
               </div>
               <div className="font-semibold mb-2">
-                <strong>Total:</strong> ₹{order.total.toLocaleString()}
+                <strong>Total:</strong> ${order.total.toLocaleString()}
               </div>
 
               <div className="flex items-center gap-4">

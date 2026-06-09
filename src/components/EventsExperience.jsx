@@ -2,7 +2,7 @@ import React from 'react';
 
 const EventsExperience = () => {
   return (
-    <section className="bg-black text-white py-8 md:py-12  
+    <section className="bg-[#f8f9fa] dark:bg-black text-white py-8 md:py-12  
                         px-2 sm:px-4 md:px-6 lg:px-8"> {/* Responsive horizontal padding */}
       <div className="max-w-7xl mx-auto flex flex-row items-center justify-between flex-nowrap 
                       gap-x-2 sm:gap-x-4 md:gap-x-8 lg:gap-x-12"> {/* Responsive gaps between main sections, flex-nowrap to keep horizontal */}
@@ -16,7 +16,7 @@ const EventsExperience = () => {
                         relative overflow-hidden 
                         rounded-b-full /* KEY FIX: Half-pill on left, small curve on right */
                         sm:rounded-b-full
-                        md:rounded-b-full shadow-lg">
+                        md:rounded-b-full shadow-none border border-black/10 dark:border-white/10">
           <img
             src="/images/Event/hero1.png" // Replace with your actual image path
             alt="Taipei Game Show Event"
@@ -29,7 +29,7 @@ const EventsExperience = () => {
           <h2 className="text-sm sm:text-2xl md:text-4xl lg:text-5xl font-extrabold mb-1 sm:mb-2 md:mb-4 leading-tight"> {/* Scaled heading */}
             Events & Experiences
           </h2>
-          <p className="text-[0.5rem] sm:text-sm md:text-base lg:text-lg text-gray-300 mb-4 sm:mb-6 md:mb-8 max-w-lg mx-auto"> {/* Scaled paragraph */}
+          <p className="text-[0.5rem] sm:text-sm md:text-base lg:text-lg text-gray-400 dark:text-white/30 mb-4 sm:mb-6 md:mb-8 max-w-lg mx-auto"> {/* Scaled paragraph */}
             Connect with fellow builders, enthusiasts, and pros at our upcoming events.
           </p>
 
@@ -37,15 +37,15 @@ const EventsExperience = () => {
           <div className="flex flex-row justify-center items-center gap-x-1 sm:gap-x-2 md:gap-x-8 lg:gap-x-16 gap-y-0"> {/* KEY FIX: justify-start for event listings */}
             {/* Event 1 */}
             <div className="text-left"> {/* KEY FIX: text-left for individual event details */}
-              <h3 className="text-xs sm:text-base md:text-xl lg:text-2xl font-bold text-gray-100 mb-0.5 sm:mb-1 md:mb-2">Sarah Johnson</h3> {/* Scaled heading */}
-              <p className="text-[0.5rem] sm:text-xs md:text-base text-gray-400 leading-tight">Dec 15, 2025</p> {/* Aggressively scaled date/time text */}
-              <p className="text-[0.5rem] sm:text-xs md:text-base text-gray-400 leading-tight">10:00 - 11:30</p>
+              <h3 className="text-xs sm:text-base md:text-xl lg:text-2xl font-bold text-white mb-0.5 sm:mb-1 md:mb-2">Sarah Johnson</h3> {/* Scaled heading */}
+              <p className="text-[0.5rem] sm:text-xs md:text-base text-gray-500 dark:text-white/40 leading-tight">Dec 15, 2025</p> {/* Aggressively scaled date/time text */}
+              <p className="text-[0.5rem] sm:text-xs md:text-base text-gray-500 dark:text-white/40 leading-tight">10:00 - 11:30</p>
             </div>
             {/* Event 2 */}
             <div className="text-left"> {/* KEY FIX: text-left for individual event details */}
-              <h3 className="text-xs sm:text-base md:text-xl lg:text-2xl font-bold text-gray-100 mb-0.5 sm:mb-1 md:mb-2">Christopher Wilson</h3> {/* Scaled heading */}
-              <p className="text-[0.5rem] sm:text-xs md:text-base text-gray-400 leading-tight">Dec 17, 2025</p>
-              <p className="text-[0.5rem] sm:text-xs md:text-base text-gray-400 leading-tight">12:00 - 2:00 PM</p>
+              <h3 className="text-xs sm:text-base md:text-xl lg:text-2xl font-bold text-white mb-0.5 sm:mb-1 md:mb-2">Christopher Wilson</h3> {/* Scaled heading */}
+              <p className="text-[0.5rem] sm:text-xs md:text-base text-gray-500 dark:text-white/40 leading-tight">Dec 17, 2025</p>
+              <p className="text-[0.5rem] sm:text-xs md:text-base text-gray-500 dark:text-white/40 leading-tight">12:00 - 2:00 PM</p>
             </div>
           </div>
         </div>
@@ -59,7 +59,7 @@ const EventsExperience = () => {
                         relative overflow-hidden 
                         rounded-t-full  /* KEY FIX: Half-pill on right, small curve on left */
                         sm:rounded-t-full  
-                        md:rounded-t-full shadow-lg">
+                        md:rounded-t-full shadow-none border border-black/10 dark:border-white/10">
           <img
             src="/images/Event/hero2.png" // Replace with your actual image path
             alt="Gamer at PC setup"

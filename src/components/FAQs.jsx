@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import { useInView } from 'react-intersection-observer';
+import * as Accordion from '@radix-ui/react-accordion';
+import { ChevronDown } from 'lucide-react';
+import { cn } from '../lib/utils';
 
 export default function FAQSection() {
   const faqs = [
@@ -35,103 +37,68 @@ export default function FAQSection() {
     },
   ];
 
-  const [openIndex, setOpenIndex] = useState(null);
-
-  const toggleFAQ = (index) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
   return (
-    <section className="bg-white py-6 md:py-16 px-4 md:px-8 lg:px-16">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-4 md:gap-12 flex justify-center items-center">
+    <section className="bg-[#f8f9fa] dark:bg-black py-10 md:py-20 px-4 md:px-8 lg:px-16">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12 items-start">
         {/* FAQ Section */}
         <div>
-          <h2 className="text-md md:text-3xl font-bold text-center md:text-left md:mb-2">
-            Frequently asked questions
+          <h2 className="text-xl md:text-3xl font-bold text-white text-center md:text-left md:mb-2">
+            Frequently Asked Questions
           </h2>
-          <p className="text-sm md:text-xl text-gray-500 text-center md:text-left mb-4 md:mb-10">
+          <p className="text-sm md:text-base text-gray-500 dark:text-white/40 text-center md:text-left mb-6 md:mb-10 font-light">
             Most asked questions all at one place.
           </p>
 
-          <div className="space-y-4">
-            {faqs.map((faq, index) => {
-              const { ref, inView } = useInView({
-                triggerOnce: true,
-                threshold: 0.15,
-              });
-
-              const isOpen = openIndex === index;
-
-              return (
-                <div
-                  key={index}
-                  ref={ref}
-                  className={`rounded-md transition-all duration-300 border ${
-                    isOpen
-                      ? 'border-[#F47C5A]'
-                      : 'border-gray-200 bg-white'
-                  } ${
-                    inView ? 'animate-fadeUp' : 'opacity-0 translate-y-10'
-                  }`}
-                  style={{
-                    animationDelay: inView ? `${index * 0.1}s` : '0s',
-                    animationFillMode: 'both'
-                  }}
-                >
-                  <button
-                    onClick={() => toggleFAQ(index)}
-                    className={`text-sm md:text-lg w-full text-left flex justify-between items-center px-4 py-3 text-lg font-medium transition-colors ${
-                      isOpen ? 'text-[#F47C5A]' : 'text-gray-800'
-                    }`}
-                  >
-                    {faq.question}
-                    <svg
-                      className={`text-sm md:text-lg w-5 h-5 transition-transform duration-300 ${
-                        isOpen ? 'rotate-180 text-[#F47C5A]' : 'text-gray-500'
-                      }`}
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </button>
-                  {isOpen && (
-                    <div className="px-4 pb-4 text-sm text-gray-600">
-                      {faq.answer}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
+          <Accordion.Root type="single" collapsible className="space-y-3">
+            {faqs.map((faq, index) => (
+              <Accordion.Item
+                key={index}
+                value={`item-${index}`}
+                className="border border-white/[0.06] bg-[#0a0a0a] overflow-hidden transition-all data-[state=open]:border-[#F47C5A]/30"
+              >
+                <Accordion.Header>
+                  <Accordion.Trigger className="w-full flex items-center justify-between px-5 py-4 text-sm md:text-base font-medium text-gray-800 dark:text-white/80 hover:text-white transition-colors group cursor-pointer">
+                    <span className="text-left pr-4">{faq.question}</span>
+                    <ChevronDown
+                      size={16}
+                      className="flex-shrink-0 text-gray-400 dark:text-white/30 transition-transform duration-300 group-data-[state=open]:rotate-180 group-data-[state=open]:text-[#F47C5A]"
+                    />
+                  </Accordion.Trigger>
+                </Accordion.Header>
+                <Accordion.Content className="accordion-content overflow-hidden">
+                  <div className="px-5 pb-4 text-sm text-gray-500 dark:text-white/50 font-light leading-relaxed border-t border-white/[0.04] pt-3">
+                    {faq.answer}
+                  </div>
+                </Accordion.Content>
+              </Accordion.Item>
+            ))}
+          </Accordion.Root>
         </div>
 
         {/* Ask a Question Form */}
-        <div className="bg-gray-50 rounded-xl shadow-sm p-4 md:p-8">
-          <h3 className="md:text-2xl font-semibold mb-2 md:mb-6">Make your questions</h3>
+        <div className="bg-[#0a0a0a] border border-white/[0.06] p-6 md:p-8">
+          <h3 className="text-lg md:text-2xl font-semibold mb-6 text-white">Make your questions</h3>
           <form className="space-y-4">
             <input
               type="text"
               placeholder="Name*"
-              className="w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#F47C5A]"
+              className="w-full bg-transparent border border-black/10 dark:border-white/10 px-4 py-3 text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-white/30 transition-colors"
             />
             <input
               type="email"
               placeholder="Email*"
-              className="w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#F47C5A]"
+              className="w-full bg-transparent border border-black/10 dark:border-white/10 px-4 py-3 text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-white/30 transition-colors"
             />
             <textarea
               rows="4"
               placeholder="Write Something"
-              className="w-full border border-gray-300 rounded-md px-4 py-3 resize-none focus:outline-none focus:ring-2 focus:ring-[#F47C5A]"
+              className="w-full bg-transparent border border-black/10 dark:border-white/10 px-4 py-3 text-sm text-white placeholder:text-white/25 resize-none focus:outline-none focus:border-white/30 transition-colors"
             />
             <button
               type="submit"
-              className="text-sm md:text-md w-full bg-[#F47C5A] text-white py-3 rounded-md hover:bg-orange-500 transition-colors"
+              className="w-full bg-white text-black hover:bg-gray-200 text-xs uppercase tracking-[0.15em] font-semibold py-3.5 hover:bg-[#e06a4a] transition-colors"
             >
-              SEND REQUEST
+              Send Request
             </button>
           </form>
         </div>

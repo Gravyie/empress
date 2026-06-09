@@ -24,7 +24,7 @@ export default function AdminPanel() {
 
         <div className="bg-white p-6 rounded shadow border">
           <h2 className="text-xl font-semibold text-gray-700 mb-2">Total Revenue</h2>
-          <p className="text-3xl font-bold text-[#F47C5A]">₹{totalRevenue.toLocaleString()}</p>
+          <p className="text-3xl font-bold text-[#F47C5A]">${totalRevenue.toLocaleString()}</p>
         </div>
 
         <div className="bg-white p-6 rounded shadow border">
@@ -55,7 +55,7 @@ export default function AdminPanel() {
                 <tr key={order.id} className="text-center">
                   <td className="p-2 border">{order.id}</td>
                   <td className="p-2 border">{order.user.firstName}</td>
-                  <td className="p-2 border">₹{order.total.toLocaleString()}</td>
+                  <td className="p-2 border">${order.total.toLocaleString()}</td>
                   <td className="p-2 border">{order.status}</td>
                   <td className="p-2 border">
                     {new Date(order.createdAt).toLocaleString()}

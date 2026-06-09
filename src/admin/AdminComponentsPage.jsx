@@ -72,7 +72,7 @@ export default function AdminComponentsPage() {
         />
         <input
           type="number"
-          placeholder="Price (in ₹)"
+          placeholder="Price (in $)"
           className="border w-full px-4 py-2 rounded"
           value={form.price}
           onChange={e => setForm({ ...form, price: e.target.value })}
@@ -106,7 +106,7 @@ export default function AdminComponentsPage() {
                   className="border rounded p-3 flex justify-between items-center"
                 >
                   <div>
-                    <p className="font-semibold">{item.name} — ₹{item.price}</p>
+                    <p className="font-semibold">{item.name} — ${item.price}</p>
                     {item.specs && (
                       <p className="text-xs text-gray-500">{item.specs}</p>
                     )}

@@ -9,7 +9,7 @@ const insights = [
     type: "text",
     title: (
       <>
-        Power Meets <span className="underline decoration-green-500">Precision</span>
+        Power Meets <span className="text-chrome">Precision</span>
       </>
     ),
     description:
@@ -19,7 +19,7 @@ const insights = [
     type: "text",
     title: (
       <>
-        Built for <span className="underline decoration-purple-400">Your Workflow</span>
+        Built for <span className="text-chrome">Your Workflow</span>
       </>
     ),
     description:
@@ -35,7 +35,7 @@ const insights = [
 
 const InsightBlocks = () => {
   return (
-    <div className="md:px-30 grid grid-cols-1 md:grid-cols-2 gap-2 px-3 py-3 sm:px-4 bg-gray-50 rounded-lg">
+    <div className="md:px-30 grid grid-cols-1 md:grid-cols-2 gap-2 px-3 py-3 sm:px-4 bg-[#0a0a0a]">
       {insights.map((insight, idx) => {
         // Reorder 3rd and 4th items on mobile only
         let orderClass = "";
@@ -44,8 +44,8 @@ const InsightBlocks = () => {
 
         const baseClass =
           insight.type === "image"
-            ? "rounded-lg overflow-hidden shadow-sm"
-            : "bg-white rounded-lg shadow-sm px-3 py-4 sm:px-4 sm:py-5 flex flex-col justify-center text-center";
+            ? "overflow-hidden border border-white/[0.06]"
+            : "bg-[#f8f9fa] dark:bg-black border border-white/[0.06] px-4 py-5 sm:px-5 sm:py-6 flex flex-col justify-center text-center";
 
         return (
           <div key={idx} className={`${baseClass} ${orderClass}`}>
@@ -53,12 +53,12 @@ const InsightBlocks = () => {
               <img
                 src={insight.src}
                 alt={insight.alt}
-                className="w-full object-cover rounded-lg max-h-48 sm:max-h-72"
+                className="w-full object-cover max-h-48 sm:max-h-72"
               />
             ) : (
               <>
-                <h3 className="text-sm sm:text-base font-semibold mb-1">{insight.title}</h3>
-                <p className="text-gray-600 text-xs sm:text-sm leading-snug">{insight.description}</p>
+                <h3 className="text-sm sm:text-base font-semibold mb-1.5 text-white">{insight.title}</h3>
+                <p className="text-gray-500 dark:text-white/40 text-xs sm:text-sm leading-relaxed font-light">{insight.description}</p>
               </>
             )}
           </div>

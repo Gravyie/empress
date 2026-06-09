@@ -91,8 +91,8 @@ export default function Gallery() {
   };
 
   return (
-    <div className="w-full flex flex-col items-center justify-center py-6 md:py-12 bg-white overflow-hidden relative">
-      <h2 className="text-3xl font-bold mb-6">Gallery</h2>
+    <div className="w-full flex flex-col items-center justify-center py-8 md:py-14 bg-[#f8f9fa] dark:bg-black overflow-hidden relative">
+      <h2 className="text-3xl font-bold mb-8 text-white">Gallery</h2>
 
       <div className="relative w-full max-w-[100vw] h-[320px] flex items-center justify-center">
         {images.map((src, idx) => {
@@ -128,23 +128,23 @@ export default function Gallery() {
               <img
                 src={src}
                 alt={infoData[idx].title}
-                className="rounded-xl shadow-lg w-72 h-72 object-cover cursor-pointer"
+                className="shadow-lg w-72 h-72 object-cover cursor-pointer ring-1 ring-white/10"
               />
 
               {isCardVisible && (
-                <div className="absolute left-[290px] top-1/2 -translate-y-1/2 bg-white border border-gray-200 shadow-2xl rounded-2xl p-6 w-80 z-40 animate-fadeIn">
-                  <h3 className="text-2xl font-extrabold text-gray-800 mb-3 tracking-wide">
+                <div className="absolute left-[290px] top-1/2 -translate-y-1/2 bg-[#0a0a0a] border border-black/10 dark:border-white/10 shadow-2xl p-6 w-80 z-40 animate-fadeIn">
+                  <h3 className="text-xl font-bold text-white mb-3 tracking-wide">
                     {infoData[idx].title}
                   </h3>
-                  <ul className="mb-5 space-y-2 text-sm text-gray-700">
+                  <ul className="mb-5 space-y-2 text-sm text-gray-500 dark:text-white/50">
                     {infoData[idx].specs.map((spec, i) => (
                       <li key={i} className="flex items-start gap-2">
                         <span className="text-[#F47C5A] text-base mt-0.5">•</span>
-                        <span>{spec}</span>
+                        <span className="font-light">{spec}</span>
                       </li>
                     ))}
                   </ul>
-                  <button className="w-full bg-[#F47C5A] text-white font-semibold py-2.5 rounded-lg hover:bg-white hover:text-[#F47C5A] border border-[#F47C5A] transition duration-200 text-sm tracking-wide shadow-md">
+                  <button className="w-full bg-white text-black hover:bg-gray-200 font-semibold py-2.5 hover:bg-[#e06a4a] text-xs uppercase tracking-[0.1em] transition-colors">
                     Add to Cart
                   </button>
                 </div>

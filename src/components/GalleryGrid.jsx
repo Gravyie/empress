@@ -41,16 +41,16 @@ export default function GalleryGrid() {
   return (
     <div
       ref={ref}
-      className={`mx-2 lg:mx-25 xl:mx-40 my-4 bg-white p-3 sm:p-4 lg:p-6 rounded-2xl shadow-md transition-opacity duration-1000 ${
+      className={`mx-2 lg:mx-25 xl:mx-40 my-4 bg-[#f8f9fa] dark:bg-black p-3 sm:p-4 lg:p-6 rounded-2xl shadow-none border border-black/10 dark:border-white/10 transition-opacity duration-1000 ${
         inView ? "animate-fadeInFromBack" : "opacity-0"
       }`}
     >
       {/* Header Section */}
       <div className="text-center mb-2 md:mb-12">
-        <h2 className="text-xl sm:text-2xl lg:text-4xl font-extrabold text-gray-900 mb-1 md:mb-2">
+        <h2 className="text-xl sm:text-2xl lg:text-4xl font-extrabold text-white mb-1 md:mb-2">
           Our Latest Creations
         </h2>
-        <p className="text-xs sm:text-base text-gray-600 max-w-xl mx-auto">
+        <p className="text-xs sm:text-base text-gray-600 dark:text-white/60 max-w-xl mx-auto">
           Explore a diverse collection of our recent projects, showcasing innovation and design excellence.
         </p>
       </div>
@@ -59,7 +59,7 @@ export default function GalleryGrid() {
       <div
         className="
           grid
-          grid-cols-4
+          grid-cols-2 md:grid-cols-3 lg:grid-cols-4
           grid-rows-11
           auto-rows-[minmax(40px,auto)] 
           h-[60vh] sm:h-[65vh] md:h-[70vh] lg:h-[75vh] xl:h-[80vh] 2xl:h-[85vh] /* Responsive overall grid height */
@@ -70,11 +70,11 @@ export default function GalleryGrid() {
           const sharedClass = `
             rounded-sm sm:rounded-lg 
             overflow-hidden 
-            shadow-md 
+            shadow-none border border-black/10 dark:border-white/10 
             transition-transform 
             duration-300 
             hover:scale-[1.02] 
-            hover:shadow-lg 
+            hover:shadow-none border border-black/10 dark:border-white/10 
             hover:shadow-gray-200 
             group
           `;
@@ -92,10 +92,10 @@ export default function GalleryGrid() {
       {/* Bottom Section: Squiggle and Button */}
       <div className="flex flex-col items-center mt-2 md:mt-8">
         {/* Squiggle Icon */}
-        <Waves className="w-6 h-6 md:w-16 md:h-16 text-gray-400 opacity-70 rotate-135 mb-2 md:mb-4" />
+        <Waves className="w-6 h-6 md:w-16 md:h-16 text-gray-500 dark:text-white/40 opacity-70 rotate-135 mb-2 md:mb-4" />
         
         {/* View All Gallery Button */}
-        <button className="bg-red-500 hover:bg-red-600 text-xs md:text-md text-white md:font-bold py-1 md:py-3 px-2 md:px-8 rounded-sm md:rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-75">
+        <button className="bg-red-500 hover:bg-red-600 text-xs md:text-md text-white md:font-bold py-1 md:py-3 px-2 md:px-8 rounded-sm md:rounded-lg shadow-none border border-black/10 dark:border-white/10 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-75">
           View All
         </button>
       </div>

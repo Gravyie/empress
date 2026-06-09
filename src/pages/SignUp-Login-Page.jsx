@@ -34,14 +34,16 @@ export default function SignupLoginPage() {
     }
   };
 
+  const inputClasses = "text-white w-full px-4 py-3 border border-black/10 dark:border-white/10 bg-[#f8f9fa] dark:bg-black/60 text-sm placeholder:text-white/25 focus:outline-none focus:border-white/30 transition-colors";
+
   return (
-    <div className="min-h-[65vh] flex items-center justify-center px-4">
+    <div className="min-h-screen pt-12 pb-12 flex items-center justify-center px-4 relative overflow-hidden">
       <video
         autoPlay
         loop
         muted
         playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover z-[-10]"
+        className="absolute top-0 left-0 w-full h-full object-cover z-[-10] brightness-[0.3]"
       >
         <source src="/bg-video.mp4" type="video/mp4" />
         Your browser does not support the video tag.
@@ -51,14 +53,17 @@ export default function SignupLoginPage() {
         <div className="mb-4">
           <button
             onClick={handleBack}
-            className="text-sm text-gray-400 hover:text-gray-600 hover:underline"
+            className="text-xs uppercase tracking-wider text-gray-500 dark:text-white/40 hover:text-white transition-colors"
           >
             ← Go Back
           </button>
         </div>
 
         {/* Card */}
-        <div className="bg-transparent p-6 rounded-xl shadow-md">
+        <div className="bg-[#f8f9fa] dark:bg-black/40 backdrop-blur-xl border border-white/[0.08] p-7">
+          <h2 className="text-lg font-semibold text-white mb-6">
+            {mode === "login" ? "Welcome Back" : "Create Account"}
+          </h2>
           <form onSubmit={handleSubmit} className="space-y-4">
             {mode === "signup" && (
               <input
@@ -66,16 +71,16 @@ export default function SignupLoginPage() {
                 placeholder="Full Name"
                 value={form.name}
                 onChange={handleChange("name")}
-                className="text-white w-full px-4 py-2 border border-gray-500 rounded-md bg-[#1a1a2f] focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className={inputClasses}
                 required
               />
             )}
             <input
               type="email"
-              placeholder="Email address or phone number"
+              placeholder="Email address"
               value={form.email}
               onChange={handleChange("email")}
-              className="text-white w-full px-4 py-2 border border-gray-500 rounded-md bg-[#1a1a2f] focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className={inputClasses}
               required
             />
             <input
@@ -83,16 +88,12 @@ export default function SignupLoginPage() {
               placeholder="Password"
               value={form.password}
               onChange={handleChange("password")}
-              className="text-white w-full px-4 py-2 border border-gray-500 rounded-md bg-[#1a1a2f] focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className={inputClasses}
               required
             />
             <button
               type="submit"
-              className={`w-full py-2 font-semibold rounded-md transition ${
-                mode === "login"
-                  ? "bg-[#F47C5A] hover:bg-orange-500 text-white"
-                  : "bg-[#F47C5A] hover:bg-orange-500 text-white"
-              }`}
+              className="w-full py-3 bg-white hover:bg-gray-200 text-black text-xs uppercase tracking-[0.15em] font-semibold transition-colors"
             >
               {mode === "login" ? "Log in" : "Sign Up"}
             </button>
@@ -100,31 +101,31 @@ export default function SignupLoginPage() {
 
           {mode === "login" && (
             <div className="text-center mt-3">
-              <p className="text-sm text-blue-800 hover:underline cursor-pointer">
+              <p className="text-xs text-gray-400 dark:text-white/30 hover:text-white/60 cursor-pointer transition-colors">
                 Forgotten password?
               </p>
             </div>
           )}
 
-          <hr className="my-4" />
+          <div className="border-t border-white/[0.06] my-5" />
 
           {mode === "login" ? (
             <div className="text-center">
               <button
                 onClick={() => setMode("signup")}
-                className="w-full bg-white hover:bg-gray-300 text-[#F47C5A] font-semibold py-2 rounded-md transition"
+                className="w-full py-3 border border-white/15 text-gray-700 dark:text-white/70 hover:text-white hover:border-white/30 text-xs uppercase tracking-[0.15em] font-semibold transition-all"
               >
                 Create new account
               </button>
             </div>
           ) : (
             <div className="text-center">
-              <p className="text-sm text-gray-600 mb-2">
+              <p className="text-xs text-gray-400 dark:text-white/30 mb-3">
                 Already have an account?
               </p>
               <button
                 onClick={() => setMode("login")}
-                className="w-full bg-white hover:bg-gray-300 text-[#F47C5A] font-semibold py-2 rounded-md transition"
+                className="w-full py-3 border border-white/15 text-gray-700 dark:text-white/70 hover:text-white hover:border-white/30 text-xs uppercase tracking-[0.15em] font-semibold transition-all"
               >
                 Back to Login
               </button>

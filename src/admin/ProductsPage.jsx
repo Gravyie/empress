@@ -90,7 +90,7 @@ export default function ProductsPage() {
             <div key={prod.id} className="border p-4 rounded flex items-center justify-between">
               <div>
                 <h3 className="font-bold">{prod.name}</h3>
-                <p className="text-sm text-gray-500">₹{prod.price} — {prod.category}</p>
+                <p className="text-sm text-gray-500">${prod.price} — {prod.category}</p>
               </div>
               <button
                 onClick={() => handleDelete(prod.id)}

@@ -4,9 +4,10 @@ import { useCart } from "../components/CartContext";
 import { allSampleProducts } from "../data/products";
 import { useNavigate } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
+import ProductCard from "../components/ProductCard";
 
 const Workstations = () => {
-  const products = allSampleProducts.pcs;
+  const products = allSampleProducts.pcs.filter(pc => pc.useCase !== "Gaming");
   const navigate = useNavigate();
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0 });
 
@@ -78,12 +79,12 @@ const Workstations = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row min-h-screen bg-white">
+    <div className="flex flex-col md:flex-row min-h-screen bg-[#f8f9fa] dark:bg-black text-white">
       {/* Mobile Filter Button */}
       <div className="mt-8 mr-2 md:hidden flex justify-end">
         <button
           onClick={toggleSidebar}
-          className="px-4 py-2 text-sm bg-orange-500 text-white rounded"
+          className="px-4 py-2 text-xs font-semibold uppercase tracking-widest bg-white text-black hover:bg-[#F47C5A] hover:text-white transition-all duration-300 rounded"
         >
           Filter
         </button>
@@ -92,7 +93,7 @@ const Workstations = () => {
       {/* Sidebar */}
       <aside
         className={`
-          bg-white shadow-md w-[260px] p-6 space-y-6 z-10
+          bg-[#0a0a0a] border-r border-black/10 dark:border-white/10 w-[260px] p-6 space-y-8 z-10
           ${isSidebarOpen ? "fixed top-20 bottom-0 left-0" : "hidden"}
           md:static md:block md:shadow-none
         `}
@@ -100,25 +101,26 @@ const Workstations = () => {
         {/* Mobile Close Button */}
         <div className="md:hidden flex justify-end mb-4">
           <button onClick={closeSidebar}>
-            <X className="w-5 h-5 text-gray-500" />
+            <X className="w-5 h-5 text-gray-500 dark:text-white/50" />
           </button>
         </div>
 
         {/* Filter sections here */}
         {/* ⚡ Performance */}
         <div>
-          <h3 className="font-bold mb-3 flex items-center gap-2">⚡ Performance</h3>
+          <h3 className="text-xs uppercase tracking-widest font-semibold text-white mb-4">Performance</h3>
           {["Beast", "High", "Regular"].map((type) => (
-            <div key={type} className="text-sm text-gray-800">
-              <label className="flex items-center gap-2">
+            <div key={type} className="text-sm text-gray-700 dark:text-white/70 mb-2">
+              <label className="flex items-center gap-3 cursor-pointer group">
                 <input
                   type="radio"
                   name="performance"
                   checked={selectedPerformance === type}
                   onClick={() => handleRadioClick(type, setSelectedPerformance)}
                   readOnly
+                  className="accent-[#F47C5A]"
                 />
-                {type} Performance
+                <span className="group-hover:text-white transition-colors">{type} Performance</span>
               </label>
             </div>
           ))}
@@ -126,18 +128,19 @@ const Workstations = () => {
 
         {/* ⚡ Use Case */}
         <div>
-          <h3 className="font-bold mb-3 flex items-center gap-2">⚡ Use Case</h3>
+          <h3 className="text-xs uppercase tracking-widest font-semibold text-white mb-4">Use Case</h3>
           {["Gaming", "Video Editing", "3D Rendering", "Development"].map((type) => (
-            <div key={type} className="text-sm text-gray-800">
-              <label className="flex items-center gap-2">
+            <div key={type} className="text-sm text-gray-700 dark:text-white/70 mb-2">
+              <label className="flex items-center gap-3 cursor-pointer group">
                 <input
                   type="radio"
                   name="usecase"
                   checked={selectedUseCase === type}
                   onClick={() => handleRadioClick(type, setSelectedUseCase)}
                   readOnly
+                  className="accent-[#F47C5A]"
                 />
-                {type}
+                <span className="group-hover:text-white transition-colors">{type}</span>
               </label>
             </div>
           ))}
@@ -145,45 +148,48 @@ const Workstations = () => {
 
         {/* ⚡ Price Range */}
         <div>
-          <h3 className="font-bold mb-3 flex items-center gap-2">⚡ Price Range</h3>
-          <div className="text-sm text-gray-800 space-y-2">
-            <label className="flex items-center gap-2">
+          <h3 className="text-xs uppercase tracking-widest font-semibold text-white mb-4">Price Range</h3>
+          <div className="text-sm text-gray-700 dark:text-white/70 space-y-2">
+            <label className="flex items-center gap-3 cursor-pointer group">
               <input
                 type="radio"
                 name="price"
                 checked={selectedPriceRange === "<3k"}
                 onClick={() => handleRadioClick("<3k", setSelectedPriceRange)}
                 readOnly
+                className="accent-[#F47C5A]"
               />
-              Under ₹3,00,000
+              <span className="group-hover:text-white transition-colors">Under $3,000</span>
             </label>
-            <label className="flex items-center gap-2">
+            <label className="flex items-center gap-3 cursor-pointer group">
               <input
                 type="radio"
                 name="price"
                 checked={selectedPriceRange === "3k-5k"}
                 onClick={() => handleRadioClick("3k-5k", setSelectedPriceRange)}
                 readOnly
+                className="accent-[#F47C5A]"
               />
-              ₹3,00,000 - ₹5,00,000
+              <span className="group-hover:text-white transition-colors">$3,000 - $5,000</span>
             </label>
-            <label className="flex items-center gap-2">
+            <label className="flex items-center gap-3 cursor-pointer group">
               <input
                 type="radio"
                 name="price"
                 checked={selectedPriceRange === ">5k"}
                 onClick={() => handleRadioClick(">5k", setSelectedPriceRange)}
                 readOnly
+                className="accent-[#F47C5A]"
               />
-              Above ₹5,00,000
+              <span className="group-hover:text-white transition-colors">Above $5,000</span>
             </label>
           </div>
 
-          <div className="border-t text-gray-300 pt-4 mt-4 flex flex-col justify-center items-center gap-y-2">
-            <button onClick={handleApplyFilters} className="bg-orange-500 text-white px-4 py-2 text-sm rounded">
+          <div className="border-t border-black/10 dark:border-white/10 pt-6 mt-6 flex flex-col justify-center items-center gap-y-3">
+            <button onClick={handleApplyFilters} className="w-full bg-white text-black hover:bg-[#F47C5A] hover:text-white px-4 py-2.5 text-xs font-semibold uppercase tracking-widest transition-all duration-300">
               Apply Filters
             </button>
-            <button onClick={handleClearFilters} className="text-sm text-gray-600 underline">
+            <button onClick={handleClearFilters} className="text-[10px] text-gray-500 dark:text-white/40 uppercase tracking-widest hover:text-white transition-colors">
               Clear All
             </button>
           </div>
@@ -191,15 +197,15 @@ const Workstations = () => {
       </aside>
 
       {/* Main Content */}
-      <section className="flex-1 px-4 py-6">
+      <section className="flex-1 px-5 lg:px-8 py-8 lg:py-10">
         {/* Header */}
-        <div className="flex justify-between items-center mb-6">
+        <div className="flex flex-col md:flex-row justify-between md:items-end mb-8 gap-4">
           <div>
-            <h1 className="text-xl md:text-3xl font-bold">Workstations</h1>
-            <p className="text-gray-500 text-xs md:text-sm">Professional Computing Systems</p>
+            <h1 className="text-3xl md:text-4xl font-bold uppercase tracking-widest mb-1">Workstations</h1>
+            <p className="text-gray-500 dark:text-white/50 text-sm font-light">Professional Computing Systems</p>
           </div>
           <select
-            className="border md:px-3 py-1 rounded text-xs md:text-sm"
+            className="bg-[#0a0a0a] border border-black/10 dark:border-white/10 px-4 py-2.5 rounded text-xs text-gray-800 dark:text-white/80 focus:outline-none focus:border-white/30 uppercase tracking-wider"
             onChange={(e) => handleSortChange(e.target.value)}
             value={sort}
           >
@@ -210,119 +216,16 @@ const Workstations = () => {
         </div>
 
         {/* Grid */}
-        <div ref={ref} className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProducts.map((product, index) => (
-            <div
+            <ProductCard
               key={product.id}
-              onClick={() => handleProductClick(product.id)}
-              className={`relative bg-white shadow rounded overflow-hidden group cursor-pointer transition-all duration-500
-                  ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
-                `}
-                style={{
-                  transitionDelay: inView ? `${index * 100}ms` : '0ms',
-                }}
-            >
-              <div className="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded">
-                -{product.discount}%
-              </div>
-              <button className="absolute top-2 right-2">
-                <Heart className="w-4 h-4 text-gray-500 hover:text-red-500" />
-              </button>
-              <img
-                src={product.images[0]}
-                alt={product.name}
-                className="w-full h-48 object-cover"
-              />
-              <div className="p-4">
-                <div className="flex justify-between items-center mb-2">
-                  <h3 className="text-sm font-semibold text-gray-800">{product.name}</h3>
-                  <button className="text-[#F47C5A] hover:text-purple-800 transition">
-                    <ShoppingCart onClick={(e) => handleAddToCart(e, product.id)} className="w-5 h-5" />
-                  </button>
-                </div>
-                <p className="text-xs text-gray-600 mb-2">
-                  {Object.values(product.specs).join(", ")}
-                </p>
-                <div className="flex items-center gap-1 text-yellow-500 mb-2">
-                  {Array(5)
-                    .fill()
-                    .map((_, i) => (
-                      <Star
-                        key={i}
-                        className={`w-4 h-4 ${
-                          i < product.rating ? "fill-yellow-500" : "stroke-gray-300"
-                        }`}
-                      />
-                    ))}
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-[#F47C5A] font-semibold text-sm">
-                    ₹{product.price.toLocaleString()}
-                  </span>
-                  <span className="text-gray-400 line-through text-xs">
-                    ₹{product.originalPrice.toLocaleString()}
-                  </span>
-                </div>
-              </div>
-            </div>
-              // <div
-              //   key={product.id}
-              //   onClick={() => handleProductClick(product.id)}
-              //   className="relative bg-white shadow rounded overflow-hidden group cursor-pointer flex flex-row md:flex-col"
-              // >
-              //   {/* Discount badge & heart button */}
-              //   <div className="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded">
-              //     -{product.discount}%
-              //   </div>
-              //   <button className="absolute top-2 right-2 z-10">
-              //     <Heart className="w-4 h-4 text-gray-500 hover:text-red-500" />
-              //   </button>
-
-              //   {/* Image */}
-              //   <div className="w-1/3 md:w-full">
-              //     <img
-              //       src={product.images[0]}
-              //       alt={product.name}
-              //       className="h-full md:h-48 w-full object-cover"
-              //     />
-              //   </div>
-
-              //   {/* Text Content */}
-              //   <div className="p-4 w-2/3 md:w-full flex flex-col justify-between">
-              //     <div className="flex justify-between items-center mb-2">
-              //       <h3 className="text-sm font-semibold text-gray-800">{product.name}</h3>
-              //       <button className="text-[#F47C5A] hover:text-purple-800 transition">
-              //         <ShoppingCart
-              //           onClick={(e) => handleAddToCart(e, product.id)}
-              //           className="w-5 h-5"
-              //         />
-              //       </button>
-              //     </div>
-              //     <p className="text-xs text-gray-600 mb-2">
-              //       {Object.values(product.specs).join(", ")}
-              //     </p>
-              //     <div className="flex items-center gap-1 text-yellow-500 mb-2">
-              //       {Array(5)
-              //         .fill()
-              //         .map((_, i) => (
-              //           <Star
-              //             key={i}
-              //             className={`w-4 h-4 ${
-              //               i < product.rating ? "fill-yellow-500" : "stroke-gray-300"
-              //             }`}
-              //           />
-              //         ))}
-              //     </div>
-              //     <div className="flex items-center gap-2">
-              //       <span className="text-[#F47C5A] font-semibold text-sm">
-              //         ₹{product.price.toLocaleString()}
-              //       </span>
-              //       <span className="text-gray-400 line-through text-xs">
-              //         ₹{product.originalPrice.toLocaleString()}
-              //       </span>
-              //     </div>
-              //   </div>
-              // </div> 
+              product={product}
+              index={index}
+              inView={inView}
+              onClick={handleProductClick}
+              onAddToCart={handleAddToCart}
+            />
           ))}
         </div>
       </section>

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { useInView } from 'react-intersection-observer';
 
 const Categories = () => {
@@ -19,38 +19,38 @@ const Categories = () => {
   });
 
   return (
-    <div className="bg-white px-4 sm:px-6 lg:px-8">
-      <div className="max-w-full">
+    <div className="bg-[#f8f9fa] dark:bg-black px-5 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
         {/* Header and Specialist Info */}
-        <div className="bg-white pb-4 md:py-12 flex flex-col lg:flex-row justify-between items-center lg:items-start gap-3 md:gap-6">
+        <div className="pb-4 md:py-12 flex flex-col lg:flex-row justify-between items-center lg:items-start gap-3 md:gap-6">
           <div className="max-w-xl text-center lg:text-left">
-            <h1 className="text-4xl lg:text-5xl font-light text-gray-600 leading-tight">
-              <span className="font-semibold text-black">Categories.</span> Everything you want and more.
+            <h1 className="text-4xl lg:text-5xl font-light text-gray-500 dark:text-white/40 leading-tight">
+              <span className="font-semibold text-chrome">Categories.</span> Everything you want and more.
             </h1>
           </div>
 
-          <div className="flex flex-col gap-6 text-sm text-gray-700">
+          <div className="flex flex-col gap-6 text-sm text-gray-600 dark:text-white/60">
             <div className="flex items-start gap-3">
-              <img src="/images/Specialist.JPG" alt="Specialist" className="w-8 h-8 rounded-full object-cover" />
+              <img src="/images/Specialist.JPG" alt="Specialist" className="w-8 h-8 rounded-full object-cover ring-1 ring-white/10" />
               <div>
-                <p className="font-medium text-black">Need shopping help?</p>
-                <a href="contact" className="text-blue-600 hover:underline">Ask a Specialist ↗</a>
+                <p className="font-medium text-gray-800 dark:text-white/80">Need shopping help?</p>
+                <a href="contact" className="text-[#F47C5A] hover:underline text-sm">Ask a Specialist ↗</a>
               </div>
             </div>
 
             <div className="flex items-start gap-3">
-              <img src="/images/EMP.png" className="w-6 h-6 mt-1" />
+              <img src="/images/EMP.png" className="w-6 h-6 mt-1 brightness-200" />
               <div>
-                <p className="font-medium text-black">Visit the Empress Store</p>
-                <a href="contact" className="text-blue-600 hover:underline">Find one near you ↗</a>
+                <p className="font-medium text-gray-800 dark:text-white/80">Visit the Empress Store</p>
+                <a href="contact" className="text-[#F47C5A] hover:underline text-sm">Find one near you ↗</a>
               </div>
             </div>
           </div>
         </div>
 
         {/* Category Cards */}
-        <div className="overflow-x-auto pb-4" ref={sectionRef}>
-          <div className="flex gap-8 min-w-max px-4">
+        <div className="overflow-x-auto pb-4 no-scrollbar" ref={sectionRef}>
+          <div className="flex gap-5 min-w-max px-1">
             {categories.map((category, index) => (
               <div
                 key={category.id}
@@ -61,18 +61,18 @@ const Categories = () => {
                   transitionDelay: inView ? `${index * 100}ms` : '0ms',
                 }}
               >
-                <div className="aspect-square bg-gray-50 rounded-2xl overflow-hidden mb-4 group-hover:scale-105 transition-transform duration-200">
+                <div className="aspect-square bg-[#111] overflow-hidden mb-4 ring-1 ring-white/[0.06] group-hover:ring-white/20 transition-all duration-300">
                   <img
                     src={category.image}
                     alt={category.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
                 <div className="text-center">
-                  <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-medium text-gray-900 mb-1">
+                  <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-medium text-white/90 mb-1">
                     {category.name}
                   </h3>
-                  <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-500">
+                  <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-500 dark:text-white/40">
                     {category.description}
                   </p>
                 </div>

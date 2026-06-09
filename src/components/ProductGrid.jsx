@@ -16,12 +16,12 @@ export default function ProductsGrid() {
   return (
     <div
       ref={ref}
-      className={`mx-2 sm:mx-4 lg:mx-6 xl:mx-8 my-4 bg-white p-3 sm:p-4 lg:p-6 rounded-2xl shadow-md transition-opacity duration-1000 ${
+      className={`mx-2 sm:mx-4 lg:mx-6 xl:mx-8 my-6 bg-[#0a0a0a] border border-white/[0.06] p-4 sm:p-5 lg:p-6 transition-opacity duration-1000 ${
         inView ? "animate-fadeInFromBack" : "opacity-0"
       }`}
     >
-      <h2 className="text-[#F47C5A] text-xl sm:text-2xl lg:text-3xl font-semibold mb-3 sm:mb-4 lg:mb-6">
-        Featured Products:
+      <h2 className="text-chrome text-xl sm:text-2xl lg:text-3xl font-semibold mb-4 sm:mb-5 lg:mb-6">
+        Featured Products
       </h2>
 
       <div
@@ -49,14 +49,13 @@ export default function ProductsGrid() {
       >
         {images.map((src, idx) => {
           const sharedClass = `
-            rounded-xl sm:rounded-2xl 
             overflow-hidden 
-            shadow-md 
-            transition-transform 
+            ring-1 ring-white/[0.06]
+            transition-all 
             duration-300 
-            hover:scale-[1.02] 
+            hover:ring-white/20
             hover:shadow-lg 
-            hover:shadow-gray-200 
+            hover:shadow-white/[0.02]
             group
           `;
 

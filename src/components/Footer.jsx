@@ -3,73 +3,80 @@ import logo from "/images/Logo.png";
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-br from-[#0a081f] via-[#241e4e] to-[#1a1a2f] text-white px-6 py-6">
+    <footer className="bg-[#0a0a0a] border-t border-white/[0.06] text-white px-6 py-10">
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 mb-5">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 mb-8">
         <div>
-          <img src={logo} alt="Logo" className="h-8 mb-4" />
-          <div className="flex space-x-4">
-            <a href="#" aria-label="Facebook">
-              <Facebook className="w-7 h-7 text-white hover:text-blue-600 transition" />
-            </a>
-            <a href="#" aria-label="Instagram">
-              <Instagram className="w-7 h-7 text-white hover:text-pink-500 transition" />
-            </a>
-            <a href="#" aria-label="Twitter">
-              <Twitter className="w-7 h-7 text-white hover:text-sky-500 transition" />
-            </a>
-            <a href="#" aria-label="Youtube">
-              <Youtube className="w-7 h-7 text-white hover:text-red-500 transition" />
-            </a>
+          <img src={logo} alt="Logo" className="h-7 mb-5" />
+          <p className="text-gray-400 dark:text-white/30 text-xs font-light leading-relaxed mb-5 max-w-xs">
+            Performance-grade custom PCs engineered for gamers, creators, and professionals.
+          </p>
+          <div className="flex space-x-3">
+            {[
+              { icon: Facebook, label: "Facebook" },
+              { icon: Instagram, label: "Instagram" },
+              { icon: Twitter, label: "Twitter" },
+              { icon: Youtube, label: "Youtube" },
+            ].map(({ icon: Icon, label }) => (
+              <a
+                key={label}
+                href="#"
+                aria-label={label}
+                className="w-9 h-9 border border-white/[0.08] flex items-center justify-center text-gray-500 dark:text-white/40 hover:text-white hover:border-white/25 transition-all"
+              >
+                <Icon className="w-4 h-4" />
+              </a>
+            ))}
           </div>
         </div>
 
-        <div className="col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div className="col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-8">
           <div>
-            <h3 className="font-semibold text-lg text-white mb-2">Build a PC</h3>
-            <div className="h-[1px] bg-[#F47C5A] mb-3 w-60" />
-            <ul className="space-y-1 text-sm text-white">
-              <li><a href="#" className="hover:text-[#F47C5A] transition">Build a custom PC</a></li>
-              <li><a href="#" className="hover:text-[#F47C5A] transition">Build a custom gaming PC</a></li>
-              <li><a href="#" className="hover:text-[#F47C5A] transition">Build a liquid PC</a></li>
-              <li><a href="#" className="hover:text-[#F47C5A] transition">Build a server PC</a></li>
+            <h3 className="font-semibold text-sm uppercase tracking-[0.15em] text-gray-800 dark:text-white/80 mb-4">Build a PC</h3>
+            <div className="w-8 h-[1px] bg-[#F47C5A] mb-4" />
+            <ul className="space-y-2 text-sm">
+              <li><a href="#" className="text-gray-500 dark:text-white/40 hover:text-white transition-colors font-light">Build a custom PC</a></li>
+              <li><a href="#" className="text-gray-500 dark:text-white/40 hover:text-white transition-colors font-light">Build a custom gaming PC</a></li>
+              <li><a href="#" className="text-gray-500 dark:text-white/40 hover:text-white transition-colors font-light">Build a liquid PC</a></li>
+              <li><a href="#" className="text-gray-500 dark:text-white/40 hover:text-white transition-colors font-light">Build a server PC</a></li>
             </ul>
           </div>
 
           <div>
-            <h3 className="font-semibold text-lg text-white mb-2">Useful Links</h3>
-            <div className="h-[1px] bg-[#F47C5A] mb-3 w-60" />
-            <ul className="space-y-1 text-sm text-white">
-              <li><a href="#" className="hover:text-[#F47C5A] transition">About Us</a></li>
-              <li><a href="#" className="hover:text-[#F47C5A] transition">Terms & Conditions</a></li>
-              <li><a href="#" className="hover:text-[#F47C5A] transition">Shipping Policy</a></li>
-              <li><a href="#" className="hover:text-[#F47C5A] transition">Refund & Cancellation</a></li>
+            <h3 className="font-semibold text-sm uppercase tracking-[0.15em] text-gray-800 dark:text-white/80 mb-4">Useful Links</h3>
+            <div className="w-8 h-[1px] bg-[#F47C5A] mb-4" />
+            <ul className="space-y-2 text-sm">
+              <li><a href="#" className="text-gray-500 dark:text-white/40 hover:text-white transition-colors font-light">About Us</a></li>
+              <li><a href="#" className="text-gray-500 dark:text-white/40 hover:text-white transition-colors font-light">Terms & Conditions</a></li>
+              <li><a href="#" className="text-gray-500 dark:text-white/40 hover:text-white transition-colors font-light">Shipping Policy</a></li>
+              <li><a href="#" className="text-gray-500 dark:text-white/40 hover:text-white transition-colors font-light">Refund & Cancellation</a></li>
             </ul>
           </div>
 
           <div>
-            <h3 className="font-semibold text-lg text-white mb-2">Contact Us</h3>
-            <div className="h-[1px] bg-[#F47C5A] mb-3 w-60" />
-            <ul className="space-y-2 text-sm text-white">
-              <li className="flex items-center gap-2">
-                <Phone className="w-4 h-4" /> +91 98765 43210
+            <h3 className="font-semibold text-sm uppercase tracking-[0.15em] text-gray-800 dark:text-white/80 mb-4">Contact Us</h3>
+            <div className="w-8 h-[1px] bg-[#F47C5A] mb-4" />
+            <ul className="space-y-3 text-sm">
+              <li className="flex items-center gap-3">
+                <Phone className="w-3.5 h-3.5 text-gray-400 dark:text-white/30" /> <span className="text-gray-500 dark:text-white/50 font-light">+91 98765 43210</span>
               </li>
-              <li className="flex items-center gap-2">
-                <Mail className="w-4 h-4" /> customerhelp@empress.com
+              <li className="flex items-center gap-3">
+                <Mail className="w-3.5 h-3.5 text-gray-400 dark:text-white/30" /> <span className="text-gray-500 dark:text-white/50 font-light">customerhelp@empress.com</span>
               </li>
-              <li className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 mt-1" />
-                MS-101, Sector D, Aliganj
-                Lucknow, Uttar Pradesh 226024
+              <li className="flex items-start gap-3">
+                <MapPin className="w-3.5 h-3.5 mt-0.5 text-gray-400 dark:text-white/30" />
+                <span className="text-gray-500 dark:text-white/50 font-light">MS-101, Sector D, Aliganj<br />Lucknow, UP 226024</span>
               </li>
             </ul>
           </div>
         </div>
       </div>
-      <div className="">
-        <div className="h-[1px] bg-gray-400 mb-3" />
-        <div className="flex justify-center items-center">
-          <a href="/">www.empresspc.in</a>
+
+      {/* Bottom bar */}
+      <div className="border-t border-white/[0.06] pt-5">
+        <div className="flex flex-col sm:flex-row justify-between items-center text-[11px] text-white/25 max-w-7xl mx-auto">
+          <span>© {new Date().getFullYear()} Empress PC. All rights reserved.</span>
+          <a href="/" className="text-gray-400 dark:text-white/30 hover:text-white/60 transition-colors mt-2 sm:mt-0">www.empresspc.in</a>
         </div>
       </div>
     </footer>

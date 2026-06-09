@@ -30,22 +30,22 @@ export default function OurStory() {
       className="relative w-full bg-center bg-cover bg-no-repeat text-white"
       style={{ backgroundImage: "url('/images/OurStory.png')" }}
     >
-      {/* Bluish overlay */}
-      <div className="absolute inset-0 bg-blue-900 opacity-50 pointer-events-none" />
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-[#f8f9fa] dark:bg-black/70 pointer-events-none" />
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 py-24">
+      <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 py-28">
         <img
           src="/images/Logo.png"
           alt="Empress PC Logo"
-          className="h-10 md:h-12 mb-2"
+          className="h-8 md:h-10 mb-3"
         />
-        <p className="text-lg md:text-xl">
+        <p className="text-lg md:text-xl font-light text-gray-700 dark:text-white/70">
           Quality Custom{" "}
           <span
             className={`inline-block transition-opacity duration-500 ${
               fade ? "opacity-100" : "opacity-0"
-            } bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent font-semibold`}
+            } text-chrome font-semibold`}
           >
             {keywords[index]}
           </span>{" "}

@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
+import { Toaster } from "sonner";
 import Footer from "./components/Footer";
 import EmpressNavbar from "./components/EmpressNavbar";
 import ScrollToTop from "./components/ScrollToTop";
@@ -73,6 +74,7 @@ function AnimatedRoutes() {
         <Route path="/about" element={wrap(<About />)} />
         <Route path="/contact" element={wrap(<Contact />)} />
         <Route path="/products" element={wrap(<CategoriesPage />)} />
+        <Route path="/categories" element={wrap(<CategoriesPage />)} />
         <Route path="/products/:categoryId" element={wrap(<ComponentsListingPage />)} />
         <Route path="/product/:productId" element={wrap(<ProductDetailPage />)} />
         <Route path="/pc-builder" element={wrap(<PCBuilder />)} />
@@ -166,16 +168,29 @@ function App() {
     <AuthProvider>
       <BrowserRouter>
         <ScrollToTop />
-        <div className="min-h-screen flex flex-col">
+        <div className="min-h-screen flex flex-col bg-[#f8f9fa] dark:bg-black">
           <EmpressNavbar />
           <main className="flex-grow">
             <AnimatedRoutes />
           </main>
           <Footer />
         </div>
+        <Toaster
+          position="bottom-right"
+          toastOptions={{
+            style: {
+              background: '#0a0a0a',
+              border: '1px solid rgba(255,255,255,0.08)',
+              color: '#fff',
+              fontSize: '13px',
+              fontFamily: 'Inter, sans-serif',
+            },
+          }}
+        />
       </BrowserRouter>
     </AuthProvider>
   );
 }
 
 export default App;
+

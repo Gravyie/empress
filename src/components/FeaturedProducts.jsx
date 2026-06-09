@@ -1,10 +1,7 @@
 import {
-  ChevronLeft,
-  ChevronRight,
   ArrowRight,
   ShoppingCart,
 } from "lucide-react";
-import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
@@ -13,7 +10,6 @@ import { useCart } from "../components/CartContext";
 
 function FeaturedProducts() {
   const products = featuredProducts;
-  const scrollRef = useRef();
   const navigate = useNavigate();
   const { addToCart } = useCart();
 
@@ -32,113 +28,80 @@ function FeaturedProducts() {
     threshold: 0.1,
   });
 
-  const scroll = (dir) => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({
-        left: dir === "left" ? -300 : 300,
-        behavior: "smooth",
-      });
-    }
-  };
-
   return (
-    <section ref={sectionRef} className="py-10 px-4 md:px-8 bg-white">
+    <section ref={sectionRef} className="py-12 px-5 md:px-8 bg-[#f8f9fa] dark:bg-black">
       {/* Header */}
-      <div className="mb-2 md:mb-6">
-        <div className="flex items-center justify-between mb-2">
+      <div className="max-w-7xl mx-auto mb-6">
+        <div className="flex items-center justify-between">
           <div>
-            <p className="text-red-500 text-sm font-semibold">Trending Now</p>
-            <h2 className="text-2xl md:text-3xl font-bold">Featured Products</h2>
+            <p className="text-[#F47C5A] text-[10px] uppercase tracking-[0.2em] font-semibold mb-1">Trending Now</p>
+            <h2 className="text-2xl md:text-3xl font-bold text-white">Featured Products</h2>
           </div>
 
           <Link
             to="/products"
-            className="inline-flex items-center gap-2 px-4 py-2 bg-red-500 text-white text-xs font-small md:font-medium rounded-full shadow hover:bg-red-600 transition whitespace-nowrap"
+            className="inline-flex items-center gap-2 text-white/50 hover:text-[#F47C5A] text-xs font-semibold uppercase tracking-[0.1em] transition-colors group"
           >
-            View All <ArrowRight size={16} />
+            View All <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
       </div>
 
-
-      {/* Product Cards with arrows on sides */}
-      <div className="relative">
-        {/* Left Arrow */}
-        <button
-          onClick={() => scroll("left")}
-          className="hidden sm:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-gray-100 hover:bg-gray-200 shadow"
-        >
-          <ChevronLeft />
-        </button>
-
+      {/* Product Cards */}
+      <div className="relative max-w-7xl mx-auto">
         {/* Product List */}
         <div
-          ref={scrollRef}
-          className="flex gap-4 sm:gap-6 overflow-x-auto scroll-smooth pb-2 px-1 sm:px-8"
-          style={{
-            scrollbarWidth: "none",
-            msOverflowStyle: "none",
-          }}
+          className="flex gap-4 sm:gap-5 overflow-x-auto pb-6 no-scrollbar"
         >
           {products.map((product, index) => (
             <div
               key={product.id}
               onClick={() => handleProductClick(product.id)}
-              className={`bg-white rounded-lg shadow p-3 sm:p-4 w-[200px] sm:w-[280px] flex-shrink-0 transition-all duration-700 ease-out
+              className={`group relative bg-[#050505] border border-white/[0.04] p-5 rounded-2xl w-[220px] sm:w-[300px] flex-shrink-0 cursor-pointer hover:border-white/10 hover:bg-[#0a0a0a] transition-all duration-500 ease-out
                 ${sectionInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}
               `}
               style={{
                 transitionDelay: sectionInView ? `${index * 100}ms` : "0ms",
               }}
             >
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-full h-36 sm:h-40 object-cover rounded-md mb-3"
-              />
+              <div className="relative w-full h-40 sm:h-48 mb-6 overflow-hidden rounded-xl bg-black">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                />
+              </div>
 
-              <div className="flex justify-between items-center mb-2">
-                <h3 className="text-sm font-semibold text-gray-800">
+              <div className="flex flex-col gap-1">
+                <h3 className="text-sm font-semibold text-white/90 leading-tight">
                   {product.name}
                 </h3>
-                <button className="text-[#F47C5A] hover:text-purple-800">
-                  <ShoppingCart onClick={(e) => handleAddToCart(e, product.id)} className="w-5 h-5" />
-                </button>
-              </div>
-
-              <div className="mb-2 text-gray-600 text-sm">
-                ₹{product.price.toLocaleString()}{" "}
-                {product.originalPrice && (
-                  <span className="line-through text-xs text-gray-400">
-                    ₹{product.originalPrice.toLocaleString()}
-                  </span>
-                )}
-              </div>
-
-              <div className="text-yellow-500 text-sm mb-1">
-                {"★".repeat(product.rating)}{" "}
-                <span className="text-gray-500 text-xs">({product.reviews})</span>
+                <div className="text-[#F47C5A] text-xs mb-3">
+                  {"★".repeat(product.rating)}{" "}
+                  <span className="text-white/30 text-[10px]">({product.reviews})</span>
+                </div>
+                
+                <div className="flex items-center justify-between mt-auto">
+                  <div className="text-white text-sm font-medium">
+                    ${product.price.toLocaleString()}{" "}
+                    {product.originalPrice && (
+                      <span className="line-through text-xs text-white/30 ml-1">
+                        ${product.originalPrice.toLocaleString()}
+                      </span>
+                    )}
+                  </div>
+                  <button
+                    className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-white/40 group-hover:text-white group-hover:bg-[#F47C5A] group-hover:border-[#F47C5A] transition-all"
+                    onClick={(e) => handleAddToCart(e, product.id)}
+                  >
+                    <ShoppingCart className="w-3.5 h-3.5" />
+                  </button>
+                </div>
               </div>
             </div>
           ))}
         </div>
-
-        {/* Right Arrow */}
-        <button
-          onClick={() => scroll("right")}
-          className="hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-gray-100 hover:bg-gray-200 shadow"
-        >
-          <ChevronRight />
-        </button>
-
-        {/* Hide scrollbar on WebKit */}
-        <style>{`
-          div::-webkit-scrollbar {
-            display: none;
-          }
-        `}</style>
       </div>
-
     </section>
   );
 };

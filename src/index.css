@@ -1,5 +1,104 @@
 @import "tailwindcss";
 
+/* ============================================
+   EMPRESS PC — GLOBAL DESIGN SYSTEM
+   Theme: Dark Precision with Chrome Accents
+   ============================================ */
+
+/* === Base Styles === */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: #000;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* === Selection === */
+::selection {
+  background: rgba(244, 124, 90, 0.3);
+  color: #fff;
+}
+
+/* === Scrollbar (Dark) === */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* === Chrome / Metal Gradient Utilities === */
+.text-chrome {
+  background: linear-gradient(135deg, #d4d4d8, #fafafa, #a1a1aa, #e4e4e7, #d4d4d8);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bg-chrome {
+  background: linear-gradient(135deg, #27272a, #3f3f46, #52525b, #3f3f46, #27272a);
+}
+
+.border-chrome {
+  border-image: linear-gradient(135deg, #52525b, #a1a1aa, #52525b) 1;
+}
+
+.shine-chrome {
+  background: linear-gradient(135deg, #71717a, #d4d4d8, #71717a);
+  background-size: 200% 200%;
+  animation: chromeShine 6s ease infinite;
+}
+
+@keyframes chromeShine {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* === Shimmer Line (Card Hover) === */
+.shimmer-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.8s ease;
+}
+
+.group:hover .shimmer-line {
+  transform: translateX(100%);
+}
+
+/* === Grid Background Pattern === */
+.grid-bg {
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 0);
+  background-size: 40px 40px;
+}
+
+/* === Glass Surface === */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
 /* === Fade In From Back === */
 @keyframes fadeInFromBack {
   0% {
@@ -59,4 +158,23 @@
 .no-scrollbar {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;     /* Firefox */
+}
+
+/* === Radix Accordion Animations === */
+@keyframes accordionSlideDown {
+  from { height: 0; opacity: 0; }
+  to { height: var(--radix-accordion-content-height); opacity: 1; }
+}
+
+@keyframes accordionSlideUp {
+  from { height: var(--radix-accordion-content-height); opacity: 1; }
+  to { height: 0; opacity: 0; }
+}
+
+[data-state="open"] > .accordion-content {
+  animation: accordionSlideDown 300ms ease-out;
+}
+
+[data-state="closed"] > .accordion-content {
+  animation: accordionSlideUp 200ms ease-out;
 }

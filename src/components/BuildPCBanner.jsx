@@ -2,7 +2,7 @@ import React from "react";
 
 export default function BuildPCBanner() {
   return (
-    <section className="w-full bg-black text-white px-6 py-12 lg:px-16 lg:py-20">
+    <section className="w-full bg-[#f8f9fa] dark:bg-black text-white px-6 py-12 lg:px-16 lg:py-20">
       <div className="max-w-screen-2xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 h-[200px]">
         {/* Left Text Block */}
         <div className="flex-1 text-center lg:text-left">

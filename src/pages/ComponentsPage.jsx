@@ -69,11 +69,12 @@ const ComponentsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white p-5">
+    <div className="min-h-screen bg-[#f8f9fa] dark:bg-black py-16 px-5 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12 text-black">
-          <h1 className="text-5xl font-bold mb-4">PC Hardware Store</h1>
-          <p className="text-xl opacity-90">Explore our premium collection of PC components and systems</p>
+        <div className="text-center mb-16">
+          <p className="text-[#F47C5A] text-[10px] uppercase tracking-[0.2em] font-bold mb-2">Hardware</p>
+          <h1 className="text-4xl sm:text-5xl font-bold uppercase tracking-widest text-white mb-4">PC Components</h1>
+          <p className="text-lg text-gray-500 dark:text-white/50 font-light max-w-2xl mx-auto">Explore our premium collection of PC components and systems</p>
         </div>
 
         {/* Categories Grid */}
@@ -89,7 +90,7 @@ const ComponentsPage = () => {
               ref={ref}
               key={category.id}
               onClick={() => handleCategoryClick(category.id)}
-              className={`group bg-white/95 backdrop-blur-sm rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transform transition-all duration-500 hover:scale-102 cursor-pointer border border-white/20 transition-all duration-300
+              className={`group bg-[#0a0a0a] rounded-xl overflow-hidden shadow-none transform transition-all duration-500 cursor-pointer border border-black/10 dark:border-white/10 hover:border-white/30 hover:shadow-2xl hover:shadow-[#F47C5A]/[0.02]
                 ${inView ? 'animate-fadeUp' : 'opacity-0 translate-y-10'} `
               }
               style={{
@@ -98,28 +99,28 @@ const ComponentsPage = () => {
               }}
             >
               {/* Category Image */}
-              <div className="h-48 w-full overflow-hidden">
+              <div className="h-48 w-full overflow-hidden bg-white/[0.02] border-b border-white/[0.04]">
                 <img
                   src={category.image}
                   alt={category.name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
                 />
               </div>
 
               {/* Category Content */}
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-800 mb-3">
+                <h3 className="text-lg font-bold text-white/90 uppercase tracking-widest mb-2">
                   {category.name}
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                <p className="text-gray-500 dark:text-white/40 text-xs font-light leading-relaxed mb-6">
                   {category.description}
                 </p>
-                <div className="flex justify-between items-center">
-                  <span className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-medium">
+                <div className="flex justify-between items-center pt-4 border-t border-white/[0.04]">
+                  <span className="bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-gray-800 dark:text-white/80 px-3 py-1.5 rounded text-[10px] uppercase tracking-wider font-semibold">
                     {category.count} Products
                   </span>
-                  <div className="w-8 h-8 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white transform group-hover:rotate-45 transition-transform duration-300">
-                    →
+                  <div className="text-[#F47C5A] transform group-hover:translate-x-1 transition-transform duration-300">
+                    &rarr;
                   </div>
                 </div>
               </div>
@@ -128,11 +129,11 @@ const ComponentsPage = () => {
         </div>
 
         {/* Footer */}
-        <div className="text-center mt-16 text-white/80">
-          <p className="text-lg">
+        <div className="text-center mt-20 text-gray-500 dark:text-white/40 text-sm font-light">
+          <p>
             Need help choosing the right components?
-            <span className="text-white font-semibold ml-2 cursor-pointer hover:underline">
-              Contact our experts →
+            <span className="text-[#F47C5A] font-semibold ml-2 cursor-pointer hover:underline uppercase tracking-wider text-[10px]">
+              Contact our experts &rarr;
             </span>
           </p>
         </div>

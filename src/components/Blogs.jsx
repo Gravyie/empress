@@ -41,25 +41,25 @@ const Blogs = () => {
   });
 
   return (
-    <section className="bg-white py-12 sm:py-20 px-4 sm:px-12 lg:px-20">
+    <section className="bg-[#f8f9fa] dark:bg-black py-14 sm:py-20 px-5 sm:px-12 lg:px-20">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8 sm:mb-12 text-center">
-          <h2 className="text-2xl sm:text-4xl font-semibold text-gray-800 mb-2">
+          <h2 className="text-2xl sm:text-4xl font-semibold text-white mb-2">
             Blogs & Articles
           </h2>
-          <p className="text-gray-500 text-xs sm:text-base max-w-md mx-auto">
+          <p className="text-gray-500 dark:text-white/40 text-xs sm:text-base max-w-md mx-auto font-light">
             Explore insights, guides, and deep dives into performance computing.
           </p>
         </div>
 
         {/* Blog Cards */}
-        <div className="overflow-x-auto pb-3 sm:pb-4" ref={sectionRef}>
-          <div className="flex gap-4 sm:gap-6 min-w-max px-1 sm:px-2">
+        <div className="overflow-x-auto pb-3 sm:pb-4 no-scrollbar" ref={sectionRef}>
+          <div className="flex gap-4 sm:gap-5 min-w-max px-1 sm:px-2">
             {categories.map((category, index) => (
               <div
                 key={category.id}
-                className={`group flex-shrink-0 w-56 sm:w-72 md:w-80 bg-gray-50 rounded-xl sm:rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-500
+                className={`group flex-shrink-0 w-56 sm:w-72 md:w-80 bg-[#0a0a0a] border border-white/[0.06] overflow-hidden hover:border-white/15 transition-all duration-500
                   ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
                 `}
                 style={{
@@ -70,14 +70,14 @@ const Blogs = () => {
                   <img
                     src={category.image}
                     alt={category.name}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
-                <div className="p-3 sm:p-4 text-left">
-                  <h3 className="text-sm sm:text-lg font-semibold text-gray-800 mb-1">
+                <div className="p-4 sm:p-5 text-left">
+                  <h3 className="text-sm sm:text-base font-semibold text-white/90 mb-1.5 leading-tight">
                     {category.name}
                   </h3>
-                  <p className="text-gray-500 text-xs sm:text-sm">
+                  <p className="text-gray-500 dark:text-white/40 text-xs sm:text-sm font-light leading-relaxed">
                     {category.description}
                   </p>
                 </div>
@@ -87,10 +87,10 @@ const Blogs = () => {
         </div>
 
         {/* View All Button */}
-        <div className="mt-4 sm:mt-6 text-center">
+        <div className="mt-6 sm:mt-8 text-center">
           <a
             href="/blogs"
-            className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-[#F47C5A] text-white font-semibold text-xs sm:text-sm rounded-full shadow hover:bg-white hover:text-[#F47C5A] border border-[#F47C5A] transition duration-300"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black hover:bg-gray-200 font-semibold text-xs uppercase tracking-[0.1em] hover:bg-[#e06a4a] transition-all"
           >
             View All →
           </a>

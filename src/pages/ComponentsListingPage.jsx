@@ -120,13 +120,13 @@ const ProductsListingPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#f8f9fa] dark:bg-black text-white">
       {/* Header */}
-      <div className="bg-white/10">
-        <div className="max-w-7xl mx-auto px-5 py-5">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+      <div className="border-b border-black/10 dark:border-white/10 bg-[#0a0a0a]">
+        <div className="max-w-7xl mx-auto px-5 py-8">
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
             <div>
-              <div className="text-black/80 text-sm mb-2">
+              <div className="text-gray-500 dark:text-white/50 text-xs uppercase tracking-widest font-semibold mb-3">
                 <button
                   onClick={goToCategories}
                   className="hover:text-white transition-colors"
@@ -135,9 +135,9 @@ const ProductsListingPage = () => {
                 </button>
                 <span className="mx-2">/</span>
                 {/* Display the formatted current category name */}
-                <span className="font-semibold">{formatCategoryName(categoryId)}</span>
+                <span className="text-[#F47C5A]">{formatCategoryName(categoryId)}</span>
               </div>
-              <h1 className="text-3xl lg:text-4xl font-bold text-black drop-shadow-lg">
+              <h1 className="text-3xl lg:text-4xl font-bold text-white uppercase tracking-widest">
                 {formatCategoryName(categoryId)}
               </h1>
             </div>
@@ -146,7 +146,7 @@ const ProductsListingPage = () => {
             <div className="flex flex-wrap gap-3">
               {/* Brand Filter: Dynamically populate options based on available products in the current category */}
               <select
-                className="px-4 py-2 rounded-lg bg-white/90 backdrop-blur-sm border-0 focus:ring-2 focus:ring-purple-300 text-sm"
+                className="px-4 py-2.5 rounded bg-[#f8f9fa] dark:bg-black border border-black/20 dark:border-white/20 text-gray-800 dark:text-white/80 focus:ring-1 focus:ring-[#F47C5A] focus:border-[#F47C5A] text-xs uppercase tracking-wider outline-none transition-all cursor-pointer"
                 value={filters.brand}
                 onChange={(e) => handleFilterChange('brand', e.target.value)}
               >
@@ -158,7 +158,7 @@ const ProductsListingPage = () => {
               </select>
 
               <select
-                className="px-4 py-2 rounded-lg bg-white/90 backdrop-blur-sm border-0 focus:ring-2 focus:ring-purple-300 text-sm"
+                className="px-4 py-2.5 rounded bg-[#f8f9fa] dark:bg-black border border-black/20 dark:border-white/20 text-gray-800 dark:text-white/80 focus:ring-1 focus:ring-[#F47C5A] focus:border-[#F47C5A] text-xs uppercase tracking-wider outline-none transition-all cursor-pointer"
                 value={filters.priceRange}
                 onChange={(e) => handleFilterChange('priceRange', e.target.value)}
               >
@@ -169,7 +169,7 @@ const ProductsListingPage = () => {
               </select>
 
               <select
-                className="px-4 py-2 rounded-lg bg-white/90 backdrop-blur-sm border-0 focus:ring-2 focus:ring-purple-300 text-sm"
+                className="px-4 py-2.5 rounded bg-[#f8f9fa] dark:bg-black border border-black/20 dark:border-white/20 text-gray-800 dark:text-white/80 focus:ring-1 focus:ring-[#F47C5A] focus:border-[#F47C5A] text-xs uppercase tracking-wider outline-none transition-all cursor-pointer"
                 value={filters.sortBy}
                 onChange={(e) => handleFilterChange('sortBy', e.target.value)}
               >
@@ -192,14 +192,14 @@ const ProductsListingPage = () => {
       >
         {filteredProducts.length === 0 ? (
           <div className="text-center text-white py-20">
-            <div className="text-6xl mb-4">🔍</div>
-            <h3 className="text-2xl font-bold mb-2">No products found</h3>
-            <p className="text-white/80">Try adjusting your filters</p>
+            <div className="text-6xl mb-4 opacity-50">🔍</div>
+            <h3 className="text-2xl font-bold mb-2 uppercase tracking-widest text-white/90">No products found</h3>
+            <p className="text-gray-500 dark:text-white/50 font-light">Try adjusting your filters</p>
             {/* Provide a button to clear filters */}
             {(filters.brand || filters.priceRange || filters.sortBy) && (
               <button
                 onClick={() => setFilters({ brand: '', priceRange: '', sortBy: '' })}
-                className="mt-4 bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-lg transition-colors"
+                className="mt-6 bg-transparent border border-[#F47C5A]/50 hover:bg-[#F47C5A]/10 text-[#F47C5A] px-6 py-2.5 rounded text-xs uppercase tracking-widest font-semibold transition-colors"
               >
                 Clear Filters
               </button>
@@ -211,21 +211,21 @@ const ProductsListingPage = () => {
               <div
                 key={product.id}
                 onClick={() => handleProductClick(product.id)} // This triggers the navigation
-                className="group bg-white/95 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transform transition-all duration-300 hover:-translate-y-2 cursor-pointer border border-white/20"
+                className="group bg-[#0a0a0a] rounded-xl overflow-hidden shadow-none hover:shadow-2xl hover:shadow-white/5 transform transition-all duration-300 hover:-translate-y-1 cursor-pointer border border-black/10 dark:border-white/10 hover:border-white/30 flex flex-col"
               >
                 {/* Product Image */}
-                <div className="relative h-56 bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center overflow-hidden">
+                <div className="relative h-56 bg-white/[0.02] border-b border-white/[0.04] flex items-center justify-center overflow-hidden p-6">
                   <img
                     src={product.images[0]}
                     alt={product.name}
-                    className="max-w-[80%] max-h-[80%] object-contain transition-transform duration-300 group-hover:scale-110"
+                    className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className={`absolute top-3 right-3 ${product.badge.color} text-white px-3 py-1 rounded-full text-xs font-bold`}>
+                  <div className={`absolute top-4 right-4 ${product.badge.color} text-white px-2.5 py-1 rounded text-[10px] uppercase tracking-wider font-bold shadow-lg`}>
                     {product.badge.text}
                   </div>
                   {!product.inStock && (
-                    <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-                      <span className="bg-red-500 text-white px-4 py-2 rounded-lg font-bold">
+                    <div className="absolute inset-0 bg-[#f8f9fa] dark:bg-black/80 backdrop-blur-sm flex items-center justify-center">
+                      <span className="bg-black/10 dark:bg-white/10 border border-black/20 dark:border-white/20 text-gray-800 dark:text-white/80 px-4 py-2 rounded text-xs uppercase tracking-widest font-bold">
                         Out of Stock
                       </span>
                     </div>
@@ -233,37 +233,37 @@ const ProductsListingPage = () => {
                 </div>
 
                 {/* Product Content */}
-                <div className="p-6">
-                  <div className='h-[150px]'>
-                  <div className="text-xs text-gray-500 uppercase tracking-wide font-semibold mb-2">
-                    {product.brand}
-                  </div>
-                  <h3 className="text-lg font-bold text-gray-800 mb-3 line-clamp-2">
-                    {product.name}
-                  </h3>
-                  <p className="text-gray-600 text-sm mb-4 line-clamp-3">
-                    {product.description1}
-                  </p>
+                <div className="p-6 flex flex-col flex-grow">
+                  <div className="flex-grow">
+                    <div className="text-[10px] text-[#F47C5A] uppercase tracking-widest font-semibold mb-2">
+                      {product.brand}
+                    </div>
+                    <h3 className="text-lg font-bold text-white/90 mb-3 line-clamp-2 leading-tight">
+                      {product.name}
+                    </h3>
+                    <p className="text-gray-500 dark:text-white/40 text-xs font-light mb-6 line-clamp-3 leading-relaxed">
+                      {product.description1}
+                    </p>
                   </div>
 
                   {/* Specs */}
-                  <div className="bg-gray-50 rounded-lg p-3 mb-4 space-y-1">
+                  <div className="bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded p-4 mb-6 space-y-2">
                     {Object.entries(product.specs).slice(0, 3).map(([key, value]) => (
                       <div key={key} className="flex justify-between text-xs">
-                        <span className="text-gray-500 font-medium">{key}:</span>
-                        <span className="text-gray-700 font-semibold">{value}</span>
+                        <span className="text-gray-500 dark:text-white/40">{key}:</span>
+                        <span className="text-gray-800 dark:text-white/80 font-medium text-right">{value}</span>
                       </div>
                     ))}
                   </div>
 
                   {/* Price and Add to Cart */}
-                  <div className="flex items-center justify-between">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-auto pt-4 border-t border-white/[0.04]">
                     <div className="flex items-baseline gap-2">
-                      <span className="text-2xl font-bold text-gray-800">
+                      <span className="text-xl font-bold text-white">
                         ${product.price}
                       </span>
                       {product.originalPrice && (
-                        <span className="text-sm text-gray-500 line-through">
+                        <span className="text-xs text-gray-400 dark:text-white/30 line-through">
                           ${product.originalPrice}
                         </span>
                       )}
@@ -271,7 +271,7 @@ const ProductsListingPage = () => {
                     <button
                       onClick={(e) => handleAddToCart(e, product.id)}
                       disabled={!product.inStock}
-                      className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-5 py-2 rounded-full font-semibold hover:from-indigo-600 hover:to-purple-700 transform hover:-translate-y-1 transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                      className="bg-white text-black hover:bg-gray-200 px-6 py-2.5 rounded text-[10px] uppercase tracking-widest font-bold hover:bg-[#e06a4a] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
                     >
                       {product.inStock ? 'Add to Cart' : 'Unavailable'}
                     </button>

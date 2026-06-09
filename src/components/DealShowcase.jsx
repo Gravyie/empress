@@ -218,7 +218,7 @@ const DealShowcase = () => {
         <div className="w-full max-w-4xl mx-auto px-4 lg:px-6">
 
           <div className="text-center mb-6 lg:mb-8">
-            <div className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-md text-white px-3 py-1.5 rounded-full text-xs font-medium mb-3 border border-white/30 shadow-md">
+            <div className="inline-flex items-center space-x-2 bg-black/20 dark:bg-white/20 backdrop-blur-md text-white px-3 py-1.5 rounded-full text-xs font-medium mb-3 border border-white/30 shadow-md">
               <Zap className="w-4 h-4 animate-pulse text-yellow-300" />
               <span className="font-semibold">DEAL OF THE DAY</span>
             </div>
@@ -234,7 +234,7 @@ const DealShowcase = () => {
 
             <div className="lg:col-span-5 space-y-4">
               <div className="group relative">
-                <div className="bg-white/10 backdrop-blur-xl rounded-xl p-4 border border-white/20 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105 hover:bg-white/15">
+                <div className="bg-black/10 dark:bg-white/10 backdrop-blur-xl rounded-xl p-4 border border-black/20 dark:border-white/20 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105 hover:bg-white/15">
                   <div className="aspect-[3/3] rounded-lg overflow-hidden relative">
                     <img
                       src="/images/Emperor.png"
@@ -247,7 +247,7 @@ const DealShowcase = () => {
 
               <div className="grid grid-cols-3 gap-2">
                 {[Cpu, MonitorSpeaker, Shield].map((Icon, i) => (
-                  <div key={i} className="bg-white/10 backdrop-blur-xl rounded-lg p-2 border border-white/20 cursor-pointer hover:bg-white/20 transition-all duration-300 hover:scale-110 group">
+                  <div key={i} className="bg-black/10 dark:bg-white/10 backdrop-blur-xl rounded-lg p-2 border border-black/20 dark:border-white/20 cursor-pointer hover:bg-black/20 dark:bg-white/20 transition-all duration-300 hover:scale-110 group">
                     <div className="aspect-square bg-gradient-to-br from-orange-400/20 to-red-500/20 rounded-md flex items-center justify-center">
                       <Icon className="w-5 h-5 text-orange-300 group-hover:text-orange-200 transition-colors" />
                     </div>
@@ -257,7 +257,7 @@ const DealShowcase = () => {
             </div>
 
             <div className="lg:col-span-4 space-y-4">
-              <div className="bg-white/10 backdrop-blur-xl rounded-xl p-4 border border-white/20 shadow-lg">
+              <div className="bg-black/10 dark:bg-white/10 backdrop-blur-xl rounded-xl p-4 border border-black/20 dark:border-white/20 shadow-lg">
                 <h3 className="text-lg font-bold text-white mb-4 flex items-center">
                   <Cpu className="w-4 h-4 mr-2 text-orange-300" />
                   Specifications
@@ -270,8 +270,8 @@ const DealShowcase = () => {
                     { label: 'Storage', value: '1TB NVMe SSD' },
                     { label: 'Cooling', value: 'AIO Liquid Cooling' }
                   ].map((spec, i) => (
-                    <div key={i} className="flex justify-between items-center p-2 rounded-md bg-white/5 hover:bg-white/10 transition-colors text-sm">
-                      <span className="text-white/80 font-medium">{spec.label}</span>
+                    <div key={i} className="flex justify-between items-center p-2 rounded-md bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:bg-white/10 transition-colors text-sm">
+                      <span className="text-gray-800 dark:text-white/80 font-medium">{spec.label}</span>
                       <span className="text-white font-semibold">{spec.value}</span>
                     </div>
                   ))}
@@ -279,21 +279,21 @@ const DealShowcase = () => {
               </div>
 
               <div className="grid grid-cols-2 gap-3">
-                <div className="bg-white/10 backdrop-blur-xl rounded-xl p-4 border border-white/20 text-center hover:scale-105 transition-transform duration-300">
+                <div className="bg-black/10 dark:bg-white/10 backdrop-blur-xl rounded-xl p-4 border border-black/20 dark:border-white/20 text-center hover:scale-105 transition-transform duration-300">
                   <Star className="w-6 h-6 text-yellow-400 mx-auto mb-2 animate-pulse" />
                   <div className="text-white text-xl font-bold">4.9/5</div>
-                  <div className="text-white/70 text-xs">Customer Rating</div>
+                  <div className="text-gray-700 dark:text-white/70 text-xs">Customer Rating</div>
                 </div>
-                <div className="bg-white/10 backdrop-blur-xl rounded-xl p-4 border border-white/20 text-center hover:scale-105 transition-transform duration-300">
+                <div className="bg-black/10 dark:bg-white/10 backdrop-blur-xl rounded-xl p-4 border border-black/20 dark:border-white/20 text-center hover:scale-105 transition-transform duration-300">
                   <Shield className="w-6 h-6 text-green-400 mx-auto mb-2 animate-pulse" />
                   <div className="text-white text-xl font-bold">3 Years</div>
-                  <div className="text-white/70 text-xs">Warranty</div>
+                  <div className="text-gray-700 dark:text-white/70 text-xs">Warranty</div>
                 </div>
               </div>
             </div>
 
             <div className="lg:col-span-3 space-y-4">
-              <div className="bg-white/10 backdrop-blur-xl rounded-xl p-4 border border-white/20 shadow-lg text-center">
+              <div className="bg-black/10 dark:bg-white/10 backdrop-blur-xl rounded-xl p-4 border border-black/20 dark:border-white/20 shadow-lg text-center">
                 <div className="flex items-center justify-center space-x-2 mb-4">
                   <Clock className="w-4 h-4 text-orange-300 animate-pulse" />
                   <span className="text-white text-base font-semibold">Deal Ends In</span>
@@ -312,12 +312,12 @@ const DealShowcase = () => {
                 </div>
               </div>
 
-              <div className="bg-white/10 backdrop-blur-xl rounded-xl p-4 border border-white/20 shadow-lg text-center">
+              <div className="bg-black/10 dark:bg-white/10 backdrop-blur-xl rounded-xl p-4 border border-black/20 dark:border-white/20 shadow-lg text-center">
                 <div className="space-y-3 mb-6">
-                  <div className="text-white/60 line-through text-base">₹2,49,999</div>
-                  <div className="text-white text-2xl font-bold">₹1,99,999</div>
+                  <div className="text-gray-600 dark:text-white/60 line-through text-base">$2,499</div>
+                  <div className="text-white text-2xl font-bold">$1,999</div>
                   <div className="bg-gradient-to-r from-red-500 to-red-600 text-white text-xs px-2.5 py-1 rounded-full inline-block font-semibold shadow-md">
-                    Save ₹50,000 (20% OFF)
+                    Save $500 (20% OFF)
                   </div>
                 </div>
 
@@ -326,7 +326,7 @@ const DealShowcase = () => {
                     <ShoppingCart className="w-4 h-4" />
                     <span>Buy Now</span>
                   </button>
-                  <button className="w-full bg-white/20 backdrop-blur-sm text-white font-semibold py-3 px-6 rounded-lg hover:bg-white/30 transition-all duration-300 border border-white/30 flex items-center justify-center space-x-2 text-base">
+                  <button className="w-full bg-black/20 dark:bg-white/20 backdrop-blur-sm text-white font-semibold py-3 px-6 rounded-lg hover:bg-white/30 transition-all duration-300 border border-white/30 flex items-center justify-center space-x-2 text-base">
                     <Heart className="w-4 h-4" />
                     <span>Add to Wishlist</span>
                   </button>
@@ -343,8 +343,8 @@ const DealShowcase = () => {
                       <span>Easy Returns</span>
                     </span>
                   </div>
-                  <div className="text-xs text-white/70 font-medium">
-                    EMI starting from ₹8,333/month
+                  <div className="text-xs text-gray-700 dark:text-white/70 font-medium">
+                    EMI starting from $83/month
                   </div>
                 </div>
               </div>

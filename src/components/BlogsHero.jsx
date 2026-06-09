@@ -36,21 +36,21 @@ const blogPosts = [
 
 export default function BlogsHero() {
   return (
-    <section className="py-8 px-4 md:px-30 bg-white text-black">
-      <h1 className="text-4xl font-bold text-center mb-4 text-pink-400">
+    <section className="py-8 px-4 md:px-30 bg-[#f8f9fa] dark:bg-black text-white">
+      <h1 className="text-4xl font-bold text-center mb-4 text-[#F47C5A] uppercase tracking-widest">
         Blogs & Articles
       </h1>
 
       <div className="hidden md:grid grid-cols-3 grid-rows-3 gap-6 h-[600px]">
         {/* Big left card spans 2 cols and all 3 rows */}
-        <div className="col-span-2 row-span-3 relative overflow-hidden group">
+        <div className="col-span-2 row-span-3 relative overflow-hidden group rounded-2xl border border-black/10 dark:border-white/10 hover:border-black/20 dark:border-white/20 transition-all shadow-[0_0_30px_rgba(244,124,90,0.05)] hover:shadow-[0_0_30px_rgba(244,124,90,0.15)]">
           <img
             src={blogPosts[0].image}
             alt={blogPosts[0].title}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6 text-white">
-            <span className="bg-red-500 text-xs px-3 py-1 w-fit mb-2 uppercase">
+            <span className="bg-black/10 dark:bg-white/10 backdrop-blur-md border border-black/20 dark:border-white/20 text-xs px-3 py-1 rounded w-fit mb-2 uppercase font-semibold">
               {blogPosts[0].category}
             </span>
             <h3 className="text-sm md:text-xl md:font-semibold mb-2 leading-snug">
@@ -68,7 +68,7 @@ export default function BlogsHero() {
         {blogPosts.slice(1).map((post) => (
           <div
             key={post.id}
-            className="relative overflow-hidden group"
+            className="relative overflow-hidden group rounded-2xl border border-black/10 dark:border-white/10 hover:border-black/20 dark:border-white/20 transition-all shadow-[0_0_30px_rgba(244,124,90,0.05)] hover:shadow-[0_0_30px_rgba(244,124,90,0.15)]"
           >
             <img
               src={post.image}
@@ -76,7 +76,7 @@ export default function BlogsHero() {
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-4 text-white">
-              <span className="bg-red-500 text-xs px-2 py-1 w-fit mb-1 uppercase">
+              <span className="bg-black/10 dark:bg-white/10 backdrop-blur-md border border-black/20 dark:border-white/20 text-xs px-2 py-1 rounded w-fit mb-1 uppercase font-semibold">
                 {post.category}
               </span>
               <h4 className="text-sm font-semibold leading-tight">
@@ -91,14 +91,14 @@ export default function BlogsHero() {
       {/* Mobile view (stacked cards) */}
       <div className="md:hidden space-y-6">
         {blogPosts.map((post, index) => (
-          <div key={post.id} className="relative overflow-hidden">
+          <div key={post.id} className="relative overflow-hidden rounded-2xl border border-black/10 dark:border-white/10">
             <img
               src={post.image}
               alt={post.title}
               className="w-full h-64 object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-4 text-white">
-              <span className="bg-red-500 text-xs px-2 py-1 w-fit mb-1 uppercase">
+              <span className="bg-black/10 dark:bg-white/10 backdrop-blur-md border border-black/20 dark:border-white/20 text-xs px-2 py-1 rounded w-fit mb-1 uppercase font-semibold">
                 {post.category}
               </span>
               <h4 className="text-base font-semibold leading-tight">

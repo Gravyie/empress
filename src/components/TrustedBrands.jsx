@@ -23,26 +23,21 @@ export default function TrustedPartners() {
   return (
     <section
       ref={ref}
-      className={`w-full px-4 sm:px-6 bg-white transition-opacity duration-1000 ${
+      className={`w-full px-5 sm:px-6 py-12 bg-[#f8f9fa] dark:bg-black transition-opacity duration-1000 ${
         inView ? "animate-fadeInFromBack" : "opacity-0"
       }`}
     >
-      <div className="relative max-w-6xl mx-auto rounded-2xl sm:rounded-3xl overflow-hidden border border-gray-200 shadow-2xl">
-        {/* Background Layers */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1f1c2c] to-[#928dab] z-0" />
-        <div className="absolute -top-10 -left-10 w-52 sm:w-72 h-52 sm:h-72 bg-purple-500 rounded-full opacity-30 blur-3xl z-0" />
-        <div className="absolute bottom-0 right-0 w-72 sm:w-96 h-72 sm:h-96 bg-pink-500 rounded-full opacity-20 blur-2xl z-0" />
+      <div className="relative max-w-6xl mx-auto overflow-hidden border border-white/[0.06] bg-[#0a0a0a]">
+        {/* Chrome accent line */}
+        <div className="absolute top-0 left-0 w-full h-[1px] shine-chrome" />
 
         {/* Content */}
-        <div className="relative z-10 px-4 sm:px-6 py-10 sm:py-12">
-          <div className="text-center mb-8 sm:mb-10 text-white">
-            <h2 className="text-2xl sm:text-4xl font-extrabold leading-tight">
-              Our{" "}
-              {/* <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400"> */}
-                Trusted Partners
-              {/* </span> */}
+        <div className="relative z-10 px-5 sm:px-8 py-10 sm:py-14">
+          <div className="text-center mb-8 sm:mb-10">
+            <h2 className="text-2xl sm:text-4xl font-bold text-white leading-tight">
+              Our <span className="text-chrome">Trusted Partners</span>
             </h2>
-            <p className="mt-3 sm:mt-4 text-sm sm:text-lg text-gray-200 max-w-2xl mx-auto">
+            <p className="mt-3 sm:mt-4 text-sm sm:text-base text-gray-500 dark:text-white/40 max-w-2xl mx-auto font-light">
               We collaborate with leading brands and businesses to deliver exceptional results and innovative solutions.
             </p>
           </div>
@@ -62,15 +57,15 @@ export default function TrustedPartners() {
             }
           `}</style>
 
-          <div className="space-y-6 sm:space-y-8">
+          <div className="space-y-5 sm:space-y-6">
             {[{ brands: brandsRow1, animation: 'scroll-left' }, { brands: brandsRow2, animation: 'scroll-right' }].map(
               ({ brands, animation }, index) => (
                 <div
                   key={index}
-                  className="scroll-container overflow-hidden rounded-xl sm:rounded-2xl bg-white/10 backdrop-blur-md border border-white/20"
+                  className="scroll-container overflow-hidden border border-white/[0.04] bg-white/[0.02]"
                 >
                   <div
-                    className="scroll-content flex w-max items-center py-3 sm:py-4"
+                    className="scroll-content flex w-max items-center py-4 sm:py-5"
                     style={{ animation: `${animation} ${SCROLL_DURATION_SECONDS}s linear infinite` }}
                   >
                     {[...brands, ...brands, ...brands].map((src, idx) => (
@@ -78,10 +73,10 @@ export default function TrustedPartners() {
                         key={`${animation}-${idx}`}
                         src={src}
                         alt={`Logo ${idx}`}
-                        className="h-10 sm:h-16 mx-4 sm:mx-8 object-contain transition-transform duration-300 hover:scale-105"
+                        className="h-8 sm:h-14 mx-4 sm:mx-8 object-contain opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
                         onError={(e) => {
                           e.currentTarget.onerror = null;
-                          e.currentTarget.src = `https://placehold.co/150x80/6B7280/FFFFFF?text=Logo+${idx}`;
+                          e.currentTarget.src = `https://placehold.co/150x80/333/666?text=Logo+${idx}`;
                         }}
                       />
                     ))}

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
 const testimonials = [
   {
@@ -71,46 +71,66 @@ export default function Testimonials() {
   const t = testimonials[current];
 
   return (
-    <section className="bg-gray-50 py-4 md:py-12 px-2 sm:px-6 md:px-24">
-      <h2 className="text-lg sm:text-2xl md:text-4xl font-bold text-center mb-4 md:mb-10">
-        Don’t take our word for it...
+    <section className="bg-[#f8f9fa] dark:bg-black py-10 md:py-16 px-4 sm:px-6 md:px-24">
+      <h2 className="text-lg sm:text-2xl md:text-3xl font-bold text-center mb-6 md:mb-10 text-white">
+        Don't take our word for it...
       </h2>
 
       <div className="relative max-w-3xl mx-auto">
         {/* Arrows */}
         <button
           onClick={prevSlide}
-          className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white shadow rounded-full p-2"
+          className="absolute left-0 top-1/2 transform -translate-y-1/2 w-10 h-10 border border-black/10 dark:border-white/10 bg-[#f8f9fa] dark:bg-black flex items-center justify-center text-gray-500 dark:text-white/50 hover:text-white hover:border-white/30 transition-all z-10"
         >
-          <ChevronLeft className="w-5 h-5" />
+          <ChevronLeft className="w-4 h-4" />
         </button>
         <button
           onClick={nextSlide}
-          className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white shadow rounded-full p-2"
+          className="absolute right-0 top-1/2 transform -translate-y-1/2 w-10 h-10 border border-black/10 dark:border-white/10 bg-[#f8f9fa] dark:bg-black flex items-center justify-center text-gray-500 dark:text-white/50 hover:text-white hover:border-white/30 transition-all z-10"
         >
-          <ChevronRight className="w-5 h-5" />
+          <ChevronRight className="w-4 h-4" />
         </button>
 
         {/* Card */}
-        <div className="transition-all duration-500 p-6 bg-white shadow-xl rounded-2xl text-center space-y-6 sm:space-y-4 mx-10 sm:mx-0">
-          <div className="text-yellow-500 text-lg">
+        <div className="transition-all duration-500 p-8 bg-[#0a0a0a] border border-white/[0.06] text-center space-y-5 mx-12 sm:mx-0 relative overflow-hidden">
+          <div className="shimmer-line" />
+          
+          {/* Quote Icon */}
+          <div className="flex justify-center">
+            <Quote size={24} className="text-white/10" />
+          </div>
+
+          <div className="text-[#F47C5A] text-sm tracking-wider">
             {"★".repeat(Math.floor(t.rating))}
             {t.rating % 1 ? "½" : ""}
           </div>
-          <h3 className="text-xl font-semibold">{t.title}</h3>
-          <p className="text-gray-600 text-sm sm:text-base">{t.content}</p>
+          <h3 className="text-lg font-semibold text-white">{t.title}</h3>
+          <p className="text-gray-500 dark:text-white/50 text-sm sm:text-base font-light leading-relaxed max-w-xl mx-auto">{t.content}</p>
 
-          <div className="flex items-center justify-center gap-4 pt-4">
+          <div className="flex items-center justify-center gap-4 pt-4 border-t border-white/[0.06]">
             <img
               src={t.img}
               alt={t.name}
-              className="w-12 h-12 rounded-full object-cover"
+              className="w-10 h-10 rounded-full object-cover ring-2 ring-white/10"
             />
             <div className="text-left">
-              <p className="text-sm font-semibold">{t.name}</p>
-              <p className="text-xs text-gray-500">{t.location}</p>
+              <p className="text-sm font-medium text-white/90">{t.name}</p>
+              <p className="text-xs text-gray-500 dark:text-white/40">{t.location}</p>
             </div>
           </div>
+        </div>
+
+        {/* Dots */}
+        <div className="flex justify-center mt-6 gap-1.5">
+          {testimonials.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrent(index)}
+              className={`h-1 rounded-full transition-all duration-300 ${
+                current === index ? 'bg-white w-5' : 'bg-white/15 w-1.5'
+              }`}
+            />
+          ))}
         </div>
       </div>
     </section>

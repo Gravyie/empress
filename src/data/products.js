@@ -42,8 +42,8 @@ export const allSampleProducts = {
       discount: 40,
       images: [
         '/images/img4.JPG',
-        'https://via.placeholder.com/300x200/cccccc/ffffff?text=Skytech+Shiva+2',
-        'https://via.placeholder.com/300x200/cccccc/ffffff?text=Skytech+Shiva+3'
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80'
       ],
       specs: {
         'CPU': 'Intel Core i9-13900K',
@@ -68,8 +68,8 @@ export const allSampleProducts = {
       discount: 40,
       images: [
         '/images/img5.JPG',
-        'https://via.placeholder.com/300x200/cccccc/ffffff?text=HP+OMEN+2',
-        'https://via.placeholder.com/300x200/cccccc/ffffff?text=HP+OMEN+3'
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80'
       ],
       specs: {
         'CPU': 'Ryzen 5 5600G',
@@ -77,8 +77,8 @@ export const allSampleProducts = {
         'RAM': '8GB DDR4',
         'Storage': '512GB NVMe SSD'
       },
-      useCase: "Video Editing",
-      performance: "Beast",
+      useCase: "Server",
+      performance: "Regular",
       badge: { text: 'Value Pick', color: 'bg-green-500' },
       inStock: true
     },
@@ -93,9 +93,9 @@ export const allSampleProducts = {
       rating: 5,
       discount: 13,
       images: [
-        '/images/legion1.jpg',
-        '/images/legion2.jpg',
-        '/images/legion3.jpg'
+        'https://images.unsplash.com/photo-1587202372634-32705e3bf49c?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=800&q=80'
       ],
       specs: {
         'CPU': 'Intel Core i7-13700KF',
@@ -121,8 +121,8 @@ export const allSampleProducts = {
       rating: 3,
       discount: 17,
       images: [
-        '/images/rog1.jpg',
-        '/images/rog2.jpg'
+        'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=800&q=80'
       ],
       specs: {
         'CPU': 'Intel Core i5-12400F',
@@ -146,9 +146,9 @@ export const allSampleProducts = {
       rating: 5,
       discount: 9,
       images: [
-        '/images/alien1.jpg',
-        '/images/alien2.jpg',
-        '/images/alien3.jpg'
+        'https://images.unsplash.com/photo-1614624532983-4ce03382d63d?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=800&q=80'
       ],
       specs: {
         'CPU': 'Intel Core i9-14900KF',
@@ -174,8 +174,8 @@ export const allSampleProducts = {
       rating: 4,
       discount: 14,
       images: [
-        '/images/ibuypower1.jpg',
-        '/images/ibuypower2.jpg'
+        'https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=800&q=80'
       ],
       specs: {
         'CPU': 'AMD Ryzen 5 7600X',
@@ -199,8 +199,8 @@ export const allSampleProducts = {
       rating: 5,
       discount: 10,
       images: [
-        '/images/corsair1.jpg',
-        '/images/corsair2.jpg'
+        'https://images.unsplash.com/photo-1587202372634-32705e3bf49c?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80'
       ],
       specs: {
         'CPU': 'Intel Core i9-13900K',
@@ -208,9 +208,9 @@ export const allSampleProducts = {
         'RAM': '64GB DDR5',
         'Storage': '2TB Gen4 NVMe SSD'
       },
-      useCase: "Video Editing",
+      useCase: "Server",
       performance: "Beast",
-      badge: { text: 'Compact Beast', color: 'bg-cyan-600' },
+      badge: { text: 'Compact Server', color: 'bg-cyan-600' },
       inStock: true
     },
     {
@@ -224,8 +224,8 @@ export const allSampleProducts = {
       rating: 4,
       discount: 20,
       images: [
-        '/images/nitro1.jpg',
-        '/images/nitro2.jpg'
+        'https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=800&q=80'
       ],
       specs: {
         'CPU': 'Intel Core i5-13400F',
@@ -249,8 +249,8 @@ export const allSampleProducts = {
       rating: 4,
       discount: 12,
       images: [
-        '/images/msi1.jpg',
-        '/images/msi2.jpg'
+        'https://images.unsplash.com/photo-1614624532983-4ce03382d63d?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80'
       ],
       specs: {
         'CPU': 'Intel Core i7-12700F',
@@ -274,9 +274,9 @@ export const allSampleProducts = {
       rating: 4,
       discount: 13,
       images: [
-        '/images/nzxt1.jpg',
-        '/images/nzxt2.jpg',
-        '/images/nzxt3.jpg'
+        'https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372634-32705e3bf49c?auto=format&fit=crop&w=800&q=80'
       ],
       specs: {
         'CPU': 'AMD Ryzen 7 5800X3D',
@@ -300,8 +300,8 @@ export const allSampleProducts = {
       rating: 4,
       discount: 10,
       images: [
-        '/images/xps1.jpg',
-        '/images/xps2.jpg'
+        'https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=800&q=80'
       ],
       specs: {
         'CPU': 'Intel Core i9-13900',
@@ -309,7 +309,7 @@ export const allSampleProducts = {
         'RAM': '32GB DDR5',
         'Storage': '1TB SSD + 2TB HDD'
       },
-      useCase: "3D Rendering",
+      useCase: "Server",
       performance: "High",
       badge: { text: 'Workhorse', color: 'bg-slate-600' },
       inStock: true
@@ -350,9 +350,9 @@ export const allSampleProducts = {
       description2: 'The AMD Ryzen 9 7950X is a 16-core, 32-thread desktop processor built on the 5nm "Zen 4" architecture. It delivers incredible performance for gaming, streaming, and content creation, with boost frequencies up to 5.7 GHz. Designed for the AM5 platform, it supports DDR5 memory and PCIe 5.0, offering next-generation connectivity and power efficiency for high-end systems.',
       price: 699.99,
       images: [
-        'https://via.placeholder.com/600x400/ed1c24/ffffff?text=AMD+7950X+Main',
-        'https://via.placeholder.com/300x200/ed1c24/ffffff?text=AMD+7950X+Box',
-        'https://via.placeholder.com/300x200/ed1c24/ffffff?text=AMD+7950X+Chip'
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80'
       ],
       specs: {
         'Cores': '16',
@@ -375,9 +375,9 @@ export const allSampleProducts = {
       description2: 'Excellent gaming and productivity processor with 16 cores and 24 threads. Great balance of performance and value.',
       price: 419.99,
       images: [
-        'https://via.placeholder.com/300x200/4285f4/ffffff?text=Intel+i7',
-        'https://via.placeholder.com/300x200/cccccc/ffffff?text=Intel+i7+2',
-        'https://via.placeholder.com/300x200/cccccc/ffffff?text=Intel+i7+3'
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80'
       ],
       specs: {
         'Cores': '16 (8P+8E)',
@@ -398,9 +398,9 @@ export const allSampleProducts = {
       description2: 'The AMD Ryzen 7 7800X3D is the ultimate gaming processor, featuring AMD 3D V-Cache™ technology which significantly boosts gaming performance by stacking an additional layer of L3 cache. With 8 cores and 16 threads, it delivers exceptional frame rates in even the most demanding titles. Designed for the AM5 platform, it offers superb power efficiency and is a top choice for dedicated gamers.',
       price: 449.99,
       images: [
-        'https://via.placeholder.com/600x400/ed1c24/ffffff?text=AMD+7800X3D+Main',
-        'https://via.placeholder.com/300x200/ed1c24/ffffff?text=AMD+7800X3D+Top',
-        'https://via.placeholder.com/300x200/ed1c24/ffffff?text=AMD+7800X3D+Angle'
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80'
       ],
       specs: {
         'Cores': '8',
@@ -423,9 +423,9 @@ export const allSampleProducts = {
       description2: 'Mid-range powerhouse with 14 cores and 20 threads. Perfect for gaming and streaming with excellent price-to-performance ratio.',
       price: 319.99,
       images: [
-        'https://via.placeholder.com/300x200/4285f4/ffffff?text=Intel+i5',
-        'https://via.placeholder.com/300x200/cccccc/ffffff?text=Intel+i5+2',
-        'https://via.placeholder.com/300x200/cccccc/ffffff?text=Intel+i5+3'
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80'
       ],
       specs: {
         'Cores': '14 (6P+8E)',
@@ -445,9 +445,9 @@ export const allSampleProducts = {
       description2: 'Efficient 6-core processor perfect for gaming and everyday tasks. Great entry point into the AM5 platform.',
       price: 299.99,
       images: [
-        'https://via.placeholder.com/300x200/ed1c24/ffffff?text=AMD+Ryzen+5',
-        'https://via.placeholder.com/300x200/cccccc/ffffff?text=AMD+Ryzen+5+2',
-        'https://via.placeholder.com/300x200/cccccc/ffffff?text=AMD+Ryzen+5+3'
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80'
       ],
       specs: {
         'Cores': '6',
@@ -493,9 +493,9 @@ export const allSampleProducts = {
       description2: 'Experience incredible performance, visuals, and features with the AMD Radeon RX 7900XTX graphics card. Featuring AMD RDNA™ 3 architecture, it delivers exceptional 4K and 8K gaming performance, advanced raytracing capabilities, and AMD FidelityFX™ Super Resolution technology. With 24GB of GDDR6 memory, it’s built for the most demanding games and professional workflows.',
       price: 999.99,
       images: [
-        'https://via.placeholder.com/600x400/ED1C24/ffffff?text=RX+7900XTX+Main',
-        'https://via.placeholder.com/300x200/ED1C24/ffffff?text=RX+7900XTX+Fan',
-        'https://via.placeholder.com/300x200/ED1C24/ffffff?text=RX+7900XTX+Backplate'
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80'
       ],
       specs: {
         'GPU Architecture': 'AMD RDNA™ 3',
@@ -517,9 +517,9 @@ export const allSampleProducts = {
       description2: 'Excellent 1440p gaming performance with DLSS 3 and ray tracing capabilities. 12GB GDDR6X VRAM.',
       price: 599.99,
       images: [
-        'https://via.placeholder.com/300x200/76b900/ffffff?text=RTX+4070',
-        'https://via.placeholder.com/300x200/cccccc/ffffff?text=RTX+4070+2',
-        'https://via.placeholder.com/300x200/cccccc/ffffff?text=RTX+4070+3'
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80'
       ],
       specs: {
         'VRAM': '12GB GDDR6X',
@@ -537,9 +537,9 @@ export const allSampleProducts = {
       description2: 'Strong contender for 1440p gaming. 16GB GDDR6 VRAM, great value.',
       price: 499.99,
       images: [
-        'https://via.placeholder.com/300x200/ed1c24/ffffff?text=RX+7800XT',
-        'https://via.placeholder.com/300x200/cccccc/ffffff?text=RX+7800XT+2',
-        'https://via.placeholder.com/300x200/cccccc/ffffff?text=RX+7800XT+3'
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80'
       ],
       specs: {
         'VRAM': '16GB GDDR6',
@@ -583,9 +583,9 @@ export const allSampleProducts = {
       description2: 'Solid AMD B650 motherboard for Ryzen 7000 series. Offers DDR5 support, multiple M.2 slots, and Wi-Fi 6E.',
       price: 219.99,
       images: [
-        'https://via.placeholder.com/300x200/696969/ffffff?text=MSI+B650',
-        'https://via.placeholder.com/300x200/cccccc/ffffff?text=MSI+B650+2',
-        'https://via.placeholder.com/300x200/cccccc/ffffff?text=MSI+B650+3'
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80'
       ],
       specs: {
         'Chipset': 'AMD B650',
@@ -603,9 +603,9 @@ export const allSampleProducts = {
       description2: 'Mid-range Intel B760 motherboard with DDR5 support and strong VRM for gaming PCs.',
       price: 189.99,
       images: [
-        'https://via.placeholder.com/300x200/004d40/ffffff?text=Gigabyte+B760',
-        'https://via.placeholder.com/300x200/cccccc/ffffff?text=Gigabyte+B760+2',
-        'https://via.placeholder.com/300x200/cccccc/ffffff?text=Gigabyte+B760+3'
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80'
       ],
       specs: {
         'Chipset': 'Intel B760',
@@ -649,9 +649,9 @@ export const allSampleProducts = {
       description2: 'Max out your memory with this high-capacity, high-speed kit, featuring stunning RGB lighting.',
       price: 249.99,
       images: [
-        'https://via.placeholder.com/300x200/800000/ffffff?text=G.Skill+RAM',
-        'https://via.placeholder.com/300x200/cccccc/ffffff?text=G.Skill+RAM+2',
-        'https://via.placeholder.com/300x200/cccccc/ffffff?text=G.Skill+RAM+3'
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80'
       ],
       specs: {
         'Capacity': '64GB (2x32GB)',
@@ -669,9 +669,9 @@ export const allSampleProducts = {
       description2: 'Reliable and affordable DDR4 memory for mainstream builds. Great for gaming and everyday tasks.',
       price: 49.99,
       images: [
-        'https://via.placeholder.com/300x200/5a5a5a/ffffff?text=Kingston+DDR4',
-        'https://via.placeholder.com/300x200/cccccc/ffffff?text=Kingston+DDR4+2',
-        'https://via.placeholder.com/300x200/cccccc/ffffff?text=Kingston+DDR4+3'
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80'
       ],
       specs: {
         'Capacity': '16GB (2x8GB)',
@@ -715,9 +715,9 @@ export const allSampleProducts = {
       description2: 'High-performance NVMe SSD optimized for gaming, reducing load times dramatically.',
       price: 99.99,
       images: [
-        'https://via.placeholder.com/300x200/000080/ffffff?text=WD+SSD',
-        'https://via.placeholder.com/300x200/cccccc/ffffff?text=WD+SSD+2',
-        'https://via.placeholder.com/300x200/cccccc/ffffff?text=WD+SSD+3'
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80'
       ],
       specs: {
         'Capacity': '1TB',
@@ -735,9 +735,9 @@ export const allSampleProducts = {
       description2: 'Reliable and cost-effective SATA SSD for general storage and older systems.',
       price: 69.99,
       images: [
-        'https://via.placeholder.com/300x200/808080/ffffff?text=Crucial+SSD',
-        'https://via.placeholder.com/300x200/cccccc/ffffff?text=Crucial+SSD+2',
-        'https://via.placeholder.com/300x200/cccccc/ffffff?text=Crucial+SSD+3'
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80'
       ],
       specs: {
         'Capacity': '1TB',
@@ -781,9 +781,9 @@ export const allSampleProducts = {
       description2: 'Clean, modern mid-tower case with excellent airflow, perfect for high-performance builds and easy cable management.',
       price: 129.99,
       images: [
-        'https://via.placeholder.com/300x200/E0E0E0/000000?text=NZXT+H7',
-        'https://via.placeholder.com/300x200/cccccc/ffffff?text=NZXT+H7+2',
-        'https://via.placeholder.com/300x200/cccccc/ffffff?text=NZXT+H7+3'
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80'
       ],
       specs: {
         'Form Factor': 'Mid-Tower',
@@ -801,9 +801,9 @@ export const allSampleProducts = {
       description2: 'Stylish case with a real wood front panel, blending Scandinavian design with excellent cooling performance.',
       price: 139.99,
       images: [
-        'https://via.placeholder.com/300x200/F5F5DC/000000?text=Fractal+North',
-        'https://via.placeholder.com/300x200/cccccc/ffffff?text=Fractal+North+2',
-        'https://via.placeholder.com/300x200/cccccc/ffffff?text=Fractal+North+3'
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80'
       ],
       specs: {
         'Form Factor': 'Mid-Tower',
@@ -847,9 +847,9 @@ export const allSampleProducts = {
       description2: 'Excellent mid-range power supply with great reliability and quiet operation.',
       price: 109.99,
       images: [
-        'https://via.placeholder.com/300x200/FFD700/000000?text=Seasonic+PSU',
-        'https://via.placeholder.com/300x200/cccccc/ffffff?text=Seasonic+PSU+2',
-        'https://via.placeholder.com/300x200/cccccc/ffffff?text=Seasonic+PSU+3'
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80'
       ],
       specs: {
         'Wattage': '750W',
@@ -867,9 +867,9 @@ export const allSampleProducts = {
       description2: 'Compact and efficient power supply, ideal for smaller builds or less power-hungry systems.',
       price: 89.99,
       images: [
-        'https://via.placeholder.com/300x200/FFD700/000000?text=EVGA+PSU',
-        'https://via.placeholder.com/300x200/cccccc/ffffff?text=EVGA+PSU+2',
-        'https://via.placeholder.com/300x200/cccccc/ffffff?text=EVGA+PSU+3'
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80'
       ],
       specs: {
         'Wattage': '650W',
@@ -889,9 +889,9 @@ export const allSampleProducts = {
       description2: 'The ARCTIC Liquid Freezer II 360 is an all-in-one CPU liquid cooler renowned for its exceptional cooling performance and quiet operation. Featuring a 360mm radiator, three high-quality PWM fans, and an optimized pump, it effectively dissipates heat from even the most demanding processors. Its integrated VRM fan further cools motherboard components, ensuring overall system stability. A top choice for overclockers and silent PC enthusiasts.',
       price: 139.99,
       images: [
-        'https://via.placeholder.com/600x400/4682B4/ffffff?text=ARCTIC+Cooler+Main',
-        'https://via.placeholder.com/300x200/4682B4/ffffff?text=ARCTIC+Cooler+Radiator',
-        'https://via.placeholder.com/300x200/4682B4/ffffff?text=ARCTIC+Cooler+Pump'
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80'
       ],
       specs: {
         'Cooler Type': 'All-in-One Liquid Cooler',
@@ -913,9 +913,9 @@ export const allSampleProducts = {
       description2: 'Legendary quiet and powerful air cooler, rivaling many AIOs in performance, with brown fans.',
       price: 109.99,
       images: [
-        'https://via.placeholder.com/300x200/8B4513/ffffff?text=Noctua+Cooler',
-        'https://via.placeholder.com/300x200/cccccc/ffffff?text=Noctua+Cooler+2',
-        'https://via.placeholder.com/300x200/cccccc/ffffff?text=Noctua+Cooler+3'
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80'
       ],
       specs: {
         'Type': 'Air Cooler',
@@ -933,9 +933,9 @@ export const allSampleProducts = {
       description2: 'Iconic air cooler with updated aesthetics and RGB lighting. Great balance of price and performance.',
       price: 49.99,
       images: [
-        'https://via.placeholder.com/300x200/222222/ffffff?text=Hyper+212',
-        'https://via.placeholder.com/300x200/cccccc/ffffff?text=Hyper+212+2',
-        'https://via.placeholder.com/300x200/cccccc/ffffff?text=Hyper+212+3'
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80'
       ],
       specs: {
         'Type': 'Air Cooler',

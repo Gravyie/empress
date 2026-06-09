@@ -29,17 +29,17 @@ const RelatedProducts = ({ currentProduct, allSampleProducts, category }) => {
   if (!related.length) return null;
 
   return (
-    <section ref={sectionRef} className="py-12 px-4 md:px-8 bg-white">
+    <section ref={sectionRef} className="py-12 px-4 md:px-8 bg-[#0a0a0a] border-t border-black/10 dark:border-white/10 mt-12 text-white">
       {/* Header */}
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-2xl md:text-3xl font-bold">Related Products</h2>
+      <div className="flex items-center justify-between mb-8 max-w-7xl mx-auto">
+        <h2 className="text-xl md:text-2xl font-bold uppercase tracking-widest text-white/90">Related Products</h2>
 
         <div className="flex items-center gap-4">
-          <button onClick={() => scroll("left")} className="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
-            <ChevronLeft />
+          <button onClick={() => scroll("left")} className="p-2 rounded bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:bg-white/10 border border-black/10 dark:border-white/10 transition-colors">
+            <ChevronLeft className="text-gray-800 dark:text-white/80 w-5 h-5" />
           </button>
-          <button onClick={() => scroll("right")} className="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
-            <ChevronRight />
+          <button onClick={() => scroll("right")} className="p-2 rounded bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:bg-white/10 border border-black/10 dark:border-white/10 transition-colors">
+            <ChevronRight className="text-gray-800 dark:text-white/80 w-5 h-5" />
           </button>
         </div>
       </div>
@@ -47,49 +47,53 @@ const RelatedProducts = ({ currentProduct, allSampleProducts, category }) => {
       {/* Product Cards */}
       <div
         ref={scrollRef}
-        className="flex gap-6 overflow-x-auto scroll-smooth pb-2"
+        className="flex gap-6 overflow-x-auto scroll-smooth pb-4 max-w-7xl mx-auto"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         {related.map((product, index) => (
           <div
             key={product.id}
             onClick={() => navigate(`/product/${product.id}`)}
-            className={`bg-white rounded-lg shadow p-4 w-[280px] flex-shrink-0 cursor-pointer transition-all duration-500 ease-out
+            className={`bg-[#f8f9fa] dark:bg-black border border-black/10 dark:border-white/10 hover:border-white/30 rounded-lg p-4 w-[280px] flex-shrink-0 cursor-pointer transition-all duration-500 ease-out flex flex-col group
               ${sectionInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
             `}
             style={{
               transitionDelay: sectionInView ? `${index * 50}ms` : "0ms",
             }}
           >
-            <img
-              src={product.images[0]}
-              alt={product.name}
-              className="w-full h-40 object-cover rounded-md mb-3"
-            />
+            <div className="bg-white/[0.02] border border-white/[0.04] p-4 rounded mb-4 flex items-center justify-center h-48">
+              <img
+                src={product.images[0]}
+                alt={product.name}
+                className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-110"
+              />
+            </div>
 
-            <div className="flex justify-between items-center mb-2">
-              <h3 className="text-sm font-semibold text-gray-800 truncate">
+            <div className="flex justify-between items-start mb-3 flex-grow">
+              <h3 className="text-xs font-semibold text-white/90 line-clamp-2 leading-snug">
                 {product.name}
               </h3>
-              <button className="text-[#F47C5A] hover:text-purple-800">
-                <ShoppingCart className="w-5 h-5" />
+              <button className="text-gray-500 dark:text-white/40 hover:text-[#F47C5A] ml-3 transition-colors">
+                <ShoppingCart className="w-4 h-4" />
               </button>
             </div>
 
-            <div className="mb-2 text-gray-600 text-sm">
-              ₹{product.price.toLocaleString()}
-              {product.originalPrice && (
-                <span className="line-through text-xs text-gray-400 ml-2">
-                  ₹{product.originalPrice.toLocaleString()}
-                </span>
-              )}
-            </div>
+            <div className="mt-auto">
+              <div className="mb-2 text-white font-bold text-lg">
+                ${product.price.toLocaleString()}
+                {product.originalPrice && (
+                  <span className="line-through text-xs text-gray-400 dark:text-white/30 font-light ml-2">
+                    ${product.originalPrice.toLocaleString()}
+                  </span>
+                )}
+              </div>
 
-            <div className="text-yellow-500 text-sm mb-1">
-              {"★".repeat(product.rating)}{" "}
-              <span className="text-gray-500 text-xs">
-                ({product.reviews})
-              </span>
+              <div className="text-[#F47C5A] text-[10px] tracking-widest flex items-center gap-2">
+                <div>{"★".repeat(product.rating || 5)}</div>
+                <span className="text-gray-500 dark:text-white/40 tracking-normal">
+                  ({product.reviews || 150})
+                </span>
+              </div>
             </div>
           </div>
         ))}

@@ -45,7 +45,7 @@ const ProductDetailPage = () => {
 
   if (!product) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-purple-600 flex items-center justify-center text-white text-2xl font-bold">
+      <div className="min-h-screen bg-[#f8f9fa] dark:bg-black flex items-center justify-center text-gray-500 dark:text-white/50 text-xs uppercase tracking-widest font-semibold">
         Loading product details...
       </div>
     );
@@ -67,18 +67,18 @@ const ProductDetailPage = () => {
   return (
     <div
       ref={ref}
-      className={`min-h-screen bg-white transition-opacity duration-1000 ${
+      className={`min-h-screen bg-[#f8f9fa] dark:bg-black py-8 transition-opacity duration-1000 ${
         inView ? "animate-fadeInFromBack" : "opacity-0"
       }`}
     >
-      <div className="max-w-7xl mx-auto bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl p-4 lg:p-6 lg:grid lg:grid-cols-2 lg:gap-4 flex flex-col">
+      <div className="max-w-7xl mx-auto bg-[#0a0a0a] border border-black/10 dark:border-white/10 rounded-xl p-4 lg:p-8 lg:grid lg:grid-cols-2 lg:gap-8 flex flex-col">
         {/* Back to Products Link */}
-        <div className="col-span-full mt-4"> {/* Adjusted for mobile spacing */}
+        <div className="col-span-full mb-6"> 
           <button
             onClick={() => navigate(-1)}
-            className="flex items-center text-purple-700 hover:text-indigo-600 transition-colors text-sm font-semibold"
+            className="flex items-center text-gray-500 dark:text-white/50 hover:text-[#F47C5A] transition-colors text-[10px] uppercase tracking-widest font-semibold"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
             Back to Products
@@ -90,16 +90,16 @@ const ProductDetailPage = () => {
           /* Mobile styles for PC Image Gallery */
           <div className="flex flex-col items-center lg:items-start lg:col-span-1">
             {/* Main Image for PC (Mobile) */}
-            <div className="relative w-full max-w-xs sm:max-w-sm h-64 sm:h-80 bg-gray-100 rounded-xl overflow-hidden flex items-center justify-center p-2 mb-3 shadow-md
-                        lg:h-[75%] lg:max-w-lg lg:p-4 lg:mb-4"> {/* Desktop styles for PC Main Image */}
+            <div className="relative w-full max-w-xs sm:max-w-sm h-64 sm:h-80 bg-white/[0.02] border border-white/[0.04] rounded-xl overflow-hidden flex items-center justify-center p-2 mb-4 shadow-none
+                        lg:h-[75%] lg:max-w-lg lg:p-4 lg:mb-6"> {/* Desktop styles for PC Main Image */}
               <img
                 src={mainImage}
                 alt={product.name}
                 className="max-w-full max-h-full object-contain"
               />
               {!product.inStock && (
-                <div className="absolute inset-0 bg-black/50 flex items-center justify-center rounded-xl">
-                  <span className="bg-red-600 text-white px-3 py-1 text-sm rounded-md font-bold"> {/* Smaller badge */}
+                <div className="absolute inset-0 bg-[#f8f9fa] dark:bg-black/80 backdrop-blur-sm flex items-center justify-center rounded-xl">
+                  <span className="bg-black/10 dark:bg-white/10 border border-black/20 dark:border-white/20 text-gray-800 dark:text-white/80 px-4 py-2 text-xs uppercase tracking-widest rounded font-bold"> {/* Smaller badge */}
                     Out of Stock
                   </span>
                 </div>
@@ -108,13 +108,13 @@ const ProductDetailPage = () => {
 
             {/* Thumbnail Images for PC (Mobile - Horizontal scroll) */}
             {product.images.length > 1 && (
-              <div className="flex gap-2 overflow-x-auto pb-2 justify-start w-full max-w-xs sm:max-w-sm lg:justify-center lg:max-w-lg"> {/* Adjusted gap, justify-start for mobile */}
+              <div className="flex gap-3 overflow-x-auto pb-2 justify-start w-full max-w-xs sm:max-w-sm lg:justify-center lg:max-w-lg"> {/* Adjusted gap, justify-start for mobile */}
                 {product.images.map((imgSrc, index) => (
                   <div
                     key={index}
-                    className={`w-16 h-16 flex-shrink-0 rounded-md overflow-hidden border-2 cursor-pointer transition-all duration-200
-                                ${mainImage === imgSrc ? 'border-purple-600 shadow-sm' : 'border-gray-200 hover:border-purple-300'}
-                                lg:w-20 lg:h-20 lg:rounded-lg lg:shadow-md`} /* Desktop sizes */
+                    className={`w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden border bg-white/[0.02] cursor-pointer transition-all duration-200
+                                ${mainImage === imgSrc ? 'border-[#F47C5A]' : 'border-black/10 dark:border-white/10 hover:border-white/30'}
+                                lg:w-20 lg:h-20`} /* Desktop sizes */
                     onClick={() => handleThumbnailClick(imgSrc)}
                   >
                     <img
@@ -131,13 +131,13 @@ const ProductDetailPage = () => {
           <div className="flex flex-col-reverse items-center lg:flex-row lg:gap-6 lg:items-start lg:col-span-1"> {/* Reverse order for mobile: thumbnails above main image */}
             {/* Thumbnail Images (Mobile - Horizontal, above main image) */}
             {product.images.length > 1 && (
-              <div className="flex gap-2 overflow-x-auto pb-2 justify-center w-full mt-4 lg:mt-0 lg:flex-col lg:gap-4 lg:w-auto"> {/* Horizontal for mobile, vertical for desktop */}
+              <div className="flex gap-3 overflow-x-auto pb-2 justify-center w-full mt-4 lg:mt-0 lg:flex-col lg:w-auto"> {/* Horizontal for mobile, vertical for desktop */}
                 {product.images.map((imgSrc, index) => (
                   <div
                     key={index}
-                    className={`w-16 h-16 flex-shrink-0 rounded-md overflow-hidden border-2 cursor-pointer transition-all duration-200
-                                ${mainImage === imgSrc ? 'border-purple-600 shadow-sm' : 'border-gray-200 hover:border-purple-300'}
-                                lg:w-20 lg:h-20 lg:rounded-lg lg:shadow-md`} /* Desktop sizes */
+                    className={`w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden border bg-white/[0.02] cursor-pointer transition-all duration-200
+                                ${mainImage === imgSrc ? 'border-[#F47C5A]' : 'border-black/10 dark:border-white/10 hover:border-white/30'}
+                                lg:w-20 lg:h-20`} /* Desktop sizes */
                     onClick={() => handleThumbnailClick(imgSrc)}
                   >
                     <img
@@ -151,7 +151,7 @@ const ProductDetailPage = () => {
             )}
 
             {/* Main Image for Non-PC (Mobile) */}
-            <div className="relative w-full max-w-xs sm:max-w-sm h-72 sm:h-96 bg-gray-100 rounded-xl overflow-hidden flex items-center justify-center p-2 shadow-md
+            <div className="relative w-full max-w-xs sm:max-w-sm h-72 sm:h-96 bg-white/[0.02] border border-white/[0.04] rounded-xl overflow-hidden flex items-center justify-center p-2 shadow-none
                         lg:w-[400px] lg:h-[500px] lg:p-4"> {/* Desktop sizes */}
               <img
                 src={mainImage}
@@ -159,8 +159,8 @@ const ProductDetailPage = () => {
                 className="max-w-full max-h-full object-contain"
               />
               {!product.inStock && (
-                <div className="absolute inset-0 bg-black/50 flex items-center justify-center rounded-xl">
-                  <span className="bg-red-600 text-white px-3 py-1 text-sm rounded-md font-bold"> {/* Smaller badge */}
+                <div className="absolute inset-0 bg-[#f8f9fa] dark:bg-black/80 backdrop-blur-sm flex items-center justify-center rounded-xl">
+                  <span className="bg-black/10 dark:bg-white/10 border border-black/20 dark:border-white/20 text-gray-800 dark:text-white/80 px-4 py-2 text-xs uppercase tracking-widest rounded font-bold"> {/* Smaller badge */}
                     Out of Stock
                   </span>
                 </div>
@@ -172,104 +172,104 @@ const ProductDetailPage = () => {
         {/* --- Right Section: Details (Mobile Optimization) --- */}
         {isPC ?
           /* Mobile styles for PC Product Details */
-          <div className="mt-6 lg:mt-0 px-2 lg:px-0"> {/* Reduced top margin, added horizontal padding for mobile */}
-            <span className="text-xs text-gray-500 uppercase font-semibold tracking-wide block mb-1"> {/* Smaller font */}
+          <div className="mt-8 lg:mt-0 px-2 lg:px-4"> {/* Reduced top margin, added horizontal padding for mobile */}
+            <span className="text-[10px] text-[#F47C5A] uppercase font-semibold tracking-widest block mb-2"> {/* Smaller font */}
               {product.brand}
             </span>
-            <h1 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2"> {/* Smaller font */}
+            <h1 className="text-2xl sm:text-3xl font-bold text-white mb-4"> {/* Smaller font */}
               {product.name}
             </h1>
 
-            <p className="text-gray-700 leading-snug text-sm mb-4"> {/* Smaller font, tighter leading */}
+            <p className="text-gray-500 dark:text-white/40 font-light leading-relaxed text-sm mb-6"> {/* Smaller font, tighter leading */}
               {product.description1} {/* Can do description2 as well*/}
             </p>
 
             {/* Price */}
-            <div className="flex items-baseline gap-2 mb-4"> {/* Reduced gap, margin */}
-              <span className="text-3xl font-bold text-purple-700"> {/* Smaller font */}
+            <div className="flex items-baseline gap-3 mb-6"> {/* Reduced gap, margin */}
+              <span className="text-4xl font-bold text-white"> {/* Smaller font */}
                 ${product.price.toFixed(2)}
               </span>
               {product.originalPrice && (
-                <span className="text-base text-gray-500 line-through"> {/* Smaller font */}
+                <span className="text-sm text-gray-400 dark:text-white/30 line-through"> {/* Smaller font */}
                   ${product.originalPrice.toFixed(2)}
                 </span>
               )}
               {product.originalPrice && product.price < product.originalPrice && (
-                  <span className="ml-1 text-green-600 font-semibold text-xs"> {/* Smaller font, margin */}
+                  <span className="ml-2 text-[#F47C5A] font-semibold text-xs uppercase tracking-wider"> {/* Smaller font, margin */}
                     Save ${(product.originalPrice - product.price).toFixed(2)}!
                   </span>
               )}
             </div>
 
             {/* Specifications */}
-            <h2 className="text-base font-bold text-gray-800 mb-2 border-b pb-1"> {/* Smaller font, padding */}
+            <h2 className="text-xs font-bold text-white uppercase tracking-widest mb-4 border-b border-black/10 dark:border-white/10 pb-2"> {/* Smaller font, padding */}
               Specifications
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 text-gray-700 mb-6 text-sm"> {/* Smaller gap, font */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-3 text-gray-600 dark:text-white/60 font-light mb-8 text-sm"> {/* Smaller gap, font */}
               {Object.entries(product.specs).map(([key, value]) => (
                 <div key={key}>
-                  <p className="font-semibold inline">{key}:</p>{" "}
-                  <span className="inline">{value}</span>
+                  <p className="font-semibold text-gray-500 dark:text-white/40 inline">{key}:</p>{" "}
+                  <span className="inline text-gray-800 dark:text-white/80">{value}</span>
                 </div>
               ))}
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3"> {/* Reduced gap */}
+            <div className="flex flex-col sm:flex-row gap-4"> {/* Reduced gap */}
               <button
                 onClick={handleBuyNow}
                 disabled={!product.inStock}
-                className="flex-1 bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-base font-semibold py-2.5 px-4 rounded-lg shadow-md hover:from-purple-700 hover:to-indigo-700 transform hover:-translate-y-0.5 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none
-                          lg:text-lg lg:py-3 lg:px-6 lg:rounded-xl lg:shadow-lg lg:hover:-translate-y-1" /* Desktop sizes */
+                className="flex-1 bg-white text-black hover:bg-gray-200 text-xs uppercase tracking-widest font-semibold py-4 px-6 rounded shadow-md hover:bg-[#e06a4a] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed
+                          lg:text-sm lg:py-4 lg:px-8" /* Desktop sizes */
               >
                 Buy Now
               </button>
               <button
                 onClick={() => addToCart(product, quantity)}
                 disabled={!product.inStock}
-                className="flex-1 bg-white border-2 border-purple-600 text-purple-700 text-base font-semibold py-2.5 px-4 rounded-lg shadow-md hover:bg-purple-50 hover:border-purple-700 transform hover:-translate-y-0.5 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none
-                          lg:text-lg lg:py-3 lg:px-6 lg:rounded-xl lg:shadow-lg lg:hover:-translate-y-1" /* Desktop sizes */
+                className="flex-1 bg-transparent border border-black/20 dark:border-white/20 text-gray-800 dark:text-white/80 text-xs uppercase tracking-widest font-semibold py-4 px-6 rounded shadow-none hover:border-white/50 hover:text-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed
+                          lg:text-sm lg:py-4 lg:px-8" /* Desktop sizes */
               >
                 Add to Cart
               </button>
             </div>
           </div>
           : /* Mobile styles for Non-PC Product Details */
-          <div className="space-y-3 mt-6 lg:mt-0 px-2 lg:px-0 text-gray-800"> {/* Reduced top margin, added horizontal padding for mobile */}
+          <div className="space-y-4 mt-8 lg:mt-0 px-2 lg:px-4 text-white"> {/* Reduced top margin, added horizontal padding for mobile */}
             {/* Product Name */}
-            <h1 className="text-xl sm:text-2xl font-bold">{product.name}</h1> {/* Smaller font */}
+            <h1 className="text-2xl sm:text-3xl font-bold mb-2">{product.name}</h1> {/* Smaller font */}
 
             {/* Rating and Stock */}
-            <div className="flex items-center gap-2 text-yellow-500 text-xs sm:text-sm"> {/* Smaller font */}
+            <div className="flex items-center gap-2 text-[#F47C5A] text-[10px] uppercase tracking-widest font-semibold"> {/* Smaller font */}
               ★★★★☆
-              <span className="text-gray-600">(150 Reviews)</span>
+              <span className="text-gray-500 dark:text-white/40 normal-case tracking-normal ml-1">(150 Reviews)</span>
               {product.inStock ? (
-                <span className="text-green-600 ml-2 font-medium">In Stock</span>
+                <span className="text-[#F47C5A] ml-2">In Stock</span>
               ) : (
-                <span className="text-red-600 ml-2 font-medium">Out of Stock</span>
+                <span className="text-gray-500 dark:text-white/50 ml-2">Out of Stock</span>
               )}
             </div>
 
             {/* Price */}
-            <div className="text-2xl sm:text-3xl font-semibold text-gray-900"> {/* Smaller font */}
+            <div className="text-3xl sm:text-4xl font-bold text-white mb-6"> {/* Smaller font */}
               ${product.price.toFixed(2)}
             </div>
 
             {/* Description */}
-            <p className="text-gray-600 leading-snug text-xs sm:text-sm"> {/* Smaller font, tighter leading */}
+            <p className="text-gray-500 dark:text-white/40 font-light leading-relaxed text-xs sm:text-sm mb-6"> {/* Smaller font, tighter leading */}
               {product.description2}
             </p>
 
             {/* Colour Options */}
             {product.colors?.length > 0 && (
-              <div>
-                <h4 className="font-semibold text-xs sm:text-sm mb-1">Colours:</h4> {/* Smaller font */}
-                <div className="flex gap-1.5 flex-wrap"> {/* Reduced gap */}
+              <div className="mb-6">
+                <h4 className="font-semibold text-xs uppercase tracking-widest text-gray-500 dark:text-white/50 mb-2">Colours:</h4> {/* Smaller font */}
+                <div className="flex gap-2 flex-wrap"> {/* Reduced gap */}
                   {product.colors.map((color) => (
                     <button
                       key={color}
                       onClick={() => setSelectedColor(color)}
-                      className={`w-5 h-5 rounded-full border-2 ${selectedColor === color ? 'border-black' : 'border-gray-300'}`}
+                      className={`w-6 h-6 rounded-full border-2 ${selectedColor === color ? 'border-[#F47C5A]' : 'border-black/10 dark:border-white/10'}`}
                       /* Smaller size */ // Corrected: Moved comment outside the template literal
                       style={{ backgroundColor: color }}
                       aria-label={`Select color ${color}`}
@@ -281,15 +281,15 @@ const ProductDetailPage = () => {
 
             {/* Size Options */}
             {product.sizes?.length > 0 && (
-              <div>
-                <h4 className="font-semibold text-xs sm:text-sm mb-1">Size:</h4> {/* Smaller font */}
-                <div className="flex gap-1.5 flex-wrap"> {/* Reduced gap */}
+              <div className="mb-6">
+                <h4 className="font-semibold text-xs uppercase tracking-widest text-gray-500 dark:text-white/50 mb-2">Size:</h4> {/* Smaller font */}
+                <div className="flex gap-2 flex-wrap"> {/* Reduced gap */}
                   {product.sizes.map((size) => (
                     <button
                       key={size}
                       onClick={() => setSelectedSize(size)}
-                      className={`px-2.5 py-0.5 border text-xs sm:text-sm rounded-md hover:bg-gray-100 transition ${ // Reduced padding, font
-                        selectedSize === size ? 'border-black font-semibold' : ''
+                      className={`px-3 py-1.5 border text-xs uppercase tracking-wider rounded bg-white/[0.02] transition ${ // Reduced padding, font
+                        selectedSize === size ? 'border-black/20 dark:border-white/20 text-white' : 'border-black/10 dark:border-white/10 hover:border-white/30 text-gray-800 dark:text-white/80'
                       }`}
                     >
                       {size}
@@ -300,18 +300,18 @@ const ProductDetailPage = () => {
             )}
 
             {/* Quantity and Buy Now */}
-            <div className="flex items-center gap-2 mt-4 flex-wrap">
-              <div className="flex items-center border rounded-md"> {/* Group quantity controls */}
+            <div className="flex items-center gap-3 mt-8 flex-wrap">
+              <div className="flex items-center border border-black/10 dark:border-white/10 rounded"> {/* Group quantity controls */}
                 <button
-                  className="w-7 h-7 text-base font-bold rounded-l-md"
+                  className="w-10 h-10 text-gray-500 dark:text-white/50 hover:text-white hover:bg-black/5 dark:bg-white/5 text-lg font-light rounded-l transition-colors"
                   /* Smaller size */ // Corrected: Moved comment outside the template literal
                   onClick={() => setQuantity((q) => Math.max(1, q - 1))}
                 >
                   -
                 </button>
-                <span className="px-3 font-medium text-sm">{quantity}</span>
+                <span className="px-4 font-semibold text-sm">{quantity}</span>
                 <button
-                  className="w-7 h-7 text-base font-bold rounded-r-md"
+                  className="w-10 h-10 text-gray-500 dark:text-white/50 hover:text-white hover:bg-black/5 dark:bg-white/5 text-lg font-light rounded-r transition-colors"
                   /* Smaller size */ // Corrected: Moved comment outside the template literal
                   onClick={() => setQuantity((q) => q + 1)}
                 >
@@ -322,7 +322,7 @@ const ProductDetailPage = () => {
               <button
                 onClick={() => addToCart(product, quantity)}
                 disabled={!product.inStock}
-                className="flex-1 min-w-[120px] px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition disabled:opacity-50 disabled:cursor-not-allowed text-sm font-semibold"
+                className="flex-1 min-w-[120px] px-6 py-3 bg-white text-black hover:bg-gray-200 rounded hover:bg-[#e06a4a] transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-[10px] uppercase tracking-widest font-bold"
               >
                 Add to Cart
               </button>
@@ -330,27 +330,27 @@ const ProductDetailPage = () => {
               <button
                 onClick={handleBuyNow}
                 disabled={!product.inStock}
-                className="flex-1 min-w-[120px] px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition disabled:opacity-50 disabled:cursor-not-allowed text-sm font-semibold"
+                className="flex-1 min-w-[120px] px-6 py-3 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-gray-800 dark:text-white/80 rounded hover:border-white/30 hover:bg-black/10 dark:bg-white/10 hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-[10px] uppercase tracking-widest font-bold"
               >
                 Buy Now
               </button>
             </div>
 
             {/* Delivery Options */}
-            <div className="mt-4 space-y-2 text-xs sm:text-sm"> {/* Reduced top margin, space-y, font */}
-              <div className="flex items-start gap-2"> {/* Reduced gap */}
-                <span className="text-lg">🚚</span> {/* Slightly smaller icon */}
+            <div className="mt-8 space-y-4 text-xs font-light text-gray-500 dark:text-white/40 pt-6 border-t border-black/10 dark:border-white/10"> {/* Reduced top margin, space-y, font */}
+              <div className="flex items-start gap-3"> {/* Reduced gap */}
+                <span className="text-[#F47C5A] text-lg">🚚</span> {/* Slightly smaller icon */}
                 <div>
-                  <strong>Free Delivery</strong><br />
-                  <span className="text-gray-600">Enter your postal code for delivery availability</span>
+                  <strong className="text-gray-800 dark:text-white/80 font-semibold uppercase tracking-wider text-[10px]">Free Delivery</strong><br />
+                  <span className="mt-1 inline-block">Enter your postal code for delivery availability</span>
                 </div>
               </div>
 
-              <div className="flex items-start gap-2"> {/* Reduced gap */}
-                <span className="text-lg">↩️</span> {/* Slightly smaller icon */}
+              <div className="flex items-start gap-3"> {/* Reduced gap */}
+                <span className="text-[#F47C5A] text-lg">↩️</span> {/* Slightly smaller icon */}
                 <div>
-                  <strong>Return Delivery</strong><br />
-                  <span className="text-gray-600">Free 30 days delivery returns</span>
+                  <strong className="text-gray-800 dark:text-white/80 font-semibold uppercase tracking-wider text-[10px]">Return Delivery</strong><br />
+                  <span className="mt-1 inline-block">Free 30 days delivery returns</span>
                 </div>
               </div>
             </div>

@@ -25,7 +25,7 @@ export default function WinnersCarousel() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
-    <section ref={ref} className={`bg-black py-6 text-white transition-opacity duration-1000 ${
+    <section ref={ref} className={`bg-[#f8f9fa] dark:bg-black py-6 text-white transition-opacity duration-1000 ${
         inView ? "animate-fadeInFromBack" : "opacity-0"
       }`}>
       <div className="container mx-auto px-4">
@@ -51,7 +51,7 @@ export default function WinnersCarousel() {
             >
               {winners.map((winner, index) => (
                 <SwiperSlide key={index}>
-                  <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4 hover:bg-white/15 transition-colors">
+                  <div className="bg-black/10 dark:bg-white/10 backdrop-blur-sm border border-black/20 dark:border-white/20 rounded-xl p-4 hover:bg-white/15 transition-colors">
                     <img
                       src={winner.image}
                       alt={winner.title}
