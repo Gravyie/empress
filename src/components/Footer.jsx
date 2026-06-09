@@ -1,4 +1,5 @@
 import { Facebook, Instagram, Twitter, Youtube, Phone, Mail, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
 import logo from "/images/Logo.png";
 
 export default function Footer() {
@@ -35,10 +36,10 @@ export default function Footer() {
             <h3 className="font-semibold text-sm uppercase tracking-[0.15em] text-gray-800 dark:text-white/80 mb-4">Build a PC</h3>
             <div className="w-8 h-[1px] bg-[#F47C5A] mb-4" />
             <ul className="space-y-2 text-sm">
-              <li><a href="#" className="text-gray-500 dark:text-white/40 hover:text-white transition-colors font-light">Build a custom PC</a></li>
-              <li><a href="#" className="text-gray-500 dark:text-white/40 hover:text-white transition-colors font-light">Build a custom gaming PC</a></li>
-              <li><a href="#" className="text-gray-500 dark:text-white/40 hover:text-white transition-colors font-light">Build a liquid PC</a></li>
-              <li><a href="#" className="text-gray-500 dark:text-white/40 hover:text-white transition-colors font-light">Build a server PC</a></li>
+              <li><Link to="/pc-builder" className="text-gray-500 dark:text-white/40 hover:text-white transition-colors font-light">Build a custom PC</Link></li>
+              <li><Link to="/gaming" className="text-gray-500 dark:text-white/40 hover:text-white transition-colors font-light">Build a custom gaming PC</Link></li>
+              <li><Link to="/products" className="text-gray-500 dark:text-white/40 hover:text-white transition-colors font-light">Build a liquid PC</Link></li>
+              <li><Link to="/server" className="text-gray-500 dark:text-white/40 hover:text-white transition-colors font-light">Build a server PC</Link></li>
             </ul>
           </div>
 
@@ -46,10 +47,10 @@ export default function Footer() {
             <h3 className="font-semibold text-sm uppercase tracking-[0.15em] text-gray-800 dark:text-white/80 mb-4">Useful Links</h3>
             <div className="w-8 h-[1px] bg-[#F47C5A] mb-4" />
             <ul className="space-y-2 text-sm">
-              <li><a href="#" className="text-gray-500 dark:text-white/40 hover:text-white transition-colors font-light">About Us</a></li>
-              <li><a href="#" className="text-gray-500 dark:text-white/40 hover:text-white transition-colors font-light">Terms & Conditions</a></li>
-              <li><a href="#" className="text-gray-500 dark:text-white/40 hover:text-white transition-colors font-light">Shipping Policy</a></li>
-              <li><a href="#" className="text-gray-500 dark:text-white/40 hover:text-white transition-colors font-light">Refund & Cancellation</a></li>
+              <li><Link to="/about" className="text-gray-500 dark:text-white/40 hover:text-white transition-colors font-light">About Us</Link></li>
+              <li><Link to="/terms" className="text-gray-500 dark:text-white/40 hover:text-white transition-colors font-light">Terms & Conditions</Link></li>
+              <li><Link to="/shipping" className="text-gray-500 dark:text-white/40 hover:text-white transition-colors font-light">Shipping Policy</Link></li>
+              <li><Link to="/refund" className="text-gray-500 dark:text-white/40 hover:text-white transition-colors font-light">Refund & Cancellation</Link></li>
             </ul>
           </div>
 
@@ -76,7 +77,7 @@ export default function Footer() {
       <div className="border-t border-white/[0.06] pt-5">
         <div className="flex flex-col sm:flex-row justify-between items-center text-[11px] text-white/25 max-w-7xl mx-auto">
           <span>© {new Date().getFullYear()} Empress PC. All rights reserved.</span>
-          <a href="/" className="text-gray-400 dark:text-white/30 hover:text-white/60 transition-colors mt-2 sm:mt-0">www.empresspc.in</a>
+          <Link to="/" className="text-gray-400 dark:text-white/30 hover:text-white/60 transition-colors mt-2 sm:mt-0">www.empresspc.in</Link>
         </div>
       </div>
     </footer>
