@@ -28,13 +28,13 @@ export default function ProductsGrid() {
         className="
           grid 
           grid-cols-2 
-          grid-rows-6
+          grid-rows-10
           grid-flow-row-dense
           gap-1
-          h-[600px]
+          h-[800px]
           sm:gap-2
-          sm:h-[700px]
-          md:h-[800px]
+          sm:h-[900px]
+          md:h-[1000px]
           lg:grid-flow-row
           lg:grid-cols-6 
           lg:grid-rows-3
@@ -59,12 +59,12 @@ export default function ProductsGrid() {
           const imageClass = "w-full h-full object-cover transition-transform duration-500 group-hover:scale-105";
 
           const gridItemClasses = [
-            "col-span-1 row-span-2 lg:col-span-3 lg:row-span-2",
-            "col-span-2 row-span-1 lg:col-span-3 lg:row-span-1",
-            "col-span-1 row-span-2 lg:col-span-1 lg:row-span-1",
-            "col-span-1 row-span-2 lg:col-span-2 lg:row-span-2",
-            "col-span-1 row-span-2 lg:col-span-1 lg:row-span-1",
-            "col-span-2 row-span-1 lg:col-span-3 lg:row-span-1",
+            "col-span-1 row-span-3 lg:col-span-3 lg:row-span-2",
+            "col-span-2 row-span-2 lg:col-span-3 lg:row-span-1",
+            "col-span-1 row-span-3 lg:col-span-1 lg:row-span-1",
+            "col-span-1 row-span-3 lg:col-span-2 lg:row-span-2",
+            "col-span-1 row-span-3 lg:col-span-1 lg:row-span-1",
+            "col-span-2 row-span-2 lg:col-span-3 lg:row-span-1",
           ];
 
           return (
