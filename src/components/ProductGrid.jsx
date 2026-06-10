@@ -16,7 +16,7 @@ export default function ProductsGrid() {
   return (
     <div
       ref={ref}
-      className={`mx-2 sm:mx-4 lg:mx-6 xl:mx-8 my-6 bg-[#0a0a0a] border border-white/[0.06] p-4 sm:p-5 lg:p-6 transition-opacity duration-1000 ${
+      className={`mx-6 sm:mx-10 lg:mx-12 xl:mx-16 my-6 bg-[#0a0a0a] border border-white/[0.06] p-2 sm:p-3 lg:p-4 transition-opacity duration-1000 ${
         inView ? "animate-fadeInFromBack" : "opacity-0"
       }`}
     >
@@ -29,22 +29,19 @@ export default function ProductsGrid() {
           grid 
           grid-cols-2 
           grid-rows-6
-          gap-2
-          h-[60vh]
-          sm:grid-cols-4
-          sm:grid-rows-4
-          sm:gap-3
-          sm:h-[65vh]
-          md:grid-cols-6
-          md:grid-rows-3
-          md:gap-3
-          md:h-[70vh]
+          grid-flow-row-dense
+          gap-1
+          h-[100vh]
+          sm:gap-2
+          sm:h-[110vh]
+          md:h-[115vh]
+          lg:grid-flow-row
           lg:grid-cols-6 
           lg:grid-rows-3
           lg:gap-4
-          lg:h-[75vh]
-          xl:h-[80vh]
-          2xl:h-[85vh]
+          lg:h-[80vh]
+          xl:h-[85vh]
+          2xl:h-[90vh]
         "
       >
         {images.map((src, idx) => {
@@ -62,12 +59,12 @@ export default function ProductsGrid() {
           const imageClass = "w-full h-full object-cover transition-transform duration-500 group-hover:scale-105";
 
           const gridItemClasses = [
-            "col-span-2 row-span-2 sm:col-span-2 sm:row-span-2 md:col-span-3 md:row-span-2 lg:col-span-3 lg:row-span-2",
-            "col-span-2 row-span-1 sm:col-span-2 sm:row-span-1 md:col-span-3 md:row-span-1 lg:col-span-3 lg:row-span-1",
-            "col-span-1 row-span-1 sm:col-span-1 sm:row-span-1 md:col-span-1 md:row-span-1 lg:col-span-1 lg:row-span-1",
-            "col-span-1 row-span-2 sm:col-span-1 sm:row-span-2 md:col-span-2 md:row-span-2 lg:col-span-2 lg:row-span-2",
-            "col-span-1 row-span-1 sm:col-span-1 sm:row-span-1 md:col-span-1 md:row-span-1 lg:col-span-1 lg:row-span-1",
-            "col-span-2 row-span-1 sm:col-span-2 sm:row-span-1 md:col-span-3 md:row-span-1 lg:col-span-3 lg:row-span-1",
+            "col-span-1 row-span-2 lg:col-span-3 lg:row-span-2",
+            "col-span-2 row-span-1 lg:col-span-3 lg:row-span-1",
+            "col-span-1 row-span-2 lg:col-span-1 lg:row-span-1",
+            "col-span-1 row-span-2 lg:col-span-2 lg:row-span-2",
+            "col-span-1 row-span-2 lg:col-span-1 lg:row-span-1",
+            "col-span-2 row-span-1 lg:col-span-3 lg:row-span-1",
           ];
 
           return (

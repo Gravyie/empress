@@ -140,10 +140,10 @@ const ComponentCard = ({ component, onSelectComponent, isSelected }) => {
         ${isDragging ? 'opacity-50 border-[#F47C5A]' : ''}
         ${isSelected ? 'border-[#F47C5A] ring-1 ring-[#F47C5A]/50 bg-white/[0.02]' : ''}
         flex flex-col items-center justify-between text-center
-        w-full h-full min-h-[130px] sm:min-h-[150px]
+        w-full h-full min-h-[110px] sm:min-h-[150px]
       `}
     >
-      <div className="w-full h-14 sm:h-16 mb-2 relative flex items-center justify-center p-1 bg-black/5 dark:bg-white/5 rounded-md border border-white/[0.04] flex-shrink-0">
+      <div className="w-full h-12 sm:h-16 mb-1.5 relative flex items-center justify-center p-1 bg-black/5 dark:bg-white/5 rounded-md border border-white/[0.04] flex-shrink-0">
         <img src={component.image} alt={component.name} className="max-w-full max-h-full object-contain" />
       </div>
       <div className="flex flex-col justify-end flex-1 w-full">
@@ -182,7 +182,7 @@ const BuildArea = ({ image, currentComponentType }) => {
       ref={drop}
       className={`
         relative bg-[#0a0a0a] rounded-xl p-3 sm:p-6 
-        h-full w-full min-h-[350px] md:min-h-[450px]
+        h-full w-full min-h-[250px] md:min-h-[450px]
         flex items-center justify-center overflow-hidden
         transition-all duration-300 ease-in-out
         border ${borderColor}
@@ -266,10 +266,10 @@ const PCBuilder = () => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className="min-h-screen bg-[#f8f9fa] dark:bg-black text-white pb-16 pt-8 px-5 sm:px-6 lg:px-8 font-sans">
+      <div className="min-h-screen bg-[#f8f9fa] dark:bg-black text-white pb-8 sm:pb-16 pt-4 sm:pt-8 px-3 sm:px-6 lg:px-8 font-sans">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <div className="text-center pt-2 md:pt-4 sm:pt-6 mb-6">
+          <div className="text-center pt-1 md:pt-4 sm:pt-6 mb-4 sm:mb-6">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight uppercase">
               Assemble Your <span className="text-chrome">Dream PC</span>
             </h1>
@@ -278,7 +278,7 @@ const PCBuilder = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-5 sm:gap-6 lg:gap-10 items-stretch">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-3 sm:gap-6 lg:gap-10 items-stretch">
             {/* Build Visualization Area */}
             <div className="md:col-span-3 order-1 flex flex-col gap-4">
               <div className="flex justify-between items-end">
@@ -313,8 +313,8 @@ const PCBuilder = () => {
             </div>
 
             {/* Component Selection Area */}
-            <div className="md:col-span-2 order-2 mt-8 md:mt-0 flex flex-col h-full">
-              <div className="min-h-[3rem] sm:min-h-[3.5rem] mb-2 sm:mb-4 flex items-start">
+            <div className="md:col-span-2 order-2 mt-4 md:mt-0 flex flex-col h-full">
+              <div className="min-h-[2.5rem] sm:min-h-[3.5rem] mb-1 sm:mb-4 flex items-start">
                 <h2 className="text-lg sm:text-xl font-bold text-white uppercase tracking-widest">
                   {isBuildComplete
                     ? `Build Complete`
@@ -324,7 +324,7 @@ const PCBuilder = () => {
               </div>
 
               {!isBuildComplete ? (
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-auto">
+                <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-auto">
                   {componentOptions.length > 0 ? (
                     componentOptions.map(option => (
                       <ComponentCard
@@ -389,7 +389,7 @@ const PCBuilder = () => {
           </div>
 
           {/* Final Build Summary & Details */}
-          <div className={`transition-all duration-1000 ease-in-out relative ${isBuildComplete ? 'opacity-100 translate-y-0 mt-12 py-12' : 'opacity-30 translate-y-8 mt-12 py-8 pointer-events-none'} lg:flex lg:items-center lg:justify-center border-t border-white/[0.06]`}>
+          <div className={`transition-all duration-1000 ease-in-out relative ${isBuildComplete ? 'opacity-100 translate-y-0 mt-6 sm:mt-12 py-6 sm:py-12' : 'opacity-30 translate-y-8 mt-6 sm:mt-12 py-4 sm:py-8 pointer-events-none'} lg:flex lg:items-center lg:justify-center border-t border-white/[0.06]`}>
             {/* Convex Lens Trail connecting upper and lower sections */}
             <div className="absolute -top-8 left-1/2 -translate-x-1/2 flex flex-col items-center justify-center h-8 w-12">
                {/* Fading connecting line */}
@@ -408,11 +408,11 @@ const PCBuilder = () => {
               id="pc-summary"
               className="w-full max-w-5xl mx-auto flex flex-col"
             >
-              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-center text-white mb-8 uppercase tracking-widest">
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-center text-white mb-4 sm:mb-8 uppercase tracking-widest">
                 <span className="text-chrome">Summary</span>
               </h2>
 
-              <div className="flex flex-col lg:flex-row gap-6 lg:gap-10">
+              <div className="flex flex-col lg:flex-row gap-4 sm:gap-6 lg:gap-10">
                 <div className="w-full lg:w-1/2 flex justify-center items-center">
                   <div className="relative w-full aspect-square max-w-sm bg-[#0a0a0a] border border-black/10 dark:border-white/10 rounded-xl p-4 flex items-center justify-center">
                      <div className="absolute inset-0 bg-gradient-to-tr from-violet-500/10 via-fuchsia-500/10 to-orange-500/10 rounded-xl blur-2xl pointer-events-none" />

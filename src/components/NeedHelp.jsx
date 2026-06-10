@@ -13,7 +13,7 @@ export default function SupportSection() {
     >
       <div className="border border-white/[0.08] bg-[#0a0a0a] text-white p-6 sm:p-8 lg:p-10 max-w-7xl mx-auto space-y-8 sm:space-y-10 text-base sm:text-lg">
         {/* Chrome accent line at top */}
-        <div className="w-16 h-[2px] shine-chrome" />
+        <div className="w-full h-[2px] shine-chrome" />
 
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center lg:text-left">
           Need help?
