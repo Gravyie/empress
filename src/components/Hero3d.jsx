@@ -1,6 +1,6 @@
-import { Suspense, useRef } from 'react';
+import { Suspense, useRef, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, useGLTF, Html, useProgress, Environment, ContactShadows } from '@react-three/drei';
+import { OrbitControls, useGLTF, Html, useProgress, Environment, ContactShadows, Preload, PerformanceMonitor } from '@react-three/drei';
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { Play, Wrench, Truck, Headset, ShieldCheck, CreditCard, ArrowRight } from "lucide-react";
@@ -26,7 +26,7 @@ function Loader() {
 }
 
 function PCModel() {
-  const { scene } = useGLTF('/models/MainModel.glb');
+  const { scene } = useGLTF('/models/MainModel-super-optimized.glb');
   const ref = useRef();
   const time = useRef(0);
 
@@ -71,6 +71,8 @@ function AnimatedLight() {
 }
 
 export default function Hero3D() {
+  const [dpr, setDpr] = useState(1.5);
+
   return (
     <div className="relative w-full min-h-[100svh] lg:min-h-0 lg:h-[calc(100vh-80px)] flex flex-col justify-between overflow-hidden bg-[#f8f9fa] dark:bg-black">
       {/* Ambient grid background */}
@@ -157,27 +159,30 @@ export default function Hero3D() {
           {/* Ambient glow behind model for depth */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[70%] bg-gradient-to-tr from-[#F47C5A]/20 via-orange-500/5 to-transparent rounded-full blur-[120px] pointer-events-none" />
 
-          <Canvas dpr={[1, 2]} performance={{ min: 0.5 }} camera={{ position: [-25, 5, 35], fov: 45 }}>
-            <ambientLight intensity={0.4} />
-            <directionalLight position={[10, 20, 10]} intensity={1.5} color="#ffffff" />
-            <directionalLight position={[-15, 10, -10]} intensity={1} color="#a8b1ff" /> {/* Subtle blue rim light */}
+          <Canvas dpr={dpr} camera={{ position: [-25, 5, 35], fov: 45 }}>
+            <PerformanceMonitor onDecline={() => setDpr(1)} onIncline={() => setDpr(1.5)}>
+              <ambientLight intensity={0.4} />
+              <directionalLight position={[10, 20, 10]} intensity={1.5} color="#ffffff" />
+              <directionalLight position={[-15, 10, -10]} intensity={1} color="#a8b1ff" /> {/* Subtle blue rim light */}
 
-            <Suspense fallback={<Loader />}>
-              <AnimatedLight />
-              <Environment preset="city" />
-              <PCModel />
+              <Suspense fallback={<Loader />}>
+                <AnimatedLight />
+                <Environment preset="city" resolution={256} />
+                <PCModel />
 
-              {/* Cinematic ground shadow */}
-              <ContactShadows position={[0, -2.5, 0]} opacity={0.65} scale={30} blur={2.5} far={10} color="#000000" />
+                {/* Cinematic ground shadow */}
+                <ContactShadows position={[0, -2.5, 0]} opacity={0.65} scale={30} blur={2.5} far={10} color="#000000" resolution={512} frames={1} />
 
-              <OrbitControls
-                enableZoom={false}
-                autoRotate
-                autoRotateSpeed={0.8}
-                maxPolarAngle={Math.PI / 2 + 0.15}
-                minPolarAngle={Math.PI / 3}
-              />
-            </Suspense>
+                <OrbitControls
+                  enableZoom={false}
+                  autoRotate
+                  autoRotateSpeed={0.8}
+                  maxPolarAngle={Math.PI / 2 + 0.15}
+                  minPolarAngle={Math.PI / 3}
+                />
+                <Preload all />
+              </Suspense>
+            </PerformanceMonitor>
           </Canvas>
         </motion.div>
       </div>
@@ -212,4 +217,4 @@ export default function Hero3D() {
   );
 }
 
-useGLTF.preload('/models/MainModel.glb');
+useGLTF.preload('/models/MainModel-super-optimized.glb');
