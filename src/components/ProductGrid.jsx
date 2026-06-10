@@ -16,7 +16,7 @@ export default function ProductsGrid() {
   return (
     <div
       ref={ref}
-      className={`mx-6 sm:mx-10 lg:mx-12 xl:mx-16 my-6 bg-[#0a0a0a] border border-white/[0.06] p-2 sm:p-3 lg:p-4 transition-opacity duration-1000 ${
+      className={`mx-4 sm:mx-6 lg:mx-12 xl:mx-16 my-6 bg-[#0a0a0a] border border-white/[0.06] p-2 sm:p-3 lg:p-4 transition-opacity duration-1000 ${
         inView ? "animate-fadeInFromBack" : "opacity-0"
       }`}
     >
@@ -31,10 +31,10 @@ export default function ProductsGrid() {
           grid-rows-10
           grid-flow-row-dense
           gap-1
-          h-[800px]
+          h-[650px]
           sm:gap-2
-          sm:h-[900px]
-          md:h-[1000px]
+          sm:h-[750px]
+          md:h-[850px]
           lg:grid-flow-row
           lg:grid-cols-6 
           lg:grid-rows-3
