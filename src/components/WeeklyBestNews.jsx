@@ -140,7 +140,7 @@ export default function WeeklyBestNews() {
         {/* RIGHT SIDE - 1/4 span */}
         <div className="space-y-6">
           {/* Banner */}
-          <div className="flex justify-end">
+          <div className="hidden lg:flex justify-end">
             <img
               src="/images/Discount.jpg"
               alt="Ad banner"

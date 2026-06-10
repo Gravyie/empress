@@ -24,18 +24,18 @@ export default function GalleryGrid() {
   // These classes define the exact grid position and span for each item on desktop (md and up).
   // The order in this array corresponds to the image `idx` from the `images` array.
   const gridItemClasses = [
-    "row-span-4",
-    "row-span-3",
-    "row-span-4",
-    "row-span-3",
-    "row-span-4",
-    "row-span-4",
-    "row-span-4",
-    "row-span-4",
-    "row-span-4",
-    "row-span-4",
-    "row-span-3",
-    "row-span-3",
+    "md:row-span-4",
+    "md:row-span-3",
+    "md:row-span-4",
+    "md:row-span-3",
+    "md:row-span-4",
+    "md:row-span-4",
+    "md:row-span-4",
+    "md:row-span-4",
+    "md:row-span-4",
+    "md:row-span-4",
+    "md:row-span-3",
+    "md:row-span-3",
   ];
 
   return (
@@ -59,11 +59,11 @@ export default function GalleryGrid() {
       <div
         className="
           grid
-          grid-cols-2 md:grid-cols-3 lg:grid-cols-4
-          grid-rows-11
-          auto-rows-[minmax(40px,auto)] 
-          h-[60vh] sm:h-[65vh] md:h-[70vh] lg:h-[75vh] xl:h-[80vh] 2xl:h-[85vh] /* Responsive overall grid height */
-          gap-1 md:gap-4
+          grid-cols-3 md:grid-cols-3 lg:grid-cols-4
+          md:grid-rows-11
+          auto-rows-[minmax(60px,auto)] md:auto-rows-[minmax(40px,auto)]
+          h-[60vh] sm:h-[65vh] md:h-[70vh] lg:h-[75vh] xl:h-[80vh] 2xl:h-[85vh]
+          gap-2 md:gap-4
         "
       >
         {images.map((src, idx) => {

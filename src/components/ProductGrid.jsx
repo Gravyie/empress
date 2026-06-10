@@ -31,17 +31,17 @@ export default function ProductsGrid() {
           grid-rows-6
           grid-flow-row-dense
           gap-1
-          h-[100vh]
+          h-[600px]
           sm:gap-2
-          sm:h-[110vh]
-          md:h-[115vh]
+          sm:h-[700px]
+          md:h-[800px]
           lg:grid-flow-row
           lg:grid-cols-6 
           lg:grid-rows-3
           lg:gap-4
-          lg:h-[65vh]
-          xl:h-[70vh]
-          2xl:h-[75vh]
+          lg:h-[600px]
+          xl:h-[650px]
+          2xl:h-[700px]
         "
       >
         {images.map((src, idx) => {
