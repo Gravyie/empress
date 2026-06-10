@@ -41,7 +41,7 @@ const Blogs = () => {
   });
 
   return (
-    <section className="bg-[#f8f9fa] dark:bg-black py-14 sm:py-20 px-5 sm:px-12 lg:px-20">
+    <section className="bg-[#f8f9fa] dark:bg-black py-8 sm:py-14 px-5 sm:px-12 lg:px-20">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8 sm:mb-12 text-center">

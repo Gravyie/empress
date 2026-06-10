@@ -1,8 +1,10 @@
 import { Suspense, useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, useGLTF, Html, useProgress, Float, Environment, ContactShadows } from '@react-three/drei';
+import { OrbitControls, useGLTF, Html, useProgress, Environment, ContactShadows } from '@react-three/drei';
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
-import { Play, Cpu, Wrench, Truck, Headset, ShieldCheck, CreditCard, ArrowRight } from "lucide-react";
+import { Play, Wrench, Truck, Headset, ShieldCheck, CreditCard, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 function Loader() {
   const { progress } = useProgress();
@@ -25,14 +27,30 @@ function Loader() {
 
 function PCModel() {
   const { scene } = useGLTF('/models/MainModel.glb');
-  return <primitive object={scene} position={[-2, 3, 0]} />;
+  const ref = useRef();
+  const time = useRef(0);
+
+  useFrame((_, delta) => {
+    if (ref.current) {
+      // Absolute sine wave math prevents HMR accumulation bugs ("shifting up and up")
+      time.current += delta;
+      const t = time.current;
+      ref.current.position.y = 1.5 + Math.sin(t * 2) * 0.1;
+      ref.current.rotation.y = Math.sin(t * 1) * 0.05;
+      ref.current.rotation.z = Math.sin(t * 1.5) * 0.02;
+    }
+  });
+
+  return <primitive ref={ref} object={scene} position={[-2, 1.5, 0]} />;
 }
 
 function AnimatedLight() {
   const lightRef = useRef();
-  
-  useFrame(({ clock }) => {
-    const t = clock.getElapsedTime() * 0.8;
+  const time = useRef(0);
+
+  useFrame((_, delta) => {
+    time.current += delta;
+    const t = time.current * 0.8;
     if (lightRef.current) {
       // Orbit light smoothly around the PC
       lightRef.current.position.x = Math.sin(t) * 25;
@@ -42,11 +60,11 @@ function AnimatedLight() {
   });
 
   return (
-    <pointLight 
+    <pointLight
       ref={lightRef}
-      color="#F47C5A" 
-      intensity={50} 
-      distance={60} 
+      color="#F47C5A"
+      intensity={50}
+      distance={60}
       decay={2}
     />
   );
@@ -54,7 +72,7 @@ function AnimatedLight() {
 
 export default function Hero3D() {
   return (
-    <div className="relative w-full min-h-[calc(100vh-80px)] flex flex-col justify-between overflow-hidden bg-[#f8f9fa] dark:bg-black">
+    <div className="relative w-full min-h-[100svh] lg:min-h-0 lg:h-[calc(100vh-80px)] flex flex-col justify-between overflow-hidden bg-[#f8f9fa] dark:bg-black">
       {/* Ambient grid background */}
       <div className="absolute inset-0 grid-bg opacity-40 pointer-events-none" />
       <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black pointer-events-none" />
@@ -62,17 +80,25 @@ export default function Hero3D() {
       {/* Subtle chrome glow accent */}
       <div className="absolute top-1/3 left-1/4 w-[300px] h-[300px] bg-gradient-to-tr from-indigo-500/10 via-purple-500/10 to-pink-500/10 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="relative z-10 max-w-7xl mx-auto w-full px-5 lg:px-8 flex-grow flex flex-col lg:flex-row items-center justify-between py-12 lg:py-0 gap-12 lg:gap-16">
+      <div className="relative z-10 max-w-7xl mx-auto w-full px-5 lg:px-8 flex-grow flex flex-col lg:flex-row items-center justify-between pt-4 pb-6 lg:py-0 gap-0 lg:gap-16">
+
+        {/* Status Chip — mobile only (above the model) */}
+        <div className="lg:hidden inline-flex items-center gap-2 px-3 py-1.5 border border-white/10 bg-white/[0.03] order-first mb-0">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#F47C5A] animate-pulse" />
+          <span className="text-[10px] uppercase tracking-[0.2em] font-medium text-white/60">
+            Now Shipping Nationwide
+          </span>
+        </div>
 
         {/* Left — Text Content */}
         <motion.div
           initial={{ x: -30, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="w-full lg:w-[45%] flex flex-col items-center lg:items-start text-center lg:text-left z-20 mt-10 lg:mt-0"
+          className="w-full lg:w-[45%] order-2 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left z-20 shrink-0 py-2 sm:py-3 lg:py-0 lg:justify-center lg:h-full"
         >
-          {/* Status Chip */}
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 border border-white/10 bg-white/[0.03] mb-6">
+          {/* Status Chip — desktop only (on mobile it floats above the model) */}
+          <div className="hidden lg:inline-flex items-center gap-2 px-3 py-1.5 border border-white/10 bg-white/[0.03] mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-[#F47C5A] animate-pulse" />
             <span className="text-[10px] uppercase tracking-[0.2em] font-medium text-white/60">
               Now Shipping Nationwide
@@ -80,85 +106,78 @@ export default function Hero3D() {
           </div>
 
           {/* Heading */}
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-[-0.03em] mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.08] tracking-[-0.03em] mb-2 sm:mb-3 lg:mb-4">
             <span className="text-white">Engineered</span>
-            <br className="hidden lg:block" />
+            <br className="hidden lg:block" />{' '}
             <span className="text-[#F47C5A]">Perfection.</span>
           </h1>
 
           {/* Subtext */}
-          <p className="text-white/50 text-base sm:text-lg max-w-md font-light leading-relaxed mb-8">
+          <p className="text-white/50 text-xs sm:text-sm lg:text-base max-w-sm lg:max-w-md font-light leading-relaxed mb-4 sm:mb-5">
             Performance-grade systems built from the ground up. Pre-configured or fully custom — your call.
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mb-10">
-            <a href="/workstations" className="w-full sm:w-auto">
-              <button className="w-full group flex items-center justify-center gap-2 px-8 py-4 bg-white text-black text-xs font-semibold uppercase tracking-[0.15em] hover:bg-[#F47C5A] hover:text-white transition-all duration-300">
+          <div className="flex flex-row gap-2 sm:gap-3 w-full sm:w-auto mb-4 lg:mb-5">
+            <Link to="/workstations" className="flex-1 sm:flex-none">
+              <button className="w-full group flex items-center justify-center gap-2 px-5 sm:px-7 py-3 sm:py-3.5 bg-white text-black text-[10px] sm:text-xs font-semibold uppercase tracking-[0.12em] sm:tracking-[0.15em] hover:bg-[#F47C5A] hover:text-white transition-all duration-300">
                 Shop Pre-Built
-                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
               </button>
-            </a>
-            <a href="/pc-builder" className="w-full sm:w-auto">
-              <button className="group w-full flex items-center justify-center gap-2 px-8 py-4 border border-white/20 text-white/80 text-xs font-semibold uppercase tracking-[0.15em] hover:border-[#F47C5A]/50 hover:text-[#F47C5A] hover:bg-[#F47C5A]/5 hover:shadow-[0_0_20px_rgba(244,124,90,0.15)] transition-all duration-300">
-                <Wrench size={14} className="group-hover:rotate-12 transition-transform" />
+            </Link>
+            <Link to="/pc-builder" className="flex-1 sm:flex-none">
+              <button className="w-full group flex items-center justify-center gap-2 px-5 sm:px-7 py-3 sm:py-3.5 border border-white/20 text-white/80 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.12em] sm:tracking-[0.15em] hover:border-[#F47C5A]/50 hover:text-[#F47C5A] hover:bg-[#F47C5A]/5 transition-all duration-300">
+                <Wrench size={13} className="group-hover:rotate-12 transition-transform" />
                 Custom Build
               </button>
-            </a>
+            </Link>
           </div>
 
-          <p className="text-white/30 text-[11px] font-light tracking-wide mb-10 max-w-sm">
-            Select "Shop Pre-Built" for expertly assembled rigs, or "Custom Build" to hand-pick every component.
-          </p>
-
-          {/* Watch Video Link */}
+          {/* Watch Video — compact */}
           <a
             href="https://youtube.com/shorts/0_8FqIOhwCM?si=nHV4gQhcQ7zKLGh4"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-3 text-white/40 hover:text-white transition-colors"
+            className="group flex items-center gap-2.5 text-white/40 hover:text-white transition-colors"
           >
-            <div className="w-10 h-10 border border-white/15 flex items-center justify-center group-hover:border-[#F47C5A] group-hover:bg-[#F47C5A]/10 group-hover:text-[#F47C5A] transition-all rounded-full">
-              <Play size={13} className="ml-0.5" />
+            <div className="w-8 h-8 sm:w-9 sm:h-9 border border-white/15 flex items-center justify-center group-hover:border-[#F47C5A] group-hover:bg-[#F47C5A]/10 group-hover:text-[#F47C5A] transition-all rounded-full">
+              <Play size={11} className="ml-0.5" />
             </div>
-            <span className="text-[10px] uppercase tracking-[0.2em] font-medium">Watch Cinematic Demo</span>
+            <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] font-medium">Watch Demo</span>
           </a>
         </motion.div>
 
         {/* Right — 3D Model Cinematic Canvas */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-          className="w-full lg:w-[55%] h-[400px] sm:h-[500px] lg:h-[80vh] relative z-10"
+          className="w-full lg:w-[55%] h-[400px] sm:h-[450px] lg:h-[80vh] relative z-10"
         >
           {/* Ambient glow behind model for depth */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[70%] bg-gradient-to-tr from-[#F47C5A]/20 via-orange-500/5 to-transparent rounded-full blur-[120px] pointer-events-none" />
-          
-          <Canvas camera={{ position: [-25, 5, 35], fov: 45 }}>
+
+          <Canvas dpr={[1, 2]} performance={{ min: 0.5 }} camera={{ position: [-25, 5, 35], fov: 45 }}>
             <ambientLight intensity={0.4} />
             <directionalLight position={[10, 20, 10]} intensity={1.5} color="#ffffff" />
             <directionalLight position={[-15, 10, -10]} intensity={1} color="#a8b1ff" /> {/* Subtle blue rim light */}
-            
-            <AnimatedLight />
-            <Environment preset="city" />
 
             <Suspense fallback={<Loader />}>
-              <Float speed={2} rotationIntensity={0.3} floatIntensity={1.2} floatingRange={[-0.1, 0.1]}>
-                <PCModel />
-              </Float>
+              <AnimatedLight />
+              <Environment preset="city" />
+              <PCModel />
+
+              {/* Cinematic ground shadow */}
+              <ContactShadows position={[0, -2.5, 0]} opacity={0.65} scale={30} blur={2.5} far={10} color="#000000" />
+
+              <OrbitControls
+                enableZoom={false}
+                autoRotate
+                autoRotateSpeed={0.8}
+                maxPolarAngle={Math.PI / 2 + 0.15}
+                minPolarAngle={Math.PI / 3}
+              />
             </Suspense>
-
-            {/* Cinematic ground shadow */}
-            <ContactShadows position={[0, -2.5, 0]} opacity={0.65} scale={30} blur={2.5} far={10} color="#000000" />
-
-            <OrbitControls 
-              enableZoom={false} 
-              autoRotate 
-              autoRotateSpeed={0.8} 
-              maxPolarAngle={Math.PI / 2 + 0.15}
-              minPolarAngle={Math.PI / 3}
-            />
           </Canvas>
         </motion.div>
       </div>
@@ -192,3 +211,5 @@ export default function Hero3D() {
     </div>
   );
 }
+
+useGLTF.preload('/models/MainModel.glb');

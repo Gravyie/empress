@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom'; // Import useParams and useNavigate
 import { useInView } from "react-intersection-observer";
 import { allSampleProducts } from '../data/products';
-import { useCart } from '../components/CartContext';
+import { useCart } from '../context/CartContext';
 
 const ProductsListingPage = () => {
   const { addToCart } = useCart();
@@ -99,13 +99,11 @@ const ProductsListingPage = () => {
   const handleAddToCart = (e, productId) => {
     e.stopPropagation(); // Prevent the product card's onClick (handleProductClick) from firing
     const product = products.find(p => p.id === productId);
-    console.log(`Added ${product.name} to cart!`);
     addToCart(product);
   };
 
   const handleProductClick = (productId) => {
-    // console.log(`Navigating to product detail page for: ${productId}`); // You can keep or remove this console.log
-    navigate('/product/' + productId); // <--- THIS IS THE REQUIRED CHANGE
+    navigate('/product/' + productId);
   };
 
   const goToCategories = () => {

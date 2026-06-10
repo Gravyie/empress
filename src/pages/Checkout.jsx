@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useCart } from "../components/CartContext";
+import { useCart } from '../context/CartContext';
+import { toast } from "sonner";
 
 const Checkout = () => {
   const { cart, clearCart } = useCart();
@@ -21,7 +22,8 @@ const Checkout = () => {
     cart.reduce((acc, item) => acc + item.price * item.quantity, 0) * 100
   ) / 100;
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     const order = {
       id: Date.now(),
       items: cart,
@@ -36,12 +38,12 @@ const Checkout = () => {
     const updatedOrders = [...existingOrders, order];
     localStorage.setItem("orders", JSON.stringify(updatedOrders));
 
-    alert("Order placed successfully!");
+    toast.success("Order placed successfully!");
     clearCart();
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-6 py-12 text-white">
+    <div className="max-w-7xl mx-auto px-6 py-8 md:py-12 text-white">
       {/* Breadcrumb */}
       <p className="text-xs uppercase tracking-widest text-gray-500 dark:text-white/50 font-semibold mb-8">
         Account / My Account / Product / View Cart /{" "}
@@ -50,9 +52,9 @@ const Checkout = () => {
 
       <h2 className="text-2xl font-bold mb-8 uppercase tracking-widest text-white/90">Billing Details</h2>
 
-      <div className="grid lg:grid-cols-2 gap-12">
+      <form onSubmit={handleSubmit} className="grid lg:grid-cols-2 gap-12">
         {/* Billing Form */}
-        <form className="space-y-6">
+        <div className="space-y-6">
           <div>
             <label className="text-[10px] uppercase tracking-wider text-gray-500 dark:text-white/40 font-semibold mb-1 block">First Name*</label>
             <input
@@ -131,7 +133,7 @@ const Checkout = () => {
             />
             Save this information for faster check-out next time
           </label>
-        </form>
+        </div>
 
         {/* Order Summary */}
         <div className="bg-[#0a0a0a] border border-black/10 dark:border-white/10 p-6 sm:p-8 rounded-xl h-fit">
@@ -209,13 +211,13 @@ const Checkout = () => {
             </div>
 
             <button
-                onClick={handleSubmit}
+                type="submit"
                 className="w-full bg-white hover:bg-gray-200 text-black py-4 rounded mt-6 text-xs uppercase tracking-widest font-bold transition-all shadow-lg hover:shadow-[#F47C5A]/20"
             >
                 Place Order
             </button>
         </div>
-      </div>
+      </form>
     </div>
   );
 };

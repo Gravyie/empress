@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Force manual dark mode via class, preventing system light-mode overrides */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* ============================================
    EMPRESS PC — GLOBAL DESIGN SYSTEM
    Theme: Dark Precision with Chrome Accents
@@ -115,6 +118,16 @@ body {
 
 .animate-fadeInFromBack {
   animation: fadeInFromBack 1s ease-out forwards;
+}
+
+/* === Float Animation (DealShowcase particles) === */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(150deg); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
 }
 
 

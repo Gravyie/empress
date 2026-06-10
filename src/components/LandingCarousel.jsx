@@ -35,12 +35,12 @@ export default function LandingCarousel() {
       setCurrent((prev) => (prev + 1) % length);
     }, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [length]);
 
   const slide = slides[current];
 
   return (
-    <div className="max-w-7xl mx-auto my-10 px-5">
+    <div className="max-w-7xl mx-auto my-6 md:my-10 px-5">
       <div className="w-full flex flex-col items-center bg-[#0a0a0a] border border-white/[0.06] py-6 px-4">
 
         {/* Slide card */}

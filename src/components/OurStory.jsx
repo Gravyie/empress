@@ -34,7 +34,7 @@ export default function OurStory() {
       <div className="absolute inset-0 bg-[#f8f9fa] dark:bg-black/70 pointer-events-none" />
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 py-28">
+      <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 py-16 md:py-28">
         <img
           src="/images/Logo.png"
           alt="Empress PC Logo"

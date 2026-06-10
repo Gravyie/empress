@@ -2,7 +2,7 @@ import { ShoppingCart } from "lucide-react";
 import { allSampleProducts } from "../data/products";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useCart } from "../components/CartContext";
+import { useCart } from '../context/CartContext';
 import ProductCard from "../components/ProductCard";
 
 export default function Server() {
@@ -25,7 +25,7 @@ export default function Server() {
   return (
     <div className="bg-[#f8f9fa] dark:bg-black min-h-screen text-white">
       {/* Hero Section */}
-      <section className="relative w-full py-16 md:py-24 overflow-hidden border-b border-white/[0.06]">
+      <section className="relative w-full py-10 md:py-16 md:py-24 overflow-hidden border-b border-white/[0.06]">
         {/* Ambient background */}
         <div className="absolute inset-0 grid-bg opacity-20 pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-b from-black via-[#F47C5A]/[0.02] to-black pointer-events-none" />
@@ -66,7 +66,7 @@ export default function Server() {
 
 
       {/* Why Server Matters */}
-      <section className="w-full text-center py-16 px-5 lg:px-8 border-b border-white/[0.06]">
+      <section className="w-full text-center py-10 md:py-16 px-5 lg:px-8 border-b border-white/[0.06]">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white uppercase tracking-widest mb-4">
             <span className="text-chrome">Why Server Matters</span>
@@ -78,7 +78,7 @@ export default function Server() {
       </section>
 
       {/* Featured Builds */}
-      <section className="py-16 px-5 lg:px-8 max-w-7xl mx-auto">
+      <section className="py-10 md:py-16 px-5 lg:px-8 max-w-7xl mx-auto">
         <div className="mb-10 text-center md:text-left flex flex-col items-center md:items-start">
           <p className="text-[#F47C5A] text-[10px] uppercase tracking-[0.2em] font-bold mb-2">Top Category</p>
           <h2 className="text-2xl sm:text-3xl font-bold uppercase tracking-widest text-white">Featured PC Builds</h2>
@@ -110,7 +110,7 @@ export default function Server() {
       </section>
 
       {/* Feature Highlight Section */}
-      <section className="py-16 px-5 lg:px-8 border-t border-white/[0.06] bg-[#0a0a0a]/50">
+      <section className="py-10 md:py-16 px-5 lg:px-8 border-t border-white/[0.06] bg-[#0a0a0a]/50">
         <div className="max-w-7xl mx-auto border border-white/[0.06] bg-[#f8f9fa] dark:bg-black/60 backdrop-blur-sm p-8 sm:p-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0 lg:divide-x divide-white/[0.06]">
             {[

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { Heart, ShoppingCart, Star, X } from "lucide-react";
-import { useCart } from "../components/CartContext";
+import { useCart } from "../context/CartContext";
 import { allSampleProducts } from "../data/products";
 import { useNavigate } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
@@ -11,28 +11,18 @@ const Workstations = () => {
   const navigate = useNavigate();
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0 });
 
-  
   const [selectedUseCase, setSelectedUseCase] = useState("");
   const [selectedPerformance, setSelectedPerformance] = useState("");
   const [selectedPriceRange, setSelectedPriceRange] = useState("");
   const [sort, setSort] = useState("none");
-  const [filteredProducts, setFilteredProducts] = useState(products);
   const { addToCart } = useCart();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => setIsSidebarOpen((prev) => !prev);
   const closeSidebar = () => setIsSidebarOpen(false);
 
-  const applySort = (products, sortType) => {
-    if (sortType === "asc") {
-      return [...products].sort((a, b) => a.price - b.price);
-    } else if (sortType === "desc") {
-      return [...products].sort((a, b) => b.price - a.price);
-    }
-    return products;
-  };
-
-  const handleApplyFilters = () => {
+  // Derive filtered + sorted products reactively
+  const filteredProducts = useMemo(() => {
     let filtered = products.filter((p) => {
       const matchUseCase = !selectedUseCase || p.useCase === selectedUseCase;
       const matchPerf = !selectedPerformance || p.performance === selectedPerformance;
@@ -44,22 +34,16 @@ const Workstations = () => {
       return matchUseCase && matchPerf && matchPrice;
     });
 
-    const sorted = applySort(filtered, sort);
-    setFilteredProducts(sorted);
-  };
+    if (sort === "asc") return [...filtered].sort((a, b) => a.price - b.price);
+    if (sort === "desc") return [...filtered].sort((a, b) => b.price - a.price);
+    return filtered;
+  }, [products, selectedUseCase, selectedPerformance, selectedPriceRange, sort]);
 
   const handleClearFilters = () => {
     setSelectedUseCase("");
     setSelectedPerformance("");
     setSelectedPriceRange("");
     setSort("none");
-    setFilteredProducts(products);
-  };
-
-  const handleSortChange = (value) => {
-    setSort(value);
-    const sorted = applySort(filteredProducts, value);
-    setFilteredProducts(sorted);
   };
 
   const handleRadioClick = (currentValue, setter) => {
@@ -67,43 +51,51 @@ const Workstations = () => {
   };
 
   const handleAddToCart = (e, productId) => {
-    e.stopPropagation(); // Prevent the product card's onClick (handleProductClick) from firing
+    e.stopPropagation();
     const product = products.find(p => p.id === productId);
-    console.log(`Added ${product.name} to cart!`);
     addToCart(product);
   };
 
   const handleProductClick = (productId) => {
-    // console.log(`Navigating to product detail page for: ${productId}`); // You can keep or remove this console.log
-    navigate('/product/' + productId); // <--- THIS IS THE REQUIRED CHANGE
+    navigate('/product/' + productId);
   };
 
   return (
-    <div className="flex flex-col md:flex-row min-h-screen bg-[#f8f9fa] dark:bg-black text-white">
+    <div className="flex flex-col lg:flex-row min-h-[calc(100vh-80px)] bg-[#f8f9fa] dark:bg-black text-white">
       {/* Mobile Filter Button */}
-      <div className="mt-8 mr-2 md:hidden flex justify-end">
+      <div className="lg:hidden flex items-center justify-between px-5 py-4 border-b border-black/10 dark:border-white/10 bg-[#f8f9fa] dark:bg-[#050505] sticky top-[73px] z-30">
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white uppercase tracking-widest">Workstations</h2>
         <button
           onClick={toggleSidebar}
-          className="px-4 py-2 text-xs font-semibold uppercase tracking-widest bg-white text-black hover:bg-[#F47C5A] hover:text-white transition-all duration-300 rounded"
+          className="flex items-center gap-2 px-4 py-2 text-xs font-semibold uppercase tracking-widest bg-black text-white dark:bg-white dark:text-black hover:opacity-80 transition-opacity"
         >
-          Filter
+          Filters
         </button>
       </div>
+
+      {/* Mobile Overlay */}
+      {isSidebarOpen && (
+        <div 
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden"
+          onClick={closeSidebar}
+        />
+      )}
 
       {/* Sidebar */}
       <aside
         className={`
-          bg-[#0a0a0a] border-r border-black/10 dark:border-white/10 w-[260px] p-6 space-y-8 z-10
-          ${isSidebarOpen ? "fixed top-20 bottom-0 left-0" : "hidden"}
-          md:static md:block md:shadow-none
+          fixed top-0 bottom-0 left-0 z-50 w-[280px] bg-[#f8f9fa] dark:bg-[#0a0a0a] border-r border-black/10 dark:border-white/10 shadow-2xl overflow-y-auto transform transition-transform duration-300 ease-in-out
+          ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}
+          lg:translate-x-0 lg:static lg:block lg:shadow-none lg:w-64 lg:shrink-0 lg:sticky lg:top-[73px] lg:h-[calc(100vh-73px)] lg:border-r custom-scrollbar
         `}
       >
-        {/* Mobile Close Button */}
-        <div className="md:hidden flex justify-end mb-4">
-          <button onClick={closeSidebar}>
-            <X className="w-5 h-5 text-gray-500 dark:text-white/50" />
-          </button>
-        </div>
+        <div className="p-6 pb-24 space-y-8">
+          {/* Mobile Close Button */}
+          <div className="lg:hidden flex justify-end mb-2">
+            <button onClick={closeSidebar} className="p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors">
+              <X className="w-5 h-5 text-gray-500 dark:text-white/50" />
+            </button>
+          </div>
 
         {/* Filter sections here */}
         {/* ⚡ Performance */}
@@ -185,19 +177,20 @@ const Workstations = () => {
             </label>
           </div>
 
-          <div className="border-t border-black/10 dark:border-white/10 pt-6 mt-6 flex flex-col justify-center items-center gap-y-3">
-            <button onClick={handleApplyFilters} className="w-full bg-white text-black hover:bg-[#F47C5A] hover:text-white px-4 py-2.5 text-xs font-semibold uppercase tracking-widest transition-all duration-300">
-              Apply Filters
+          <div className="pt-6 mt-6 flex flex-col justify-center items-center gap-y-3 lg:static lg:bg-transparent lg:p-0">
+            <button onClick={closeSidebar} className="w-full bg-black dark:bg-white text-white dark:text-black hover:bg-[#F47C5A] hover:text-white px-4 py-3 text-xs font-semibold uppercase tracking-widest transition-all duration-300 lg:hidden">
+              View Results
             </button>
-            <button onClick={handleClearFilters} className="text-[10px] text-gray-500 dark:text-white/40 uppercase tracking-widest hover:text-white transition-colors">
+            <button onClick={handleClearFilters} className="text-[10px] text-gray-500 dark:text-white/40 uppercase tracking-widest hover:text-gray-900 dark:hover:text-white transition-colors">
               Clear All
             </button>
           </div>
         </div>
+        </div>
       </aside>
 
       {/* Main Content */}
-      <section className="flex-1 px-5 lg:px-8 py-8 lg:py-10">
+      <section className="flex-1 px-5 lg:px-8 py-6 lg:py-10 min-w-0">
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between md:items-end mb-8 gap-4">
           <div>
@@ -206,7 +199,7 @@ const Workstations = () => {
           </div>
           <select
             className="bg-[#0a0a0a] border border-black/10 dark:border-white/10 px-4 py-2.5 rounded text-xs text-gray-800 dark:text-white/80 focus:outline-none focus:border-white/30 uppercase tracking-wider"
-            onChange={(e) => handleSortChange(e.target.value)}
+            onChange={(e) => setSort(e.target.value)}
             value={sort}
           >
             <option value="none">Sort By</option>

@@ -1,5 +1,5 @@
-"use client";
 import { useState } from "react";
+import { toast } from "sonner";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -15,13 +15,13 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+    toast.success("Message sent successfully!");
   };
 
   const inputClasses = "w-full bg-transparent border border-black/10 dark:border-white/10 px-4 py-3 text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-white/30 transition-colors";
 
   return (
-    <section className="bg-[#f8f9fa] dark:bg-black text-white min-h-screen py-12 px-6 md:px-20 flex flex-col">
+    <section className="bg-[#f8f9fa] dark:bg-black text-white min-h-screen py-8 md:py-12 px-6 md:px-20 flex flex-col">
       <h1 className="text-4xl md:text-6xl font-bold text-center mb-4">
         NEED A HAND?
       </h1>

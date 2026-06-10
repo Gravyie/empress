@@ -18,6 +18,7 @@ export default function Footer() {
               { icon: Instagram, label: "Instagram" },
               { icon: Twitter, label: "Twitter" },
               { icon: Youtube, label: "Youtube" },
+            // eslint-disable-next-line no-unused-vars
             ].map(({ icon: Icon, label }) => (
               <a
                 key={label}

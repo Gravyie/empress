@@ -84,9 +84,12 @@ export default function BlogsPage() {
     <BlogsHero />
     <EditorsChoice />
     <div className="bg-[#f8f9fa] dark:bg-black min-h-screen px-4 py-10 md:px-24">
-      <h1 className="text-4xl font-bold text-center mb-8 text-[#F47C5A] uppercase tracking-widest">
-        More Deep Dives..
-      </h1>
+      <div className="flex flex-col items-center justify-center mb-12 mt-4">
+        <h2 className="text-3xl md:text-4xl font-black text-center uppercase tracking-[0.2em] text-white">
+          More <span className="text-[#F47C5A]">Deep Dives</span>
+        </h2>
+        <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[#F47C5A] to-transparent mt-4 opacity-50" />
+      </div>
 
       <div className="mx-auto max-w-5xl h-full flex flex-col md:flex-row bg-[#f8f9fa] dark:bg-black/40 backdrop-blur-xl border border-black/10 dark:border-white/10 rounded-2xl shadow-lg overflow-hidden mb-16">
         <img

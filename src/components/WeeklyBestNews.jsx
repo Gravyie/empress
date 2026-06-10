@@ -1,5 +1,3 @@
-"use client";
-
 import { Calendar, Clock } from "lucide-react";
 
 const posts = [

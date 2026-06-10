@@ -1,5 +1,6 @@
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
+import { Link } from 'react-router-dom';
 
 const Categories = () => {
   const categories = [
@@ -34,7 +35,7 @@ const Categories = () => {
               <img src="/images/Specialist.JPG" alt="Specialist" className="w-8 h-8 rounded-full object-cover ring-1 ring-white/10" />
               <div>
                 <p className="font-medium text-gray-800 dark:text-white/80">Need shopping help?</p>
-                <a href="contact" className="text-[#F47C5A] hover:underline text-sm">Ask a Specialist ↗</a>
+                <Link to="/contact" className="text-[#F47C5A] hover:underline text-sm">Ask a Specialist ↗</Link>
               </div>
             </div>
 
@@ -42,7 +43,7 @@ const Categories = () => {
               <img src="/images/EMP.png" className="w-6 h-6 mt-1 brightness-200" />
               <div>
                 <p className="font-medium text-gray-800 dark:text-white/80">Visit the Empress Store</p>
-                <a href="contact" className="text-[#F47C5A] hover:underline text-sm">Find one near you ↗</a>
+                <Link to="/contact" className="text-[#F47C5A] hover:underline text-sm">Find one near you ↗</Link>
               </div>
             </div>
           </div>
@@ -55,7 +56,7 @@ const Categories = () => {
               <div
                 key={category.id}
                 className={`group cursor-pointer flex-shrink-0 w-25 sm:w-40 md:w-55 lg:w-70 transition-all duration-500
-                  ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
+                  ${inView ? 'opacity-100' : 'opacity-0'}
                 `}
                 style={{
                   transitionDelay: inView ? `${index * 100}ms` : '0ms',

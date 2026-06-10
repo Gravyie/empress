@@ -96,12 +96,12 @@ const ALL_COMPONENTS = {
 const BUILD_PROGRESS_IMAGES = {
   0: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=800&q=80', // CPU
   1: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80', // Motherboard
-  2: 'https://images.unsplash.com/photo-1562976540-1502f7592208?auto=format&fit=crop&w=800&q=80', // RAM
-  3: 'https://images.unsplash.com/photo-1587202372634-32705e3bf49c?auto=format&fit=crop&w=800&q=80', // GPU
+  2: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80', // RAM
+  3: 'https://images.unsplash.com/photo-1597852074816-d933c7d2b988?auto=format&fit=crop&w=800&q=80', // GPU
   4: 'https://images.unsplash.com/photo-1531492746076-161ca9bcad58?auto=format&fit=crop&w=800&q=80', // Storage
   5: 'https://images.unsplash.com/photo-1614624532983-4ce03382d63d?auto=format&fit=crop&w=800&q=80', // PSU
-  6: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80', // Case
-  7: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80', // Case
+  6: '/images/img2.JPG', // Case
+  7: '/images/img3.JPG', // Complete
 };
 
 const getCurrentImageForBuild = (step, selectedComponents) => {
@@ -135,19 +135,21 @@ const ComponentCard = ({ component, onSelectComponent, isSelected }) => {
       ref={drag}
       onClick={() => onSelectComponent(component)}
       className={`
-        cursor-pointer bg-[#0a0a0a] rounded-lg p-3 border border-black/10 dark:border-white/10
+        cursor-pointer bg-[#0a0a0a] rounded-lg p-2.5 sm:p-3 border border-black/10 dark:border-white/10
         hover:border-white/30 transform transition duration-300 ease-in-out
         ${isDragging ? 'opacity-50 border-[#F47C5A]' : ''}
         ${isSelected ? 'border-[#F47C5A] ring-1 ring-[#F47C5A]/50 bg-white/[0.02]' : ''}
-        flex flex-col items-center text-center
-        w-full h-auto
+        flex flex-col items-center justify-between text-center
+        w-full h-full min-h-[130px] sm:min-h-[150px]
       `}
     >
-      <div className="w-full h-16 sm:h-20 mb-2 relative flex items-center justify-center p-1 bg-black/5 dark:bg-white/5 rounded-md border border-white/[0.04]">
+      <div className="w-full h-14 sm:h-16 mb-2 relative flex items-center justify-center p-1 bg-black/5 dark:bg-white/5 rounded-md border border-white/[0.04] flex-shrink-0">
         <img src={component.image} alt={component.name} className="max-w-full max-h-full object-contain" />
       </div>
-      <p className="font-medium text-gray-800 dark:text-white/80 text-xs sm:text-sm leading-tight">{component.name}</p>
-      {component.price && <p className="text-[11px] text-[#F47C5A] font-semibold mt-1 uppercase tracking-wider">${component.price.toLocaleString()}</p>}
+      <div className="flex flex-col justify-end flex-1 w-full">
+        <p className="font-medium text-gray-800 dark:text-white/80 text-[10px] sm:text-[11px] leading-snug line-clamp-2">{component.name}</p>
+        {component.price && <p className="text-[10px] sm:text-[11px] text-[#F47C5A] font-semibold mt-1.5 uppercase tracking-wider">${component.price.toLocaleString()}</p>}
+      </div>
     </div>
   );
 };
@@ -180,8 +182,7 @@ const BuildArea = ({ image, currentComponentType }) => {
       ref={drop}
       className={`
         relative bg-[#0a0a0a] rounded-xl p-3 sm:p-6 
-        min-h-[40vh] sm:min-h-[400px]
-        w-full
+        h-full w-full min-h-[350px] md:min-h-[450px]
         flex items-center justify-center overflow-hidden
         transition-all duration-300 ease-in-out
         border ${borderColor}
@@ -190,7 +191,7 @@ const BuildArea = ({ image, currentComponentType }) => {
       <img
         src={image}
         alt="Current build stage"
-        className="max-w-full max-h-[40vh] sm:max-h-[400px] object-cover sm:object-contain rounded-lg opacity-80"
+        className="absolute inset-0 w-full h-full object-cover sm:object-contain p-2 sm:p-4 rounded-lg opacity-80"
         style={{ transition: 'transform 0.5s ease-out' }}
       />
       {isActive && (
@@ -250,24 +251,34 @@ const PCBuilder = () => {
   const currentBuildImage = getCurrentImageForBuild(step, selectedComponents);
 
   const scrollToSummary = useCallback(() => {
-    document.getElementById('pc-summary')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('pc-summary')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }, []);
+
+  useEffect(() => {
+    if (isBuildComplete) {
+      // Small delay to allow the UI to update with "Build Complete" state before scrolling
+      const timer = setTimeout(() => {
+        scrollToSummary();
+      }, 400);
+      return () => clearTimeout(timer);
+    }
+  }, [isBuildComplete, scrollToSummary]);
 
   return (
     <DndProvider backend={HTML5Backend}>
       <div className="min-h-screen bg-[#f8f9fa] dark:bg-black text-white pb-16 pt-8 px-5 sm:px-6 lg:px-8 font-sans">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <div className="text-center pt-2 md:py-4 sm:py-8 mb-8">
+          <div className="text-center pt-2 md:pt-4 sm:pt-6 mb-6">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight uppercase">
               Assemble Your <span className="text-chrome">Dream PC</span>
             </h1>
-            <p className="text-sm sm:text-md text-gray-500 dark:text-white/40 mt-3 font-light tracking-wide">
+            <p className="text-sm sm:text-md text-gray-500 dark:text-white/40 mt-2 font-light tracking-wide">
               Drag, Drop, or Click to Build Your Perfect Rig
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-5 sm:gap-8 lg:gap-12 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-5 sm:gap-6 lg:gap-10 items-stretch">
             {/* Build Visualization Area */}
             <div className="md:col-span-3 order-1 flex flex-col gap-4">
               <div className="flex justify-between items-end">
@@ -302,16 +313,18 @@ const PCBuilder = () => {
             </div>
 
             {/* Component Selection Area */}
-            <div className="md:col-span-2 order-2 mt-8 md:mt-0">
-              <h2 className="text-lg sm:text-xl font-bold text-white uppercase tracking-widest mb-4">
-                {isBuildComplete
-                  ? `Build Complete`
-                  : `Choose your ${currentLabel}`
-                }
-              </h2>
+            <div className="md:col-span-2 order-2 mt-8 md:mt-0 flex flex-col h-full">
+              <div className="min-h-[3rem] sm:min-h-[3.5rem] mb-2 sm:mb-4 flex items-start">
+                <h2 className="text-lg sm:text-xl font-bold text-white uppercase tracking-widest">
+                  {isBuildComplete
+                    ? `Build Complete`
+                    : `Choose your ${currentLabel}`
+                  }
+                </h2>
+              </div>
 
               {!isBuildComplete ? (
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-auto">
                   {componentOptions.length > 0 ? (
                     componentOptions.map(option => (
                       <ComponentCard
@@ -362,8 +375,8 @@ const PCBuilder = () => {
               )}
 
               {/* Back Button for in-progress build steps */}
-              {step > 0 && !isBuildComplete && (
-                <div className="mt-6 text-center lg:text-left">
+              {!isBuildComplete && (
+                <div className={`pt-4 flex-shrink-0 text-center lg:text-left transition-opacity duration-300 ${step > 0 ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
                   <button
                     onClick={() => setStep(prev => Math.max(0, prev - 1))}
                     className="text-[10px] text-gray-500 dark:text-white/40 hover:text-white uppercase tracking-[0.15em] font-medium transition duration-200"
@@ -376,7 +389,21 @@ const PCBuilder = () => {
           </div>
 
           {/* Final Build Summary & Details */}
-          <div className="mt-20 py-10 lg:flex lg:items-center lg:justify-center border-t border-white/[0.06]">
+          <div className={`transition-all duration-1000 ease-in-out relative ${isBuildComplete ? 'opacity-100 translate-y-0 mt-12 py-12' : 'opacity-30 translate-y-8 mt-12 py-8 pointer-events-none'} lg:flex lg:items-center lg:justify-center border-t border-white/[0.06]`}>
+            {/* Convex Lens Trail connecting upper and lower sections */}
+            <div className="absolute -top-8 left-1/2 -translate-x-1/2 flex flex-col items-center justify-center h-8 w-12">
+               {/* Fading connecting line */}
+               <div className="absolute top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-[#F47C5A]/80 to-transparent" />
+               
+               {/* Convex lens wide horizontal glow */}
+               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-1.5 bg-[#F47C5A] blur-[4px] rounded-[100%]" />
+               
+               {/* Convex lens intense core */}
+               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-[1px] bg-white shadow-[0_0_12px_3px_#F47C5A] rounded-[100%]" />
+               
+               {/* Vertical flare core */}
+               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1px] h-6 bg-white blur-[1px] rounded-[100%]" />
+            </div>
             <div
               id="pc-summary"
               className="w-full max-w-5xl mx-auto flex flex-col"
@@ -385,9 +412,9 @@ const PCBuilder = () => {
                 <span className="text-chrome">Summary</span>
               </h2>
 
-              <div className="flex flex-col lg:flex-row gap-8 lg:gap-16">
+              <div className="flex flex-col lg:flex-row gap-6 lg:gap-10">
                 <div className="w-full lg:w-1/2 flex justify-center items-center">
-                  <div className="relative w-full aspect-square max-w-md bg-[#0a0a0a] border border-black/10 dark:border-white/10 rounded-xl p-6 flex items-center justify-center">
+                  <div className="relative w-full aspect-square max-w-sm bg-[#0a0a0a] border border-black/10 dark:border-white/10 rounded-xl p-4 flex items-center justify-center">
                      <div className="absolute inset-0 bg-gradient-to-tr from-violet-500/10 via-fuchsia-500/10 to-orange-500/10 rounded-xl blur-2xl pointer-events-none" />
                      <img
                        src={getCurrentImageForBuild(COMPONENT_FLOW.length, selectedComponents)}
@@ -399,39 +426,52 @@ const PCBuilder = () => {
 
                 <div className="w-full lg:w-1/2 flex flex-col justify-between">
                   <div className="space-y-3">
-                    <h3 className="text-sm font-semibold text-gray-500 dark:text-white/50 uppercase tracking-widest mb-4">Specs Sheet</h3>
-                    <ul className="space-y-2">
-                      {COMPONENT_FLOW.map(({ type, label }) => (
-                        <li
-                          key={type}
-                          className="flex items-center gap-3 pb-3 border-b border-white/[0.04] last:border-0"
-                        >
-                          <div className="flex-1 min-w-0 flex flex-col">
-                            <span className="text-[10px] text-gray-500 dark:text-white/40 uppercase tracking-wider">{label}</span>
-                            <span className="text-sm font-medium text-white truncate">
-                              {selectedComponents[type]?.name ? selectedComponents[type].name : "Not Selected"}
-                            </span>
-                          </div>
-                          <div className="text-right">
-                             {selectedComponents[type]?.price && (
-                              <p className="text-xs font-semibold text-gray-800 dark:text-white/80">
-                                ${selectedComponents[type].price.toLocaleString()}
-                              </p>
-                            )}
-                            <button
-                              onClick={() => handleModifyStep(type)}
-                              className="text-[10px] text-gray-600 dark:text-white/60 hover:text-white uppercase tracking-wider font-semibold mt-1"
-                            >
-                              Edit
-                            </button>
-                          </div>
-                        </li>
-                      ))}
+                    <h3 className="text-sm font-semibold text-gray-500 dark:text-white/50 uppercase tracking-widest mb-3">Specs Sheet</h3>
+                    <ul className="space-y-0 relative before:absolute before:inset-y-0 before:left-[9px] before:w-[2px] before:bg-white/10">
+                      {COMPONENT_FLOW.map(({ type, label }, idx) => {
+                        const isSelected = !!selectedComponents[type];
+                        const isCurrent = step === idx;
+                        return (
+                          <li
+                            key={type}
+                            className="relative pl-7 py-2"
+                          >
+                            {/* Vertical Trail Node */}
+                            <div className={`absolute left-0 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full border-2 flex items-center justify-center z-10 bg-[#0a0a0a] transition-colors
+                              ${isSelected ? 'border-[#F47C5A] bg-[#F47C5A]/10' : (isCurrent ? 'border-white bg-white/10' : 'border-white/20')}
+                            `}>
+                              <div className={`w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-[#F47C5A]' : (isCurrent ? 'bg-white' : 'bg-transparent')}`} />
+                            </div>
+
+                            <div className="flex-1 min-w-0 flex flex-col">
+                              <span className="text-[10px] text-gray-500 dark:text-white/40 uppercase tracking-wider">{label}</span>
+                              <div className="flex justify-between items-center mt-1">
+                                <span className={`text-sm font-medium truncate pr-4 ${isSelected ? 'text-white' : 'text-white/30'}`}>
+                                  {selectedComponents[type]?.name ? selectedComponents[type].name : "Not Selected"}
+                                </span>
+                                <div className="text-right flex-shrink-0">
+                                   {selectedComponents[type]?.price && (
+                                    <p className="text-xs font-semibold text-gray-800 dark:text-white/80">
+                                      ${selectedComponents[type].price.toLocaleString()}
+                                    </p>
+                                  )}
+                                  <button
+                                    onClick={() => handleModifyStep(type)}
+                                    className="text-[10px] text-gray-600 dark:text-white/60 hover:text-white uppercase tracking-wider font-semibold mt-0.5"
+                                  >
+                                    Edit
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                        );
+                      })}
                     </ul>
                   </div>
 
-                  <div className="mt-8 pt-6 border-t border-black/10 dark:border-white/10">
-                    <div className="flex justify-between items-end mb-6">
+                  <div className="mt-6 pt-4 border-t border-black/10 dark:border-white/10">
+                    <div className="flex justify-between items-end mb-4">
                       <span className="text-xs text-gray-500 dark:text-white/50 uppercase tracking-widest font-semibold">Total Estimate</span>
                       <span className="text-2xl sm:text-3xl font-bold text-white">
                         ${totalBuildPrice.toLocaleString()}

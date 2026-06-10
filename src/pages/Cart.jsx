@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useCart } from "../components/CartContext";
+import { useCart } from '../context/CartContext';
 import { useState } from "react";
 
 const Cart = () => {
@@ -15,7 +15,7 @@ const Cart = () => {
   // Show empty cart message
   if (cart.length === 0) {
     return (
-      <div className="py-28 text-center">
+      <div className="py-16 md:py-28 text-center">
         <h2 className="text-2xl font-bold mb-4 text-white">Your cart is empty</h2>
         <p className="mb-8 text-gray-500 dark:text-white/40 font-light">Looks like you haven't added anything yet.</p>
         <div className="flex justify-center gap-4">
@@ -37,7 +37,7 @@ const Cart = () => {
   }
 
   return (
-    <div className="max-w-6xl mx-auto px-5 py-16">
+    <div className="max-w-6xl mx-auto px-5 py-8 md:py-16">
       {/* Breadcrumb */}
       <p className="text-sm text-gray-400 dark:text-white/30 mb-6">
         <span className="text-gray-500 dark:text-white/40">Home</span> /{" "}
@@ -78,7 +78,7 @@ const Cart = () => {
                             ×
                         </button>
                         </div>
-                        <span className="text-gray-800 dark:text-white/80 text-sm">{item.name}</span>
+                        <span className="text-gray-800 dark:text-white/80 text-sm max-w-[120px] sm:max-w-[200px] md:max-w-none truncate" title={item.name}>{item.name}</span>
                     </div>
                   </td>
 

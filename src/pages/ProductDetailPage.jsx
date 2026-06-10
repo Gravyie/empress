@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useInView } from "react-intersection-observer";
 import { allSampleProducts } from '../data/products';
 import RelatedProducts from '../components/RelatedProducts';
-import { useCart } from '../components/CartContext';
+import { useCart } from '../context/CartContext';
 
 const ProductDetailPage = () => {
   const { addToCart } = useCart();
@@ -56,7 +56,6 @@ const ProductDetailPage = () => {
   };
 
   const handleBuyNow = () => {
-    console.log(`Buying ${product.name} now!`);
     addToCart(product, quantity);
     navigate("/cart");
   };

@@ -1,7 +1,5 @@
-import { useState } from 'react';
 import * as Accordion from '@radix-ui/react-accordion';
 import { ChevronDown } from 'lucide-react';
-import { cn } from '../lib/utils';
 
 export default function FAQSection() {
   const faqs = [

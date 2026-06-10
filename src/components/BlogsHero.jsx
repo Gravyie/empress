@@ -1,5 +1,3 @@
-"use client";
-
 const blogPosts = [
   {
     id: 1,
@@ -37,10 +35,14 @@ const blogPosts = [
 export default function BlogsHero() {
   return (
     <section className="py-8 px-4 md:px-30 bg-[#f8f9fa] dark:bg-black text-white">
-      <h1 className="text-4xl font-bold text-center mb-4 text-[#F47C5A] uppercase tracking-widest">
-        Blogs & Articles
-      </h1>
-
+      <div className="flex flex-col items-center justify-center mb-10 pt-6">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-center text-white uppercase tracking-widest leading-tight">
+          Blogs & <span className="text-[#F47C5A]">Articles</span>
+        </h1>
+        <p className="text-center text-gray-500 dark:text-white/40 text-[10px] sm:text-xs mt-4 tracking-[0.2em] uppercase max-w-lg mx-auto">
+          Explore industry news, technical deep dives, and expert insights
+        </p>
+      </div>
       <div className="hidden md:grid grid-cols-3 grid-rows-3 gap-6 h-[600px]">
         {/* Big left card spans 2 cols and all 3 rows */}
         <div className="col-span-2 row-span-3 relative overflow-hidden group rounded-2xl border border-black/10 dark:border-white/10 hover:border-black/20 dark:border-white/20 transition-all shadow-[0_0_30px_rgba(244,124,90,0.05)] hover:shadow-[0_0_30px_rgba(244,124,90,0.15)]">

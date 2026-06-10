@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { Clock, Star, Zap, Shield, Cpu, MonitorSpeaker, ShoppingCart, Heart } from 'lucide-react';
 import { useInView } from "react-intersection-observer";
 
@@ -13,6 +13,16 @@ const DealShowcase = () => {
   });
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const containerRef = useRef(null);
+
+  // Pre-compute random positions once to prevent jitter on re-render
+  const particlePositions = useMemo(() => 
+    Array.from({ length: 60 }, () => ({
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+      delay: `${Math.random() * 4}s`,
+      duration: `${2 + Math.random() * 4}s`,
+    })),
+  []);
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -123,15 +133,15 @@ const DealShowcase = () => {
         ))}
 
         {/* Particles - hidden on mobile, visible on lg screens */}
-        {[...Array(60)].map((_, i) => (
+        {particlePositions.map((pos, i) => (
           <div
             key={`particle-${i}`}
             className="absolute animate-pulse hidden lg:block"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 4}s`,
-              animationDuration: `${2 + Math.random() * 4}s`
+              left: pos.left,
+              top: pos.top,
+              animationDelay: pos.delay,
+              animationDuration: pos.duration,
             }}
           >
             <div
@@ -353,28 +363,7 @@ const DealShowcase = () => {
         </div>
       </div>
 
-      <style>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-15px) rotate(150deg); }
-        }
-        .animate-float {
-          animation: float 6s ease-in-out infinite;
-        }
-        @keyframes fadeInFromBack {
-          from {
-            opacity: 0;
-            transform: scale(0.95);
-          }
-          to {
-            opacity: 1;
-            transform: scale(1);
-          }
-        }
-        .animate-fadeInFromBack {
-          animation: fadeInFromBack 1s ease-out forwards;
-        }
-      `}</style>
+      {/* animate-float and animate-fadeInFromBack are defined in index.css */}
     </div>
   );
 };

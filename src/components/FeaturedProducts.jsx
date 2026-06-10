@@ -2,11 +2,10 @@ import {
   ArrowRight,
   ShoppingCart,
 } from "lucide-react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
 import { featuredProducts } from "../data/sampleData";
-import { useCart } from "../components/CartContext";
+import { useCart } from '../context/CartContext';
 
 function FeaturedProducts() {
   const products = featuredProducts;
@@ -58,7 +57,7 @@ function FeaturedProducts() {
               key={product.id}
               onClick={() => handleProductClick(product.id)}
               className={`group relative bg-[#050505] border border-white/[0.04] p-5 rounded-2xl w-[220px] sm:w-[300px] flex-shrink-0 cursor-pointer hover:border-white/10 hover:bg-[#0a0a0a] transition-all duration-500 ease-out
-                ${sectionInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}
+                ${sectionInView ? "opacity-100" : "opacity-0"}
               `}
               style={{
                 transitionDelay: sectionInView ? `${index * 100}ms` : "0ms",

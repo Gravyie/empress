@@ -11,38 +11,38 @@ export default function SupportSection() {
         inView ? "animate-fadeInFromBack" : "opacity-0"
       }`}
     >
-      <div className="border border-white/[0.08] bg-[#0a0a0a] text-white p-6 sm:p-8 lg:p-10 max-w-7xl mx-auto space-y-8 sm:space-y-10 text-sm sm:text-base">
+      <div className="border border-white/[0.08] bg-[#0a0a0a] text-white p-6 sm:p-8 lg:p-10 max-w-7xl mx-auto space-y-8 sm:space-y-10 text-base sm:text-lg">
         {/* Chrome accent line at top */}
         <div className="w-16 h-[2px] shine-chrome" />
 
-        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center lg:text-left">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center lg:text-left">
           Need help?
         </h2>
 
         <div className="flex flex-col lg:flex-row justify-between gap-6 sm:gap-10 lg:gap-16 text-center lg:text-left">
           {/* Left text section */}
           <div className="lg:w-1/2 space-y-3 sm:space-y-4">
-            <p className="text-gray-500 dark:text-white/50 leading-relaxed font-light">
+            <p className="text-gray-400 dark:text-white/60 leading-relaxed font-light text-base sm:text-lg">
               If you need assistance, check out our FAQ section for answers to common questions.
             </p>
-            <p className="text-gray-500 dark:text-white/50 leading-relaxed font-light">
+            <p className="text-gray-400 dark:text-white/60 leading-relaxed font-light text-base sm:text-lg">
               Still need help? Reach out to our customer service team via email or phone.
             </p>
           </div>
 
           {/* Contact info section */}
-          <div className="lg:w-1/2 flex flex-col gap-4 items-center lg:items-start text-xs sm:text-sm">
+          <div className="lg:w-1/2 flex flex-col gap-4 items-center lg:items-start text-sm sm:text-base">
             <div className="flex items-center gap-3">
-              <Mail className="w-4 h-4 text-gray-400 dark:text-white/30" />
-              <span className="text-gray-600 dark:text-white/60">customerhelp@empress.com</span>
+              <Mail className="w-5 h-5 text-gray-400 dark:text-white/40" />
+              <span className="text-gray-600 dark:text-white/80">customerhelp@empress.com</span>
             </div>
             <div className="flex items-center gap-3">
-              <Phone className="w-4 h-4 text-gray-400 dark:text-white/30" />
-              <span className="text-gray-600 dark:text-white/60">+91 98765 43210</span>
+              <Phone className="w-5 h-5 text-gray-400 dark:text-white/40" />
+              <span className="text-gray-600 dark:text-white/80">+91 98765 43210</span>
             </div>
             <div className="flex items-center gap-3">
-              <MapPin className="w-4 h-4 text-gray-400 dark:text-white/30" />
-              <span className="text-gray-600 dark:text-white/60">123 Business Street, Lucknow, India</span>
+              <MapPin className="w-5 h-5 text-gray-400 dark:text-white/40" />
+              <span className="text-gray-600 dark:text-white/80">123 Business Street, Lucknow, India</span>
             </div>
           </div>
         </div>

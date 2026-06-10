@@ -21,7 +21,7 @@ export default function AccountPage() {
   };
 
   return (
-    <div className="bg-[#f8f9fa] dark:bg-black px-6 py-12 text-white min-h-screen">
+    <div className="bg-[#f8f9fa] dark:bg-black px-6 py-8 md:py-12 text-white min-h-screen">
       <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-6 md:gap-12">
         {/* Sidebar */}
         <aside className="w-full lg:w-1/4 bg-[#0a0a0a] border border-black/10 dark:border-white/10 rounded-lg p-6 text-sm text-gray-600 dark:text-white/60">

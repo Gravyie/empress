@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
 const testimonials = [
@@ -51,22 +51,39 @@ const testimonials = [
 
 export default function Testimonials() {
   const [current, setCurrent] = useState(0);
-  const timeoutRef = useRef(null);
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setCurrent((prev) => (prev + 1) % testimonials.length);
-  };
+  }, []);
 
-  const prevSlide = () => {
+  const prevSlide = useCallback(() => {
     setCurrent((prev) =>
       prev === 0 ? testimonials.length - 1 : prev - 1
     );
+  }, []);
+
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientX);
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    if (distance > minSwipeDistance) nextSlide();
+    if (distance < -minSwipeDistance) prevSlide();
   };
 
   useEffect(() => {
     const interval = setInterval(nextSlide, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [nextSlide]);
 
   const t = testimonials[current];
 
@@ -80,19 +97,24 @@ export default function Testimonials() {
         {/* Arrows */}
         <button
           onClick={prevSlide}
-          className="absolute left-0 top-1/2 transform -translate-y-1/2 w-10 h-10 border border-black/10 dark:border-white/10 bg-[#f8f9fa] dark:bg-black flex items-center justify-center text-gray-500 dark:text-white/50 hover:text-white hover:border-white/30 transition-all z-10"
+          className="absolute left-0 top-1/2 transform -translate-y-1/2 w-10 h-10 border border-black/10 dark:border-white/10 bg-[#f8f9fa] dark:bg-black hidden sm:flex items-center justify-center text-gray-500 dark:text-white/50 hover:text-white hover:border-white/30 transition-all z-10"
         >
           <ChevronLeft className="w-4 h-4" />
         </button>
         <button
           onClick={nextSlide}
-          className="absolute right-0 top-1/2 transform -translate-y-1/2 w-10 h-10 border border-black/10 dark:border-white/10 bg-[#f8f9fa] dark:bg-black flex items-center justify-center text-gray-500 dark:text-white/50 hover:text-white hover:border-white/30 transition-all z-10"
+          className="absolute right-0 top-1/2 transform -translate-y-1/2 w-10 h-10 border border-black/10 dark:border-white/10 bg-[#f8f9fa] dark:bg-black hidden sm:flex items-center justify-center text-gray-500 dark:text-white/50 hover:text-white hover:border-white/30 transition-all z-10"
         >
           <ChevronRight className="w-4 h-4" />
         </button>
 
         {/* Card */}
-        <div className="transition-all duration-500 p-8 bg-[#0a0a0a] border border-white/[0.06] text-center space-y-5 mx-12 sm:mx-0 relative overflow-hidden">
+        <div 
+          className="transition-all duration-500 p-6 sm:p-8 bg-[#0a0a0a] border border-white/[0.06] text-center space-y-5 mx-0 sm:mx-12 md:mx-0 relative overflow-hidden touch-pan-y"
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        >
           <div className="shimmer-line" />
           
           {/* Quote Icon */}

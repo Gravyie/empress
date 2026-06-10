@@ -1,6 +1,6 @@
 import React from 'react';
 import { Sparkles, Waves } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 const events = [
   {
@@ -40,20 +40,12 @@ const events = [
   },
 ];
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: (i) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: i * 0.15,
-      duration: 0.6,
-      ease: 'easeOut',
-    },
-  }),
-};
-
 const EventSchedule = () => {
+  const { ref: sectionRef, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
   return (
     <section className="bg-[#f8f9fa] dark:bg-black py-6 md:py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -79,20 +71,20 @@ const EventSchedule = () => {
         </div>
 
         {/* Concise Horizontal Scrollable Events */}
-        <div className="overflow-x-auto no-scrollbar pb-8 pt-4 snap-x snap-mandatory -mx-4 px-4 sm:mx-0 sm:px-0">
+        <div className="overflow-x-auto no-scrollbar pb-8 pt-4 snap-x snap-mandatory -mx-4 px-4 sm:mx-0 sm:px-0" ref={sectionRef}>
           <div className="flex flex-row flex-nowrap gap-x-4 sm:gap-x-6">
             {events.map((event, index) => (
-              <motion.div
+              <div
                 key={event.id}
-                className="flex-shrink-0 w-[260px] sm:w-[300px]
+                className={`flex-shrink-0 w-[260px] sm:w-[300px]
                   bg-[#f8f9fa] dark:bg-black/40 backdrop-blur-xl rounded-2xl border border-black/10 dark:border-white/10 overflow-hidden 
-                  transition-all duration-300 hover:border-black/20 dark:border-white/20 hover:shadow-[0_0_30px_rgba(244,124,90,0.15)] hover:-translate-y-2 
-                  cursor-pointer flex flex-col snap-center group"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
-                custom={index}
-                variants={cardVariants}
+                  transition-all duration-500 hover:border-black/20 dark:border-white/20 hover:shadow-[0_0_30px_rgba(244,124,90,0.15)] 
+                  cursor-pointer flex flex-col snap-center group
+                  ${inView ? 'opacity-100' : 'opacity-0'}
+                `}
+                style={{
+                  transitionDelay: inView ? `${index * 100}ms` : '0ms',
+                }}
               >
                 <div className="w-full h-40 sm:h-48 relative overflow-hidden">
                   <img
@@ -110,7 +102,7 @@ const EventSchedule = () => {
                     </h3>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

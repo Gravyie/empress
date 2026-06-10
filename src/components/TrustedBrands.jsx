@@ -23,7 +23,7 @@ export default function TrustedPartners() {
   return (
     <section
       ref={ref}
-      className={`w-full px-5 sm:px-6 py-12 bg-[#f8f9fa] dark:bg-black transition-opacity duration-1000 ${
+      className={`w-full px-5 sm:px-6 py-6 sm:py-12 bg-[#f8f9fa] dark:bg-black transition-opacity duration-1000 ${
         inView ? "animate-fadeInFromBack" : "opacity-0"
       }`}
     >

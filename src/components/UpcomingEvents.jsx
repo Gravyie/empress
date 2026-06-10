@@ -1,5 +1,5 @@
-import { useInView } from 'react-intersection-observer';
-
+// eslint-disable-next-line no-unused-vars
+import { motion } from 'framer-motion';
 export default function UpcomingEvents() {
   const events = [
     {
@@ -48,11 +48,6 @@ export default function UpcomingEvents() {
     },
   ];
 
-  const { ref, inView } = useInView({
-      triggerOnce: true,
-      threshold: 0.1,
-    });
-
   return (
     <section className="pb-10 px-4 bg-[#f8f9fa] dark:bg-black text-white">
       <div className="max-w-4xl mx-auto text-center">
@@ -64,15 +59,13 @@ export default function UpcomingEvents() {
 
       <div className="space-y-2 max-w-4xl mx-auto">
         {events.map((event, index) => (
-          <div
-            ref={ref}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1, duration: 0.5 }}
             key={index}
-            className={`flex flex-col md:flex-row justify-between items-start md:items-center ${event.color} rounded-2xl p-4 md:p-6 shadow-none hover:bg-black/10 dark:bg-white/10 hover:border-black/20 dark:border-white/20 transition-all duration-500
-                  ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
-                `}
-                style={{
-                  transitionDelay: inView ? `${index * 100}ms` : '0ms',
-                }}
+            className={`flex flex-col md:flex-row justify-between items-start md:items-center ${event.color} rounded-2xl p-4 md:p-6 shadow-none hover:bg-black/10 dark:bg-white/10 hover:border-black/20 dark:border-white/20 transition-all duration-500`}
           >
             {event.image ? (
               <div className="flex items-center gap-4 w-full md:w-3/4">
@@ -95,7 +88,7 @@ export default function UpcomingEvents() {
             <div className="text-[0.5rem] sm:text-sm text-gray-700 dark:text-white/70 sm:font-medium md:text-right w-full md:w-1/4 text-right">
               {event.time}
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
 
