@@ -8,6 +8,7 @@ import EmpressNavbar from "./components/EmpressNavbar";
 import ScrollToTop from "./components/ScrollToTop";
 import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 // Pages
 const LandingPage = lazy(() => import("./pages/LandingPage"));
@@ -167,12 +168,14 @@ function wrap(children) {
       transition={{ duration: 0.4 }}
       className="flex flex-col min-h-[calc(100vh-80px)]"
     >
-      <Suspense fallback={<PageLoader />}>
-        <div className="flex-grow">
-          {children}
-        </div>
-        <Footer />
-      </Suspense>
+      <ErrorBoundary>
+        <Suspense fallback={<PageLoader />}>
+          <div className="flex-grow">
+            {children}
+          </div>
+          <Footer />
+        </Suspense>
+      </ErrorBoundary>
     </motion.div>
   );
 }
