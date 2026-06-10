@@ -7,7 +7,7 @@ export default function SupportSection() {
   return (
     <div
       ref={ref}
-      className={`bg-[#f8f9fa] dark:bg-black py-6 md:py-12 px-4 sm:px-8 lg:px-24 transition-opacity duration-1000 ${
+      className={`bg-[#f8f9fa] dark:bg-black pt-2 md:pt-4 pb-6 md:pb-12 px-4 sm:px-8 lg:px-24 transition-opacity duration-1000 ${
         inView ? "animate-fadeInFromBack" : "opacity-0"
       }`}
     >

@@ -28,7 +28,7 @@ function FeaturedProducts() {
   });
 
   return (
-    <section ref={sectionRef} className="py-12 px-5 md:px-8 bg-[#f8f9fa] dark:bg-black">
+    <section ref={sectionRef} className="pt-12 pb-4 px-5 md:px-8 bg-[#f8f9fa] dark:bg-black">
       {/* Header */}
       <div className="max-w-7xl mx-auto mb-6">
         <div className="flex items-center justify-between">

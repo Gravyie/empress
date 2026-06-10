@@ -88,7 +88,7 @@ export default function Testimonials() {
   const t = testimonials[current];
 
   return (
-    <section className="bg-[#f8f9fa] dark:bg-black py-10 md:py-16 px-4 sm:px-6 md:px-24">
+    <section className="bg-[#f8f9fa] dark:bg-black pt-4 pb-10 md:pt-6 md:pb-16 px-4 sm:px-6 md:px-24">
       <h2 className="text-lg sm:text-2xl md:text-3xl font-bold text-center mb-6 md:mb-10 text-white">
         Don't take our word for it...
       </h2>

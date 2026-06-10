@@ -39,9 +39,9 @@ export default function ProductsGrid() {
           lg:grid-cols-6 
           lg:grid-rows-3
           lg:gap-4
-          lg:h-[80vh]
-          xl:h-[85vh]
-          2xl:h-[90vh]
+          lg:h-[65vh]
+          xl:h-[70vh]
+          2xl:h-[75vh]
         "
       >
         {images.map((src, idx) => {

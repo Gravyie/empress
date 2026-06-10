@@ -23,7 +23,7 @@ const Categories = () => {
     <div className="bg-[#f8f9fa] dark:bg-black px-5 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header and Specialist Info */}
-        <div className="pb-4 md:py-12 flex flex-col lg:flex-row justify-between items-center lg:items-start gap-3 md:gap-6">
+        <div className="pb-4 md:pt-4 md:pb-12 flex flex-col lg:flex-row justify-between items-center lg:items-start gap-3 md:gap-6">
           <div className="max-w-xl text-center lg:text-left">
             <h1 className="text-4xl lg:text-5xl font-light text-gray-500 dark:text-white/40 leading-tight">
               <span className="font-semibold text-chrome">Categories.</span> Everything you want and more.
